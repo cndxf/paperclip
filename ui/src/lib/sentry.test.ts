@@ -123,6 +123,32 @@ describe("teardownBrowserErrorMonitoring", () => {
 
     expect(mocks.init).toHaveBeenCalledTimes(2);
   });
+
+  it("a sign-back-in that races teardown ends up monitored, not stuck on the closed client", async () => {
+    // A sign-out followed at once by a sign-in, both before the first
+    // client's dynamic import settles. The first client must close itself
+    // once it notices the second sign-in superseded it, and the second
+    // client must end up the one `captureBrowserException` reaches.
+    const mocks = mockSentryPackage();
+    const { initBrowserErrorMonitoring, teardownBrowserErrorMonitoring, captureBrowserException } =
+      await importFreshSentry();
+
+    const firstReady = initBrowserErrorMonitoring(DSN);
+    const teardownDone = teardownBrowserErrorMonitoring();
+    const secondReady = initBrowserErrorMonitoring(DSN);
+    await Promise.all([firstReady, teardownDone, secondReady]);
+
+    expect(mocks.init).toHaveBeenCalledTimes(2);
+    // The superseded first client closes itself; the still-in-flight
+    // teardown finds nothing left to close, so `close` runs once, not twice.
+    expect(mocks.close).toHaveBeenCalledTimes(1);
+
+    captureBrowserException(new Error("boom after the race"));
+    await Promise.resolve();
+    await Promise.resolve();
+
+    expect(mocks.captureException).toHaveBeenCalledWith(expect.any(Error));
+  });
 });
 
 describe("captureBrowserException", () => {
