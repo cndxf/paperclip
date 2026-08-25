@@ -23,17 +23,39 @@ async function importFreshSentry() {
  * Register a fake `@sentry/browser` module for the next dynamic import. Used
  * by the tests that only care about the call the module makes into the SDK,
  * not the shape of a captured event.
+ *
+ * `init` and `setClient` both write one shared `attachedClient` variable —
+ * the real SDK's `Sentry.init` and `Sentry.getCurrentScope().setClient` both
+ * mutate the same module-global scope, not a value scoped to one caller. A
+ * race that lets a stale `setClient(undefined)` land after a newer
+ * `Sentry.init` needs a mock that tracks this shared state to catch it —
+ * two mocks that record calls independently cannot see the clobber.
  */
 function mockSentryPackage() {
-  const init = vi.fn();
-  const captureException = vi.fn(() => "event-id");
+  let nextClientId = 0;
+  let attachedClient: { id: string } | null = null;
+
+  const init = vi.fn((_options: Record<string, unknown>) => {
+    attachedClient = { id: `client-${nextClientId++}` };
+  });
+  const captureException = vi.fn(() => (attachedClient ? "event-id" : undefined));
   const close = vi.fn(async () => true);
-  const setClient = vi.fn();
+  const setClient = vi.fn((client: { id: string } | undefined) => {
+    attachedClient = client ?? null;
+  });
   const getCurrentScope = vi.fn(() => ({ setClient }));
 
   vi.doMock("@sentry/browser", () => ({ init, captureException, close, getCurrentScope }));
 
-  return { init, captureException, close, getCurrentScope, setClient };
+  return {
+    init,
+    captureException,
+    close,
+    getCurrentScope,
+    setClient,
+    /** The `id` of whichever client `init`/`setClient` last attached, or `null` if none is. */
+    attachedClientId: () => attachedClient?.id ?? null,
+  };
 }
 
 /**
@@ -144,29 +166,42 @@ describe("teardownBrowserErrorMonitoring", () => {
     expect(mocks.init).toHaveBeenCalledTimes(2);
   });
 
-  it("a sign-back-in that overlaps a still-in-flight teardown ends up monitored", async () => {
+  it("a sign-back-in that overlaps a still-in-flight teardown ends up monitored, not silently disabled", async () => {
     // A sign-out whose `Sentry.close()` call is still in flight when the
-    // browser signs back in. The still-running teardown must not stop the
-    // new sign-in from starting its own client, and `captureBrowserException`
-    // must reach the NEW client once it is up, not the one being torn down.
+    // browser signs back in. `Sentry.init` and `Sentry.getCurrentScope().
+    // setClient` both mutate ONE shared scope, so the old teardown's
+    // `setClient(undefined)` call, if it lands after the new sign-in's
+    // `Sentry.init`, would detach the NEW client rather than the old one —
+    // silently disabling monitoring for the session that just signed in.
+    // The fix serializes the two: the old teardown's close-and-detach must
+    // finish in full before the new sign-in's `Sentry.init` runs.
     const mocks = mockSentryPackage();
     const { initBrowserErrorMonitoring, teardownBrowserErrorMonitoring, captureBrowserException } =
       await importFreshSentry();
     await initBrowserErrorMonitoring(DSN);
     expect(mocks.init).toHaveBeenCalledTimes(1);
+    const clientAId = mocks.attachedClientId();
+    expect(clientAId).not.toBeNull();
 
     const releaseClose = holdCloseOpen(mocks);
     const teardownDone = teardownBrowserErrorMonitoring();
-    // teardownBrowserErrorMonitoring is now stuck awaiting close(). A sign-in
-    // right now must not reuse the session being torn down.
-    await initBrowserErrorMonitoring(DSN);
-
-    expect(mocks.init).toHaveBeenCalledTimes(2);
+    // The sign-back-in's own `Sentry.init` is now queued behind the
+    // in-flight teardown, so its returned promise settles only once the
+    // gate below releases — await it after releasing, not before.
+    const signInBDone = initBrowserErrorMonitoring(DSN);
 
     releaseClose();
     await teardownDone;
+    await signInBDone;
 
     expect(mocks.close).toHaveBeenCalledTimes(1);
+    expect(mocks.init).toHaveBeenCalledTimes(2);
+    // The old teardown's close-and-detach ran to completion BEFORE the new
+    // sign-in's `Sentry.init`, so the client left attached is the new one —
+    // not `undefined`, and not the old client A ever reused.
+    const clientBId = mocks.attachedClientId();
+    expect(clientBId).not.toBeNull();
+    expect(clientBId).not.toBe(clientAId);
 
     captureBrowserException(new Error("boom after the race"));
     await Promise.resolve();

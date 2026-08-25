@@ -21,6 +21,16 @@
 // still `current`; a superseded bootstrap closes the client it just started
 // instead of publishing it, so it can never leak into the new session.
 //
+// A fast sign-back-in must also never start ahead of a still-running
+// teardown: `Sentry.init` and `Sentry.getCurrentScope().setClient` both act
+// on ONE shared scope, so if the new sign-in's `Sentry.init()` ran before the
+// old teardown's `close()`-then-`setClient(undefined)` finished, that stale
+// `setClient(undefined)` would detach the NEW client instead of the old one
+// — silently disabling monitoring for the session that just signed in.
+// `teardownInFlight` tracks the running teardown's promise, so
+// `initBrowserErrorMonitoring` can wait for it to finish in full before it
+// calls `Sentry.init()` for the new session. The two never interleave.
+//
 // `@sentry/browser` loads through a dynamic import, so Vite puts it in a
 // separate chunk that a browser with no DSN never fetches. `loadSentryModule`
 // caches that import's promise at module scope, so a sign-out followed at
@@ -60,6 +70,14 @@ interface SentrySession {
 
 let current: SentrySession | null = null;
 
+/**
+ * The running teardown's promise, or `null` when no teardown is in flight.
+ * `initBrowserErrorMonitoring` awaits this before it starts a new client, so
+ * a sign-back-in never runs `Sentry.init()` ahead of a still-running
+ * teardown's close-and-detach.
+ */
+let teardownInFlight: Promise<void> | null = null;
+
 /** The `@sentry/browser` module shape, resolved once. */
 type SentryBrowserModule = typeof import("@sentry/browser");
 
@@ -86,11 +104,16 @@ function loadSentryModule(): Promise<SentryBrowserModule> {
  * Load `@sentry/browser` and start the client with the given DSN. Idempotent
  * — the session query can refetch and call this again, and a second call
  * returns the first call's promise instead of starting a second client.
+ *
+ * Waits for any in-flight teardown to finish before it calls
+ * `bootstrapBrowserSentry`, so this session's `Sentry.init()` never races
+ * that teardown's close-and-detach — see the module comment.
  */
 export function initBrowserErrorMonitoring(dsn: string): Promise<void> {
   if (current) return current.ready;
   const session: SentrySession = { ready: Promise.resolve(), handle: null, sentryModule: null };
-  session.ready = bootstrapBrowserSentry(dsn, session);
+  const afterTeardown = teardownInFlight ?? Promise.resolve();
+  session.ready = afterTeardown.then(() => bootstrapBrowserSentry(dsn, session));
   current = session;
   return session.ready;
 }
@@ -106,11 +129,25 @@ export function initBrowserErrorMonitoring(dsn: string): Promise<void> {
  * See `bootstrapBrowserSentry` for the other half of that guard: a bootstrap
  * still in flight for the session torn down here closes the client it just
  * started rather than publish it once it notices it is no longer `current`.
+ *
+ * Publishes its own promise onto `teardownInFlight` before it awaits
+ * anything, so a sign-back-in issued in the same tick already sees it and
+ * waits its turn — see `initBrowserErrorMonitoring`.
  */
 export async function teardownBrowserErrorMonitoring(): Promise<void> {
   const session = current;
   current = null;
   if (!session) return;
+  const work = closeSession(session);
+  teardownInFlight = work;
+  try {
+    await work;
+  } finally {
+    if (teardownInFlight === work) teardownInFlight = null;
+  }
+}
+
+async function closeSession(session: SentrySession): Promise<void> {
   await session.ready;
   if (!session.sentryModule) return;
   try {
