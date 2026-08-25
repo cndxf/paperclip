@@ -1157,6 +1157,9 @@ describe("codex_local ACP lane", () => {
     // classify-and-redact contract, proven once for all three adapters by its
     // own table-driven test in `packages/adapter-utils`. This test proves only
     // that the Codex adapter passes its own two message strings to it.
+    // Clear the shared, hoisted mock first: earlier tests in this file also
+    // call through it, and a leftover call could hide a real wiring bug.
+    mockCreateWorkspaceRestoreTeardown.mockClear();
     const root = await makeTempRoot("paperclip-codex-acp-teardown-wiring-");
     const localCwd = path.join(root, "worktree");
     const remoteCwd = path.join(root, "remote-workspace");
