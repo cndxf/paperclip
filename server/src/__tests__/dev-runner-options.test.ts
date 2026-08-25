@@ -7,24 +7,34 @@ describe("applyDevRunnerOptions", () => {
   it("turns --data-dir into isolated Paperclip paths and consumes the option", () => {
     const env: NodeJS.ProcessEnv = {};
     const cwd = path.join(os.tmpdir(), "paperclip-dev-runner-options");
+    const previousInstanceId = process.env.PAPERCLIP_INSTANCE_ID;
+    process.env.PAPERCLIP_INSTANCE_ID = "ambient-test-instance";
 
-    const result = applyDevRunnerOptions(
-      ["--bind", "loopback", "--data-dir", "./tmp", "--future-option"],
-      env,
-      cwd,
-    );
+    try {
+      const result = applyDevRunnerOptions(
+        ["--bind", "loopback", "--data-dir", "./tmp", "--future-option"],
+        env,
+        cwd,
+      );
 
-    const expectedHome = path.resolve(cwd, "tmp");
-    expect(result).toEqual({
-      forwardedArgs: ["--bind", "loopback", "--future-option"],
-      dataDir: expectedHome,
-    });
-    expect(env.PAPERCLIP_HOME).toBe(expectedHome);
-    expect(env.PAPERCLIP_INSTANCE_ID).toBe("default");
-    expect(env.PAPERCLIP_CONFIG).toBe(
-      path.join(expectedHome, "instances", "default", "config.json"),
-    );
-    expect(env.PAPERCLIP_CONTEXT).toBe(path.join(expectedHome, "context.json"));
+      const expectedHome = path.resolve(cwd, "tmp");
+      expect(result).toEqual({
+        forwardedArgs: ["--bind", "loopback", "--future-option"],
+        dataDir: expectedHome,
+      });
+      expect(env.PAPERCLIP_HOME).toBe(expectedHome);
+      expect(env.PAPERCLIP_INSTANCE_ID).toBe("default");
+      expect(env.PAPERCLIP_CONFIG).toBe(
+        path.join(expectedHome, "instances", "default", "config.json"),
+      );
+      expect(env.PAPERCLIP_CONTEXT).toBe(path.join(expectedHome, "context.json"));
+    } finally {
+      if (previousInstanceId === undefined) {
+        delete process.env.PAPERCLIP_INSTANCE_ID;
+      } else {
+        process.env.PAPERCLIP_INSTANCE_ID = previousInstanceId;
+      }
+    }
   });
 
   it.each([

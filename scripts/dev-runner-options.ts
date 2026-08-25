@@ -1,5 +1,6 @@
 import path from "node:path";
 import {
+  DEFAULT_PAPERCLIP_INSTANCE_ID,
   expandHomePrefix,
   resolvePaperclipConfigPathForInstance,
   resolvePaperclipInstanceId,
@@ -56,7 +57,9 @@ export function applyDevRunnerOptions(
 
   env.PAPERCLIP_HOME = dataDir;
   if (!hasExplicitConfig) {
-    const instanceId = resolvePaperclipInstanceId(env.PAPERCLIP_INSTANCE_ID);
+    const instanceId = resolvePaperclipInstanceId(
+      env.PAPERCLIP_INSTANCE_ID ?? DEFAULT_PAPERCLIP_INSTANCE_ID,
+    );
     env.PAPERCLIP_INSTANCE_ID = instanceId;
     env.PAPERCLIP_CONFIG = resolvePaperclipConfigPathForInstance({
       homeDir: dataDir,
