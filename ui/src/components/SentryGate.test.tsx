@@ -9,6 +9,7 @@ import { SentryGate } from "./SentryGate";
 
 const getSessionMock = vi.hoisted(() => vi.fn());
 const initBrowserErrorMonitoringMock = vi.hoisted(() => vi.fn(async (_dsn: string) => {}));
+const teardownBrowserErrorMonitoringMock = vi.hoisted(() => vi.fn(async () => {}));
 
 vi.mock("@/api/auth", () => ({
   authApi: { getSession: () => getSessionMock() },
@@ -16,6 +17,7 @@ vi.mock("@/api/auth", () => ({
 
 vi.mock("@/lib/sentry", () => ({
   initBrowserErrorMonitoring: (dsn: string) => initBrowserErrorMonitoringMock(dsn),
+  teardownBrowserErrorMonitoring: () => teardownBrowserErrorMonitoringMock(),
 }));
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -113,5 +115,43 @@ describe("SentryGate", () => {
     expect(initBrowserErrorMonitoringMock).toHaveBeenCalledTimes(1);
     expect(initBrowserErrorMonitoringMock).toHaveBeenCalledWith("https://public@o0.ingest.sentry.io/1");
     root.unmount();
+  });
+
+  it("closes browser monitoring when sign-out clears the session's DSN", async () => {
+    getSessionMock.mockResolvedValue({
+      session: { id: "s1", userId: "u1" },
+      user: { id: "u1", email: "a@b.com", name: "Jane", image: null },
+      sentryDsn: "https://public@o0.ingest.sentry.io/1",
+    });
+    const root = await renderGate();
+    expect(initBrowserErrorMonitoringMock).toHaveBeenCalledTimes(1);
+    expect(teardownBrowserErrorMonitoringMock).not.toHaveBeenCalled();
+
+    // `useSignOut` resets the session query on sign-out; a mounted observer
+    // (this component) sees its data drop to `undefined` immediately.
+    getSessionMock.mockResolvedValue(null);
+    await act(async () => {
+      queryClient.resetQueries({ queryKey: queryKeys.auth.session });
+    });
+    await flushReact();
+
+    expect(teardownBrowserErrorMonitoringMock).toHaveBeenCalledTimes(1);
+    // Signing back in must start a fresh client, not skip re-init.
+    expect(initBrowserErrorMonitoringMock).toHaveBeenCalledTimes(1);
+    root.unmount();
+  });
+
+  it("closes browser monitoring when the gate unmounts while a session DSN is set", async () => {
+    getSessionMock.mockResolvedValue({
+      session: { id: "s1", userId: "u1" },
+      user: { id: "u1", email: "a@b.com", name: "Jane", image: null },
+      sentryDsn: "https://public@o0.ingest.sentry.io/1",
+    });
+    const root = await renderGate();
+    expect(initBrowserErrorMonitoringMock).toHaveBeenCalledTimes(1);
+
+    root.unmount();
+
+    expect(teardownBrowserErrorMonitoringMock).toHaveBeenCalledTimes(1);
   });
 });

@@ -27,10 +27,13 @@ async function importFreshSentry() {
 function mockSentryPackage() {
   const init = vi.fn();
   const captureException = vi.fn(() => "event-id");
+  const close = vi.fn(async () => true);
+  const setClient = vi.fn();
+  const getCurrentScope = vi.fn(() => ({ setClient }));
 
-  vi.doMock("@sentry/browser", () => ({ init, captureException }));
+  vi.doMock("@sentry/browser", () => ({ init, captureException, close, getCurrentScope }));
 
-  return { init, captureException };
+  return { init, captureException, close, getCurrentScope, setClient };
 }
 
 afterEach(() => {
@@ -75,6 +78,50 @@ describe("initBrowserErrorMonitoring", () => {
     await initBrowserErrorMonitoring(DSN);
 
     expect(mocks.init).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe("teardownBrowserErrorMonitoring", () => {
+  it("is a no-op when monitoring never started", async () => {
+    const { teardownBrowserErrorMonitoring } = await importFreshSentry();
+
+    await expect(teardownBrowserErrorMonitoring()).resolves.toBeUndefined();
+  });
+
+  it("closes the running client and detaches it from the current scope", async () => {
+    const mocks = mockSentryPackage();
+    const { initBrowserErrorMonitoring, teardownBrowserErrorMonitoring } = await importFreshSentry();
+    await initBrowserErrorMonitoring(DSN);
+
+    await teardownBrowserErrorMonitoring();
+
+    expect(mocks.close).toHaveBeenCalledTimes(1);
+    expect(mocks.setClient).toHaveBeenCalledWith(undefined);
+  });
+
+  it("stops captureBrowserException from reaching the client", async () => {
+    const mocks = mockSentryPackage();
+    const { initBrowserErrorMonitoring, teardownBrowserErrorMonitoring, captureBrowserException } =
+      await importFreshSentry();
+    await initBrowserErrorMonitoring(DSN);
+    await teardownBrowserErrorMonitoring();
+
+    captureBrowserException(new Error("boom after sign-out"));
+    await Promise.resolve();
+    await Promise.resolve();
+
+    expect(mocks.captureException).not.toHaveBeenCalled();
+  });
+
+  it("a call to initBrowserErrorMonitoring after teardown starts a fresh client", async () => {
+    const mocks = mockSentryPackage();
+    const { initBrowserErrorMonitoring, teardownBrowserErrorMonitoring } = await importFreshSentry();
+    await initBrowserErrorMonitoring(DSN);
+    await teardownBrowserErrorMonitoring();
+
+    await initBrowserErrorMonitoring(DSN);
+
+    expect(mocks.init).toHaveBeenCalledTimes(2);
   });
 });
 
