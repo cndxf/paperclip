@@ -22,7 +22,11 @@
 // instead of publishing it, so it can never leak into the new session.
 //
 // `@sentry/browser` loads through a dynamic import, so Vite puts it in a
-// separate chunk that a browser with no DSN never fetches.
+// separate chunk that a browser with no DSN never fetches. `loadSentryModule`
+// caches that import's promise at module scope, so a sign-out followed at
+// once by a sign-back-in issues one dynamic import call, not two — two
+// concurrent calls for the same not-yet-loaded chunk is also the shape a
+// test needs a stand-in module to resolve deterministically.
 //
 // Default-integration privacy note: two default integrations copy values
 // this app does not want inside a Sentry event, so the initializer removes
@@ -55,6 +59,28 @@ interface SentrySession {
 }
 
 let current: SentrySession | null = null;
+
+/** The `@sentry/browser` module shape, resolved once. */
+type SentryBrowserModule = typeof import("@sentry/browser");
+
+let sentryModuleImport: Promise<SentryBrowserModule> | null = null;
+
+/**
+ * Load `@sentry/browser`, caching the dynamic import's promise so a second
+ * call — even one issued before the first import settles — reuses it
+ * instead of starting a second fetch of the same chunk. Clears the cache on
+ * a rejected import, so a later sign-in retries the fetch instead of
+ * repeating a stale network failure for the rest of the browser tab's life.
+ */
+function loadSentryModule(): Promise<SentryBrowserModule> {
+  if (!sentryModuleImport) {
+    sentryModuleImport = import("@sentry/browser").catch((err: unknown) => {
+      sentryModuleImport = null;
+      throw err;
+    });
+  }
+  return sentryModuleImport;
+}
 
 /**
  * Load `@sentry/browser` and start the client with the given DSN. Idempotent
@@ -141,7 +167,7 @@ export function buildBrowserSentryInitOptions(dsn: string): Record<string, unkno
 
 async function bootstrapBrowserSentry(dsn: string, session: SentrySession): Promise<void> {
   try {
-    const Sentry = await import("@sentry/browser");
+    const Sentry = await loadSentryModule();
     Sentry.init(buildBrowserSentryInitOptions(dsn));
     if (current !== session) {
       // A teardown (and maybe a new sign-in after it) ran while the dynamic

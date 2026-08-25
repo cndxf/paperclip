@@ -36,6 +36,26 @@ function mockSentryPackage() {
   return { init, captureException, close, getCurrentScope, setClient };
 }
 
+/**
+ * Hold a mocked `close()` call open until the test releases it. Returns the
+ * release function. Used to put a teardown mid-flight without a second,
+ * truly concurrent dynamic `import()` of the mocked `@sentry/browser` module
+ * — Vitest does not guarantee two in-flight `import()` calls for one mocked
+ * specifier both resolve against the same mock instance, so a test must
+ * never rely on that to race two sign-ins.
+ */
+function holdCloseOpen(mocks: ReturnType<typeof mockSentryPackage>): () => void {
+  let release = () => {};
+  const gate = new Promise<void>((resolve) => {
+    release = resolve;
+  });
+  mocks.close.mockImplementationOnce(async () => {
+    await gate;
+    return true;
+  });
+  return release;
+}
+
 afterEach(() => {
   vi.restoreAllMocks();
   vi.doUnmock("@sentry/browser");
@@ -124,23 +144,28 @@ describe("teardownBrowserErrorMonitoring", () => {
     expect(mocks.init).toHaveBeenCalledTimes(2);
   });
 
-  it("a sign-back-in that races teardown ends up monitored, not stuck on the closed client", async () => {
-    // A sign-out followed at once by a sign-in, both before the first
-    // client's dynamic import settles. The first client must close itself
-    // once it notices the second sign-in superseded it, and the second
-    // client must end up the one `captureBrowserException` reaches.
+  it("a sign-back-in that overlaps a still-in-flight teardown ends up monitored", async () => {
+    // A sign-out whose `Sentry.close()` call is still in flight when the
+    // browser signs back in. The still-running teardown must not stop the
+    // new sign-in from starting its own client, and `captureBrowserException`
+    // must reach the NEW client once it is up, not the one being torn down.
     const mocks = mockSentryPackage();
     const { initBrowserErrorMonitoring, teardownBrowserErrorMonitoring, captureBrowserException } =
       await importFreshSentry();
+    await initBrowserErrorMonitoring(DSN);
+    expect(mocks.init).toHaveBeenCalledTimes(1);
 
-    const firstReady = initBrowserErrorMonitoring(DSN);
+    const releaseClose = holdCloseOpen(mocks);
     const teardownDone = teardownBrowserErrorMonitoring();
-    const secondReady = initBrowserErrorMonitoring(DSN);
-    await Promise.all([firstReady, teardownDone, secondReady]);
+    // teardownBrowserErrorMonitoring is now stuck awaiting close(). A sign-in
+    // right now must not reuse the session being torn down.
+    await initBrowserErrorMonitoring(DSN);
 
     expect(mocks.init).toHaveBeenCalledTimes(2);
-    // The superseded first client closes itself; the still-in-flight
-    // teardown finds nothing left to close, so `close` runs once, not twice.
+
+    releaseClose();
+    await teardownDone;
+
     expect(mocks.close).toHaveBeenCalledTimes(1);
 
     captureBrowserException(new Error("boom after the race"));
