@@ -610,6 +610,12 @@ function translateText(value: string) {
 
   let translated = value;
   const phraseReplacements: Array<[string, string]> = [
+    ["RECOVERY ACTION", "恢复操作"],
+    ["FAILURE CODE", "失败代码"],
+    ["FAILURE SUMMARY", "失败摘要"],
+    ["RECOVERY", "恢复处理"],
+    ["RUN EVIDENCE", "运行证据"],
+    ["SOURCE RUN", "来源运行"],
     ["Configuration未完成", "配置未完成"],
     ["Welcome! I'm", "您好！我是"],
     ["your first agent teammate on Paperclip", "您在 Paperclip 中的首位智能体伙伴"],
