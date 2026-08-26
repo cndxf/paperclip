@@ -105,6 +105,7 @@ function formatTimestamp(ts: string) {
       day: "numeric",
       hour: "numeric",
       minute: "2-digit",
+      hour12: false,
     });
   } catch {
     return ts;

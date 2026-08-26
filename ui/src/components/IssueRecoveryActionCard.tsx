@@ -789,6 +789,7 @@ function formatTimeShort(value: string | Date | null | undefined): string | null
       day: "numeric",
       hour: "numeric",
       minute: "2-digit",
+      hour12: false,
     });
   } catch {
     return null;
@@ -892,6 +893,7 @@ function formatTimeAbsolute(value: string | Date | null | undefined): string | n
     day: "numeric",
     hour: "numeric",
     minute: "2-digit",
+    hour12: false,
   });
 }
 
