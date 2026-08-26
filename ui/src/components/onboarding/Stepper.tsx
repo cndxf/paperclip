@@ -83,7 +83,7 @@ export function Stepper({
         })}
       </div>
       <span className="text-(length:--text-micro) font-medium uppercase tracking-widest text-muted-foreground">
-        Step {step} of {total}
+        第 {step} 步，共 {total} 步
       </span>
     </div>
   );

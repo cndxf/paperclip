@@ -43,6 +43,7 @@ import { useToastActions } from "../context/ToastContext";
 import { collectLiveIssueIds } from "../lib/liveIssueIds";
 import { queryKeys } from "../lib/queryKeys";
 import { cn, formatDateTime, issueUrl, projectRouteRef, projectWorkspaceUrl } from "../lib/utils";
+import { useTranslation } from "../i18n";
 import {
   resolveWorkspaceAccessState,
   type WorkspaceLoginHandoffFailureInfo,
@@ -799,6 +800,7 @@ function ExecutionWorkspaceRoutinesList({
 }
 
 export function ExecutionWorkspaceDetail() {
+  const { t } = useTranslation();
   const { workspaceId } = useParams<{ workspaceId: string }>();
   const location = useLocation();
   const navigate = useNavigate();
@@ -1062,7 +1064,7 @@ export function ExecutionWorkspaceDetail() {
     },
   });
 
-  if (workspaceQuery.isLoading) return <p className="text-sm text-muted-foreground">Loading workspace…</p>;
+  if (workspaceQuery.isLoading) return <p className="text-sm text-muted-foreground">{t("executionWorkspace.loading")}</p>;
   if (workspaceQuery.error) {
     return (
       <p className="text-sm text-destructive">
@@ -1236,7 +1238,7 @@ export function ExecutionWorkspaceDetail() {
 
               <div className="space-y-6">
                 <div className="space-y-4">
-                  <div className="text-xs font-medium uppercase tracking-widest text-muted-foreground">General</div>
+                  <div className="text-xs font-medium uppercase tracking-widest text-muted-foreground">{t("executionWorkspace.general")}</div>
                   <Field label="Workspace name">
                     <Input
                       value={form.name}
@@ -1249,7 +1251,7 @@ export function ExecutionWorkspaceDetail() {
                 <Separator />
 
                 <div className="space-y-4">
-                  <div className="text-xs font-medium uppercase tracking-widest text-muted-foreground">Source control</div>
+                  <div className="text-xs font-medium uppercase tracking-widest text-muted-foreground">{t("executionWorkspace.sourceControl")}</div>
                   <div className="grid gap-4 sm:grid-cols-2">
                     <Field label="Branch name" hint="Useful for isolated worktrees">
                       <Input
@@ -1282,7 +1284,7 @@ export function ExecutionWorkspaceDetail() {
                 <Separator />
 
                 <div className="space-y-4">
-                  <div className="text-xs font-medium uppercase tracking-widest text-muted-foreground">Paths</div>
+                  <div className="text-xs font-medium uppercase tracking-widest text-muted-foreground">{t("executionWorkspace.paths")}</div>
                   <Field label="Working directory">
                     <Input
                       className="font-mono"
@@ -1305,7 +1307,7 @@ export function ExecutionWorkspaceDetail() {
                 <Separator />
 
                 <div className="space-y-4">
-                  <div className="text-xs font-medium uppercase tracking-widest text-muted-foreground">Lifecycle commands</div>
+                  <div className="text-xs font-medium uppercase tracking-widest text-muted-foreground">{t("executionWorkspace.lifecycle")}</div>
                   <Field label="Provision command" hint="Runs when Paperclip prepares this execution workspace">
                     <Textarea
                       className="min-h-20 font-mono"
@@ -1349,7 +1351,7 @@ export function ExecutionWorkspaceDetail() {
                 <Separator />
 
                 <div className="space-y-4">
-                  <div className="text-xs font-medium uppercase tracking-widest text-muted-foreground">Runtime config</div>
+                  <div className="text-xs font-medium uppercase tracking-widest text-muted-foreground">{t("executionWorkspace.runtimeConfig")}</div>
                   <div className="rounded-md border border-dashed border-border/70 bg-background px-4 py-3">
                     <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
                       <div className="space-y-1">
@@ -1383,7 +1385,7 @@ export function ExecutionWorkspaceDetail() {
                   </div>
 
                   <details className="rounded-md border border-dashed border-border/70 bg-background px-4 py-3">
-                    <summary className="cursor-pointer text-sm font-medium">Advanced runtime JSON</summary>
+                    <summary className="cursor-pointer text-sm font-medium">{t("executionWorkspace.advancedJson")}</summary>
                     <p className="mt-2 text-sm text-muted-foreground">
                       Override the inherited workspace command model only when this execution workspace truly needs different service or job behavior.
                     </p>
@@ -1490,7 +1492,7 @@ export function ExecutionWorkspaceDetail() {
                   Reset
                 </Button>
                 {errorMessage ? <p className="text-sm text-destructive">{errorMessage}</p> : null}
-                {!errorMessage && !isDirty ? <p className="text-sm text-muted-foreground">No unsaved changes.</p> : null}
+                {!errorMessage && !isDirty ? <p className="text-sm text-muted-foreground">{t("executionWorkspace.noChanges")}</p> : null}
               </div>
               </CardContent>
             </Card>

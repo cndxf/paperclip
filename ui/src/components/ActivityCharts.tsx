@@ -238,7 +238,7 @@ const statusColors: Record<string, string> = {
 const statusLabels: Record<string, string> = {
   todo: "To Do",
   in_progress: "In Progress",
-  in_review: "In Review",
+  in_review: "审核中",
   done: "Done",
   blocked: "Blocked",
   cancelled: "Cancelled",

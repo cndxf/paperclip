@@ -7,6 +7,7 @@ import {
   type LucideIcon,
   UserRound,
   UserRoundPen,
+  Languages,
 } from "lucide-react";
 import type { DeploymentMode, ServerGitInfo } from "@paperclipai/shared";
 import { Link } from "@/lib/router";
@@ -20,6 +21,7 @@ import { cn, SIDEBAR_RAIL_HIDDEN_LABEL } from "../lib/utils";
 import { ThemeToggle } from "./ThemeToggle";
 import { SidebarServerInfo } from "./SidebarServerInfo";
 import { Badge } from "@/components/ui/badge";
+import { setLocale, useTranslation } from "@/i18n";
 
 const PROFILE_SETTINGS_PATH = "/company/settings/instance/profile";
 const DOCS_URL = "https://docs.paperclip.ing/";
@@ -118,6 +120,7 @@ export function SidebarAccountMenu({
   version,
 }: SidebarAccountMenuProps) {
   const [internalOpen, setInternalOpen] = useState(false);
+  const { i18n, t } = useTranslation();
   const { isMobile, setSidebarOpen, collapsed, peeking } = useSidebar();
   const rail = collapsed && !peeking;
   const open = controlledOpen ?? internalOpen;
@@ -159,7 +162,7 @@ export function SidebarAccountMenu({
           <button
             type="button"
             className="flex w-full items-center gap-2.5 px-3 py-2 text-left text-(length:--text-compact) font-medium text-foreground/80 transition-colors hover:bg-accent/50 hover:text-foreground"
-            aria-label="Open account menu"
+            aria-label={t("account.openMenu", { defaultValue: "Open account menu" })}
           >
             <Avatar size="sm">
               {session?.user.image ? <AvatarImage src={session.user.image} alt={displayName} /> : null}
@@ -223,30 +226,36 @@ export function SidebarAccountMenu({
 
             <div className="mt-4 space-y-1">
               <MenuAction
-                label="View profile"
-                description="Open your activity, task, and usage ledger."
+                label={t("language.label", { defaultValue: "Language" })}
+                description={i18n.language === "zh-CN" ? "简体中文" : "English"}
+                icon={Languages}
+                onClick={() => setLocale(i18n.language === "zh-CN" ? "en" : "zh-CN")}
+              />
+              <MenuAction
+                label={t("account.viewProfile", { defaultValue: "View profile" })}
+                description={t("account.viewProfileDescription", { defaultValue: "Open your activity, task, and usage ledger." })}
                 icon={UserRound}
                 href={profileHref}
                 onClick={closeNavigationChrome}
               />
               <MenuAction
-                label="Edit profile"
-                description="Update your display name and avatar."
+                label={t("account.editProfile", { defaultValue: "Edit profile" })}
+                description={t("account.editProfileDescription", { defaultValue: "Update your display name and avatar." })}
                 icon={UserRoundPen}
                 href={PROFILE_SETTINGS_PATH}
                 onClick={closeNavigationChrome}
               />
               <MenuAction
-                label="Documentation"
-                description="Open Paperclip docs in a new tab."
+                label={t("account.documentation", { defaultValue: "Documentation" })}
+                description={t("account.documentationDescription", { defaultValue: "Open Paperclip docs in a new tab." })}
                 icon={BookOpen}
                 href={DOCS_URL}
                 external
                 onClick={() => setOpen(false)}
               />
               <MenuAction
-                label="Feedback"
-                description="Share feedback or report an issue."
+                label={t("account.feedback", { defaultValue: "Feedback" })}
+                description={t("account.feedbackDescription", { defaultValue: "Share feedback or report an issue." })}
                 icon={Megaphone}
                 href={FEEDBACK_URL}
                 external
@@ -268,10 +277,10 @@ export function SidebarAccountMenu({
                   </span>
                   <span className="min-w-0 flex-1">
                     <span className="block text-sm font-medium text-foreground">
-                      {signOutMutation.isPending ? "Signing out..." : "Sign out"}
+                      {signOutMutation.isPending ? t("account.signingOut", { defaultValue: "Signing out..." }) : t("account.signOut", { defaultValue: "Sign out" })}
                     </span>
                     <span className="block text-xs text-muted-foreground">
-                      End this browser session.
+                      {t("account.signOutDescription", { defaultValue: "End this browser session." })}
                     </span>
                   </span>
                 </button>

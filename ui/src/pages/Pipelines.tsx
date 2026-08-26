@@ -127,6 +127,7 @@ import { extractIssueTimelineEvents } from "../lib/issue-timeline-events";
 import { applyLocalQueuedIssueCommentState, isQueuedIssueComment } from "../lib/optimistic-issue-comments";
 import type { IssueChatComment } from "../lib/issue-chat-messages";
 import { Badge } from "@/components/ui/badge";
+import { t as translate, useTranslation } from "../i18n";
 
 type PipelineConversationActionableInteraction =
   | SuggestTasksInteraction
@@ -430,11 +431,11 @@ type PipelineSortField = "name" | "activity" | "review" | "inMotion" | "openItem
 type PipelineSortDir = "asc" | "desc";
 
 const PIPELINE_SORT_OPTIONS: ReadonlyArray<readonly [PipelineSortField, string]> = [
-  ["name", "Name"],
-  ["activity", "Last activity"],
-  ["review", "Most to review"],
-  ["inMotion", "Most in motion"],
-  ["openItems", "Most open items"],
+  ["name", "name"],
+  ["activity", "activity"],
+  ["review", "review"],
+  ["inMotion", "inMotion"],
+  ["openItems", "openItems"],
 ];
 
 function comparePipelinesBySort(field: PipelineSortField, dir: PipelineSortDir) {
@@ -563,28 +564,29 @@ export function buildPipelineTableRows(
 }
 
 function formatOpenItems(count: number) {
-  return `${formatNumber(count)} open`;
+  return `${formatNumber(count)} ${translate("pipelines.openSuffix")}`;
 }
 
 function formatPipelineActivity(value: string | Date | null) {
-  if (!value) return "No activity";
+  if (!value) return translate("pipelines.noActivity");
   const then = new Date(value).getTime();
-  if (!Number.isFinite(then)) return "No activity";
+  if (!Number.isFinite(then)) return translate("pipelines.noActivity");
   const diffSeconds = Math.max(0, Math.round((Date.now() - then) / 1000));
-  if (diffSeconds < 60) return "just now";
+  if (diffSeconds < 60) return translate("pipelines.justNow");
   const diffMinutes = Math.round(diffSeconds / 60);
   if (diffMinutes < 60) return `${diffMinutes} min ago`;
   const diffHours = Math.round(diffMinutes / 60);
-  if (diffHours < 24) return diffHours === 1 ? "1 hr ago" : `${diffHours} hr ago`;
+  if (diffHours < 24) return diffHours === 1 ? translate("pipelines.oneHourAgo") : translate("pipelines.hoursAgo", { count: diffHours });
   const diffDays = Math.round(diffHours / 24);
-  if (diffDays === 1) return "yesterday";
-  if (diffDays < 7) return `${diffDays} days ago`;
-  if (diffDays < 14) return "last week";
-  if (diffDays < 30) return `${Math.round(diffDays / 7)} weeks ago`;
+  if (diffDays === 1) return translate("pipelines.yesterday");
+  if (diffDays < 7) return translate("pipelines.daysAgo", { count: diffDays });
+  if (diffDays < 14) return translate("pipelines.lastWeek");
+  if (diffDays < 30) return translate("pipelines.weeksAgo", { count: Math.round(diffDays / 7) });
   return new Date(value).toLocaleDateString("en-US", { month: "short", day: "numeric" });
 }
 
 function PipelineStatusChip({ archivedAt }: { archivedAt: Date | string | null }) {
+  const { t } = useTranslation();
   const paused = Boolean(archivedAt);
   return (
     <Badge variant="outline"
@@ -595,7 +597,7 @@ function PipelineStatusChip({ archivedAt }: { archivedAt: Date | string | null }
           : "border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300",
       )}
     >
-      {paused ? "Paused" : "Active"}
+      {paused ? t("pipelines.paused") : t("pipelines.active")}
     </Badge>
   );
 }
@@ -617,6 +619,7 @@ export function PipelinesIndexTable({
   search,
   onSearchChange,
 }: PipelinesIndexTableProps) {
+  const { t } = useTranslation();
   const [collapsedPipelineIds, setCollapsedPipelineIds] = useState<Set<string>>(() => new Set());
   const [sortField, setSortField] = useState<PipelineSortField>("name");
   const [sortDir, setSortDir] = useState<PipelineSortDir>("asc");
@@ -661,12 +664,12 @@ export function PipelinesIndexTable({
     <div className="space-y-4">
       <div className="flex flex-col gap-3 border-y border-border py-4 lg:flex-row lg:items-center lg:justify-between">
         <label className="relative block w-full max-w-md">
-          <span className="sr-only">Search pipelines</span>
+          <span className="sr-only">{t("pipelines.search")}</span>
           <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input
             value={search}
             onChange={(event) => onSearchChange(event.target.value)}
-            placeholder="Search pipelines"
+            placeholder={t("pipelines.search")}
             className="h-10 pl-9"
           />
         </label>
@@ -682,7 +685,7 @@ export function PipelinesIndexTable({
               )}
               disabled={!connectionsAvailable}
               onClick={() => onViewModeChange("nested")}
-              title="Nested view"
+              title={t("pipelines.nestedView")}
             >
               <ListTree className="h-3.5 w-3.5" />
             </button>
@@ -695,7 +698,7 @@ export function PipelinesIndexTable({
                   : "text-muted-foreground hover:text-foreground",
               )}
               onClick={() => onViewModeChange("flat")}
-              title="Flat list"
+              title={t("pipelines.flatView")}
             >
               <List className="h-3.5 w-3.5" />
             </button>
@@ -703,13 +706,13 @@ export function PipelinesIndexTable({
 
           <Popover>
             <PopoverTrigger asChild>
-              <Button variant="outline" size="icon" className="h-8 w-8 shrink-0" title="Sort">
+              <Button variant="outline" size="icon" className="h-8 w-8 shrink-0" title={t("pipelines.sort")}>
                 <ArrowUpDown className="h-3.5 w-3.5" />
               </Button>
             </PopoverTrigger>
             <PopoverContent align="end" className="w-48 p-0">
               <div className="space-y-0.5 p-2">
-                {PIPELINE_SORT_OPTIONS.map(([field, label]) => (
+                {PIPELINE_SORT_OPTIONS.map(([field]) => (
                   <button
                     key={field}
                     type="button"
@@ -719,7 +722,7 @@ export function PipelinesIndexTable({
                     )}
                     onClick={() => selectSort(field)}
                   >
-                    <span>{label}</span>
+                    <span>{t(`pipelines.sortOptions.${field}`)}</span>
                     {sortField === field && (
                       <span className="text-xs text-muted-foreground">{sortDir === "asc" ? "↑" : "↓"}</span>
                     )}
@@ -732,17 +735,17 @@ export function PipelinesIndexTable({
       </div>
 
       {rows.length === 0 ? (
-        <EmptyState icon={Hexagon} message="No pipelines match your search." />
+        <EmptyState icon={Hexagon} message={t("pipelines.noMatch")} />
       ) : (
         <div className="overflow-x-auto">
           <table className="w-full min-w-(--sz-780px) border-collapse text-sm">
             <thead>
               <tr className="border-b border-border text-left text-(length:--text-micro) font-semibold uppercase tracking-widest text-muted-foreground">
-                <th className="py-2 pl-3 pr-4">Name</th>
-                <th className="px-4 py-2">Attention</th>
-                <th className="px-4 py-2">Open items</th>
-                <th className="px-4 py-2">Status</th>
-                <th className="px-4 py-2">Last activity</th>
+                <th className="py-2 pl-3 pr-4">{t("pipelines.name")}</th>
+                <th className="px-4 py-2">{t("pipelines.attention")}</th>
+                <th className="px-4 py-2">{t("pipelines.openItems")}</th>
+                <th className="px-4 py-2">{t("pipelines.status")}</th>
+                <th className="px-4 py-2">{t("pipelines.lastActivity")}</th>
               </tr>
             </thead>
             <tbody>
@@ -758,7 +761,7 @@ export function PipelinesIndexTable({
                           <button
                             type="button"
                             className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-sm text-muted-foreground hover:bg-accent/60 hover:text-foreground"
-                            aria-label={row.expanded ? `Collapse ${row.pipeline.name}` : `Expand ${row.pipeline.name}`}
+                            aria-label={row.expanded ? `${t("pipelines.collapse")} ${row.pipeline.name}` : `${t("pipelines.expand")} ${row.pipeline.name}`}
                             onClick={() => togglePipeline(row.pipeline.id)}
                           >
                             {row.expanded ? <ChevronDown className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
@@ -774,7 +777,7 @@ export function PipelinesIndexTable({
                             {row.pipeline.name}
                           </Link>
                           {row.parentPipelineName ? (
-                            <span className="ml-2 text-muted-foreground">under {row.parentPipelineName}</span>
+                            <span className="ml-2 text-muted-foreground">{t("pipelines.under")} {row.parentPipelineName}</span>
                           ) : row.pipeline.description ? (
                             <span className="ml-2 text-muted-foreground">- {row.pipeline.description}</span>
                           ) : null}
@@ -786,12 +789,12 @@ export function PipelinesIndexTable({
                         {attentionCount > 0 ? (
                           <span className="inline-flex items-center gap-1.5 font-semibold text-red-700 dark:text-red-400">
                             <span className="h-2 w-2 rounded-full bg-red-600" aria-hidden="true" />
-                            {formatNumber(attentionCount)} to review
+                            {formatNumber(attentionCount)} {t("pipelines.toReview")}
                           </span>
                         ) : null}
                         {inMotionCount > 0 ? (
                           <span className="text-muted-foreground">
-                            {formatNumber(inMotionCount)} in motion
+                            {formatNumber(inMotionCount)} {t("pipelines.inMotion")}
                           </span>
                         ) : null}
                         {liveDownstreamCount > 0 ? (
@@ -811,7 +814,7 @@ export function PipelinesIndexTable({
             </tbody>
           </table>
           <p className="mt-4 text-sm text-muted-foreground">
-            Showing {formatNumber(rows.length)} of {formatNumber(filteredPipelines.length)}.
+            {t("pipelines.showing", { shown: formatNumber(rows.length), total: formatNumber(filteredPipelines.length) })}
           </p>
         </div>
       )}
@@ -832,6 +835,7 @@ function NewPipelineDialog({
   pending: boolean;
   error: string | null;
 }) {
+  const { t } = useTranslation();
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
 
@@ -854,16 +858,16 @@ function NewPipelineDialog({
       <DialogContent>
         <form onSubmit={submit} className="space-y-4">
           <DialogHeader>
-            <DialogTitle>New pipeline</DialogTitle>
-            <DialogDescription>Name the pipeline and add a short description.</DialogDescription>
+            <DialogTitle>{t("pipelines.new")}</DialogTitle>
+            <DialogDescription>{t("pipelines.newDescription")}</DialogDescription>
           </DialogHeader>
           <div className="space-y-3">
             <label className="block space-y-1.5 text-sm font-medium">
-              <span>Name</span>
+              <span>{t("pipelines.name")}</span>
               <Input value={name} onChange={(event) => setName(event.target.value)} autoFocus />
             </label>
             <label className="block space-y-1.5 text-sm font-medium">
-              <span>Description</span>
+              <span>{t("pipelines.description")}</span>
               <Textarea
                 value={description}
                 onChange={(event) => setDescription(event.target.value)}
@@ -874,10 +878,10 @@ function NewPipelineDialog({
           </div>
           <DialogFooter>
             <Button type="button" variant="outline" onClick={() => onOpenChange(false)} disabled={pending}>
-              Cancel
+              {t("pipelines.cancel")}
             </Button>
             <Button type="submit" disabled={pending || !name.trim()}>
-              {pending ? "Creating..." : "Create pipeline"}
+              {pending ? t("pipelines.creating") : t("pipelines.create")}
             </Button>
           </DialogFooter>
         </form>
@@ -897,6 +901,7 @@ export function pipelineKeyFromName(name: string) {
 }
 
 function PipelinesIndex() {
+  const { t } = useTranslation();
   const { selectedCompanyId } = useCompany();
   const { setBreadcrumbs } = useBreadcrumbs();
   const navigate = useNavigate();
@@ -905,7 +910,7 @@ function PipelinesIndex() {
   const [viewMode, setViewMode] = useState<PipelineViewMode>("nested");
   const [newPipelineOpen, setNewPipelineOpen] = useState(false);
 
-  useEffect(() => setBreadcrumbs([{ label: "Pipelines" }]), [setBreadcrumbs]);
+  useEffect(() => setBreadcrumbs([{ label: t("pipelines.title") }]), [setBreadcrumbs, t]);
 
   const pipelinesQuery = useQuery({
     queryKey: selectedCompanyId ? queryKeys.pipelines.list(selectedCompanyId) : ["pipelines", "missing-company"],
@@ -941,7 +946,7 @@ function PipelinesIndex() {
   });
 
   if (!selectedCompanyId) {
-    return <div className="mx-auto max-w-3xl py-10 text-sm text-muted-foreground">Select a company to view pipelines.</div>;
+    return <div className="mx-auto max-w-3xl py-10 text-sm text-muted-foreground">{t("pipelines.selectCompany")}</div>;
   }
   if (pipelinesQuery.isLoading) return <PageSkeleton />;
 
@@ -952,27 +957,27 @@ function PipelinesIndex() {
     <div className="w-full max-w-6xl px-6 py-8">
       <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-(--tracking-eyebrow) text-muted-foreground">Work</p>
-          <h1 className="text-2xl font-semibold text-foreground">Pipelines</h1>
+          <p className="text-xs font-semibold uppercase tracking-(--tracking-eyebrow) text-muted-foreground">{t("pipelines.work")}</p>
+          <h1 className="text-2xl font-semibold text-foreground">{t("pipelines.title")}</h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            {formatNumber(pipelines.length)} pipeline{pipelines.length === 1 ? "" : "s"}. Connected ones are grouped from upstream work into downstream work.
+            {t("pipelines.summary", { count: formatNumber(pipelines.length), plural: pipelines.length === 1 ? "" : "s" })}
           </p>
         </div>
         <Button onClick={() => setNewPipelineOpen(true)}>
           <Plus className="mr-2 h-4 w-4" />
-          New pipeline
+          {t("pipelines.new")}
         </Button>
       </div>
 
       {pipelinesQuery.error ? (
-        <p className="mb-4 text-sm text-destructive">Could not load pipelines.</p>
+        <p className="mb-4 text-sm text-destructive">{t("pipelines.loadError")}</p>
       ) : null}
 
       {pipelines.length === 0 && !pipelinesQuery.error ? (
         <EmptyState
           icon={Hexagon}
-          message="No pipelines yet."
-          action="New pipeline"
+          message={t("pipelines.empty")}
+          action={t("pipelines.new")}
           onAction={() => setNewPipelineOpen(true)}
         />
       ) : (
@@ -994,7 +999,7 @@ function PipelinesIndex() {
         }}
         onSubmit={(data) => createPipeline.mutate(data)}
         pending={createPipeline.isPending}
-        error={createPipeline.error ? "Could not create the pipeline. Try a different name." : null}
+        error={createPipeline.error ? t("pipelines.createError") : null}
       />
     </div>
   );

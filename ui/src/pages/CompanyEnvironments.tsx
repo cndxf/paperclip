@@ -28,6 +28,7 @@ import {
   type EnvironmentUpdateResult,
 } from "@/api/environments";
 import { agentsApi } from "@/api/agents";
+import { useTranslation } from "../i18n";
 import { ApiError } from "@/api/client";
 import { instanceSettingsApi } from "@/api/instanceSettings";
 import { secretsApi } from "@/api/secrets";
@@ -98,16 +99,16 @@ function environmentEditPath(environmentId: string) {
 // the block before the user hits it.
 function environmentDeleteBlockMessage(impact: EnvironmentDeleteBlastRadius): string | null {
   if (impact.staticReferences.isManagedLocal) {
-    return "Cannot delete the managed local environment.";
+    return "无法删除由系统管理的本地环境。";
   }
   if (impact.staticReferences.isInstanceDefault) {
-    return "Cannot delete the current instance default environment. Set a new default environment before deleting this one.";
+    return "无法删除当前实例的默认环境。请先设置新的默认环境，再删除此环境。";
   }
   if (impact.pendingCleanupLeaseCount > 0) {
-    return "Cannot delete this environment while a sandbox cleanup is pending. Wait for the cleanup sweep to destroy the orphan sandbox, then retry.";
+    return "沙盒清理任务尚未完成，暂时无法删除此环境。请等待清理任务处理完孤立沙盒后重试。";
   }
   if (impact.reusableSandboxLeaseCount > 0) {
-    return "Cannot delete this environment while it has a reusable sandbox lease. Remove the associated execution workspace or issue so Paperclip can destroy the sandbox, then retry.";
+    return "此环境仍有可复用的沙盒租约，暂时无法删除。请先移除关联的执行工作区或事项，让 Paperclip 回收沙盒后重试。";
   }
   return null;
 }
@@ -361,14 +362,14 @@ function setupConnectionFallbackMessage(input: {
   isLoading: boolean;
 }): string | null {
   if (input.refreshError) {
-    return "Setup connection details could not be refreshed. You can still finish or cancel this setup.";
+    return "无法刷新设置连接信息。你仍可完成或取消此次设置。";
   }
   if (input.isLoading) return null;
   if (!input.payload) {
-    return "Connection details are not available yet. You can still finish or cancel this setup.";
+    return "连接信息暂时不可用。你仍可完成或取消此次设置。";
   }
   if (input.payload.type !== "ssh") {
-    return "Browser terminal is not available for this provider connection. Use the provider setup instructions, then finish or cancel here.";
+    return "此提供方连接不支持浏览器终端。请按照提供方说明完成设置，或在此取消。";
   }
   if (!readConnectionCommand(input.payload)) {
     return "Connection details are not available yet. You can still finish or cancel this setup.";
@@ -422,16 +423,16 @@ function parseTerminalFrame(raw: string): Record<string, unknown> | null {
 function customImageTerminalStatusCopy(state: CustomImageTerminalConnectionState) {
   switch (state) {
     case "connecting":
-      return "Connecting";
+      return "正在连接";
     case "connected":
-      return "Connected";
+      return "已连接";
     case "closed":
-      return "Closed";
+      return "已关闭";
     case "error":
-      return "Connection failed";
+      return "连接失败";
     case "idle":
     default:
-      return "Ready to connect";
+      return "等待连接";
   }
 }
 
@@ -443,20 +444,20 @@ function customImageTerminalCloseReasonCopy(reason: unknown) {
     && reason !== "setup_finished"
     && reason !== "setup_cancelled"
   ) {
-    return typeof reason === "string" && reason.trim() ? "Terminal closed." : null;
+      return typeof reason === "string" && reason.trim() ? "终端已关闭。" : null;
   }
 
   switch (reason) {
     case "expired":
-      return "Setup session expired.";
+      return "设置会话已过期。";
     case "ssh_closed":
-      return "SSH session closed.";
+      return "SSH 会话已关闭。";
     case "server_shutdown":
-      return "Terminal server shut down.";
+      return "终端服务器已关闭。";
     case "setup_finished":
-      return "Setup session finished.";
+      return "设置会话已完成。";
     case "setup_cancelled":
-      return "Setup session cancelled.";
+      return "设置会话已取消。";
     default:
       return null;
   }
@@ -638,7 +639,7 @@ function EnvironmentCustomImageBrowserTerminal({
   const connectTerminal = useCallback(async () => {
     if (typeof WebSocket === "undefined") {
       setConnectionState("error");
-      setErrorMessage("Browser terminal is unavailable in this browser.");
+      setErrorMessage("当前浏览器不支持浏览器终端。");
       return;
     }
 
@@ -686,7 +687,7 @@ function EnvironmentCustomImageBrowserTerminal({
 
         if (frame.type === "error") {
           setConnectionState("error");
-          setErrorMessage(typeof frame.message === "string" ? frame.message : "Terminal connection failed.");
+        setErrorMessage(typeof frame.message === "string" ? frame.message : "终端连接失败。 ");
           return;
         }
 
@@ -705,11 +706,11 @@ function EnvironmentCustomImageBrowserTerminal({
       socket.onerror = () => {
         if (socketRef.current !== socket) return;
         setConnectionState("error");
-        setErrorMessage("Terminal websocket connection failed.");
+        setErrorMessage("终端 WebSocket 连接失败。 ");
       };
     } catch (error) {
       setConnectionState("error");
-      setErrorMessage(error instanceof Error ? error.message : "Terminal session could not be opened.");
+        setErrorMessage(error instanceof Error ? error.message : "无法打开终端会话。 ");
     }
   }, [closeSocket, fitTerminal, getTerminalDimensions, resetTerminalScreen, sendTerminalResize, sessionId]);
 
@@ -735,13 +736,13 @@ function EnvironmentCustomImageBrowserTerminal({
       <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border/60 px-3 py-2">
         <div className="flex min-w-0 items-center gap-2 text-xs">
           <Terminal className="h-3.5 w-3.5 text-muted-foreground" />
-          <span className="font-medium">Browser terminal</span>
+          <span className="font-medium">浏览器终端</span>
           <span className="text-muted-foreground">{customImageTerminalStatusCopy(connectionState)}</span>
         </div>
         <div className="flex items-center gap-2">
           {terminalInteractive ? (
             <Button size="sm" variant="ghost" onClick={disconnectTerminal}>
-              Disconnect
+              断开连接
             </Button>
           ) : (
             <Button
@@ -751,7 +752,7 @@ function EnvironmentCustomImageBrowserTerminal({
               disabled={connectionState === "connecting"}
             >
               <Terminal className="mr-1.5 h-3.5 w-3.5" />
-              {connectionState === "closed" || connectionState === "error" ? "Reconnect" : "Open terminal"}
+              {connectionState === "closed" || connectionState === "error" ? "重新连接" : "打开终端"}
             </Button>
           )}
         </div>
@@ -781,16 +782,16 @@ function capabilityState(capability: EnvironmentProviderCapability | null | unde
   if (!capability || capability.status !== "supported" || !capability.supportsInteractiveSetup) {
     return {
       kind: "unsupported" as const,
-      label: "Unsupported provider",
-      reason: "This provider does not advertise interactive template setup.",
+      label: "不支持的提供方",
+      reason: "此提供方不支持交互式模板设置。",
     };
   }
 
   if (!capability.supportsTemplateCapture) {
     return {
       kind: "capture_unavailable" as const,
-      label: "Setup capture unavailable",
-      reason: "This provider advertises setup, but image capture is unavailable.",
+      label: "无法捕获设置",
+      reason: "此提供方支持设置，但当前无法捕获镜像。",
     };
   }
 
@@ -804,21 +805,21 @@ function capabilityState(capability: EnvironmentProviderCapability | null | unde
 function sessionStatusCopy(status: EnvironmentCustomImageSetupSession["status"]) {
   switch (status) {
     case "starting":
-      return "Setup starting";
+      return "正在启动设置";
     case "waiting_for_user":
-      return "Setup running";
+      return "设置进行中";
     case "capturing":
-      return "Capturing template";
+      return "正在捕获模板";
     case "promoted":
-      return "Template captured";
+      return "模板已捕获";
     case "cancelled":
-      return "Setup cancelled";
+      return "设置已取消";
     case "timed_out":
-      return "Setup expired";
+      return "设置已过期";
     case "failed":
-      return "Setup failed";
+      return "设置失败";
     default:
-      return "Setup status";
+      return "设置状态";
   }
 }
 
@@ -848,7 +849,7 @@ function relinkDriftWarning(conflict: EnvironmentCustomImageRelinkConflict): str
     if (valued) {
       return `The base image changed: ${valued.path} ${formatRelinkDriftValue(valued.from)} -> ${formatRelinkDriftValue(valued.to)}.`;
     }
-    return "The base image changed since this image was captured.";
+    return "捕获此镜像后，基础镜像已发生变化。";
   }
   return "The server cannot verify the boot source; the snapshot will override the current base image.";
 }
@@ -912,15 +913,15 @@ function EnvironmentImageTemplatePanel({
       }));
       setSessionResult(result);
       pushToast({
-        title: "Setup session started",
+        title: "设置会话已启动",
         body: "Connect details are available while the session is active.",
         tone: "success",
       });
     },
     onError: (error) => {
       pushToast({
-        title: "Failed to start setup",
-        body: error instanceof Error ? error.message : "Setup session could not be started.",
+        title: "启动设置失败",
+        body: error instanceof Error ? error.message : "无法启动设置会话。",
         tone: "error",
       });
     },
@@ -937,15 +938,15 @@ function EnvironmentImageTemplatePanel({
       setSessionResult({ session: result.session, connectionPayload: null });
       invalidateOverview();
       pushToast({
-        title: "Template captured",
-        body: "Future runs can use the promoted template.",
+        title: "模板已捕获",
+        body: "后续运行可以使用此模板。",
         tone: "success",
       });
     },
     onError: (error) => {
       pushToast({
-        title: "Failed to capture template",
-        body: error instanceof Error ? error.message : "Template capture failed.",
+        title: "捕获模板失败",
+        body: error instanceof Error ? error.message : "模板捕获失败。",
         tone: "error",
       });
     },
@@ -963,15 +964,15 @@ function EnvironmentImageTemplatePanel({
       setSessionResult({ session, connectionPayload: null });
       invalidateOverview();
       pushToast({
-        title: "Setup cancelled",
-        body: "The active template was not changed.",
+        title: "设置已取消",
+        body: "当前模板未发生变化。",
         tone: "success",
       });
     },
     onError: (error) => {
       pushToast({
-        title: "Failed to cancel setup",
-        body: error instanceof Error ? error.message : "Setup session could not be cancelled.",
+        title: "取消设置失败",
+        body: error instanceof Error ? error.message : "无法取消设置会话。",
         tone: "error",
       });
     },
@@ -988,14 +989,14 @@ function EnvironmentImageTemplatePanel({
       invalidateOverview();
       pushToast({
         title: "Template rolled back",
-        body: "Future runs will use the previous template.",
+        body: "后续运行将使用之前的模板。",
         tone: "success",
       });
     },
     onError: (error) => {
       pushToast({
-        title: "Failed to roll back template",
-        body: error instanceof Error ? error.message : "Rollback failed.",
+        title: "回滚模板失败",
+        body: error instanceof Error ? error.message : "回滚失败。",
         tone: "error",
       });
     },
@@ -1031,14 +1032,14 @@ function EnvironmentImageTemplatePanel({
       invalidateOverview();
       pushToast({
         title: "Template relinked",
-        body: "Runs use the captured image again.",
+        body: "运行将再次使用已捕获的镜像。",
         tone: "success",
       });
     },
     onError: (error) => {
       if (error instanceof RelinkConfirmationDeclined) return;
       pushToast({
-        title: "Failed to relink template",
+        title: "重新关联模板失败",
         body: error instanceof Error ? error.message : "Relink failed.",
         tone: "error",
       });
@@ -1062,8 +1063,8 @@ function EnvironmentImageTemplatePanel({
     },
     onError: (error) => {
       pushToast({
-        title: "Failed to disable template",
-        body: error instanceof Error ? error.message : "Disable failed.",
+        title: "停用模板失败",
+        body: error instanceof Error ? error.message : "停用失败。",
         tone: "error",
       });
     },
@@ -1157,7 +1158,7 @@ function EnvironmentImageTemplatePanel({
         </div>
         {isCapturing ? (
           <div className="mt-2 text-xs text-muted-foreground">
-            Capture is in progress. If this state remains after a refresh or interrupted request, cancel it to return to the active template controls.
+            正在捕获。如果刷新页面或请求中断后仍停留在此状态，请取消操作以返回当前模板控制项。
           </div>
         ) : null}
         {session.status === "waiting_for_user" && connectionPayload?.type === "ssh" ? (
@@ -1166,7 +1167,7 @@ function EnvironmentImageTemplatePanel({
         {session.status === "waiting_for_user" && connectionCommand ? (
           <details className="mt-2 rounded-md border border-border/60 bg-muted/20 px-3 py-2 text-xs text-muted-foreground">
             <summary className="cursor-pointer select-none font-medium text-foreground">
-              SSH command fallback
+              SSH 命令备用方案
             </summary>
             <code className="mt-2 block overflow-x-auto whitespace-nowrap text-(length:--text-micro) leading-5">
               {connectionCommand}
@@ -1193,7 +1194,7 @@ function EnvironmentImageTemplatePanel({
       <div className="mt-3 border-t border-border/60 pt-3" data-testid={`custom-image-template-state-${environment.id}`}>
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div className="min-w-0 space-y-1">
-            <div className="text-xs font-medium">Active template</div>
+            <div className="text-xs font-medium">当前镜像模板</div>
             <div className="text-xs text-muted-foreground">
               {providerDisplayName} · {activeTemplate.templateKind}
               {" · "}
@@ -1215,7 +1216,7 @@ function EnvironmentImageTemplatePanel({
               >
                 {bootSourceDriftSummary
                   ? `Not in use — ${bootSourceDriftSummary}. Runs fall back to the base configuration until you relink this image or capture a new one.`
-                  : "Not in use — the environment configuration changed since this image was captured. Runs fall back to the base configuration until you relink this image or capture a new one."}
+                  : "当前未使用：捕获此镜像后环境配置已变化。在重新关联镜像或捕获新镜像前，运行将回退到基础配置。"}
               </div>
             ) : null}
           </div>
@@ -1246,7 +1247,7 @@ function EnvironmentImageTemplatePanel({
               disabled={isMutating}
             >
               <RotateCcw className="mr-1.5 h-3.5 w-3.5" />
-              Rollback
+              回滚
             </Button>
             <Button
               size="sm"
@@ -1255,7 +1256,7 @@ function EnvironmentImageTemplatePanel({
               disabled={isMutating}
             >
               <Trash2 className="mr-1.5 h-3.5 w-3.5" />
-              Disable
+              停用
             </Button>
           </div>
         </div>
@@ -1267,7 +1268,7 @@ function EnvironmentImageTemplatePanel({
     <div className="mt-3 border-t border-border/60 pt-3" data-testid={`custom-image-template-state-${environment.id}`}>
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="space-y-1">
-          <div className="text-xs font-medium">Not configured</div>
+          <div className="text-xs font-medium">尚未配置</div>
           <div className="text-xs text-muted-foreground">
             {latestSession
               ? sessionStatusCopy(latestSession.status)
@@ -1284,7 +1285,7 @@ function EnvironmentImageTemplatePanel({
           disabled={isMutating}
         >
           <Play className="mr-1.5 h-3.5 w-3.5" />
-          Configure image
+          配置镜像
         </Button>
       </div>
     </div>
@@ -1292,6 +1293,7 @@ function EnvironmentImageTemplatePanel({
 }
 
 export function CompanyEnvironments({ mode = "list" }: CompanyEnvironmentsProps) {
+  const { t } = useTranslation();
   const { environmentId: routeEnvironmentId } = useParams<{ environmentId?: string }>();
   const navigate = useNavigate();
   const { selectedCompanyId } = useCompany();
@@ -1321,8 +1323,8 @@ export function CompanyEnvironments({ mode = "list" }: CompanyEnvironmentsProps)
     const crumbs = [
       { label: "Settings", href: "/company/settings" },
       isEnvironmentFormPage
-        ? { label: "Environments", href: ENVIRONMENTS_PATH }
-        : { label: "Environments" },
+        ? { label: "环境", href: ENVIRONMENTS_PATH }
+        : { label: "环境" },
     ];
     if (mode === "create") crumbs.push({ label: "Add environment" });
     if (mode === "edit") crumbs.push({ label: "Edit environment" });
@@ -1439,15 +1441,15 @@ export function CompanyEnvironments({ mode = "list" }: CompanyEnvironmentsProps)
       setEnvironmentVariablesDirty(false);
       navigate(ENVIRONMENTS_PATH, { replace: true });
       pushToast({
-        title: "Environment variables updated",
-        body: `${environment.name} will inject the updated variables into future runs.`,
+        title: "环境变量已更新",
+        body: `${environment.name} 会在后续运行中注入更新后的变量。`,
         tone: "success",
       });
     },
     onError: (error) => {
       pushToast({
-        title: "Failed to save environment variables",
-        body: error instanceof Error ? error.message : "Environment variables save failed.",
+        title: "保存环境变量失败",
+        body: error instanceof Error ? error.message : "环境变量保存失败。",
         tone: "error",
       });
     },
@@ -1482,20 +1484,20 @@ export function CompanyEnvironments({ mode = "list" }: CompanyEnvironmentsProps)
       draftEnvironmentProbeMutation.reset();
       navigate(ENVIRONMENTS_PATH, { replace: true });
       pushToast({
-        title: wasEditing ? "Environment updated" : "Environment created",
-        body: `${environment.name} is ready.`,
+        title: wasEditing ? "环境已更新" : "环境已创建",
+        body: `${environment.name} 已准备就绪。`,
         tone: "success",
       });
       const reconciliation = (environment as EnvironmentUpdateResult).customImageReconciliation;
       if (reconciliation?.action === "relinked") {
         pushToast({
-          title: "Custom image kept active",
+          title: "自定义镜像仍在使用",
           body: "The captured image was re-linked to the updated configuration automatically.",
           tone: "info",
         });
       } else if (reconciliation?.action === "detached") {
         pushToast({
-          title: "Custom image no longer applies",
+          title: "自定义镜像不再适用",
           body: "This change alters what the captured image was built from. Runs use the base configuration until you capture a new image.",
           tone: "warn",
         });
@@ -1503,7 +1505,7 @@ export function CompanyEnvironments({ mode = "list" }: CompanyEnvironmentsProps)
     },
     onError: (error) => {
       pushToast({
-        title: "Failed to save environment",
+        title: "保存环境失败",
         body: error instanceof Error ? error.message : "Environment save failed.",
         tone: "error",
       });
@@ -1516,15 +1518,15 @@ export function CompanyEnvironments({ mode = "list" }: CompanyEnvironmentsProps)
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: queryKeys.instance.settings });
       pushToast({
-        title: "Default environment updated",
+        title: "默认环境已更新",
         body: "Agent inheritance now follows the updated instance default.",
         tone: "success",
       });
     },
     onError: (error) => {
       pushToast({
-        title: "Failed to update default environment",
-        body: error instanceof Error ? error.message : "Default environment update failed.",
+        title: "更新默认环境失败",
+        body: error instanceof Error ? error.message : "默认环境更新失败。",
         tone: "error",
       });
     },
@@ -1888,7 +1890,7 @@ export function CompanyEnvironments({ mode = "list" }: CompanyEnvironmentsProps)
   if (deleteBlastRadius && !deleteBlockMessage) {
     if (deleteBlastRadius.staticReferences.agentDefaultCount > agentsUsingEnvironment.length) {
       deleteImpactNotes.push(
-        "Other references to this environment (agents in other companies or terminated agents) fall back to the instance default.",
+        "其他引用此环境的对象（其他公司中的智能体或已终止的智能体）会回退到实例默认环境。",
       );
     }
     const selectionCount =
@@ -1897,7 +1899,7 @@ export function CompanyEnvironments({ mode = "list" }: CompanyEnvironmentsProps)
       deleteBlastRadius.staticReferences.projectSelectionCount;
     if (selectionCount > 0) {
       deleteImpactNotes.push(
-        `${selectionCount} workspace, issue, or project environment ${selectionCount === 1 ? "selection" : "selections"} will be cleared.`,
+        `${selectionCount} 个工作区、事项或项目的环境选择将被清除。`,
       );
     }
     if (deleteBlastRadius.staticReferences.secretBindingCount > 0) {
@@ -1906,7 +1908,7 @@ export function CompanyEnvironments({ mode = "list" }: CompanyEnvironmentsProps)
       );
     }
     if (deleteBlastRadius.activeRuntimeUse.hasActiveRuntimeUse) {
-      deleteImpactNotes.push("Active runs or sandbox leases currently resolve to this environment.");
+      deleteImpactNotes.push("当前仍有运行或沙盒租约指向此环境。 ");
     }
   }
   // One row per workspace holding blocking sandbox leases (several leases can
@@ -1940,14 +1942,14 @@ export function CompanyEnvironments({ mode = "list" }: CompanyEnvironmentsProps)
   })();
 
   if (!selectedCompanyId) {
-    return <div className="text-sm text-muted-foreground">Select a company context to manage environment secrets and bindings.</div>;
+    return <div className="text-sm text-muted-foreground">{t("environments.selectCompany")}</div>;
   }
 
   if (!environmentsEnabled) {
     return (
       <div className="max-w-6xl space-y-4">
         <div className="text-sm text-muted-foreground">
-          Enable Environments in instance experimental settings to manage shared execution targets.
+          {t("environments.enableExperimental", { defaultValue: "请在实例实验性设置中启用“环境”，以管理共享执行目标。" })}
         </div>
       </div>
     );
@@ -1959,10 +1961,10 @@ export function CompanyEnvironments({ mode = "list" }: CompanyEnvironmentsProps)
       <div className="space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <label className="flex flex-wrap items-center gap-3 text-sm font-medium">
-            <span>Default</span>
+            <span>默认环境</span>
             <span>
               <select
-                aria-label="Default environment"
+                aria-label="默认环境"
                 className="min-w-(--sz-12rem) max-w-full rounded-md border border-border bg-transparent px-2.5 py-1.5 text-sm font-normal outline-none"
                 value={instanceDefaultEnvironmentId}
                 onChange={(event) =>
@@ -1975,11 +1977,11 @@ export function CompanyEnvironments({ mode = "list" }: CompanyEnvironmentsProps)
                   // placeholder only renders while no default is stamped yet.
                   instanceDefaultEnvironmentId === "" ? (
                     <option value="" disabled>
-                      Select environment
+                      选择环境
                     </option>
                   ) : null
                 ) : (
-                  <option value="">Local</option>
+                  <option value="">本地环境</option>
                 )}
                 {nonLocalEnvironments.map((environment) => (
                   <option key={environment.id} value={environment.id}>
@@ -1990,7 +1992,7 @@ export function CompanyEnvironments({ mode = "list" }: CompanyEnvironmentsProps)
             </span>
           </label>
           <Button size="icon-sm" variant="ghost" asChild>
-            <Link to={`${ENVIRONMENTS_PATH}/new`} aria-label="Add environment" title="Add environment">
+            <Link to={`${ENVIRONMENTS_PATH}/new`} aria-label={t("environments.add")} title={t("environments.add")}>
               <Plus className="h-4 w-4" />
             </Link>
           </Button>
@@ -2045,11 +2047,11 @@ export function CompanyEnvironments({ mode = "list" }: CompanyEnvironmentsProps)
                           if (isPlatformManagedEnvironment(environment)) {
                             return summary ?? "Provisioned and maintained for you.";
                           }
-                          return `${sandboxProviderDisplayName} sandbox provider${summary ? ` · ${summary}` : ""}`;
+                          return `${sandboxProviderDisplayName} 沙盒提供商${summary ? ` · ${summary}` : ""}`;
                         })()}
                       </div>
                     ) : (
-                      <div className="text-xs text-muted-foreground">Runs on this Paperclip host.</div>
+                      <div className="text-xs text-muted-foreground">{t("environments.runsOnHost")}</div>
                     )}
                   </div>
                   <div className="flex flex-wrap items-center gap-2">
@@ -2063,12 +2065,12 @@ export function CompanyEnvironments({ mode = "list" }: CompanyEnvironmentsProps)
                         {testingEnvironmentId === environment.id
                           ? "Testing..."
                           : environment.driver === "ssh"
-                            ? "Test connection"
+                            ? "测试连接"
                             : "Test provider"}
                       </Button>
                     ) : null}
                     <Button size="sm" variant="ghost" asChild>
-                      <Link to={environmentEditPath(environment.id)}>Edit</Link>
+                      <Link to={environmentEditPath(environment.id)}>{t("environments.edit")}</Link>
                     </Button>
                   </div>
                 </div>
@@ -2101,10 +2103,10 @@ export function CompanyEnvironments({ mode = "list" }: CompanyEnvironmentsProps)
 
       {isEnvironmentFormPage && mode === "edit" && environments !== undefined && !editingEnvironment ? (
         <div className="space-y-3 text-sm">
-          <div className="font-medium">Environment not found</div>
-          <div className="text-muted-foreground">The environment may have been removed or is not available in this company.</div>
+          <div className="font-medium">{t("environments.notFound")}</div>
+          <div className="text-muted-foreground">{t("environments.notFoundDescription")}</div>
           <Button size="sm" variant="outline" asChild>
-            <Link to={ENVIRONMENTS_PATH}>Back to environments</Link>
+            <Link to={ENVIRONMENTS_PATH}>{t("environments.back")}</Link>
           </Button>
         </div>
       ) : null}
@@ -2125,11 +2127,11 @@ export function CompanyEnvironments({ mode = "list" }: CompanyEnvironmentsProps)
               <h1 className="text-lg font-semibold">{editingEnvironment.name}</h1>
               <span className="inline-flex items-center gap-1 rounded-full bg-muted px-2 py-0.5 text-xs text-muted-foreground">
                 <Lock className="h-3 w-3" aria-hidden />
-                Managed by Paperclip
+                由 Paperclip 管理
               </span>
             </div>
             <p className="mt-1 max-w-3xl text-sm text-muted-foreground">
-              {editingEnvironment.description ?? "Your agent runs on a computer managed by Paperclip."}
+              {editingEnvironment.description ?? "你的智能体将在 Paperclip 管理的计算机上运行。"}
             </p>
             <p className="mt-1 max-w-3xl text-xs text-muted-foreground">
               This environment is provisioned and maintained for you. You can add environment
@@ -2138,8 +2140,8 @@ export function CompanyEnvironments({ mode = "list" }: CompanyEnvironmentsProps)
           </div>
           <div className="py-4">
             <Field
-              label="Environment variables"
-              hint="Injected into runs that resolve through this environment. Use plain values or company secrets."
+              label="环境变量"
+              hint="通过此环境运行时会注入这些变量。可填写普通值或公司密钥。"
             >
               <EnvironmentVariablesEditor
                 ref={environmentVariablesEditorRef}
@@ -2155,7 +2157,7 @@ export function CompanyEnvironments({ mode = "list" }: CompanyEnvironmentsProps)
               <div className="mt-3 text-xs text-destructive">
                 {managedEnvironmentEnvVarsMutation.error instanceof Error
                   ? managedEnvironmentEnvVarsMutation.error.message
-                  : "Failed to save environment variables"}
+                  : "保存环境变量失败"}
               </div>
             ) : null}
           </div>
@@ -2165,13 +2167,13 @@ export function CompanyEnvironments({ mode = "list" }: CompanyEnvironmentsProps)
               onClick={closeEnvironmentForm}
               disabled={managedEnvironmentEnvVarsMutation.isPending}
             >
-              Cancel
+              取消
             </Button>
             <Button
               onClick={() => managedEnvironmentEnvVarsMutation.mutate(flushEnvironmentForm().envVars)}
               disabled={managedEnvironmentEnvVarsMutation.isPending}
             >
-              {managedEnvironmentEnvVarsMutation.isPending ? "Saving..." : "Save environment variables"}
+              {managedEnvironmentEnvVarsMutation.isPending ? "保存中..." : "保存环境变量"}
             </Button>
           </div>
         </div>
@@ -2207,7 +2209,7 @@ export function CompanyEnvironments({ mode = "list" }: CompanyEnvironmentsProps)
                 </Button>
               ) : null}
             </div>
-            <h1 className="text-lg font-semibold">{editingEnvironmentId ? "Edit environment" : "Add environment"}</h1>
+            <h1 className="text-lg font-semibold">{editingEnvironmentId ? "编辑环境" : "添加环境"}</h1>
             <p className="mt-1 max-w-3xl text-sm text-muted-foreground">
               Configure a reusable execution target for your agents. Saved changes affect future runs; Paperclip may start fresh sessions or sandbox leases after environment config changes.
             </p>
@@ -2231,7 +2233,7 @@ export function CompanyEnvironments({ mode = "list" }: CompanyEnvironmentsProps)
                   onChange={(e) => setEnvironmentForm((current) => ({ ...current, description: e.target.value }))}
                 />
               </Field>
-              <Field label="Driver" hint="Sandbox stores plugin-backed provider config on the shared environment seam. SSH stores a remote machine target.">
+              <Field label="驱动方式" hint="沙盒用于保存插件提供方配置；SSH 用于连接远程计算机。">
                 <select
                   className="w-full rounded-md border border-border bg-transparent px-2.5 py-1.5 text-sm outline-none"
                   value={environmentForm.driver}
@@ -2256,18 +2258,18 @@ export function CompanyEnvironments({ mode = "list" }: CompanyEnvironmentsProps)
                     }))}
                 >
                   {sandboxCreationEnabled || environmentForm.driver === "sandbox" ? (
-                    <option value="sandbox">Sandbox</option>
+                  <option value="sandbox">沙盒</option>
                   ) : null}
                   <option value="ssh">SSH</option>
                   {environmentForm.driver === "local" ? (
-                    <option value="local">Local</option>
+                    <option value="local">本地环境</option>
                   ) : null}
                 </select>
               </Field>
 
               {environmentForm.driver === "ssh" ? (
                 <div className="grid gap-3 md:grid-cols-2">
-                  <Field label="Host" hint="DNS name or IP address for the remote machine.">
+                  <Field label="主机" hint="远程计算机的 DNS 名称或 IP 地址。">
                     <input
                       className="w-full rounded-md border border-border bg-transparent px-2.5 py-1.5 text-sm outline-none"
                       type="text"
@@ -2275,7 +2277,7 @@ export function CompanyEnvironments({ mode = "list" }: CompanyEnvironmentsProps)
                       onChange={(e) => setEnvironmentForm((current) => ({ ...current, sshHost: e.target.value }))}
                     />
                   </Field>
-                  <Field label="Port" hint="Defaults to 22.">
+                  <Field label="端口" hint="默认为 22。">
                     <input
                       className="w-full rounded-md border border-border bg-transparent px-2.5 py-1.5 text-sm outline-none"
                       type="number"
@@ -2285,7 +2287,7 @@ export function CompanyEnvironments({ mode = "list" }: CompanyEnvironmentsProps)
                       onChange={(e) => setEnvironmentForm((current) => ({ ...current, sshPort: e.target.value }))}
                     />
                   </Field>
-                  <Field label="Username" hint="SSH username.">
+                  <Field label="用户名" hint="SSH 用户名。">
                     <input
                       className="w-full rounded-md border border-border bg-transparent px-2.5 py-1.5 text-sm outline-none"
                       type="text"
@@ -2293,7 +2295,7 @@ export function CompanyEnvironments({ mode = "list" }: CompanyEnvironmentsProps)
                       onChange={(e) => setEnvironmentForm((current) => ({ ...current, sshUsername: e.target.value }))}
                     />
                   </Field>
-                  <Field label="Remote workspace path" hint="Absolute path that Paperclip will verify during SSH connection tests.">
+                  <Field label="远程工作区路径" hint="Paperclip 在 SSH 连接测试期间会验证此绝对路径。">
                     <input
                       className="w-full rounded-md border border-border bg-transparent px-2.5 py-1.5 text-sm outline-none"
                       type="text"
@@ -2303,7 +2305,7 @@ export function CompanyEnvironments({ mode = "list" }: CompanyEnvironmentsProps)
                         setEnvironmentForm((current) => ({ ...current, sshRemoteWorkspacePath: e.target.value }))}
                     />
                   </Field>
-                  <Field label="Private key" hint="Optional PEM private key. Leave blank to rely on the server's SSH agent or default keychain.">
+                  <Field label="私钥" hint="可选的 PEM 私钥。留空则使用服务器的 SSH 代理或默认密钥链。">
                     <div className="space-y-2">
                       <select
                         className="w-full rounded-md border border-border bg-transparent px-2.5 py-1.5 text-sm outline-none"
@@ -2315,7 +2317,7 @@ export function CompanyEnvironments({ mode = "list" }: CompanyEnvironmentsProps)
                             sshPrivateKey: e.target.value ? "" : current.sshPrivateKey,
                           }))}
                       >
-                        <option value="">No saved secret</option>
+                        <option value="">不使用已保存的密钥</option>
                         {(secrets ?? []).map((secret) => (
                           <option key={secret.id} value={secret.id}>{secret.name}</option>
                         ))}
@@ -2328,7 +2330,7 @@ export function CompanyEnvironments({ mode = "list" }: CompanyEnvironmentsProps)
                       />
                     </div>
                   </Field>
-                  <Field label="Known hosts" hint="Optional known_hosts block used when strict host key checking is enabled.">
+                  <Field label="已知主机" hint="启用严格主机密钥检查时使用的可选 known_hosts 内容。">
                     <textarea
                       className="h-32 w-full rounded-md border border-border bg-transparent px-2.5 py-1.5 text-xs font-mono outline-none"
                       value={environmentForm.sshKnownHosts}
@@ -2337,8 +2339,8 @@ export function CompanyEnvironments({ mode = "list" }: CompanyEnvironmentsProps)
                   </Field>
                   <div className="md:col-span-2">
                     <ToggleField
-                      label="Strict host key checking"
-                      hint="Keep this on unless you deliberately want probe-time host key acceptance disabled."
+                      label="严格检查主机密钥"
+                      hint="除非你明确要关闭探测时的主机密钥验证，否则建议保持开启。"
                       checked={environmentForm.sshStrictHostKeyChecking}
                       onChange={(checked) =>
                         setEnvironmentForm((current) => ({ ...current, sshStrictHostKeyChecking: checked }))}
@@ -2349,7 +2351,7 @@ export function CompanyEnvironments({ mode = "list" }: CompanyEnvironmentsProps)
 
               {environmentForm.driver === "sandbox" ? (
                 <div className="space-y-3">
-                  <Field label="Provider" hint="Installed run-capable sandbox provider plugins appear here.">
+                  <Field label="提供方" hint="已安装且可运行的沙盒提供商插件会显示在这里。">
                     <select
                       className="w-full rounded-md border border-border bg-transparent px-2.5 py-1.5 text-sm outline-none"
                       value={environmentForm.sandboxProvider}
@@ -2390,12 +2392,12 @@ export function CompanyEnvironments({ mode = "list" }: CompanyEnvironmentsProps)
                     />
                   ) : (
                     <div className="text-xs text-muted-foreground">
-                      This provider does not declare additional configuration fields.
+                      此提供方未声明其他配置字段。
                     </div>
                   )}
                   <ToggleField
-                    label="Stream run logs"
-                    hint="Stream the agent CLI's output live while runs execute (recommended). Turn off to deliver output only when the run finishes."
+                    label="实时传输运行日志"
+                    hint="运行期间实时显示智能体 CLI 输出（推荐）。关闭后将在运行结束时一次性显示输出。"
                     checked={environmentForm.sandboxConfig.streamRunLogs !== false}
                     onChange={(checked) =>
                       setEnvironmentForm((current) => ({
@@ -2411,7 +2413,7 @@ export function CompanyEnvironments({ mode = "list" }: CompanyEnvironmentsProps)
               environmentForm.driver === "sandbox" &&
               selectedCompanyId ? (
                 <div className="space-y-2 py-3">
-                  <div className="text-sm font-medium">Custom image</div>
+                  <div className="text-sm font-medium">自定义镜像</div>
                   <div className="text-xs text-muted-foreground">
                     Start a setup sandbox, SSH in to customize the instance, then capture the
                     running machine as a reusable image for future runs.
@@ -2444,7 +2446,7 @@ export function CompanyEnvironments({ mode = "list" }: CompanyEnvironmentsProps)
                 <div className="text-xs text-destructive">
                   {environmentMutation.error instanceof Error
                     ? environmentMutation.error.message
-                    : "Failed to save environment"}
+                    : "保存环境失败"}
                 </div>
               ) : null}
               {draftEnvironmentProbeMutation.data ? (
@@ -2505,7 +2507,7 @@ export function CompanyEnvironments({ mode = "list" }: CompanyEnvironmentsProps)
                         : deleteBlockMessage
                           ?? ([
                             reusableLeaseOnlyBlock && deleteBlastRadius
-                              ? `${deleteBlastRadius.reusableSandboxLeaseCount === 1 ? "1 reusable sandbox" : `${deleteBlastRadius.reusableSandboxLeaseCount} reusable sandboxes`} will be destroyed; the workspaces holding them stay open and provision a fresh sandbox on their next run.`
+                              ? `${deleteBlastRadius.reusableSandboxLeaseCount === 1 ? "1 个可复用沙盒" : `${deleteBlastRadius.reusableSandboxLeaseCount} 个可复用沙盒`} 将被销毁；占用它们的工作区会继续保留，并在下次运行时创建新的沙盒。`
                               : null,
                             agentsUsingEnvironment.length > 0
                               ? `${agentsUsingEnvironment.length === 1 ? "1 agent uses" : `${agentsUsingEnvironment.length} agents use`} this environment as their default. Choose the environment those agents should be reassigned to.`
@@ -2518,7 +2520,7 @@ export function CompanyEnvironments({ mode = "list" }: CompanyEnvironmentsProps)
                 </AlertDialogHeader>
                 {reusableLeaseHolderGroups.length > 0 ? (
                   <div className="space-y-1.5" data-testid="environment-delete-lease-holders">
-                    <div className="text-xs font-medium text-muted-foreground">Sandbox leases held by</div>
+                    <div className="text-xs font-medium text-muted-foreground">占用沙盒租约的工作区</div>
                     <ul className="space-y-1">
                       {reusableLeaseHolderGroups.map((group) => (
                         <li key={group.workspaceId ?? group.label} className="text-sm">
@@ -2555,16 +2557,16 @@ export function CompanyEnvironments({ mode = "list" }: CompanyEnvironmentsProps)
                           Reassign {agentsUsingEnvironment.length === 1 ? "agent" : "agents"} to
                         </span>
                         <select
-                          aria-label="Reassign agents to environment"
+                          aria-label="将智能体重新分配到环境"
                           data-testid="environment-delete-reassign-select"
                           className="w-full rounded-md border border-border bg-transparent px-2.5 py-1.5 text-sm font-normal outline-none"
                           value={reassignEnvironmentTargetId}
                           onChange={(event) => setReassignEnvironmentTargetId(event.target.value)}
                         >
                           <option value="">
-                            Default: {instanceDefaultEnvironment
+                            默认环境：{instanceDefaultEnvironment
                               ? `${instanceDefaultEnvironment.name} · ${instanceDefaultEnvironment.driver}`
-                              : "Local"}
+                              : "本地环境"}
                           </option>
                           {reassignTargetEnvironments.map((environment) => (
                             <option key={environment.id} value={environment.id}>
@@ -2573,7 +2575,7 @@ export function CompanyEnvironments({ mode = "list" }: CompanyEnvironmentsProps)
                           ))}
                         </select>
                         <span className="block text-xs text-muted-foreground">
-                          Affected: {agentsUsingEnvironment.map((agent) => agent.name).join(", ")}
+                          受影响的智能体：{agentsUsingEnvironment.map((agent) => agent.name).join("、")}
                         </span>
                       </label>
                     ) : null}
@@ -2587,7 +2589,7 @@ export function CompanyEnvironments({ mode = "list" }: CompanyEnvironmentsProps)
                   </div>
                 ) : null}
                 <AlertDialogFooter>
-                  <AlertDialogCancel disabled={deleteEnvironmentMutation.isPending}>Cancel</AlertDialogCancel>
+                  <AlertDialogCancel disabled={deleteEnvironmentMutation.isPending}>取消</AlertDialogCancel>
                   <AlertDialogAction
                     className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
                     data-testid="environment-delete-confirm"
@@ -2610,7 +2612,7 @@ export function CompanyEnvironments({ mode = "list" }: CompanyEnvironmentsProps)
                     {deleteEnvironmentMutation.isPending
                       ? "Deleting..."
                       : reusableLeaseOnlyBlock && deleteBlastRadius
-                        ? `Destroy ${deleteBlastRadius.reusableSandboxLeaseCount === 1 ? "1 sandbox" : `${deleteBlastRadius.reusableSandboxLeaseCount} sandboxes`} and delete`
+                        ? `销毁 ${deleteBlastRadius.reusableSandboxLeaseCount === 1 ? "1 个沙盒" : `${deleteBlastRadius.reusableSandboxLeaseCount} 个沙盒`} 并删除`
                         : "Delete environment"}
                   </AlertDialogAction>
                 </AlertDialogFooter>

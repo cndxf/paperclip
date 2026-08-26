@@ -587,7 +587,7 @@ export function Search() {
   return (
     <div className="flex h-full min-h-0 flex-col" data-page="search">
       <div className="border-b border-border px-4 py-3 sm:px-6">
-        <h1 className="sr-only">Search</h1>
+        <h1 className="sr-only">搜索</h1>
         <div className="relative">
           <SearchIcon className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input
@@ -659,7 +659,7 @@ export function Search() {
             </div>
           ) : (
             <span className="truncate">
-              Try <code className="rounded bg-muted px-1 py-0.5 text-(length:--text-micro)">status:todo</code>,{" "}
+              试试 <code className="rounded bg-muted px-1 py-0.5 text-(length:--text-micro)">status:todo</code>、{" "}
               <code className="rounded bg-muted px-1 py-0.5 text-(length:--text-micro)">assignee:me</code>,{" "}
               or <code className="rounded bg-muted px-1 py-0.5 text-(length:--text-micro)">updated:&gt;7d</code>.
             </span>
@@ -805,15 +805,15 @@ function SearchTabContent({
     return (
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-4 px-4 py-10 sm:px-6">
         <div>
-          <h2 className="text-lg font-semibold">Type to search company memory.</h2>
+              <h2 className="text-lg font-semibold">输入内容以搜索公司记忆。</h2>
           <p className="mt-1 text-sm text-muted-foreground">
-            Tasks, comments, plan documents, artifacts, agents, projects — same surface, ranked by relevance.
+            任务、评论、计划文档、交付成果、智能体和项目都可搜索，并按相关性排序。
           </p>
         </div>
         {recentSearches.length > 0 ? (
           <div>
             <div className="mb-2 text-(length:--text-micro) font-semibold uppercase tracking-wide text-muted-foreground">
-              Recent searches
+              最近搜索
             </div>
             <ul className="flex flex-col divide-y divide-border rounded-md border border-border">
               {recentSearches.map((entry) => (
@@ -833,16 +833,14 @@ function SearchTabContent({
         ) : null}
         <ul className="space-y-1 text-xs text-muted-foreground">
           <li>
-            <span className="font-medium text-foreground">Identifier lookup:</span> type{" "}
-            <code className="rounded bg-muted px-1 py-0.5 text-(length:--text-micro)">PAP-123</code> to jump straight to a task.
+            <span className="font-medium text-foreground">标识符查询：</span>输入{" "}
+            <code className="rounded bg-muted px-1 py-0.5 text-(length:--text-micro)">PAP-123</code> 可直接跳转到任务。
           </li>
           <li>
-            <span className="font-medium text-foreground">Quoted phrases:</span> wrap a phrase in quotes to match the
-            exact sequence.
+            <span className="font-medium text-foreground">带引号的短语：</span>用引号包住短语即可按完整顺序匹配。
           </li>
           <li>
-            <span className="font-medium text-foreground">⌘K:</span> reopens the command palette pre-seeded with your
-            current query.
+            <span className="font-medium text-foreground">⌘K：</span>重新打开命令面板，并预填当前查询。
           </li>
         </ul>
       </div>
@@ -902,7 +900,7 @@ function SearchTabContent({
     return (
       <div className="mx-auto flex w-full max-w-xl flex-col items-center justify-center gap-3 px-4 py-12 text-center">
         <FileQuestion className="h-10 w-10 text-muted-foreground" aria-hidden />
-        <div className="text-base font-semibold">No results for &ldquo;{trimmedQuery}&rdquo;</div>
+        <div className="text-base font-semibold">没有找到相关结果：“{trimmedQuery}”</div>
         <p className="text-sm text-muted-foreground">
           We couldn’t find a match in {describeScope(scope).toLowerCase()}. Try widening the scope or rephrasing your
           query.
@@ -922,11 +920,11 @@ function SearchTabContent({
           </Button>
         </div>
         <ul className="mt-2 space-y-0.5 text-xs text-muted-foreground">
-          <li>Try fewer tokens or a single distinctive term.</li>
+          <li>请减少关键词，或只输入一个有辨识度的词。</li>
           <li>
             Use an identifier shortcut like <code className="rounded bg-muted px-1 py-0.5">PAP-123</code>.
           </li>
-          <li>Wrap multi-word phrases in quotes.</li>
+          <li>请用引号括住包含多个词的短语。</li>
         </ul>
       </div>
     );

@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/select";
 import { StatusBadge } from "@/components/StatusBadge";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "../../i18n";
 import { queryKeys } from "@/lib/queryKeys";
 import {
   toolsApi,
@@ -292,6 +293,7 @@ function ActivityRow({
 }
 
 export function AuditTab({ companyId }: { companyId: string }) {
+  const { t } = useTranslation();
   const [app, setApp] = useState<string>(ALL);
   const [agent, setAgent] = useState<string>(ALL);
   const [outcome, setOutcome] = useState<string>(ALL);
@@ -364,14 +366,14 @@ export function AuditTab({ companyId }: { companyId: string }) {
   return (
     <div className="space-y-4">
       <ToolsPageHeader
-        title="Activity"
-        description="What your agents actually did with your apps, newest first. Each line is one decision — allowed, blocked, asked first, waiting, or failed."
+        title={t("audit.activity", { defaultValue: "活动" })}
+        description={t("audit.description", { defaultValue: "查看智能体对应用执行的操作，最新记录在前。每一行代表一个决定：允许、阻止、需先询问、等待或失败。" })}
       />
 
       <div className="flex flex-wrap items-center gap-2">
         <Select value={app} onValueChange={setApp}>
           <SelectTrigger className="w-40">
-            <SelectValue placeholder="App" />
+            <SelectValue placeholder={t("audit.app", { defaultValue: "应用" })} />
           </SelectTrigger>
           <SelectContent>
             <SelectItem value={ALL}>All apps</SelectItem>
@@ -384,7 +386,7 @@ export function AuditTab({ companyId }: { companyId: string }) {
         </Select>
         <Select value={agent} onValueChange={setAgent}>
           <SelectTrigger className="w-40">
-            <SelectValue placeholder="Agent" />
+            <SelectValue placeholder={t("audit.agent", { defaultValue: "智能体" })} />
           </SelectTrigger>
           <SelectContent>
             <SelectItem value={ALL}>All agents</SelectItem>
@@ -420,7 +422,7 @@ export function AuditTab({ companyId }: { companyId: string }) {
           </SelectContent>
         </Select>
         <Input
-          placeholder="Search activity…"
+          placeholder={t("audit.search", { defaultValue: "搜索活动…" })}
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
           className="max-w-xs"
@@ -442,7 +444,7 @@ export function AuditTab({ companyId }: { companyId: string }) {
             <CardContent className="flex flex-col items-center gap-3 py-14 text-center">
               <ScrollText className="h-10 w-10 text-muted-foreground/40" />
               <div>
-                <p className="text-sm font-medium text-foreground">No activity matches these filters</p>
+                <p className="text-sm font-medium text-foreground">{t("audit.noMatch", { defaultValue: "没有符合筛选条件的活动" })}</p>
                 <p className="mt-1 max-w-md text-sm text-muted-foreground">
                   Try a wider time window or different filters.
                 </p>
@@ -457,7 +459,7 @@ export function AuditTab({ companyId }: { companyId: string }) {
             <CardContent className="flex flex-col items-center gap-3 py-14 text-center">
               <ScrollText className="h-10 w-10 text-muted-foreground/40" />
               <div>
-                <p className="text-sm font-medium text-foreground">Nothing here yet</p>
+                <p className="text-sm font-medium text-foreground">{t("audit.empty", { defaultValue: "暂无记录" })}</p>
                 <p className="mt-1 max-w-md text-sm text-muted-foreground">
                   As soon as your agents start using connected apps, what they do shows up here.
                 </p>
@@ -485,7 +487,7 @@ export function AuditTab({ companyId }: { companyId: string }) {
             onClick={() => activity.fetchNextPage()}
             disabled={activity.isFetchingNextPage}
           >
-            {activity.isFetchingNextPage ? "Loading…" : "Load more"}
+            {activity.isFetchingNextPage ? t("audit.loading", { defaultValue: "正在加载…" }) : t("audit.loadMore", { defaultValue: "加载更多" })}
           </Button>
         </div>
       ) : null}

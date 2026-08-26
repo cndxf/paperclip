@@ -15,6 +15,7 @@ import { PageSkeleton } from "../components/PageSkeleton";
 import { ArtifactCard } from "../components/artifacts/ArtifactCard";
 import { ArtifactGroupCard } from "../components/artifacts/ArtifactGroupCard";
 import { useSearchParams, Link } from "@/lib/router";
+import { useTranslation } from "../i18n";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -31,17 +32,17 @@ const SEARCH_DEBOUNCE_MS = 250;
 
 export const ARTIFACT_KIND_FILTERS: { value: ArtifactKindFilter; label: string }[] = [
   { value: "all", label: "All" },
-  { value: "image", label: "Images" },
-  { value: "video", label: "Videos" },
-  { value: "document", label: "Documents" },
-  { value: "text", label: "Text" },
-  { value: "file", label: "Files" },
+  { value: "image", label: "图片" },
+  { value: "video", label: "视频" },
+  { value: "document", label: "文档" },
+  { value: "text", label: "文本" },
+  { value: "file", label: "文件" },
 ];
 
 export const ARTIFACT_GROUP_OPTIONS: { value: ArtifactGroupBy; label: string }[] = [
-  { value: "none", label: "None" },
-  { value: "task", label: "Task" },
-  { value: "parent_task", label: "Parent task" },
+  { value: "none", label: "不分组" },
+  { value: "task", label: "任务" },
+  { value: "parent_task", label: "父任务" },
 ];
 
 const KIND_VALUES = new Set(ARTIFACT_KIND_FILTERS.map((filter) => filter.value));
@@ -62,6 +63,7 @@ export function artifactGroupByLabel(value: ArtifactGroupBy): string {
 }
 
 export function Artifacts() {
+  const { t } = useTranslation();
   const { selectedCompanyId } = useCompany();
   const { setBreadcrumbs } = useBreadcrumbs();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -222,12 +224,12 @@ export function Artifacts() {
         { label: `${selectedGroup.issue.identifier} · ${selectedGroup.title}` },
       ]);
     } else {
-      setBreadcrumbs([{ label: "Artifacts" }]);
+      setBreadcrumbs([{ label: t("artifacts.title", { defaultValue: "交付成果" }) }]);
     }
   }, [setBreadcrumbs, viewingSelectedStack, selectedGroup]);
 
   if (!selectedCompanyId) {
-    return <EmptyState icon={Package} message="Select a company to view artifacts." />;
+    return <EmptyState icon={Package} message={t("artifacts.selectCompany", { defaultValue: "请选择公司以查看交付成果。" })} />;
   }
 
   const showGroupCards = viewingStackList;
@@ -235,15 +237,15 @@ export function Artifacts() {
 
   const emptyMessage = showGroupCards
     ? searching
-      ? "No artifact stacks match this search."
-      : "No artifact stacks yet."
+      ? t("artifacts.noStackSearch", { defaultValue: "没有符合搜索条件的交付成果集合。" })
+      : t("artifacts.noStacks", { defaultValue: "暂无交付成果集合。" })
     : searching
-      ? "No artifacts match this search."
+      ? t("artifacts.noSearch", { defaultValue: "没有符合搜索条件的交付成果。" })
       : viewingSelectedStack
-        ? "No artifacts in this stack match the current filters."
+        ? t("artifacts.noStackMatch", { defaultValue: "此集合中没有符合当前筛选条件的交付成果。" })
         : kind === "all"
-          ? "No artifacts yet. Outputs attached to issues will appear here."
-          : "No artifacts of this type yet.";
+          ? t("artifacts.noArtifacts", { defaultValue: "暂无交付成果。附加到任务的输出会显示在这里。" })
+          : t("artifacts.noType", { defaultValue: "暂无此类型的交付成果。" });
 
   return (
     <div className="w-full max-w-6xl space-y-5">
@@ -253,15 +255,15 @@ export function Artifacts() {
           <Input
             value={draftQuery}
             onChange={(event) => setDraftQuery(event.currentTarget.value)}
-            placeholder="Search artifacts..."
-            aria-label="Search artifacts"
+            placeholder={t("artifacts.search", { defaultValue: "搜索交付成果…" })}
+            aria-label={t("artifacts.search", { defaultValue: "搜索交付成果" })}
             className="h-9 pl-9 pr-9 text-sm"
           />
           {draftQuery.length > 0 ? (
             <button
               type="button"
               onClick={() => setDraftQuery("")}
-              aria-label="Clear artifact search"
+              aria-label={t("artifacts.clearSearch", { defaultValue: "清除交付成果搜索" })}
               className="absolute right-2 top-1/2 inline-flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded text-muted-foreground transition-colors hover:bg-accent/50 hover:text-foreground"
             >
               <X className="h-3.5 w-3.5" />
@@ -277,7 +279,7 @@ export function Artifacts() {
                 variant="outline"
                 size="icon"
                 aria-label={`Group artifacts (currently ${artifactGroupByLabel(groupBy)})`}
-                title="Group artifacts"
+                title={t("artifacts.group", { defaultValue: "交付成果分组" })}
                 data-testid="artifact-group-control"
                 data-group-by={groupBy}
                 className={cn("h-8 w-8 shrink-0", grouping && "bg-accent")}
@@ -362,11 +364,11 @@ export function Artifacts() {
           </div>
           <div ref={loadMoreRef} className="flex min-h-10 items-center justify-center pb-2 text-xs text-muted-foreground">
             {isFetchingNextPage
-              ? "Loading more artifacts..."
+              ? t("artifacts.loadingMore", { defaultValue: "正在加载更多交付成果…" })
               : hasNextPage
                 ? null
                 : isFetching
-                  ? "Updating artifacts..."
+                  ? t("artifacts.updating", { defaultValue: "正在更新交付成果…" })
                   : null}
           </div>
         </>

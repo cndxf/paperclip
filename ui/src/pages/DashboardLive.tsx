@@ -23,7 +23,7 @@ export function DashboardLive() {
     return (
       <EmptyState
         icon={RadioTower}
-        message={companies.length === 0 ? "Create a company to view live runs." : "Select a company to view live runs."}
+        message={companies.length === 0 ? "请先创建公司以查看实时运行记录。" : "请选择公司以查看实时运行记录。"}
       />
     );
   }
@@ -55,7 +55,7 @@ export function DashboardLive() {
         cardLimit={DASHBOARD_LIVE_RUN_LIMIT}
         gridClassName="gap-3 md:grid-cols-2 2xl:grid-cols-3"
         cardClassName="h-(--sz-420px)"
-        emptyMessage="No active or recent agent runs."
+        emptyMessage="暂无活跃或最近的智能体运行记录。"
         queryScope="dashboard-live"
         showMoreLink={false}
       />

@@ -3,9 +3,21 @@ import { initReactI18next, useTranslation as useReactI18nextTranslation } from "
 
 import { DEFAULT_LOCALE, i18nextResources, supportedLocales } from "./locales";
 
+const LOCALE_STORAGE_KEY = "paperclip.locale";
+
+function readInitialLocale() {
+  if (typeof window === "undefined") return DEFAULT_LOCALE;
+  try {
+    const stored = window.localStorage.getItem(LOCALE_STORAGE_KEY);
+    return stored && supportedLocales.includes(stored) ? stored : DEFAULT_LOCALE;
+  } catch {
+    return DEFAULT_LOCALE;
+  }
+}
+
 const i18nextOptions: InitOptions = {
   resources: i18nextResources,
-  lng: DEFAULT_LOCALE,
+  lng: readInitialLocale(),
   fallbackLng: DEFAULT_LOCALE,
   supportedLngs: supportedLocales,
   defaultNS: "translation",
@@ -23,4 +35,15 @@ export function t(key: string, options: TOptions = {}) {
 }
 
 export const useTranslation = useReactI18nextTranslation;
+
+export function setLocale(locale: string) {
+  if (!supportedLocales.includes(locale)) return;
+  void i18n.changeLanguage(locale);
+  try {
+    window.localStorage.setItem(LOCALE_STORAGE_KEY, locale);
+  } catch {
+    // Language switching still works when storage is unavailable.
+  }
+}
+
 export { i18n };

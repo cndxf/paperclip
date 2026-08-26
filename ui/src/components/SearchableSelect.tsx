@@ -12,6 +12,7 @@ import {
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { fuzzyTextMatchesQuery, normalizeSearchText, scoreFuzzyTextFields } from "@/lib/searchable-select";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "@/i18n";
 
 export interface SearchableSelectOption<TValue extends string = string> {
   key: string;
@@ -109,6 +110,7 @@ export function SearchableSelect<
   disablePortal,
   createItem,
 }: SearchableSelectProps<TValue, TOption>) {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const pointerFocusRef = useRef(false);
@@ -247,7 +249,7 @@ export function SearchableSelect<
           <CommandInput
             value={query}
             onValueChange={setQuery}
-            placeholder={searchPlaceholder}
+            placeholder={searchPlaceholder === "Search..." ? t("common.search") : searchPlaceholder}
           />
           <CommandList
             className="overscroll-contain touch-pan-y"
@@ -258,12 +260,12 @@ export function SearchableSelect<
             }}
           >
             {loading ? (
-              <div className="px-3 py-6 text-center text-sm text-muted-foreground">{loadingMessage}</div>
+              <div className="px-3 py-6 text-center text-sm text-muted-foreground">{loadingMessage === "Loading..." ? t("common.loading") : loadingMessage}</div>
             ) : (
               <>
-                {!hasOptions && !createItem ? <CommandEmpty>{emptyMessage}</CommandEmpty> : null}
+                {!hasOptions && !createItem ? <CommandEmpty>{emptyMessage === "No options found." ? t("common.noOptionsFound") : emptyMessage}</CommandEmpty> : null}
                 {!hasOptions && createItem ? (
-                  <div className="px-3 py-3 text-center text-xs text-muted-foreground">{emptyMessage}</div>
+                  <div className="px-3 py-3 text-center text-xs text-muted-foreground">{emptyMessage === "No options found." ? t("common.noOptionsFound") : emptyMessage}</div>
                 ) : null}
                 {filteredGroups.map((group) => (
                   <CommandGroup key={group.id} heading={group.label}>

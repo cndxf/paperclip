@@ -15,6 +15,7 @@ import { agentsApi } from "../api/agents";
 import { projectsApi } from "../api/projects";
 import { buildCompanyUserProfileMap } from "../lib/company-members";
 import { useCompany } from "../context/CompanyContext";
+import { useTranslation } from "@/i18n";
 import { useDialogActions } from "../context/DialogContext";
 import { useBreadcrumbs } from "../context/BreadcrumbContext";
 import { queryKeys } from "../lib/queryKeys";
@@ -45,6 +46,7 @@ function getRecentIssues(issues: Issue[]): Issue[] {
 }
 
 export function Dashboard() {
+  const { t } = useTranslation();
   const { selectedCompanyId, companies } = useCompany();
   const { openOnboarding } = useDialogActions();
   const location = useLocation();
@@ -100,7 +102,7 @@ export function Dashboard() {
   }, [shouldOpenOnboarding, selectedCompanyId, openOnboarding]);
 
   useEffect(() => {
-    setBreadcrumbs([{ label: "Dashboard" }]);
+    setBreadcrumbs([{ label: t("dashboard.title", { defaultValue: "Dashboard" }) }]);
   }, [setBreadcrumbs]);
 
   const dashboardQueryKey = queryKeys.dashboard(selectedCompanyId!);
@@ -242,14 +244,14 @@ export function Dashboard() {
       return (
         <EmptyState
           icon={LayoutDashboard}
-          message="Welcome to Paperclip. Set up your first company and agent to get started."
-          action="Get Started"
+          message={t("dashboard.welcome", { defaultValue: "Welcome to Paperclip. Set up your first company and agent to get started." })}
+          action={t("dashboard.getStarted", { defaultValue: "Get Started" })}
           onAction={openOnboarding}
         />
       );
     }
     return (
-      <EmptyState icon={LayoutDashboard} message="Create or select a company to view the dashboard." />
+      <EmptyState icon={LayoutDashboard} message={t("dashboard.empty", { defaultValue: "Create or select a company to view the dashboard." })} />
     );
   }
 
@@ -268,14 +270,14 @@ export function Dashboard() {
           <div className="flex items-center gap-2.5">
             <Bot className="h-4 w-4 text-amber-600 dark:text-amber-400 shrink-0" />
             <p className="text-sm text-amber-900 dark:text-amber-100">
-              You have no agents.
+              {t("dashboard.noAgents", { defaultValue: "当前还没有智能体。" })}
             </p>
           </div>
           <button
             onClick={() => openOnboarding({ initialStep: 3, companyId: selectedCompanyId! })}
             className="text-sm font-medium text-amber-700 hover:text-amber-900 dark:text-amber-300 dark:hover:text-amber-100 underline underline-offset-2 shrink-0"
           >
-            Create one here
+            {t("dashboard.createAgentHere", { defaultValue: "在这里创建" })}
           </button>
         </div>
       )}
@@ -290,15 +292,15 @@ export function Dashboard() {
                 <PauseCircle className="mt-0.5 h-4 w-4 shrink-0 text-red-700 dark:text-red-300" />
                 <div>
                   <p className="text-sm font-medium text-red-950 dark:text-red-50">
-                    {data.budgets.activeIncidents} active budget incident{data.budgets.activeIncidents === 1 ? "" : "s"}
+                    {t("dashboard.activeBudgetIncidents", { defaultValue: "{{count}} 项活跃预算事件", count: data.budgets.activeIncidents })}
                   </p>
                   <p className="text-xs text-red-900/70 dark:text-red-100/70">
-                    {data.budgets.pausedAgents} agents paused · {data.budgets.pausedProjects} projects paused · {data.budgets.pendingApprovals} pending budget approvals
+                    {t("dashboard.pausedSummary", { defaultValue: "{{agents}} 个智能体已暂停 · {{projects}} 个项目已暂停 · {{approvals}} 项预算审批待处理", agents: data.budgets.pausedAgents, projects: data.budgets.pausedProjects, approvals: data.budgets.pendingApprovals })}
                   </p>
                 </div>
               </div>
               <Link to="/costs" className="text-sm underline underline-offset-2 text-red-900 dark:text-red-100">
-                Open budgets
+                {t("dashboard.openBudgets", { defaultValue: "打开预算" })}
               </Link>
             </div>
           ) : null}
@@ -307,51 +309,51 @@ export function Dashboard() {
             <MetricCard
               icon={Bot}
               value={data.agents.active + data.agents.running + data.agents.paused + data.agents.error}
-              label="Agents Enabled"
+              label={t("dashboard.agentsEnabled", { defaultValue: "Agents Enabled" })}
               to="/agents"
               description={
                 <span>
-                  {data.agents.running} running{", "}
-                  {data.agents.paused} paused{", "}
-                  {data.agents.error} errors
+                  {data.agents.running} {t("dashboard.running", { defaultValue: "运行中" })}{"，"}
+                  {data.agents.paused} {t("dashboard.paused", { defaultValue: "已暂停" })}{"，"}
+                  {data.agents.error} {t("dashboard.errors", { defaultValue: "错误" })}
                 </span>
               }
             />
             <MetricCard
               icon={CircleDot}
               value={data.tasks.inProgress}
-              label="Tasks In Progress"
+              label={t("dashboard.tasksInProgress", { defaultValue: "Tasks In Progress" })}
               to="/issues"
               description={
                 <span>
-                  {data.tasks.open} open{", "}
-                  {data.tasks.blocked} blocked
+                  {data.tasks.open} {t("dashboard.open", { defaultValue: "开放" })}{", "}
+                  {data.tasks.blocked} {t("dashboard.blocked", { defaultValue: "已阻塞" })}
                 </span>
               }
             />
             <MetricCard
               icon={DollarSign}
               value={formatCents(data.costs.monthSpendCents)}
-              label="Month Spend"
+              label={t("dashboard.monthSpend", { defaultValue: "Month Spend" })}
               to="/costs"
               description={
                 <span>
                   {data.costs.monthBudgetCents > 0
-                    ? `${data.costs.monthUtilizationPercent}% of ${formatCents(data.costs.monthBudgetCents)} budget`
-                    : "Unlimited budget"}
+                    ? t("dashboard.budgetUsed", { defaultValue: "预算的 {{percent}}%（共 {{amount}}）", percent: data.costs.monthUtilizationPercent, amount: formatCents(data.costs.monthBudgetCents) })
+                    : t("dashboard.unlimitedBudget", { defaultValue: "Unlimited budget" })}
                 </span>
               }
             />
             <MetricCard
               icon={ShieldCheck}
               value={data.pendingApprovals + data.budgets.pendingApprovals}
-              label="Pending Approvals"
+              label={t("dashboard.pendingApprovals", { defaultValue: "Pending Approvals" })}
               to="/approvals"
               description={
                 <span>
                   {data.budgets.pendingApprovals > 0
-                    ? `${data.budgets.pendingApprovals} budget overrides awaiting board review`
-                    : "Awaiting board review"}
+                    ? t("dashboard.budgetOverridesReview", { defaultValue: "{{count}} 项预算调整待董事会审核", count: data.budgets.pendingApprovals })
+                    : t("dashboard.awaitingReview", { defaultValue: "Awaiting board review" })}
                 </span>
               }
             />
@@ -360,19 +362,19 @@ export function Dashboard() {
           <SmokeLabDashboardCard companyId={selectedCompanyId!} />
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            <ChartCard title="Run Activity" subtitle="Last 14 days">
+            <ChartCard title={t("dashboard.runActivity", { defaultValue: "Run Activity" })} subtitle={t("dashboard.last14Days", { defaultValue: "Last 14 days" })}>
               <RunActivityChart activity={data.runActivity} />
             </ChartCard>
             {/* PAP-411: "Tasks by Priority" chart hidden behind SHOW_TASK_PRIORITY_UI. */}
             {SHOW_TASK_PRIORITY_UI && (
-              <ChartCard title="Tasks by Priority" subtitle="Last 14 days">
+              <ChartCard title={t("dashboard.tasksByPriority", { defaultValue: "Tasks by Priority" })} subtitle={t("dashboard.last14Days", { defaultValue: "Last 14 days" })}>
                 <PriorityChart issues={issues ?? []} />
               </ChartCard>
             )}
-            <ChartCard title="Tasks by Status" subtitle="Last 14 days">
+            <ChartCard title={t("dashboard.tasksByStatus", { defaultValue: "Tasks by Status" })} subtitle={t("dashboard.last14Days", { defaultValue: "Last 14 days" })}>
               <IssueStatusChart issues={issues ?? []} />
             </ChartCard>
-            <ChartCard title="Success Rate" subtitle="Last 14 days">
+            <ChartCard title={t("dashboard.successRate", { defaultValue: "Success Rate" })} subtitle={t("dashboard.last14Days", { defaultValue: "Last 14 days" })}>
               <SuccessRateChart activity={data.runActivity} />
             </ChartCard>
           </div>
@@ -390,7 +392,7 @@ export function Dashboard() {
             {recentActivity.length > 0 && (
               <div className="min-w-0">
                 <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-3">
-                  Recent Activity
+                  {t("dashboard.recentActivity", { defaultValue: "最近动态" })}
                 </h3>
                 <Card className="block py-0 divide-y divide-border overflow-hidden">
                   {recentActivity.map((event) => (
@@ -411,11 +413,11 @@ export function Dashboard() {
             {/* Recent Tasks */}
             <div className="min-w-0">
               <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-3">
-                Recent Tasks
+                {t("dashboard.recentTasks", { defaultValue: "最近任务" })}
               </h3>
               {recentIssues.length === 0 ? (
                 <Card className="block p-4">
-                  <p className="text-sm text-muted-foreground">No tasks yet.</p>
+                  <p className="text-sm text-muted-foreground">{t("dashboard.noTasks", { defaultValue: "No tasks yet." })}</p>
                 </Card>
               ) : (
                 <Card className="block py-0 divide-y divide-border overflow-hidden">

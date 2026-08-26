@@ -45,7 +45,7 @@ function issueLabel(issue: SummarySlotIssueRef) {
 }
 
 function revisionLabel(revision: SummarySlotRevision) {
-  return `Rev ${revision.revisionNumber}`;
+  return `修订版 ${revision.revisionNumber}`;
 }
 
 function formatRevisionTimestamp(date: Date | string) {
@@ -66,7 +66,7 @@ function latestRevisionOptionLabel(
   document: SummarySlotDocument,
   revision: SummarySlotRevision | null,
 ) {
-  return `Latest (Rev ${document.latestRevisionNumber}) - ${
+  return `最新（修订版 ${document.latestRevisionNumber}）- ${
     formatRevisionTimestamp(revision?.createdAt ?? document.updatedAt)
   }`;
 }
@@ -91,7 +91,7 @@ export function resolveGenerationStatusLine(status: LiveGenerationStatus | null)
   if (!status) return null;
   if (status.message) return status.message;
   if (status.lastAssistantSnippet) return status.lastAssistantSnippet;
-  if (status.currentToolName) return `Working with ${status.currentToolName}`;
+  if (status.currentToolName) return `正在使用 ${status.currentToolName}`;
   return null;
 }
 
@@ -261,9 +261,9 @@ export function SummarySlotCard({
           <div className="flex flex-wrap items-center gap-2">
             <Sparkles className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
             <h2 className="text-sm font-semibold">{title}</h2>
-            {isGenerating ? <Badge variant="secondary">Generating</Badge> : null}
-            {displayingHistoricalRevision ? <Badge variant="outline">Historical revision</Badge> : null}
-            {latestDocument && !displayingHistoricalRevision ? <Badge variant="outline">Latest revision</Badge> : null}
+            {isGenerating ? <Badge variant="secondary">生成中</Badge> : null}
+            {displayingHistoricalRevision ? <Badge variant="outline">历史修订版</Badge> : null}
+            {latestDocument && !displayingHistoricalRevision ? <Badge variant="outline">最新修订版</Badge> : null}
           </div>
           {description ? <p className="text-sm text-muted-foreground">{description}</p> : null}
         </div>
@@ -275,7 +275,7 @@ export function SummarySlotCard({
               variant="outline"
               onClick={() => setSelectedRevisionId(null)}
             >
-              Latest
+              最新版本
             </Button>
           ) : null}
           {latestDocument && !generationFailed ? (
@@ -287,7 +287,7 @@ export function SummarySlotCard({
               disabled={!selector || generateMutation.isPending || Boolean(isGenerating)}
             >
               {generateMutation.isPending ? <Loader2 className="animate-spin" /> : <RefreshCw />}
-              Refresh
+              刷新
             </Button>
           ) : null}
         </div>

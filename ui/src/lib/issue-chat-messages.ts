@@ -721,18 +721,18 @@ export function formatDurationWords(ms: number | null) {
   if (ms === null || !Number.isFinite(ms) || ms <= 0) return null;
   const totalSeconds = Math.max(1, Math.round(ms / 1000));
   if (totalSeconds < 60) {
-    return `${totalSeconds} second${totalSeconds === 1 ? "" : "s"}`;
+    return `${totalSeconds} 秒`;
   }
   const totalMinutes = Math.round(totalSeconds / 60);
   if (totalMinutes < 60) {
-    return `${totalMinutes} minute${totalMinutes === 1 ? "" : "s"}`;
+    return `${totalMinutes} 分钟`;
   }
   const hours = Math.floor(totalMinutes / 60);
   const minutes = totalMinutes % 60;
   if (minutes === 0) {
-    return `${hours} hour${hours === 1 ? "" : "s"}`;
+    return `${hours} 小时`;
   }
-  return `${hours} hour${hours === 1 ? "" : "s"} ${minutes} minute${minutes === 1 ? "" : "s"}`;
+  return `${hours} 小时 ${minutes} 分钟`;
 }
 
 function runDurationLabel(run: {
@@ -750,24 +750,24 @@ function runDurationLabel(run: {
   const stopReason = typeof run.resultJson?.stopReason === "string" ? run.resultJson.stopReason : null;
   switch (run.status) {
     case "succeeded":
-      return durationText ? `Worked for ${durationText}` : "Finished work";
+      return durationText ? `已完成，用时 ${durationText}` : "工作已完成";
     case "failed":
     case "error":
-      return durationText ? `Failed after ${durationText}` : "Run failed";
+      return durationText ? `运行失败，用时 ${durationText}` : "运行失败";
     case "timed_out":
-      return durationText ? `Timed out after ${durationText}` : "Run timed out";
+      return durationText ? `运行超时，用时 ${durationText}` : "运行超时";
     case "cancelled":
       if (isOperatorInterruptedRun(run.resultJson, run.errorCode)) {
-        return durationText ? `Interrupted by board after ${durationText}` : "Interrupted by board";
+        return durationText ? `已被看板中断，用时 ${durationText}` : "已被看板中断";
       }
       if (stopReason === "paused") {
-        return durationText ? `Paused by board after ${durationText}` : "Paused by board";
+        return durationText ? `已被看板暂停，用时 ${durationText}` : "已被看板暂停";
       }
-      return durationText ? `Cancelled after ${durationText}` : "Run cancelled";
+      return durationText ? `运行已取消，用时 ${durationText}` : "运行已取消";
     case "queued":
-      return "Queued";
+      return "排队中";
     case "running":
-      return "Working...";
+      return "运行中...";
     default:
       return formatStatusLabel(run.status);
   }

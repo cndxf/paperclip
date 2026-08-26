@@ -20,12 +20,12 @@ function CliFallback({ hasActiveInvite = false }: { hasActiveInvite?: boolean })
     <div className="mt-6 border-t border-border pt-5">
       <div className="flex items-center gap-2 text-sm font-medium">
         <Terminal className="size-4 text-muted-foreground" aria-hidden />
-        <span>Prefer to finish setup from the host?</span>
+        <span>是否要在主机上完成设置？</span>
       </div>
       <p className="mt-2 text-sm text-muted-foreground">
         {hasActiveInvite
-          ? "A bootstrap invite is already active. Check your Paperclip startup logs for the first-admin URL, or run this command on the host to rotate it:"
-          : "Run this command on the host that runs Paperclip to print a one-time first-admin invite URL:"}
+          ? "管理员邀请链接已生效。请查看 Paperclip 启动日志获取链接，或在主机上执行此命令重新生成："
+          : "请在运行 Paperclip 的主机上执行此命令，以生成一次性管理员邀请链接："}
       </p>
       <pre className="mt-3 overflow-x-auto rounded-md border border-border bg-muted/30 p-3 font-mono text-xs">
 {BOOTSTRAP_FALLBACK_COMMAND}
@@ -49,18 +49,18 @@ function displayIdentity(session: AuthSession) {
 function claimErrorCopy(error: BootstrapPendingPageProps["claimError"]) {
   if (error?.status === 409) {
     return {
-      title: "Someone else has already claimed this instance.",
-      body: "Refresh to sign in, or ask the existing admin to invite you from Settings -> Access.",
+      title: "其他用户已经认领了此实例。",
+      body: "请刷新页面重新登录，或让现有管理员从“设置 -> 访问权限”邀请您。",
     };
   }
   if (error?.status === 401) {
     return {
-      title: "Your session expired. Sign in again to claim this instance.",
+      title: "登录会话已过期，请重新登录以认领此实例。",
       body: "",
     };
   }
   return {
-    title: "We couldn't reach the server. Try again in a moment.",
+    title: "无法连接服务器，请稍后重试。",
     body: "",
   };
 }
@@ -76,15 +76,13 @@ export function BootstrapPendingPage({
   if (!claimAvailable) {
     return (
       <StateChrome>
-        <h1 className="text-xl font-semibold">This Paperclip is waiting on its first admin</h1>
+        <h1 className="text-xl font-semibold">此 Paperclip 正在等待首位管理员</h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          This instance runs in invite-only mode. The operator must generate a one-time first-admin invite URL
-          from the host. Once you have the link, open it from this browser to finish setup.
+          此实例仅允许通过邀请访问。管理员必须在主机上生成一次性邀请链接。获取链接后，请在此浏览器中打开以完成设置。
         </p>
         <CliFallback hasActiveInvite={hasActiveInvite} />
         <p className="mt-4 text-xs text-muted-foreground">
-          Browser-based claim is intentionally disabled in public mode so anyone on the network can't promote
-          themselves.
+          公开模式下已关闭浏览器直接认领，防止网络中的任何人将自己提升为管理员。
         </p>
       </StateChrome>
     );
@@ -98,19 +96,19 @@ export function BootstrapPendingPage({
             <ShieldCheck className="size-5" aria-hidden />
           </div>
           <div>
-            <h1 className="text-xl font-semibold">You're the instance admin</h1>
+        <h1 className="text-xl font-semibold">您已成为实例管理员</h1>
             <p className="mt-2 text-sm text-muted-foreground">
-              Setup is complete. Taking you to onboarding to create your first company...
+              设置已完成，正在进入入门引导以创建您的第一个公司……
             </p>
           </div>
         </div>
         <div className="mt-5 flex items-center gap-3">
           <Loader2 className="size-4 animate-spin text-muted-foreground" aria-hidden />
-          <span className="text-sm text-muted-foreground">Redirecting...</span>
+          <span className="text-sm text-muted-foreground">正在跳转……</span>
         </div>
         <div className="mt-5">
           <Button asChild variant="outline">
-            <a href="/">Continue to dashboard</a>
+            <a href="/">继续前往控制台</a>
           </Button>
         </div>
       </StateChrome>
@@ -120,14 +118,13 @@ export function BootstrapPendingPage({
   if (!session) {
     return (
       <StateChrome>
-        <h1 className="text-xl font-semibold">Finish setting up this Paperclip</h1>
+        <h1 className="text-xl font-semibold">完成此 Paperclip 的设置</h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          No admin has claimed this instance yet. Sign in or create your Paperclip account to become the first
-          admin from this browser.
+          尚未有管理员认领此实例。请登录或创建 Paperclip 账户，以便在此浏览器中成为首位管理员。
         </p>
         <div className="mt-5">
           <Button asChild>
-            <Link to="/auth?next=/">Sign in / Create account</Link>
+            <Link to="/auth?next=/">登录 / 创建账户</Link>
           </Button>
         </div>
         <CliFallback hasActiveInvite={hasActiveInvite} />
@@ -139,23 +136,23 @@ export function BootstrapPendingPage({
   const isClaiming = claimState === "claiming";
   return (
     <StateChrome>
-      <h1 className="text-xl font-semibold">Finish setting up this Paperclip</h1>
+        <h1 className="text-xl font-semibold">完成此 Paperclip 的设置</h1>
       <p className="mt-2 text-sm text-muted-foreground">
-        No admin has claimed this instance yet. Claim it now to become the first admin and start onboarding.
+        尚未有管理员认领此实例。现在认领即可成为首位管理员并开始入门引导。
       </p>
       <div className="mt-5 flex flex-wrap items-center gap-3">
         <Button onClick={onClaim} disabled={isClaiming}>
           {isClaiming && <Loader2 className="mr-2 size-4 animate-spin" aria-hidden />}
-          {isClaiming ? "Claiming..." : "Claim this instance"}
+          {isClaiming ? "认领中……" : "认领此实例"}
         </Button>
         <span className="text-sm text-muted-foreground">
-          Signed in as <span className="font-medium text-foreground">{displayIdentity(session)}</span>
+          当前登录账户：<span className="font-medium text-foreground">{displayIdentity(session)}</span>
         </span>
       </div>
       <p className="mt-3 text-xs text-muted-foreground">
-        Wrong account?{" "}
+        登录账户不正确？{" "}
         <Link to="/auth?next=/" className="underline underline-offset-2">
-          Switch account
+          切换账户
         </Link>
         .
       </p>

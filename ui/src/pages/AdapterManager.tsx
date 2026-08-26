@@ -32,6 +32,7 @@ import { cn } from "@/lib/utils";
 import { ChoosePathButton } from "@/components/PathInstructionsModal";
 import { invalidateDynamicParser } from "@/adapters/dynamic-loader";
 import { invalidateConfigSchemaCache } from "@/adapters/schema-config-fields";
+import { useTranslation } from "../i18n";
 
 function AdapterRow({
   adapter,
@@ -66,6 +67,7 @@ function AdapterRow({
   toggleTitleDisabled?: string;
   disabledBadgeLabel?: string;
 }) {
+  const { t } = useTranslation();
   return (
     <li>
       <div className="flex items-center gap-4 px-4 py-3">
@@ -109,7 +111,7 @@ function AdapterRow({
             {adapter.packageName && adapter.packageName !== adapter.type && (
               <> · {adapter.packageName}</>
             )}
-            {" · "}{adapter.modelsCount} models
+            {" · "}{adapter.modelsCount} {t("adapters.models", { defaultValue: "个模型" })}
           </p>
         </div>
         <div className="flex items-center gap-2 shrink-0">
@@ -118,7 +120,7 @@ function AdapterRow({
               variant="outline"
               size="icon-sm"
               className="h-8 w-8"
-              title="Reinstall adapter (pull latest from npm)"
+              title={t("adapters.reinstall", { defaultValue: "重新安装适配器（从 npm 获取最新版本）" })}
               disabled={isReinstalling}
               onClick={() => onReinstall(adapter.type)}
             >
@@ -130,7 +132,7 @@ function AdapterRow({
               variant="outline"
               size="icon-sm"
               className="h-8 w-8"
-              title="Reload adapter (hot-swap)"
+              title={t("adapters.reload", { defaultValue: "重新加载适配器" })}
               disabled={isReloading}
               onClick={() => onReload(adapter.type)}
             >
@@ -142,8 +144,8 @@ function AdapterRow({
             size="icon-sm"
             className="h-8 w-8"
             title={adapter.disabled
-              ? (toggleTitleEnabled ?? "Show in agent menus")
-              : (toggleTitleDisabled ?? "Hide from agent menus")}
+              ? (toggleTitleEnabled ?? t("adapters.showInMenus", { defaultValue: "在智能体菜单中显示" }))
+              : (toggleTitleDisabled ?? t("adapters.hideInMenus", { defaultValue: "从智能体菜单中隐藏" }))}
             disabled={isToggling}
             onClick={() => onToggle(adapter.type, !adapter.disabled)}
           >
@@ -154,7 +156,7 @@ function AdapterRow({
               variant="outline"
               size="icon-sm"
               className="h-8 w-8 text-destructive hover:text-destructive"
-              title="Remove adapter"
+              title={t("adapters.remove", { defaultValue: "移除适配器" })}
               onClick={() => onRemove(adapter.type)}
             >
               <Trash2 className="h-4 w-4" />
@@ -255,6 +257,7 @@ function ReinstallDialog({
 }
 
 export function AdapterManager() {
+  const { t } = useTranslation();
   const { selectedCompany } = useCompany();
   const { setBreadcrumbs } = useBreadcrumbs();
   const queryClient = useQueryClient();
@@ -391,7 +394,7 @@ export function AdapterManager() {
       menuDisabled: !!a.disabled,
     }));
 
-  if (isLoading) return <div className="p-4 text-sm text-muted-foreground">Loading adapters...</div>;
+  if (isLoading) return <div className="p-4 text-sm text-muted-foreground">{t("adapters.loading")}</div>;
 
   const isMutating = installMutation.isPending || removeMutation.isPending || toggleMutation.isPending || overrideMutation.isPending || reloadMutation.isPending || reinstallMutation.isPending;
 
@@ -401,9 +404,9 @@ export function AdapterManager() {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Cpu className="h-6 w-6 text-muted-foreground" />
-          <h1 className="text-xl font-semibold">Adapters</h1>
+          <h1 className="text-xl font-semibold">{t("adapters.title")}</h1>
           <Badge variant="outline" className="text-amber-600 border-amber-400">
-            Alpha
+            {t("adapters.alpha")}
           </Badge>
         </div>
 
@@ -411,12 +414,12 @@ export function AdapterManager() {
           <DialogTrigger asChild>
             <Button size="sm" className="gap-2">
               <Plus className="h-4 w-4" />
-              Install Adapter
+              {t("adapters.install")}
             </Button>
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>Install External Adapter</DialogTitle>
+              <DialogTitle>{t("adapters.installExternal")}</DialogTitle>
               <DialogDescription>
                 Add an adapter from npm or a local path. The adapter package must export <code className="text-xs bg-muted px-1 py-0.5 rounded">createServerAdapter()</code>.
               </DialogDescription>
@@ -518,10 +521,9 @@ export function AdapterManager() {
         <div className="flex items-start gap-3">
           <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-amber-700" />
           <div className="space-y-1 text-sm">
-            <p className="font-medium text-foreground">External adapters are alpha.</p>
+            <p className="font-medium text-foreground">{t("adapters.externalAlpha", { defaultValue: "外部适配器处于 Alpha 阶段。" })}</p>
             <p className="text-muted-foreground">
-              The adapter plugin system is under active development. APIs and storage format may change.
-              Use the power icon to hide adapters from agent menus without removing them.
+              {t("adapters.alphaHint", { defaultValue: "适配器插件系统仍在积极开发中，API 和存储格式可能会变化。使用电源图标可将适配器从智能体菜单中隐藏，而不会删除它。" })}
             </p>
           </div>
         </div>
@@ -531,16 +533,16 @@ export function AdapterManager() {
       <section className="space-y-3">
         <div className="flex items-center gap-2">
           <Cpu className="h-5 w-5 text-muted-foreground" />
-          <h2 className="text-base font-semibold">External Adapters</h2>
+          <h2 className="text-base font-semibold">{t("adapters.external", { defaultValue: "外部适配器" })}</h2>
         </div>
 
         {externalAdapters.length === 0 ? (
           <Card className="bg-muted/30">
             <CardContent className="flex flex-col items-center justify-center py-10">
               <Cpu className="h-10 w-10 text-muted-foreground mb-4" />
-              <p className="text-sm font-medium">No external adapters installed</p>
+              <p className="text-sm font-medium">{t("adapters.none", { defaultValue: "未安装外部适配器" })}</p>
               <p className="text-xs text-muted-foreground mt-1">
-                Install an adapter package to extend model support.
+                {t("adapters.installHint", { defaultValue: "安装适配器包以扩展模型支持。" })}
               </p>
             </CardContent>
           </Card>

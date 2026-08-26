@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 import { estimateStatusCardCost } from "./format";
+import { useTranslation } from "../../i18n";
 
 export interface StatusCardSettingsValue {
   refreshPolicy: StatusCardRefreshPolicy;
@@ -85,6 +86,7 @@ export function StatusCardSettingsForm({
   value: StatusCardSettingsValue;
   onChange: (next: StatusCardSettingsValue) => void;
 }) {
+  const { t } = useTranslation();
   const { refreshPolicy: policy } = value;
   // Change triggers, active-hours, and the daily token cap only govern
   // *automatic* updates. In Manual mode none of them apply, so the whole
@@ -119,7 +121,7 @@ export function StatusCardSettingsForm({
   return (
     <div className="space-y-6">
       <section className="space-y-2">
-        <h3 className="text-sm font-semibold">Auto-update policy</h3>
+        <h3 className="text-sm font-semibold">{t("statusCards.autoUpdate")}</h3>
         <div className="space-y-2">
           <RadioRow
             selected={policy.mode === "manual"}
@@ -206,7 +208,7 @@ export function StatusCardSettingsForm({
           </CollapsibleTrigger>
           <CollapsibleContent className="space-y-6 border-t border-border px-3 py-3">
             <section className="space-y-2">
-              <h3 className="text-sm font-semibold">Count as a change</h3>
+              <h3 className="text-sm font-semibold">{t("statusCards.countAsChange")}</h3>
               <div className="space-y-2">
                 {TRIGGER_ROWS.map((row) => (
                   <label key={row.key} className="flex items-start gap-2.5 text-sm">
@@ -223,7 +225,7 @@ export function StatusCardSettingsForm({
             </section>
 
             <section className="space-y-3">
-              <h3 className="text-sm font-semibold">Guardrails</h3>
+              <h3 className="text-sm font-semibold">{t("statusCards.guardrails")}</h3>
               <label className="flex items-start gap-2.5 text-sm">
                 <Checkbox checked={Boolean(activeHours)} onCheckedChange={(checked) => setActiveHoursEnabled(Boolean(checked))} className="mt-0.5" aria-label="Limit to active hours" />
                 <span>Only auto-update during active hours</span>
@@ -255,7 +257,7 @@ export function StatusCardSettingsForm({
                 </div>
               ) : null}
               <div className="flex flex-wrap items-center gap-2 text-sm">
-                <span className="w-32 shrink-0">Daily token cap</span>
+                <span className="w-32 shrink-0">{t("statusCards.dailyCap")}</span>
                 <Input
                   type="number"
                   min={0}
@@ -276,7 +278,7 @@ export function StatusCardSettingsForm({
       ) : null}
 
       <div className="flex items-center gap-2 text-sm">
-        <span className="font-semibold">Estimated cost</span>
+        <span className="font-semibold">{t("statusCards.estimatedCost")}</span>
         <span className="text-muted-foreground">=</span>
         <Tooltip>
           <TooltipTrigger asChild>

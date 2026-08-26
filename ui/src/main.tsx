@@ -19,6 +19,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { initPluginBridge } from "./plugins/bridge-init";
 import { PluginLauncherProvider } from "./plugins/launchers";
 import { startPerfMeasureReaper } from "./lib/perf-measure-reaper";
+import { VisibleCopyLocalizer } from "./i18n/VisibleCopyLocalizer";
 import "@mdxeditor/editor/style.css";
 import "./index.css";
 
@@ -69,6 +70,7 @@ createRoot(document.getElementById("root")!).render(
                           <PanelProvider>
                             <PluginLauncherProvider>
                               <DialogProvider>
+                                <VisibleCopyLocalizer />
                                 <App />
                               </DialogProvider>
                             </PluginLauncherProvider>

@@ -15,6 +15,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { resolverPolicyLabel } from "../lib/interaction-audience";
+import { useTranslation } from "../i18n";
 
 const INTERACTION_KIND_LABELS: Record<IssueThreadInteractionKind, string> = {
   suggest_tasks: "Suggested tasks",
@@ -235,22 +236,15 @@ export function InteractionGovernancePanel({
   isPending?: boolean;
   errorMessage?: string | null;
 }) {
+  const { t } = useTranslation();
   return (
     <div className="space-y-4" data-testid="company-settings-interaction-governance-section">
       <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-        Interaction governance
+        {t("governance.title", { defaultValue: "交互治理" })}
       </div>
       <div className="space-y-4">
         <p className="text-sm text-muted-foreground">
-          Thread interactions are open by default:{" "}
-          <span className="font-medium text-foreground">Anyone</span> in the company — the
-          board or any agent, including the one that asked — can respond. Narrow a kind
-          only when you need to.{" "}
-          <span className="font-medium text-foreground">Default policy</span> is the
-          audience new cards get when the requester does not ask for one;{" "}
-          <span className="font-medium text-foreground">Cap</span> narrows every request of
-          that kind and can never widen one. Tool-approval confirmations always stay{" "}
-          <span className="font-medium text-foreground">Human only</span>.
+          {t("governance.description", { defaultValue: "线程交互默认对所有人开放：公司中的任何人，包括发起请求的智能体，都可以回复。只有在需要时才收窄范围。默认策略决定请求方未指定时新卡片的处理对象；上限会收窄该类型的所有请求，不能扩大范围。工具审批确认始终仅限人工处理。" })}
         </p>
         {/*
          * Responsive: below `sm` the row collapses to a single column so the
@@ -261,13 +255,13 @@ export function InteractionGovernancePanel({
          */}
         <div className="grid grid-cols-1 gap-y-4 sm:grid-cols-[1fr_auto_auto] sm:items-center sm:gap-x-4 sm:gap-y-2.5">
           <div className="hidden text-xs font-medium text-muted-foreground uppercase tracking-wide sm:block">
-            Kind
+            {t("governance.kind", { defaultValue: "类型" })}
           </div>
           <div className="hidden text-xs font-medium text-muted-foreground uppercase tracking-wide sm:block">
-            Default policy
+            {t("governance.defaultPolicy", { defaultValue: "默认策略" })}
           </div>
           <div className="hidden text-xs font-medium text-muted-foreground uppercase tracking-wide sm:block">
-            Cap
+            {t("governance.cap", { defaultValue: "上限" })}
           </div>
           {ISSUE_THREAD_INTERACTION_KINDS.map((kind) => {
             const entry = governance[kind] ?? {};

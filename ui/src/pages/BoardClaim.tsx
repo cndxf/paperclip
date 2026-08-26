@@ -92,7 +92,7 @@ export function BoardClaimPage() {
             Sign in or create an account, then return to this page to claim Board ownership.
           </p>
           <Button asChild className="mt-4">
-            <Link to={`/auth?next=${encodeURIComponent(currentPath)}`}>Sign in / Create account</Link>
+            <Link to={`/auth?next=${encodeURIComponent(currentPath)}`}>登录 / 创建账户</Link>
           </Button>
         </Card>
       </div>

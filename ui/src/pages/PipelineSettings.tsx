@@ -101,6 +101,7 @@ import { orderReusableExecutionWorkspaces } from "../lib/reusable-execution-work
 import { cn, relativeTime } from "../lib/utils";
 import { useProjectOrder } from "../hooks/useProjectOrder";
 import { Link, useNavigate, useParams, useSearchParams } from "@/lib/router";
+import { useTranslation } from "../i18n";
 import { StageHealthWarnings } from "../components/PipelineHealthWarnings";
 import {
   breakdownSummarySentence,
@@ -1179,7 +1180,7 @@ function StageSubSidebar({
   return (
     <>
       <div className="md:hidden">
-        <label className="sr-only" htmlFor="stage-section-picker">Stage section</label>
+        <label className="sr-only" htmlFor="stage-section-picker">{t("pipelineSettings.stageSection")}</label>
         <select
           id="stage-section-picker"
           value={activeSection}
@@ -1273,6 +1274,7 @@ function StageEventsList({
 }
 
 export function PipelineSettings() {
+  const { t } = useTranslation();
   const { pipelineId } = useParams<{ pipelineId: string }>();
   const { selectedCompanyId } = useCompany();
   const { setBreadcrumbs } = useBreadcrumbs();
@@ -2294,7 +2296,7 @@ export function PipelineSettings() {
               />
               <span className="flex-1">{stage.name}</span>
               {isCancelled ? (
-                <span className="text-xs text-muted-foreground">Always available</span>
+                <span className="text-xs text-muted-foreground">{t("pipelineSettings.alwaysAvailable")}</span>
               ) : null}
             </label>
           );
@@ -2306,7 +2308,7 @@ export function PipelineSettings() {
     <div className="rounded-lg border border-border">
       <div className="flex items-start justify-between gap-4 border-b border-border p-4">
         <div className="space-y-1">
-          <h3 className="text-sm font-semibold text-foreground">Break into smaller pieces</h3>
+          <h3 className="text-sm font-semibold text-foreground">{t("pipelineSettings.breakIntoPieces")}</h3>
           <p className="max-w-md text-sm text-muted-foreground">
             The agent decides what the pieces are. Paperclip creates and tracks them.
           </p>
@@ -2353,7 +2355,7 @@ export function PipelineSettings() {
                 ) : null}
               </div>
               {!breakdownTargetPipelineId ? (
-                <p className="text-xs text-muted-foreground">A pipeline in this workspace</p>
+                <p className="text-xs text-muted-foreground">{t("pipelineSettings.workspacePipeline")}</p>
               ) : null}
             </div>
           </FieldRow>
@@ -2371,7 +2373,7 @@ export function PipelineSettings() {
                   <option key={stage.id} value={stage.key}>{stage.name}</option>
                 ))}
               </select>
-              <p className="text-xs text-muted-foreground">The stage every new piece starts in</p>
+              <p className="text-xs text-muted-foreground">{t("pipelineSettings.initialStage")}</p>
             </div>
           </FieldRow>
           <FieldRow label="Call each piece a">
@@ -2498,7 +2500,7 @@ export function PipelineSettings() {
                   <option key={stage.id} value={stage.key}>{stage.name}</option>
                 ))}
               </select>
-              <p className="text-xs text-muted-foreground">As soon as the pieces are created</p>
+              <p className="text-xs text-muted-foreground">{t("pipelineSettings.afterCreated")}</p>
             </div>
           </FieldRow>
           <FieldRow label="Wait">
@@ -2871,13 +2873,13 @@ export function PipelineSettings() {
                                 </div>
                               ))}
                               <div className="grid grid-cols-1 items-center gap-2 sm:grid-cols-(--gtc-42)">
-                                <span className="text-sm font-medium">Ask for a note when requesting changes</span>
+                                <span className="text-sm font-medium">{t("pipelineSettings.noteOnChanges")}</span>
                                 <div className="sm:justify-self-start">
                                   <ToggleSwitch checked={requireRequestChangesReason} onCheckedChange={setRequireRequestChangesReason} />
                                 </div>
                               </div>
                               <div className="grid grid-cols-1 items-center gap-2 sm:grid-cols-(--gtc-42)">
-                                <span className="text-sm font-medium">Ask for a note when declining</span>
+                                <span className="text-sm font-medium">{t("pipelineSettings.noteOnDecline")}</span>
                                 <div className="sm:justify-self-start">
                                   <ToggleSwitch checked={requireRejectReason} onCheckedChange={setRequireRejectReason} />
                                 </div>
@@ -3076,7 +3078,7 @@ export function PipelineSettings() {
                           />
                           {breakdownEnabled ? (
                             <div className="space-y-1">
-                              <h3 className="text-sm font-semibold text-foreground">What should the agent decide?</h3>
+                              <h3 className="text-sm font-semibold text-foreground">{t("pipelineSettings.agentDecision")}</h3>
                               <p className="text-sm text-muted-foreground">
                                 The mechanics are handled below. Write only the judgment.
                               </p>
@@ -3162,7 +3164,7 @@ export function PipelineSettings() {
                     <div className="w-full max-w-3xl space-y-8">
                       <div className="divide-y divide-border border-b border-border">
                         <div className="py-3">
-                          <h3 className="text-sm font-semibold text-foreground">Transitions</h3>
+                          <h3 className="text-sm font-semibold text-foreground">{t("pipelineSettings.transitions")}</h3>
                         </div>
                         <FieldRow label="Strict mode">
                           <div className="space-y-1.5">
@@ -3197,7 +3199,7 @@ export function PipelineSettings() {
                       ) : (
                         <div className="divide-y divide-border border-b border-border">
                           <div className="py-3">
-                            <h3 className="text-sm font-semibold text-foreground">Children</h3>
+                            <h3 className="text-sm font-semibold text-foreground">{t("pipelineSettings.children")}</h3>
                           </div>
                           <FieldRow label="Block children">
                             <div className="space-y-1.5">

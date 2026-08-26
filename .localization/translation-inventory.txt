@@ -1,0 +1,2149 @@
+) => Promise<void> | void;
+) => Promise<void>;
+<>Your first agent is online and ready to work.</>
+<AdapterLoginCopyButton value={authorizationUrl} label="Copy URL" />
+<AdapterLoginCopyButton value={prompt.code} label="Copy code" />
+<AdapterLoginCopyButton value={prompt.url} label="Copy URL" />
+<AlertDialogCancel disabled={deleteConnection.isPending}>Cancel</AlertDialogCancel>
+<AlertDialogCancel disabled={deleteEnvironmentMutation.isPending}>Cancel</AlertDialogCancel>
+<AlertDialogCancel disabled={pending}>Cancel</AlertDialogCancel>
+<AlertDialogCancel>Cancel</AlertDialogCancel>
+<AlertDialogTitle>Delete folder</AlertDialogTitle>
+<AlertDialogTitle>No responsible selected</AlertDialogTitle>
+<Badge variant="default">Default</Badge>
+<Badge variant="destructive">Destructive</Badge>
+<Badge variant="ghost">Ghost</Badge>
+<Badge variant="outline">Bundled</Badge>
+<Badge variant="outline">Experimental</Badge>
+<Badge variant="outline">Outline</Badge>
+<Badge variant="secondary">Company default</Badge>
+<Badge variant="secondary">Experimental</Badge>
+<Badge variant="secondary">Not installed</Badge>
+<Badge variant="secondary">Read-only</Badge>
+<Badge variant="secondary">Secondary</Badge>
+<Badge variant="secondary">Unsaved edits</Badge>
+<BeforeAfter label="After — actionable denial copy">
+<BeforeAfter label="After — run detail">
+<BeforeAfter label="After — run ledger">
+<BeforeAfter label="Agent-lacks-permission failure">
+<BeforeAfter label="Before — generic failure text">
+<BeforeAfter label="Before — run detail">
+<BeforeAfter label="Before — run ledger">
+<BeforeAfter label="No responsible-user notice rendered">
+<BeforeAfter label="Unauthorized">
+<BeforeAfter label="Unavailable">
+<BlockerRow label="Blocked by" blocker={directBlocker} />
+<BlockerRow label="Ultimately blocked by" blocker={ultimateBlocker} />
+<BreadcrumbLink href="#">Paperclip App</BreadcrumbLink>
+<BreadcrumbLink href="#">Projects</BreadcrumbLink>
+<BreadcrumbPage>Issue List</BreadcrumbPage>
+<BudgetSidebarMarker title="Project paused by budget" />
+<Button asChild variant="ghost" size="icon-sm" title="Download">
+<Button asChild variant="ghost" size="icon-sm" title="Open in new tab">
+<Button disabled={pending} onClick={onConfirm}>Remove</Button>
+<Button disabled>Disabled</Button>
+<Button onClick={() => navigate(BROWSE_HREF)}>Connect an app</Button>
+<Button onClick={goNext} disabled={!canContinue(currentStep)}>Continue</Button>
+<Button onClick={onClose}>Done</Button>
+<Button onClick={onConnect}>Connect another</Button>
+<Button size="default">Default</Button>
+<Button size="icon" variant="ghost" aria-label="Rule actions">
+<Button size="icon-sm" variant="ghost" aria-label="Dismiss folder suggestion" onClick={dismiss}>
+<Button size="lg">Large</Button>
+<Button size="sm" onClick={onDone}>Done</Button>
+<Button size="sm" onClick={onReview}>Review</Button>
+<Button size="sm" variant="ghost" onClick={onClear}>Deselect all</Button>
+<Button size="sm" variant="outline">Move to...</Button>
+<Button size="sm">Action</Button>
+<Button size="sm">Comment</Button>
+<Button size="sm">Resume agent</Button>
+<Button size="sm">Small</Button>
+<Button size="xs">Extra Small</Button>
+<Button size="xs">Wake now</Button>
+<Button type="button" onClick={onRetry}>Try again</Button>
+<Button type="button" size="sm" variant="ghost" onClick={props.onClose}>Cancel</Button>
+<Button type="button" size="sm" variant="outline" onClick={() => { setMonitorDetailsOpen(false); clearMonitor(); }}>Clear</Button>
+<Button type="button" size="sm" variant="outline" onClick={() => { setMonitorDetailsOpen(false); setMonitorOpen(true); }}>Edit</Button>
+<Button type="button" variant="ghost" onClick={onCancel}>Back to apps</Button>
+<Button type="button" variant="outline" onClick={() => setCreateOpen(false)}>Cancel</Button>
+<Button type="button" variant="outline">Cancel</Button>
+<Button type="button">Create invite</Button>
+<Button variant="default">Default</Button>
+<Button variant="destructive"><Trash2 /> Delete</Button>
+<Button variant="destructive">Destructive</Button>
+<Button variant="ghost" onClick={goBack}>Back</Button>
+<Button variant="ghost" onClick={onClose}>Cancel</Button>
+<Button variant="ghost" onClick={onClose}>Close</Button>
+<Button variant="ghost" size="icon-sm" aria-label="More actions">
+<Button variant="ghost" size="icon-sm" aria-label="Studio menu">
+<Button variant="ghost" size="icon-sm" disabled={disabled} onClick={onAddFile} aria-label="Add file">
+<Button variant="ghost" size="icon-sm" disabled={disabled} onClick={onAddFolder} aria-label="Add folder">
+<Button variant="ghost" size="icon-sm" disabled={disabled} onClick={onDeleteFolder} aria-label="Delete folder">
+<Button variant="ghost" size="icon-sm" onClick={selectAdHocInput} aria-label="New input">
+<Button variant="ghost" size="icon-sm" title="New folder" onClick={() => onCreateFolder(null)}>
+<Button variant="ghost" size="icon-sm" title="New folder" onClick={onCreate}>
+<Button variant="ghost" size="icon-xs" aria-label="More case actions" title="More case actions">
+<Button variant="ghost" size="sm" onClick={() => setCreated(null)} aria-label="Dismiss new token">
+<Button variant="ghost" size="sm" onClick={() => setEditMode(false)} disabled={savePending}>Cancel</Button>
+<Button variant="ghost" size="sm">View agent</Button>
+<Button variant="ghost" size="xs" onClick={() => onAction("restart", null)}>Restart all</Button>
+<Button variant="ghost" size="xs" onClick={() => onAction("start", null)}>Start all</Button>
+<Button variant="ghost" size="xs" onClick={() => onAction("stop", null)}>Stop all</Button>
+<Button variant="ghost">Ghost</Button>
+<Button variant="link">Link</Button>
+<Button variant="outline" disabled>Disabled Outline</Button>
+<Button variant="outline" onClick={() => navigate("/apps/advanced/profiles")}>Back to profiles</Button>
+<Button variant="outline" onClick={() => onOpenChange(false)}>Close</Button>
+<Button variant="outline" onClick={() => setBindProfileFor(null)}>Cancel</Button>
+<Button variant="outline" onClick={() => setConfirm(null)}>Cancel</Button>
+<Button variant="outline" onClick={() => setDefinitionDeleteConfirm(null)}>Cancel</Button>
+<Button variant="outline" onClick={() => setDeleteConfirm(null)}>Cancel</Button>
+<Button variant="outline" onClick={() => setDialog("archive")}>Archive</Button>
+<Button variant="outline" onClick={() => setEntryProfile(null)}>Cancel</Button>
+<Button variant="outline" onClick={() => setInstallDialogOpen(false)}>Cancel</Button>
+<Button variant="outline" onClick={() => setRemoveDialogOpen(false)}>Keep item</Button>
+<Button variant="outline" onClick={() => setRemoveType(null)}>Cancel</Button>
+<Button variant="outline" onClick={() => setRemoveVaultConfirm(null)}>Cancel</Button>
+<Button variant="outline" onClick={() => setUninstallPluginId(null)}>Cancel</Button>
+<Button variant="outline" size="icon" aria-label="Item actions">
+<Button variant="outline" size="icon" onClick={onRemove} aria-label="Remove item">
+<Button variant="outline" size="sm" onClick={() => navigate("/apps/connections")}>Back to apps</Button>
+<Button variant="outline" size="sm" onClick={onCancel}>Cancel</Button>
+<Button variant="outline" size="sm">Cancel</Button>
+<Button variant="outline" size="sm">Hover me</Button>
+<Button variant="outline" size="sm">Open Environments</Button>
+<Button variant="outline" size="sm">Open Popover</Button>
+<Button variant="outline" size="sm">Open Side Panel</Button>
+<Button variant="outline"><Upload /> Upload</Button>
+<Button variant="outline">Cancel</Button>
+<Button variant="outline">Close</Button>
+<Button variant="outline">Open Dialog</Button>
+<Button variant="outline">Outline</Button>
+<Button variant="secondary">Secondary</Button>
+<Button><Plus /> New Issue</Button>
+<Button>Claim this instance</Button>
+<Button>Save</Button>
+<CardDescription>Account-level charges grouped by event kind.</CardDescription>
+<CardDescription>Account-level financial events grouped by who charged or credited them.</CardDescription>
+<CardDescription>Card description with supporting text.</CardDescription>
+<CardDescription>Linked objects and relationships</CardDescription>
+<CardDescription>Paths and refs</CardDescription>
+<CardDescription>Recent operations</CardDescription>
+<CardDescription>Run costs attributed through project-linked tasks.</CardDescription>
+<CardDescription>Top-ups, fees, credits, commitments, and other non-request charges.</CardDescription>
+<CardDescription>What each agent consumed in the selected period.</CardDescription>
+<CardTitle>Card Title</CardTitle>
+<CardTitle>Concrete location</CardTitle>
+<CardTitle>Create invite</CardTitle>
+<CardTitle>Invite history</CardTitle>
+<CardTitle>Runtime and cleanup logs</CardTitle>
+<CardTitle>Workspace context</CardTitle>
+<CardTitle>Workspace routines</CardTitle>
+<CardTitle>Workspace settings</CardTitle>
+<CasePropertyRow label="Files" mode={mode}>
+<CasePropertyRow label="Key" mode={mode}>
+<CasePropertyRow label="Labels" wrap mode={mode}>
+<CasePropertyRow label="Tasks" mode={mode}>
+<CasePropertyRow label="Tasks" wrap mode={mode}>
+<CasePropertyRow label="Type" mode={mode}>
+<CaseToolbarButton icon={ArrowUpDown} title="Sort" active={sortField !== "updated" || sortDir !== "desc"}>
+<CaseToolbarButton icon={Columns3} title="Columns" active={!sameStringSet([...visibleColumns], DEFAULT_CASE_COLUMNS)}>
+<CaseToolbarButton icon={Filter} title="Filters" active={hasActiveFilters}>
+<CaseToolbarButton icon={Layers} title="Group" active={viewState.groupBy !== "type"}>
+<ChartCard title="Run Activity" subtitle="Last 14 days">
+<ChartCard title="Success Rate" subtitle="Last 14 days">
+<ChartCard title="Tasks by Priority" subtitle="Last 14 days">
+<ChartCard title="Tasks by Status" subtitle="Last 14 days">
+<Chip href={decisionsHref(null)} active={activeQueueKey == null} label="All" />
+<CommandEmpty>No agents found.</CommandEmpty>
+<CommandEmpty>No agents.</CommandEmpty>
+<CommandEmpty>No results found.</CommandEmpty>
+<CommandInput placeholder="Search agents…" />
+<CommandInput placeholder="Type a command or search..." />
+<ControlButton label="Open in Browser" onClick={openInBrowser}>
+<ControlButton label="Refresh" onClick={refresh}>
+<ControlButton label="Share" onClick={share}>
+<DetailFact label="Actor type" value={event.actorType ?? "—"} />
+<DetailFact label="Delivered MCP servers" value="0" mono />
+<DetailFact label="Reason code" value={reasonCode} mono />
+<DetailRow label="Base ref">
+<DetailRow label="Branch">
+<DetailRow label="Cleanup">
+<DetailRow label="Coverage">
+<DetailRow label="Created">{formatRelative(definition.createdAt)}</DetailRow>
+<DetailRow label="Created">{formatRelative(secret.createdAt)}</DetailRow>
+<DetailRow label="Custody">{modeLabel(secret.managedMode)}</DetailRow>
+<DetailRow label="Default ref">{workspace.defaultRef ?? "None"}</DetailRow>
+<DetailRow label="Derived from">
+<DetailRow label="Description">
+<DetailRow label="External ARN">
+<DetailRow label="Key">
+<DetailRow label="Last resolved">{formatRelative(secret.lastResolvedAt)}</DetailRow>
+<DetailRow label="Last rotated">{formatRelative(secret.lastRotatedAt)}</DetailRow>
+<DetailRow label="Last used">{formatDateTime(workspace.lastUsedAt)}</DetailRow>
+<DetailRow label="Latest version">v{secret.latestVersion}</DetailRow>
+<DetailRow label="Local path">
+<DetailRow label="Opened">{formatDateTime(workspace.openedAt)}</DetailRow>
+<DetailRow label="Project workspace">
+<DetailRow label="Project">
+<DetailRow label="Provided by">Company</DetailRow>
+<DetailRow label="Provided by">Each user</DetailRow>
+<DetailRow label="Provider ref">
+<DetailRow label="Provider vault">{providerVaultLabel(providerConfigs, secret.providerConfigId)}</DetailRow>
+<DetailRow label="Provider">{providerLabel(providers, secret.provider)}</DetailRow>
+<DetailRow label="References">
+<DetailRow label="Repo URL">
+<DetailRow label="Repo">
+<DetailRow label="Runtime provisioning">
+<DetailRow label="Source task">
+<DetailRow label="Status"><StatusBadge status={definition.status} /></DetailRow>
+<DetailRow label="Updated">{formatRelative(definition.updatedAt)}</DetailRow>
+<DetailRow label="Updated">{formatRelative(secret.updatedAt)}</DetailRow>
+<DetailRow label="Updated">{new Date(workspace.updatedAt).toLocaleString()}</DetailRow>
+<DetailRow label="Usage guidance">
+<DetailRow label="Working dir">
+<DetailRow label="Workspace ID">
+<DetailSection title="Activity">
+<DetailSection title="Conversation">
+<DetailSection title="Details">
+<DetailSection title="Linked work">
+<DialogDescription>Name the pipeline and add a short description.</DialogDescription>
+<DialogDescription>The copy starts unassigned unless you choose to copy assignments too.</DialogDescription>
+<DialogDescription>Update the profile name and description.</DialogDescription>
+<DialogTitle>Add a skill source</DialogTitle>
+<DialogTitle>Add application</DialogTitle>
+<DialogTitle>Add entry</DialogTitle>
+<DialogTitle>Archive pipeline</DialogTitle>
+<DialogTitle>Bind profile</DialogTitle>
+<DialogTitle>Compare routine revisions</DialogTitle>
+<DialogTitle>Confirm auto-recovery</DialogTitle>
+<DialogTitle>Connect a client</DialogTitle>
+<DialogTitle>Create new secret</DialogTitle>
+<DialogTitle>Delete comment?</DialogTitle>
+<DialogTitle>Delete folder</DialogTitle>
+<DialogTitle>Delete secret</DialogTitle>
+<DialogTitle>Delete stage</DialogTitle>
+<DialogTitle>Delete user-provided secret</DialogTitle>
+<DialogTitle>Dialog Title</DialogTitle>
+<DialogTitle>Diff · skill files</DialogTitle>
+<DialogTitle>Discard changes?</DialogTitle>
+<DialogTitle>Duplicate profile</DialogTitle>
+<DialogTitle>Edit member</DialogTitle>
+<DialogTitle>Edit profile</DialogTitle>
+<DialogTitle>Error Details</DialogTitle>
+<DialogTitle>Import a skill</DialogTitle>
+<DialogTitle>Install External Adapter</DialogTitle>
+<DialogTitle>Install Plugin</DialogTitle>
+<DialogTitle>Mark all as read?</DialogTitle>
+<DialogTitle>Move to stage</DialogTitle>
+<DialogTitle>New card</DialogTitle>
+<DialogTitle>New gateway</DialogTitle>
+<DialogTitle>New pipeline</DialogTitle>
+<DialogTitle>Reinstall Adapter</DialogTitle>
+<DialogTitle>Reject proposal</DialogTitle>
+<DialogTitle>Remove Adapter</DialogTitle>
+<DialogTitle>Remove assignment</DialogTitle>
+<DialogTitle>Remove blocker?</DialogTitle>
+<DialogTitle>Remove item</DialogTitle>
+<DialogTitle>Remove member</DialogTitle>
+<DialogTitle>Remove provider vault</DialogTitle>
+<DialogTitle>Remove skill</DialogTitle>
+<DialogTitle>Remove user secret?</DialogTitle>
+<DialogTitle>Review new tools</DialogTitle>
+<DialogTitle>Routine variables</DialogTitle>
+<DialogTitle>Run routine</DialogTitle>
+<DialogTitle>Save test input</DialogTitle>
+<DialogTitle>Save your feedback sharing preference</DialogTitle>
+<DialogTitle>Secret references</DialogTitle>
+<DialogTitle>Skill settings</DialogTitle>
+<DialogTitle>Specify path manually</DialogTitle>
+<DialogTitle>Uninstall Plugin</DialogTitle>
+<Disclosure open={detailsOpen} label="Technical details" />
+<DropdownMenuItem disabled>Couldn&apos;t load companies</DropdownMenuItem>
+<DropdownMenuItem disabled>Couldn't load companies</DropdownMenuItem>
+<DropdownMenuItem disabled>Loading revisions...</DropdownMenuItem>
+<DropdownMenuItem disabled>No companies</DropdownMenuItem>
+<DropdownMenuItem disabled>No revisions yet</DropdownMenuItem>
+<DropdownMenuItem onSelect={() => onEditFolder(folder)}>Edit color</DropdownMenuItem>
+<DropdownMenuItem onSelect={() => onStartRename(folder)}>Rename</DropdownMenuItem>
+<DropdownMenuItem onSelect={onArchive}>Archive</DropdownMenuItem>
+<DropdownMenuItem onSelect={onDuplicate}>Duplicate</DropdownMenuItem>
+<DropdownMenuItem onSelect={onEditInterest}>Edit interest &amp; settings</DropdownMenuItem>
+<DropdownMenuItem onSelect={onEdit}>Edit color</DropdownMenuItem>
+<DropdownMenuItem onSelect={onEdit}>Edit</DropdownMenuItem>
+<DropdownMenuItem onSelect={onOpenDebug}>Query debug</DropdownMenuItem>
+<DropdownMenuItem onSelect={onOpen}>Open detail</DropdownMenuItem>
+<DropdownMenuItem onSelect={onStartRename}>Rename</DropdownMenuItem>
+<DropdownMenuLabel>Activity filter</DropdownMenuLabel>
+<DropdownMenuLabel>Category</DropdownMenuLabel>
+<DropdownMenuLabel>Companies</DropdownMenuLabel>
+<DropdownMenuLabel>Group by</DropdownMenuLabel>
+<DropdownMenuLabel>Kind</DropdownMenuLabel>
+<DropdownMenuLabel>Revision history</DropdownMenuLabel>
+<DropdownMenuLabel>Risk</DropdownMenuLabel>
+<DropdownMenuLabel>Source</DropdownMenuLabel>
+<DropdownMenuLabel>Type</DropdownMenuLabel>
+<DropdownMenuRadioItem value="">All categories</DropdownMenuRadioItem>
+<DropdownMenuRadioItem value="__all__">All categories</DropdownMenuRadioItem>
+<DropdownMenuRadioItem value="all">All kinds</DropdownMenuRadioItem>
+<DropdownMenuRadioItem value="all">All sources</DropdownMenuRadioItem>
+<DropdownMenuRadioItem value="any">Any risk</DropdownMenuRadioItem>
+<DropdownMenuRadioItem value="blocked">Blocked</DropdownMenuRadioItem>
+<DropdownMenuRadioItem value="bundled">Bundled</DropdownMenuRadioItem>
+<DropdownMenuRadioItem value="has_warnings">Has warnings</DropdownMenuRadioItem>
+<DropdownMenuRadioItem value="optional">Optional</DropdownMenuRadioItem>
+<DropdownMenuRadioItem value="safe">Safe only</DropdownMenuRadioItem>
+<DropdownMenuSubTrigger>Move to...</DropdownMenuSubTrigger>
+<EmptyState icon={BookOpenText} message="No learnings yet." />
+<EmptyState icon={Boxes} message="Catalog skill not found." />
+<EmptyState icon={Boxes} message="Fork source skill not found." />
+<EmptyState icon={Boxes} message="Skill not found." />
+<EmptyState icon={Check} message="Nothing needs you right now." />
+<EmptyState icon={FileCode} message="This skill has no files yet." />
+<EmptyState icon={FileText} message="No body yet. Capture the item's details here." action="Add the item body" onAction={beginEdit} />
+<EmptyState icon={FlaskConical} message="No test runs yet. Pick an agent and Run." />
+<EmptyState icon={GanttChartSquare} message="No activity in this window." />
+<EmptyState icon={GanttChartSquare} message="Select a company to view its work timeline." />
+<EmptyState icon={Hexagon} message="No pipelines match your search." />
+<EmptyState icon={History} message="No versions yet. Save changes to create the first." />
+<EmptyState icon={Layers} message="This company has no projects yet." />
+<EmptyState icon={ListTodo} message="No tasks assigned to you." />
+<EmptyState icon={Package} message="Select a file to preview its contents." />
+<EmptyState icon={SearchX} message="No cases match these filters." action="Clear filters" onAction={clearFilters} />
+<EmptyState icon={Users2} message="No team catalog configured." />
+<EmptyState icon={Users2} message="Select a company to browse the team catalog." />
+<Fact label="First responder" value={alert.firstResponderAction} />
+<Fact label="How it runs" value={howItRuns(slot)} />
+<Fact label="Observed" value={alert.observed} />
+<Fact label="Process ID" value={slot.processId ?? "—"} />
+<Fact label="Scope" value={scopeLabel(slot.ownerScopeType)} />
+<Fact label="Severity" value={alert.severity} />
+<Fact label="Started" value={<RelativeTime value={slot.lastStartedAt ?? slot.startedAt} />} />
+<Fact label="Threshold" value={alert.threshold} />
+<Fact label="Trust tier" value={trustTierLabel(slot)} />
+<Field label="ACP session mode" hint="Persistent keeps ACP session state between runs. One-shot starts fresh each run.">
+<Field label="Adapter type" hint={help.adapterType}>
+<Field label="Adapter type">
+<Field label="Agent ID">
+<Field label="Agent instructions file" hint={instructionsFileHint}>
+<Field label="Args (comma-separated)" hint={help.args}>
+<Field label="Auto-pair on first connect">
+<Field label="Base ref">
+<Field label="Bootstrap prompt (legacy)" hint={help.bootstrapPrompt}>
+<Field label="Boundary type">
+<Field label="Branch name" hint="Useful for isolated worktrees">
+<Field label="Capabilities" hint={help.capabilities}>
+<Field label="Claimed API key path">
+<Field label="Cleanup command" hint="Runs before project-level execution workspace teardown">
+<Field label="Cleanup command" hint="Workspace-specific cleanup before teardown">
+<Field label="Command" hint={help.command}>
+<Field label="Command" hint={help.localCommand}>
+<Field label="Company name" hint="The display name for your company.">
+<Field label="Continuation attempts" hint={help.maxTurnContinuationMaxAttempts}>
+<Field label="Continuation delay (sec)" hint={help.maxTurnContinuationDelaySec}>
+<Field label="Cooldown (sec)" hint={help.cooldownSec}>
+<Field label="Default ref">
+<Field label="Description" hint="Optional note about what this machine is for.">
+<Field label="Device auth">
+<Field label="Disable device auth">
+<Field label="Driver" hint="Sandbox stores plugin-backed provider config on the shared environment seam. SSH stores a remote machine target.">
+<Field label="Environment override">
+<Field label="Environment variables" hint={help.envVars}>
+<Field label="Execution engine" hint="Auto uses ACP when prerequisites pass and falls back to Claude CLI with diagnostics.">
+<Field label="Execution engine" hint="Auto uses ACP when prerequisites pass and falls back to Codex CLI with diagnostics.">
+<Field label="Execution engine" hint="Auto uses ACP when prerequisites pass and falls back to Gemini CLI with diagnostics.">
+<Field label="Extra args (comma-separated)" hint={help.extraArgs}>
+<Field label="Gateway URL" hint={help.webhookUrl}>
+<Field label="Headers JSON">
+<Field label="Host" hint="DNS name or IP address for the remote machine.">
+<Field label="Instructions" hint="Optional stable Hermes instructions sent separately from the wake input.">
+<Field label="Interrupt grace period (sec)" hint={help.graceSec}>
+<Field label="Known hosts" hint="Optional known_hosts block used when strict host key checking is enabled.">
+<Field label="Local path">
+<Field label="Max concurrent runs" hint={help.maxConcurrentRuns}>
+<Field label="Max turns per run" hint={help.maxTurnsPerRun}>
+<Field label="Model" hint={help.model}>
+<Field label="Monthly budget (optional)" hint="Leave blank for no cap.">
+<Field label="Name" hint="Operator-facing name for this execution target.">
+<Field label="Name" hint={help.name}>
+<Field label="Paperclip API URL override">
+<Field label="Payload template JSON" hint={help.payloadTemplateJson}>
+<Field label="Port" hint="Defaults to 22.">
+<Field label="Private key" hint="Optional PEM private key. Leave blank to rely on the server's SSH agent or default keychain.">
+<Field label="Prompt Template" hint={help.promptTemplate}>
+<Field label="Provider path / ref">
+<Field label="Provider" hint="Installed run-capable sandbox provider plugins appear here.">
+<Field label="Provision command" hint="Runs when Paperclip prepares this execution workspace">
+<Field label="Remote provider">
+<Field label="Remote workspace path" hint="Absolute path that Paperclip will verify during SSH connection tests.">
+<Field label="Remote workspace ref">
+<Field label="Repo URL">
+<Field label="Repo ref">
+<Field label="Reports to" hint={help.reportsTo}>
+<Field label="Role">
+<Field label="Runtime services JSON" hint={help.runtimeServicesJson}>
+<Field label="Scopes (comma-separated)">
+<Field label="Session key">
+<Field label="Session strategy">
+<Field label="Setup command" hint="Runs when this workspace needs custom bootstrap">
+<Field label="Shared workspace key">
+<Field label="Source type" hint={sourceTypeDescription ?? undefined}>
+<Field label="Target" hint="Import into this company or create a new one.">
+<Field label="Teardown command" hint="Runs when the execution workspace is archived or cleaned up">
+<Field label="Thinking effort" hint={help.thinkingEffort}>
+<Field label="Timeout (sec)" hint={help.timeoutSec}>
+<Field label="Timeout (seconds)">
+<Field label="Timeout seconds">
+<Field label="Title" hint={help.title}>
+<Field label="Trust preset" hint="Choose how broadly this agent can read and act on Paperclip work objects.">
+<Field label="Username" hint="SSH username.">
+<Field label="Visibility">
+<Field label="Wait timeout (ms)">
+<Field label="Webhook URL" hint={help.webhookUrl}>
+<Field label="Working directory (deprecated)" hint={help.cwd}>
+<Field label="Working directory">
+<Field label="Workspace commands JSON" hint="Legacy `services` arrays still work, but `commands` supports both services and jobs.">
+<Field label="Workspace name">
+<FieldRow label="Advance children">
+<FieldRow label="Allowed next steps">
+<FieldRow label="Approver">
+<FieldRow label="Block children">
+<FieldRow label="Call each piece a">
+<FieldRow label="Carry over">
+<FieldRow label="Create each piece in">
+<FieldRow label="Execution workspace">
+<FieldRow label="Issue title">
+<FieldRow label="Name">
+<FieldRow label="Project context">
+<FieldRow label="Review outcomes">
+<FieldRow label="Step type">
+<FieldRow label="Strict mode">
+<FieldRow label="Then move this case to">
+<FieldRow label="Wait">
+<FieldRow label="starting at">
+<FilterField label="Label">
+<FilterField label="Project">
+<FilterField label="Status">
+<FilterField label="Type">
+<FilterSection title="Project">
+<FilterSection title="Severity">
+<FilterSection title="Type">
+<FilterSection title="Workspace">
+<FolderStatusMetric label="Configured" value={status?.configured ? "Yes" : "No"} ok={!!status?.configured} />
+<FolderStatusMetric label="Readable" value={status?.readable ? "Yes" : "No"} ok={!!status?.readable} />
+<Frame label="Assignee's own comment — no chip">
+<Frame label="Before — what the incident actually saw">
+<Frame label="Board (human) edit — audited the same way">
+<Frame label="Cross-task agent edit">
+<Frame label="Cross-task comment — chipped">
+<Frame label="Long user name truncates in the chip">
+<Frame label="Older activity row — no receipt, renders unchanged">
+<Frame label="Reassignment, blockers, and work mode in one write">
+<Frame label="Responsible user not in the loaded directory">
+<HeroStat label="7-day actions" value={formatNumber(last7?.activityCount ?? 0)} hint={`${formatNumber(last7?.commentCount ?? 0)} comments`} />
+<HeroStat label="All-time tokens" value={formatTokens(allTimeTokens)} hint={formatCents(allTime?.costCents ?? 0) + " spent"} />
+<HeroStat label="Completed" value={formatNumber(allTime?.completedIssues ?? 0)} hint={allTime ? `${completionRate(allTime)} rate` : undefined} />
+<HeroStat label="Open assigned" value={formatNumber(allTime?.assignedOpenIssues ?? 0)} hint={`${formatNumber(allTime?.createdIssues ?? 0)} created`} />
+<InlineBanner tone="danger" title="Could not load matched issues">
+<InlineBanner tone="danger" title="Could not load status cards">
+<InlineBanner tone="info" title="Working on it">{actionNote}</InlineBanner>
+<InlineBanner tone="warning" title="Heads up">{actionError}</InlineBanner>
+<InlineBanner tone="warning" title="Summary request failed">
+<Input id="owner-filter" placeholder="Filter by agent name" />
+<Input id="tool-name" value={toolName} onChange={(event) => setToolName(event.target.value)} placeholder="e.g. send_email or slack.list_*" />
+<Input placeholder="Default input" />
+<Input value={name} onChange={(e) => setName(e.target.value)} placeholder="cto-cursor" required autoFocus />
+<Input value={ownerNote} onChange={(e) => setOwnerNote(e.target.value)} placeholder="Dotta’s MacBook" />
+<InstalledBadge label="Installed on all agents" />
+<Label htmlFor="adapterLocalPath">Path to adapter package</Label>
+<Label htmlFor="adapterPackageName">Package Name</Label>
+<Label htmlFor="adapterVersion">Version (optional)</Label>
+<Label htmlFor="app-name">New application name</Label>
+<Label htmlFor="approve-description">Description</Label>
+<Label htmlFor="approve-folder">Folder</Label>
+<Label htmlFor="approve-name">Name</Label>
+<Label htmlFor="approve-provider-config">Provider vault</Label>
+<Label htmlFor="catalog-entry-id">Catalog entry ID</Label>
+<Label htmlFor="check1">Checked item</Label>
+<Label htmlFor="check2">Unchecked item</Label>
+<Label htmlFor="check3">Disabled item</Label>
+<Label htmlFor="conn-name">Connection name</Label>
+<Label htmlFor="conn-url">Endpoint URL</Label>
+<Label htmlFor="copy-profile-name">Name</Label>
+<Label htmlFor="edit-profile-description">Description</Label>
+<Label htmlFor="edit-profile-key">Identifier</Label>
+<Label htmlFor="edit-profile-name">Name</Label>
+<Label htmlFor="input-content">Content</Label>
+<Label htmlFor="input-name">Name</Label>
+<Label htmlFor="limit-count">Times</Label>
+<Label htmlFor="onboarding-agent-role">Role</Label>
+<Label htmlFor="owner-filter">Owner</Label>
+<Label htmlFor="profile-description">Description (optional)</Label>
+<Label htmlFor="profile-description">Description</Label>
+<Label htmlFor="profile-key">Identifier</Label>
+<Label htmlFor="profile-name">Name</Label>
+<Label htmlFor="profile-priority">Priority</Label>
+<Label htmlFor="reject-reason">Reason</Label>
+<Label htmlFor="rule-name">Rule name</Label>
+<Label htmlFor="rule-priority">Priority</Label>
+<Label htmlFor="run-template-body">Body</Label>
+<Label htmlFor="run-template-description">Description</Label>
+<Label htmlFor="run-template-name">Name</Label>
+<Label htmlFor="ryo-command">Command</Label>
+<Label htmlFor="ryo-name">Name</Label>
+<Label htmlFor="sheet-description">Description</Label>
+<Label htmlFor="sheet-title">Title</Label>
+<Label htmlFor="skill-categories">Categories</Label>
+<Label htmlFor="skill-folder-delete">Folder path</Label>
+<Label htmlFor="skill-name">Name</Label>
+<Label htmlFor="skill-slug">Slug</Label>
+<Label htmlFor="skill-tagline">Tagline</Label>
+<Label htmlFor="target-issue-id">Issue ID</Label>
+<Label htmlFor="test-action">Action</Label>
+<Label htmlFor="tool-name">Tool name</Label>
+<Label>Agent</Label>
+<Label>Application</Label>
+<Label>Color</Label>
+<Label>Command template</Label>
+<Label>Connection</Label>
+<Label>Credential references</Label>
+<Label>Default action</Label>
+<Label>Description</Label>
+<Label>Effect</Label>
+<Label>Existing application</Label>
+<Label>Keys it needs</Label>
+<Label>Name</Label>
+<Label>Project</Label>
+<Label>Raw connection</Label>
+<Label>Risk level</Label>
+<Label>Routine</Label>
+<Label>Run template</Label>
+<Label>Selector</Label>
+<Label>Status</Label>
+<Label>Target type</Label>
+<Label>Transport</Label>
+<Link to="/">Go home</Link>
+<Link to="/">Open board</Link>
+<Link to="/apps">Browse app connections</Link>
+<Link to="/apps/advanced/audit">Review activity</Link>
+<Link to="/apps/attention">Review apps</Link>
+<Link to="/auth?next=/">Sign in / Create account</Link>
+<Link to="/company/settings/invites">Open Invites</Link>
+<Link to="/company/settings/members">Open Members</Link>
+<Link to={ENVIRONMENTS_PATH}>Back to environments</Link>
+<Link to={`${ENVIRONMENTS_PATH}/new`} aria-label="Add environment" title="Add environment">
+<Link to={`/auth?next=${encodeURIComponent(currentPath)}`}>Sign in / Create account</Link>
+<Link to={`/issues/${detail.harnessIssue.id}`}>Open test task ↗</Link>
+<Link to={`/issues/${harnessIssueId}`}>Open test task ↗</Link>
+<Link to={`/pipelines/${pipelineId}/settings`} aria-label="Pipeline settings" title="Pipeline settings">
+<Link to={agentUrl(state.agent)}>View agent</Link>
+<Link to={appTabHref(connectionId, "review")}>Open Review tab</Link>
+<Link to={appTabHref(connectionId, "setup")}>Go to Setup</Link>
+<Link to={environmentEditPath(environment.id)}>Edit</Link>
+<Link to={href}>Open source</Link>
+<Link to={permHref}>Open Permissions →</Link>
+<Link to={proposalHref}>Review proposal</Link>
+<Link to={viewHref}>View</Link>
+<LoadingState label="Checking access..." />
+<LoadingState label="Loading new tools..." />
+<LoadingState label="Loading profiles…" />
+<LoadingState label="Probing connection…" />
+<MetaCard label="Company" value="Acme Robotics" />
+<MetaCard label="Invite expires" value="Mar 7, 2027" />
+<MetaCard label="Invited by" value="Board User" />
+<MetaCard label="Requested access" value={requestedAccess} />
+<MetaRow label="Evaluation task">
+<MetaRow label="Process cleanup">
+<MetaRow label="Same-run evidence">
+<MetaRow label="Silence age before fold">
+<MetaRow label="Source task">
+<MetadataRow label="Corrective run">
+<MetadataRow label="Evidence">
+<MetadataRow label="Follow-up">
+<MetadataRow label="Next action">
+<MetadataRow label="Owner retries">
+<MetadataRow label="Owner">
+<MetadataRow label="Recovery owner">
+<MetadataRow label="Resolution">
+<MetadataRow label="Retry progress">
+<MetadataRow label="Source run">
+<MetadataRow label="Task owner">
+<Metric value={formatNumber(stats.activityCount)} label="Actions" />
+<Metric value={formatNumber(stats.commentCount)} label="Comments" />
+<Metric value={formatNumber(stats.completedIssues)} label="Completed" />
+<Metric value={formatNumber(stats.touchedIssues)} label="Touched" />
+<MetricCard icon={Bot} value={12} label="Active Agents" description="+3 this week" />
+<MetricCard icon={CircleDot} value={48} label="Open Issues" />
+<MetricCard icon={DollarSign} value="$1,234" label="Monthly Cost" description="Under budget" />
+<MetricCard icon={Zap} value="99.9%" label="Uptime" />
+<MetricTile label="Agents" value={team.counts.agents} Icon={Users2} />
+<MetricTile label="Fixture rows" value={String(rowTarget)} testId="perf-fixture-row-target" />
+<MetricTile label="Latest duration" value={formatMs(metrics.latestActualDuration)} testId="perf-latest-duration" />
+<MetricTile label="Markdown rows" value={String(LONG_THREAD_MARKDOWN_COMMENT_COUNT)} testId="perf-fixture-markdown-rows" />
+<MetricTile label="Max duration" value={formatMs(metrics.maxActualDuration)} testId="perf-max-duration" />
+<MetricTile label="Mount duration" value={formatMs(metrics.mountActualDuration)} testId="perf-mount-duration" />
+<MetricTile label="Profiler commits" value={String(metrics.commitCount)} testId="perf-commit-count" />
+<MetricTile label="Projects" value={team.counts.projects} Icon={FolderKanban} />
+<MetricTile label="Required skills" value={skillCount(team)} Icon={Boxes} />
+<MetricTile label="Routines" value={team.counts.routines} Icon={Repeat} />
+<MetricTile label="Total duration" value={formatMs(metrics.totalActualDuration)} testId="perf-total-duration" />
+<MobileField label="Apps" value={appsLabel} />
+<MobileField label="Scope" value={scope} />
+<PaneScaffold title="Run" action={<BackButton onBack={onBack} />}>
+<PayloadField label="Icon" value={payload.icon} />
+<PayloadField label="Metric" value={payload.metric} />
+<PayloadField label="Role" value={payload.role} />
+<PayloadField label="Scope" value={payload.scopeName ?? payload.scopeType} />
+<PayloadField label="Title" value={payload.title} />
+<PayloadField label="Window" value={payload.windowKind} />
+<PolicyRow label="Allowed agents" value={formatCount(boundary?.allowedAgentIds, "agent", "agents")} />
+<PolicyRow label="Allowed secrets" value={formatCount(boundary?.allowedSecretBindingIds, "binding", "bindings")} />
+<PolicyRow label="Allowed tools" value={boundary?.allowedToolClasses?.join(" · ") || "-"} />
+<PolicyRow label="Explicit issues" value={formatCount(boundary?.issueIds, "issue", "issues")} />
+<PolicyRow label="Preset" value="Low-trust review v1" />
+<PolicyRow label="Projects" value={formatCount(boundary?.projectIds, "project", "projects")} />
+<PolicyRow label="Promotion target" value={boundary?.outputPromotionTarget?.issueId?.slice(0, 8) ?? "-"} />
+<PolicyRow label="Raw output" value="Quarantined from higher-trust agents" />
+<PolicyRow label="Root issue" value={boundary?.rootIssueId ? boundary.rootIssueId.slice(0, 8) : "-"} />
+<PropRow label="Created" value={relativeTime(detail.createdAt)} />
+<PropRow label="Input" value={detail.inputId ? "saved input" : "ad-hoc paste"} />
+<PropRow label="Skill version" value={`v${detail.skillVersion.revisionNumber}`} />
+<PropRow label="Template" value={detail.templateName ?? "No template"} />
+<PropertyRow label="Adapter">
+<PropertyRow label="Approvals">
+<PropertyRow label="Archived">
+<PropertyRow label="Blocked by" wrap>
+<PropertyRow label="Blocking" wrap>
+<PropertyRow label="Branch">
+<PropertyRow label="Completed">
+<PropertyRow label="Created">
+<PropertyRow label="Depth">
+<PropertyRow label="Error reason">
+<PropertyRow label="Execution">
+<PropertyRow label="External objects">
+<PropertyRow label="Folder">
+<PropertyRow label="Last Heartbeat">
+<PropertyRow label="Lead">
+<PropertyRow label="Level">
+<PropertyRow label="Originating">
+<PropertyRow label="Owner">
+<PropertyRow label="Parent Goal">
+<PropertyRow label="Priority">
+<PropertyRow label="References">
+<PropertyRow label="Related tasks" wrap>
+<PropertyRow label="Reports To">
+<PropertyRow label="Role">
+<PropertyRow label="Service">
+<PropertyRow label="Session">
+<PropertyRow label="Started">
+<PropertyRow label="Status">
+<PropertyRow label="Sub-tasks" wrap>
+<PropertyRow label="Title">
+<PropertyRow label="Updated">
+<PropertyRow label="Workspace">
+<PropertyRow label={<FieldLabel label="Created" state="idle" />}>
+<PropertyRow label={<FieldLabel label="Name" state={fieldState("name")} />}>
+<PropertyRow label={<FieldLabel label="Status" state={fieldState("status")} />}>
+<PropertyRow label={<FieldLabel label="Target Date" state="idle" />}>
+<PropertyRow label={<FieldLabel label="Updated" state="idle" />}>
+<PropertySection title="About">
+<PropertySection title="Attachments">
+<PropertySection title="Case" first>
+<PropertySection title="Execution">
+<PropertySection title="Fields">
+<PropertySection title="Linked tasks">
+<PropertySection title="Relationships">
+<PropertySection title="Triage" first>
+<PropertySection title="Workspace">
+<RailHeading label="Company" onCreate={() => onCreateFolder(null)} />
+<ResultGroup label="Created" rows={grouped.created} draftLookup={draftLookup} />
+<ResultGroup label="Failed" rows={grouped.failed} draftLookup={draftLookup} />
+<ResultGroup label="Skipped" rows={grouped.skipped} draftLookup={draftLookup} />
+<ResultRow label="Agents imported" count={agentsCreated} />
+<ResultRow label="Projects imported" count={projectsCreated} />
+<ResultRow label="Skills resolved" count={skillsResolved} />
+<RetryMetric label="active work" value={retryPlan.data.effectCounts.activeDescendants} tone={retryPlan.data.effectCounts.activeDescendants > 0 ? "warning" : "default"} />
+<RetryMetric label="children" value={retryPlan.data.effectCounts.directChildren} />
+<RetryMetric label="descendants" value={retryPlan.data.effectCounts.descendants} />
+<RetryMetric label="linked tasks" value={retryPlan.data.effectCounts.linkedAutomationIssues} />
+<Row label="Authentication" value="bearer" />
+<Row label="Protocol version" value="2025-03-26" />
+<Row label="Public ID" value={gateway.gatewayPublicId} mono />
+<Row label="Transport" value="streamable_http" />
+<SecondaryAction href={artifact.downloadPath} download title="Download file">
+<SecondaryAction href={artifact.openPath} title="Open file in new tab">
+<Section title="Agent Capsule">
+<Section title="Avatars">
+<Section title="Badges">
+<Section title="Breadcrumb">
+<Section title="Built-in Agent Lifecycle Chips">
+<Section title="Buttons">
+<Section title="Cards">
+<Section title="Collapsible">
+<Section title="Colors">
+<Section title="Command (CMDK)">
+<Section title="Comment Thread Pattern">
+<Section title="Common Icons (Lucide)">
+<Section title="Component Coverage">
+<Section title="Cost Table Pattern">
+<Section title="Dialog">
+<Section title="Dropdown Menu">
+<Section title="Empty State">
+<Section title="Entity Rows">
+<Section title="Environment Variables Editor">
+<Section title="Filter Bar">
+<Section title="Form Elements">
+<Section title="Grouped List (Issues pattern)">
+<Section title="Identity">
+<Section title="Inline Banner">
+<Section title="Issue Output Surface">
+<Section title="Keyboard Shortcuts">
+<Section title="Log Viewer">
+<Section title="Navigation Patterns">
+<Section title="Popover">
+<Section title="Progress Bars (Budget)">
+<Section title="Property Row Pattern">
+<Section title="Radius">
+<Section title="Resizable Panels">
+<Section title="Scroll Area">
+<Section title="Select">
+<Section title="Separator">
+<Section title="Sheet">
+<Section title="Skeletons">
+<Section title="Status System">
+<Section title="Tabs">
+<Section title="Team Catalog">
+<Section title="Tools & Access">
+<Section title="Tooltips">
+<Section title="Typography">
+<SectionEmpty>No detected skills match your search.</SectionEmpty>
+<SectionHeader>Agent hierarchy</SectionHeader>
+<SectionHeader>Files</SectionHeader>
+<SectionHeader>Projects</SectionHeader>
+<SectionHeader>Required skills</SectionHeader>
+<SectionHeader>Root agents</SectionHeader>
+<SectionHeader>Secrets & env inputs</SectionHeader>
+<SectionHeader>Summary</SectionHeader>
+<SectionHeader>Target manager</SectionHeader>
+<SectionHeading>Documents</SectionHeading>
+<SectionHeading>Files</SectionHeading>
+<SectionHeading>Work products</SectionHeading>
+<SelectItem value="3600">Hour</SelectItem>
+<SelectItem value="60">Minute</SelectItem>
+<SelectItem value="__unfiled">Unfiled</SelectItem>
+<SelectItem value="__unset__">No default</SelectItem>
+<SelectItem value="__unset__">No value</SelectItem>
+<SelectItem value="actionable">Needs action</SelectItem>
+<SelectItem value="active">Active</SelectItem>
+<SelectItem value="alerts">Alerts</SelectItem>
+<SelectItem value="all">All approval statuses</SelectItem>
+<SelectItem value="allow">Allow unless excluded</SelectItem>
+<SelectItem value="approvals">Approvals</SelectItem>
+<SelectItem value="archived">Archived</SelectItem>
+<SelectItem value="backlog">Backlog</SelectItem>
+<SelectItem value="builtFor">Built for</SelectItem>
+<SelectItem value="critical">Critical</SelectItem>
+<SelectItem value="deny">Deny unless included</SelectItem>
+<SelectItem value="destructive">Destructive</SelectItem>
+<SelectItem value="disabled">Disabled</SelectItem>
+<SelectItem value="done">Done</SelectItem>
+<SelectItem value="everything">All categories</SelectItem>
+<SelectItem value="exclude">Block</SelectItem>
+<SelectItem value="exclude">Exclude</SelectItem>
+<SelectItem value="existing">Use existing application</SelectItem>
+<SelectItem value="failed_runs">Failed runs</SelectItem>
+<SelectItem value="false">False</SelectItem>
+<SelectItem value="high">High</SelectItem>
+<SelectItem value="in_progress">In Progress</SelectItem>
+<SelectItem value="in_review">In Review</SelectItem>
+<SelectItem value="include">Allow</SelectItem>
+<SelectItem value="include">Include</SelectItem>
+<SelectItem value="issues_i_touched">My recent tasks</SelectItem>
+<SelectItem value="join_requests">Join requests</SelectItem>
+<SelectItem value="local_stdio">Local stdio (approved template)</SelectItem>
+<SelectItem value="mcp_remote">Remote HTTP (no local process)</SelectItem>
+<SelectItem value="medium">Medium</SelectItem>
+<SelectItem value="new">Create new application</SelectItem>
+<SelectItem value="none">None</SelectItem>
+<SelectItem value="read">Read-only</SelectItem>
+<SelectItem value="rename">Rename collisions</SelectItem>
+<SelectItem value="resolved">Resolved</SelectItem>
+<SelectItem value="skip">Skip collisions</SelectItem>
+<SelectItem value="todo">Todo</SelectItem>
+<SelectItem value="true">True</SelectItem>
+<SelectItem value="write">Makes changes</SelectItem>
+<SelectItem value={ALL}>All agents</SelectItem>
+<SelectItem value={ALL}>All apps</SelectItem>
+<SelectItem value={ALL}>All responsible users</SelectItem>
+<SelectItem value={ANY_VALUE}>Any connection</SelectItem>
+<SelectItem value={ANY_VALUE}>Choose agent</SelectItem>
+<SelectItem value={ANY_VALUE}>Choose app</SelectItem>
+<SelectItem value={ANY_VALUE}>Choose capability</SelectItem>
+<SelectItem value={ANY_VALUE}>Choose project</SelectItem>
+<SelectTrigger><SelectValue placeholder="Choose agent" /></SelectTrigger>
+<SelectTrigger><SelectValue placeholder="Choose app" /></SelectTrigger>
+<SelectTrigger><SelectValue placeholder="Choose capability" /></SelectTrigger>
+<SelectTrigger><SelectValue placeholder="Choose project" /></SelectTrigger>
+<SelectTrigger><SelectValue placeholder="Select a project" /></SelectTrigger>
+<SelectTrigger><SelectValue placeholder="Select a routine" /></SelectTrigger>
+<SelectTrigger><SelectValue placeholder="Select an agent" /></SelectTrigger>
+<SelectValue placeholder="Action" />
+<SelectValue placeholder="Agent" />
+<SelectValue placeholder="App" />
+<SelectValue placeholder="Approval status" />
+<SelectValue placeholder="Category" />
+<SelectValue placeholder="Choose a stage" />
+<SelectValue placeholder="Choose a step" />
+<SelectValue placeholder="Choose a value" />
+<SelectValue placeholder="Choose frequency..." />
+<SelectValue placeholder="Choose..." />
+<SelectValue placeholder="Entity" />
+<SelectValue placeholder="No default" />
+<SelectValue placeholder="Responsible user" />
+<SelectValue placeholder="Select a connection" />
+<SelectValue placeholder="Select a role…" />
+<SelectValue placeholder="Select a vault secret" />
+<SelectValue placeholder="Select an AWS vault" />
+<SelectValue placeholder="Select an agent" />
+<SelectValue placeholder="Select an application" />
+<SelectValue placeholder="Select an approved template" />
+<SelectValue placeholder="Select an option" />
+<SelectValue placeholder="Select revision" />
+<SelectValue placeholder="Select status" />
+<ServerInfoRow icon={FileDiff} label="Checkout state" value={localChanges} />
+<ServerInfoRow icon={GitCommit} label="Running commit" value={commit} />
+<SheetDescription>Edit metadata without leaving the current page.</SheetDescription>
+<SheetDescription>Pick an agent and an action to see what Paperclip would do.</SheetDescription>
+<SheetTitle>Check an agent's access</SheetTitle>
+<SheetTitle>Issue Properties</SheetTitle>
+<SheetTitle>Version history</SheetTitle>
+<SidebarNavItem to="/apps" label="Browse" icon={Store} end />
+<SidebarNavItem to="/apps/connections" label="Connections" icon={AppWindow} end />
+<SidebarNavItem to="/company/export" label="Export" icon={Download} />
+<SidebarNavItem to="/company/import" label="Import" icon={Upload} end />
+<SidebarNavItem to="/company/settings" label="General" icon={SlidersHorizontal} end />
+<SidebarNavItem to="/company/settings/invites" label="Invites" icon={MailPlus} end />
+<SidebarNavItem to="/company/settings/secrets" label="Secrets" icon={KeyRound} end />
+<SkillSection title="Available from the library" count={filteredAvailable.length}>
+<SkillSection title="Enabled on this agent" count={filteredEnabled.length}>
+<StatCard label="Apps">
+<StatCard label="Health">
+<StatCard label="Tokens">
+<SubSection title="Action approval card — mobile (390×844, surface 99)">
+<SubSection title="Action approval card — pending / stale (surfaces 11/12)">
+<SubSection title="Agent status dots">
+<SubSection title="App components">
+<SubSection title="BindingsTable (reused in the audit row drilldown)">
+<SubSection title="Chart">
+<SubSection title="Checkbox & Label">
+<SubSection title="Core">
+<SubSection title="Custom initials">
+<SubSection title="Default (pill) variant">
+<SubSection title="Default size">
+<SubSection title="Degraded output (invalid / failed attachment metadata)">
+<SubSection title="Empty state">
+<SubSection title="EmptyState (canonical, with description + action)">
+<SubSection title="EnforcementBanner — default / denied-detected">
+<SubSection title="EnforcementBanner — presentational tones (info / warning / error)">
+<SubSection title="EnvInputsList">
+<SubSection title="ExternalSourcesList">
+<SubSection title="Gradients">
+<SubSection title="Group">
+<SubSection title="Icon buttons">
+<SubSection title="Individual">
+<SubSection title="Initials derivation">
+<SubSection title="Inline Editor">
+<SubSection title="Input">
+<SubSection title="IssueReferencePill">
+<SubSection title="IssueStatusBadge (brand chip + glyph — PAP-75)">
+<SubSection title="Line variant">
+<SubSection title="Membership action">
+<SubSection title="Metric Cards">
+<SubSection title="Multiple outputs (primary video + 'Also produced')">
+<SubSection title="Page Skeleton (detail)">
+<SubSection title="Page Skeleton (list)">
+<SubSection title="PriorityIcon (interactive)">
+<SubSection title="RequiredSkillsList">
+<SubSection title="Run invocation badges">
+<SubSection title="Sidebar nav items">
+<SubSection title="Sidebar">
+<SubSection title="Sizes">
+<SubSection title="Skill plan step (StepSkillPlan)">
+<SubSection title="Small trigger">
+<SubSection title="Source policy step (StepSourcePolicy)">
+<SubSection title="Standard Card">
+<SubSection title="States">
+<SubSection title="StatusBadge (all statuses)">
+<SubSection title="StatusIcon (interactive)">
+<SubSection title="TeamCard (onboarding grid)">
+<SubSection title="TeamHierarchyPreview">
+<SubSection title="TeamRow (browse list)">
+<SubSection title="Textarea">
+<SubSection title="Tool-access status keys (StatusBadge)">
+<SubSection title="UI primitives">
+<SubSection title="Variants">
+<SubSection title="View toggle">
+<SubSection title="With icons">
+<SummaryCount label="Agents" value={plan.agentPlans.length} />
+<SummaryCount label="Projects" value={plan.projectPlans.length} />
+<SummaryCount label="Required skills" value={result.skillPreparations.length} />
+<SummaryCount label="Starter tasks" value={plan.issuePlans.length} />
+<TabsList aria-label="Activity scope">
+<TabsTrigger value="agents">Agent actions</TabsTrigger>
+<TabsTrigger value="all">All activity</TabsTrigger>
+<TabsTrigger value="billers">Billers</TabsTrigger>
+<TabsTrigger value="budgets">Budgets</TabsTrigger>
+<TabsTrigger value="comments">Comments</TabsTrigger>
+<TabsTrigger value="company">Company</TabsTrigger>
+<TabsTrigger value="config">Config</TabsTrigger>
+<TabsTrigger value="costs">Costs</TabsTrigger>
+<TabsTrigger value="details">Details</TabsTrigger>
+<TabsTrigger value="external">External reference</TabsTrigger>
+<TabsTrigger value="finance">Finance</TabsTrigger>
+<TabsTrigger value="history">History</TabsTrigger>
+<TabsTrigger value="input">Input</TabsTrigger>
+<TabsTrigger value="managed">Managed value</TabsTrigger>
+<TabsTrigger value="overview">Overview</TabsTrigger>
+<TabsTrigger value="properties">Properties</TabsTrigger>
+<TabsTrigger value="providers">Providers</TabsTrigger>
+<TabsTrigger value="reference">Change reference</TabsTrigger>
+<TabsTrigger value="runs">Runs</TabsTrigger>
+<TabsTrigger value="settings">Settings</TabsTrigger>
+<TabsTrigger value="skill">Skill</TabsTrigger>
+<TabsTrigger value="summary">Summary</TabsTrigger>
+<TabsTrigger value="user">Each user</TabsTrigger>
+<TabsTrigger value="value">Write new value</TabsTrigger>
+<TabsTrigger value="watched">Watched issues</TabsTrigger>
+<TaskField key={`${label}-${index}`} label="Selected" value={label} />
+<TaskField key={label} label="Answer" value={label} />
+<TaskField key={label} label="Label" value={label} tone="subtle" />
+<TaskField label="Billing" value={node.task.billingCode} />
+<TaskField label="Default parent" value={interaction.payload.defaultParentId} tone="subtle" />
+<TaskField label="Project" value={node.task.projectId} tone="subtle" />
+<TaskField label="Responsible" value={assigneeLabel} />
+<TextField label="AWS region" value={form.region} onChange={(value) => setField("region", value)} placeholder="us-east-1" required />
+<TextField label="Address" value={form.address} onChange={(value) => setField("address", value)} placeholder="https://vault.example.com" />
+<TextField label="Environment tag" value={form.environmentTag} onChange={(value) => setField("environmentTag", value)} placeholder="prod" />
+<TextField label="KMS key id" value={form.kmsKeyId} onChange={(value) => setField("kmsKeyId", value)} placeholder="alias/paperclip-secrets" />
+<TextField label="Location" value={form.location} onChange={(value) => setField("location", value)} placeholder="global" />
+<TextField label="Mount path" value={form.mountPath} onChange={(value) => setField("mountPath", value)} placeholder="secret" />
+<TextField label="Namespace" value={form.namespace} onChange={(value) => setField("namespace", value)} placeholder="admin" />
+<TextField label="Namespace" value={form.namespace} onChange={(value) => setField("namespace", value)} placeholder="production" />
+<TextField label="Owner tag" value={form.ownerTag} onChange={(value) => setField("ownerTag", value)} placeholder="platform" />
+<TextField label="Project id" value={form.projectId} onChange={(value) => setField("projectId", value)} placeholder="paperclip-prod" />
+<TextField label="Secret name prefix" value={form.secretNamePrefix} onChange={(value) => setField("secretNamePrefix", value)} placeholder="paperclip" />
+<TextField label="Secret path prefix" value={form.secretPathPrefix} onChange={(value) => setField("secretPathPrefix", value)} placeholder="paperclip/prod" />
+<Textarea placeholder="Leave a comment..." rows={3} />
+<Textarea placeholder="Write something..." />
+<ToggleSwitch checked={on} disabled={toggleDisabled} onCheckedChange={onToggle} aria-label="Toggle gateway" />
+<TokenField label="Created" value={<RelativeTime value={token.createdAt} />} />
+<TokenField label="Owner" value={token.clientLabel || token.ownerNote || "—"} />
+<ToolsPageHeader title="Health" description="How your apps are doing right now." />
+<ToolsPageHeader title="Profile not found" description="This access profile may have been deleted." />
+<TooltipContent side="bottom">Filter by</TooltipContent>
+<TooltipContent side="right">See all agents</TooltipContent>
+<TooltipContent>Add file</TooltipContent>
+<TooltipContent>Add folder</TooltipContent>
+<TooltipContent>Agents in this company that currently have this skill installed.</TooltipContent>
+<TooltipContent>Catalog content hash has changed since this skill was installed.</TooltipContent>
+<TooltipContent>Catalog package provenance</TooltipContent>
+<TooltipContent>Create run template</TooltipContent>
+<TooltipContent>Delete custom template</TooltipContent>
+<TooltipContent>Delete folder</TooltipContent>
+<TooltipContent>Each user provides and owns their own value</TooltipContent>
+<TooltipContent>Edit custom template</TooltipContent>
+<TooltipContent>Has external sources</TooltipContent>
+<TooltipContent>New input</TooltipContent>
+<TooltipContent>Pinned source revision</TooltipContent>
+<TooltipContent>Requires board operator or agent-create permissions.</TooltipContent>
+<TooltipContent>Settings</TooltipContent>
+<TooltipContent>This is a tooltip</TooltipContent>
+<TooltipContent>This skill cannot be installed — its content is not valid Agent Skills markdown.</TooltipContent>
+<TooltipContent>This team cannot be installed — the package manifest is invalid.</TooltipContent>
+<TooltipContent>Update available — installed team is out of date</TooltipContent>
+<TooltipContent>Updates automatically every 15 seconds.</TooltipContent>
+<TooltipContent>You have edited this skill after installing. Updates from the catalog will overwrite your changes.</TooltipContent>
+<UsageList title="Agent attribution" empty="No issue-linked token usage yet." rows={agentUsageRows} />
+<UsageList title="Provider mix" empty="No provider usage attributed yet." rows={providerUsageRows} />
+<UserSecretChip label="Each user" />
+<a href="/">Continue to dashboard</a>
+<a href="/auth?next=/">Sign in / Create account</a>
+<a href={`#comment-${interaction.result.commentId}`}>Jump to comment</a>
+<a href={entry.url ?? undefined} target="_blank" rel="noreferrer" aria-label="Open in new tab">
+<code>StatusBadge</code> keys defined in <code>lib/status-colors</code>.
+<div>Can assign tasks</div>
+<div>Can create new agents</div>
+<div>Can create/import skills</div>
+<label htmlFor="inherit-runtime-config">Inherit project workspace runtime config</label>
+<li>Click "Copy &lt;folder name&gt; as Pathname".</li>
+<li>Click "Copy as path".</li>
+<li>Copy the output and paste it into the path input.</li>
+<li>Delegate follow-up work or queue a continuation.</li>
+<li>Find the folder in File Explorer.</li>
+<li>Find the folder in Finder.</li>
+<li>Hold <kbd>Option</kbd> and right-click the folder.</li>
+<li>Hold <kbd>Shift</kbd> and right-click the folder.</li>
+<li>Mark it done or cancelled.</li>
+<li>Names must start with a letter and may use letters, numbers, and underscores.</li>
+<li>Normalized cause: Run completed without disposition</li>
+<li>Paste the result into the path input.</li>
+<li>Record what is blocking it and who owns that blocker.</li>
+<li>Recovery owner: CTO</li>
+<li>Recovery run: 61fdb79b-8012-4676-ac71-2971830e126a</li>
+<li>Run <code>cd /path/to/folder</code>.</li>
+<li>Run <code>pwd</code>.</li>
+<li>Send it for review or ask for input.</li>
+<li>Source issue: PAP-3440</li>
+<li>Source run: 9cdba892-c7ca-4d93-8604-4843873b127c</li>
+<li>Status before: in_progress</li>
+<li>Suggested action: Reassign to recovery agent</li>
+<li>The same name reused across the title and instructions is treated as one variable.</li>
+<li>Try fewer tokens or a single distinctive term.</li>
+<li>Variable names ending in capital Date, such as startDate, are created as date variables by default.</li>
+<li>Wrap multi-word phrases in quotes.</li>
+<optgroup label="Agents">
+<optgroup label="Humans">
+<option value="">Choose a pipeline</option>
+<option value="">Choose a stage</option>
+<option value="">Choose an existing workspace</option>
+<option value="">Deployment default</option>
+<option value="">Initial</option>
+<option value="">Local</option>
+<option value="">No environment</option>
+<option value="">No saved secret</option>
+<option value="">Project fallback</option>
+<option value="">Select user secret...</option>
+<option value="">Stay on this step</option>
+<option value="">Unset</option>
+<option value="__latest__">Latest</option>
+<option value="__unassigned">Leave unassigned</option>
+<option value="active">Active</option>
+<option value="agent">Agent scoped</option>
+<option value="agent">Agent</option>
+<option value="allowed">Allowed</option>
+<option value="approved">Approved</option>
+<option value="ask">Ask a human first</option>
+<option value="auto">Auto (ACP preferred)</option>
+<option value="claude_local">Claude Code</option>
+<option value="cli">Claude CLI</option>
+<option value="cli">Codex CLI</option>
+<option value="cli">Gemini CLI</option>
+<option value="codex_local">Codex</option>
+<option value="coming_soon">Coming soon</option>
+<option value="company">Company — visible inside this company</option>
+<option value="cursor">Cursor</option>
+<option value="deny">Deny</option>
+<option value="disabled">Disabled</option>
+<option value="fail">Fail</option>
+<option value="fixed">Fixed</option>
+<option value="human">Human</option>
+<option value="issue">Issue scoped</option>
+<option value="issue">Issue</option>
+<option value="issue">Per issue</option>
+<option value="local">Local</option>
+<option value="new">Create new company</option>
+<option value="none">None</option>
+<option value="oneshot">One-shot</option>
+<option value="optional">Optional</option>
+<option value="pending">Pending</option>
+<option value="pending_approval">Pending approval</option>
+<option value="persistent">Persistent</option>
+<option value="private">Private — only visible in your library</option>
+<option value="project">Project</option>
+<option value="rejected">Rejected</option>
+<option value="rename">Rename on conflict</option>
+<option value="replace">Replace existing</option>
+<option value="required">Required</option>
+<option value="root_issue">Root issue</option>
+<option value="run">Per run</option>
+<option value="run">Run scoped</option>
+<option value="sandbox">Sandbox</option>
+<option value="skip">Skip on conflict</option>
+<option value="suspended">Suspended</option>
+<p>Health checks run once the plugin is ready.</p>
+<p>No active conversation yet.</p>
+<p>Only agents you can assign tasks to are listed.</p>
+<p>Rich editor unavailable for this markdown. Showing raw source instead.</p>
+<p>This app doesn’t exist anymore.</p>
+<p>This task is in plan mode but no plan document has been written yet.</p>
+<p>This vote is always saved locally.</p>
+<p>Workspace plugin tab is not available.</p>
+<p>You can change this later in Settings &gt; General.</p>
+<span>All billers</span>
+<span>All providers</span>
+<span>Approve agent</span>
+<span>Authenticated. The environment has credentials now.</span>
+<span>Auto-restart will trigger when the instance is idle</span>
+<span>Base ref</span>
+<span>Branch template</span>
+<span>Bundled</span>
+<span>Catalog</span>
+<span>Check every</span>
+<span>Choose another access profile and make it the company default first.</span>
+<span>Codebase</span>
+<span>Completing the login…</span>
+<span>Connect →</span>
+<span>Content</span>
+<span>Couldn't load item outputs.</span>
+<span>Create new organization...</span>
+<span>Create new secret…</span>
+<span>Created</span>
+<span>Default</span>
+<span>Description</span>
+<span>Destination validation:</span>
+<span>Edit agent</span>
+<span>Editing raw YAML to preserve formatting the form can't reconstruct.</span>
+<span>Enable isolated task checkouts</span>
+<span>Environment</span>
+<span>Execution Workspaces</span>
+<span>Force replace existing same-key skill</span>
+<span>Hand off to</span>
+<span>Input folded</span>
+<span>Input</span>
+<span>Installed</span>
+<span>Leave project</span>
+<span>Lifecycle</span>
+<span>Load more from this folder</span>
+<span>Loading folder…</span>
+<span>Motion tweak panel</span>
+<span>Move existing items to</span>
+<span>NPM Package</span>
+<span>Name</span>
+<span>New project</span>
+<span>New tasks default to isolated checkout</span>
+<span>Note</span>
+<span>Only auto-update during active hours</span>
+<span>Open</span>
+<span>Pick a destination folder.</span>
+<span>Plugin ID</span>
+<span>Plugin Key</span>
+<span>Plugin error</span>
+<span>Prefer to finish setup from the host?</span>
+<span>Preparing the login…</span>
+<span>Proposed by</span>
+<span>Provision command</span>
+<span>Read only</span>
+<span>Reason</span>
+<span>Remaining</span>
+<span>Remove from starred</span>
+<span>Requested by</span>
+<span>Restart <code>pnpm dev:once</code> after the active work is safe to interrupt</span>
+<span>Restart Required</span>
+<span>Revoke this token now?</span>
+<span>Routine changed elsewhere. Reload to merge.</span>
+<span>Runtime provision command</span>
+<span>Secret binding</span>
+<span>Shared workspace concurrency</span>
+<span>Spend</span>
+<span>Teardown command</span>
+<span>The saved Claude login is bound to this agent now.</span>
+<span>This agent is pending board approval and cannot be invoked yet.</span>
+<span>Tokens</span>
+<span>Unsaved changes</span>
+<span>Use manual model</span>
+<span>User</span>
+<span>Version</span>
+<span>Wait</span>
+<span>When an item enters this step</span>
+<span>Worktree parent dir</span>
+<strong>Built-in</strong>. Companies that require hire approval will queue this for the
+Authenticate with <code>Authorization: Bearer &lt;token&gt;</code> over streamable HTTP.
+Ships with Paperclip and powers <strong>Briefs</strong>. It can be paused but not deleted.
+Two-column key/value block with mono values. Lives inside <code>ActionCard</code> and is reused
+actions={<Button size="sm">Retry</Button>}
+actions={<Button variant="outline" size="sm">Reset to defaults</Button>}
+agent.pauseReason === "budget" ? <BudgetSidebarMarker title="Agent paused by budget" /> : undefined
+aria-label="Access alias"
+aria-label="Active hours end"
+aria-label="Active hours start"
+aria-label="Active hours timezone"
+aria-label="Add label"
+aria-label="Add tool"
+aria-label="Also approve the proposed secret"
+aria-label="App name"
+aria-label="Archive confirmation"
+aria-label="Archive from inbox"
+aria-label="Archive"
+aria-label="Attach file"
+aria-label="Attach files"
+aria-label="Back to files"
+aria-label="Back to inbox"
+aria-label="Blocker chain progress"
+aria-label="Break into smaller pieces"
+aria-label="Browser code"
+aria-label="Call each piece a"
+aria-label="Card name"
+aria-label="Change case status"
+aria-label="Change project icon and color"
+aria-label="Choose a verdict"
+aria-label="Choose which agent to test as"
+aria-label="Clear artifact search"
+aria-label="Clear error and return agent to idle"
+aria-label="Clear local folder"
+aria-label="Clear repo"
+aria-label="Clear search"
+aria-label="Close annotation panel"
+aria-label="Close file viewer"
+aria-label="Close import dialog"
+aria-label="Close sidebar"
+aria-label="Codebase help"
+aria-label="Copy code"
+aria-label="Copy comment as markdown"
+aria-label="Copy link to system notice"
+aria-label="Copy message"
+aria-label="Copy system notice"
+aria-label="Copy"
+aria-label="Create each piece in"
+aria-label="Create run template"
+aria-label="Create secret"
+aria-label="Cron expression"
+aria-label="Custom image browser terminal"
+aria-label="Daily token cap"
+aria-label="Default environment"
+aria-label="Delete comment"
+aria-label="Delete file"
+aria-label="Delete run template"
+aria-label="Dismiss agent membership notice"
+aria-label="Dismiss notification"
+aria-label="Dismiss project membership notice"
+aria-label="Dismiss sensitive-value suggestion"
+aria-label="Dismiss suggestion"
+aria-label="Dismiss"
+aria-label="Download file"
+aria-label="Duplicate run template"
+aria-label="Each user provides and owns their own value"
+aria-label="Edit description"
+aria-label="Edit run template"
+aria-label="Execution workspace mode"
+aria-label="Execution workspaces help"
+aria-label="Existing execution workspace"
+aria-label="Filter projects"
+aria-label="Filter"
+aria-label="Find an action"
+aria-label="Fit chart to screen"
+aria-label="Folder name"
+aria-label="From date"
+aria-label="Frontmatter YAML"
+aria-label="Group"
+aria-label="Header name"
+aria-label="Helpful"
+aria-label="Hex color"
+aria-label="Install on all agents"
+aria-label="Issue title template"
+aria-label="Item body"
+aria-label="Jump to latest messages"
+aria-label="Keep sidebar expanded"
+aria-label="Latest invite URL"
+aria-label="Mark as read"
+aria-label="Markdown preview mode"
+aria-label="Max updates per hour"
+aria-label="Mobile navigation"
+aria-label="Model lane"
+aria-label="More actions"
+aria-label="More task actions"
+aria-label="More thread actions"
+aria-label="Move existing items to"
+aria-label="Move this case when all pieces finish"
+aria-label="Move to stage when children finish"
+aria-label="Needs next step"
+aria-label="Needs work"
+aria-label="New label color"
+aria-label="Open account menu"
+aria-label="Open agent feed"
+aria-label="Open annotation thread"
+aria-label="Open file in this issue"
+aria-label="Open parent folder"
+aria-label="Open sidebar"
+aria-label="Open the authentication page"
+aria-label="Open the authorization page"
+aria-label="Open watchdog task"
+aria-label="Page section"
+aria-label="Paused"
+aria-label="Pipeline description"
+aria-label="Pipeline name"
+aria-label="Productivity review open"
+aria-label="Profile actions"
+aria-label="Project workspace"
+aria-label="Reassign agents to environment"
+aria-label="Refresh card"
+aria-label="Refresh remote secrets"
+aria-label="Refresh workspace files"
+aria-label="Remove API access"
+aria-label="Remove folder prefix"
+aria-label="Remove key"
+aria-label="Remove rule"
+aria-label="Rename app"
+aria-label="Requirement"
+aria-label="Reset to neutral gray"
+aria-label="Reset zoom"
+aria-label="Resize board chat and agent feed"
+aria-label="Resize file tree"
+aria-label="Resize panel"
+aria-label="Resize sidebar"
+aria-label="Resize skill folders"
+aria-label="Resolve recovery"
+aria-label="Restart"
+aria-label="Routine sections"
+aria-label="Row actions"
+aria-label="Scan project workspaces for skills"
+aria-label="Scroll to bottom"
+aria-label="Scroll to latest"
+aria-label="Search agents"
+aria-label="Search apps"
+aria-label="Search artifacts"
+aria-label="Search cases"
+aria-label="Search discovered skills"
+aria-label="Search gateways"
+aria-label="Search query"
+aria-label="Search remote secrets"
+aria-label="Search secrets"
+aria-label="Search skills"
+aria-label="Search tasks to add as blockers"
+aria-label="Search workspace files"
+aria-label="Secret name"
+aria-label="Secret value"
+aria-label="Secrets"
+aria-label="Select summary revision"
+aria-label="Selectable options"
+aria-label="Selection actions"
+aria-label="Send"
+aria-label="Shared workspace concurrency"
+aria-label="Show raw Markdown"
+aria-label="Show rendered Markdown"
+aria-label="Show variable help"
+aria-label="Skill folders"
+aria-label="Skill release"
+aria-label="Skill test input"
+aria-label="Sort"
+aria-label="Source-resolved watchdog fold"
+aria-label="Stage sections"
+aria-label="Start"
+aria-label="Starting stage for each piece"
+aria-label="Step type"
+aria-label="Stop"
+aria-label="Streaming speed"
+aria-label="Strictly enforce transitions"
+aria-label="Sub-task navigation"
+aria-label="Sub-tasks completion progress"
+aria-label="Switch these agents to the copy"
+aria-label="Task blockers"
+aria-label="Tasks waiting on live work"
+aria-label="Then move this case to"
+aria-label="Timeline end date"
+aria-label="Timeline start date"
+aria-label="To date"
+aria-label="Toggle keyboard shortcuts"
+aria-label="Toggle task graph liveness auto-recovery"
+aria-label="Toggle username log censoring"
+aria-label="Toggle worktree run execution setting"
+aria-label="Type the gateway name to confirm archive"
+aria-label="Type the issue identifier to confirm"
+aria-label="Type the token name to confirm"
+aria-label="Unsaved changes"
+aria-label="Up one folder"
+aria-label="Update available"
+aria-label="User secret key"
+aria-label="User secret"
+aria-label="Value source"
+aria-label="Variable name"
+aria-label="Variable value"
+aria-label="Version"
+aria-label="View mode"
+aria-label="What this card watches & reports"
+aria-label="Zoom in"
+aria-label="Zoom out"
+aria-label="chat history"
+aria-label="filter by"
+aria-label="group by task"
+aria-label="new chat"
+buildAdapterConfig: (values: CreateConfigValues) => Record<string, unknown>;
+closeLauncher: (key: string, event: PluginRenderCloseEvent) => Promise<void>;
+const dp = Array.from({ length: oldCount + 1 }, () => Array<number>(newCount + 1).fill(0));
+const runSave = useCallback(async (save: () => Promise<void>) => {
+deleteDocument?: (key: string) => Promise<unknown>;
+description="A denial that is NOT a responsible-user code keeps the existing generic error copy — no responsible-user notice."
+description="A run acting for a human now names that user on both the issue run ledger and the run detail header."
+description="Add a connection to an application to configure credentials and discover its tools."
+description="Already have a setup snippet from a README? Paste it and we’ll connect it."
+description="Ask them to visit Settings → Members to approve your request."
+description="Board User must approve your request to join."
+description="Create a profile to group tool selectors, then bind it to the company or a specific agent."
+description="Decide which tools your agents can use. Build a profile once, then assign it to the agents that need it."
+description="Detect external URLs in issues and show resolved status for pull requests, tickets, and other referenced work objects."
+description="Enable the experimental shared status-card board and its gated API. Existing card data is kept when this is disabled."
+description="Hide the local environment and run all agents in the platform-managed environment."
+description="How the notice reads within a run row on the issue timeline."
+description="Long-running commands that Paperclip can supervise for this workspace."
+description="One container, system-authored label, hidden details. The chat surface keeps user and agent bubbles unchanged."
+description="One-shot commands that run now and exit when they finish."
+description="Open Paperclip docs in a new tab."
+description="Open your activity, task, and usage ledger."
+description="Other tasks that currently point at this task."
+description="Other tasks this task currently points at in its title, description, comments, or documents."
+description="Permit optional sources that are not pinned to a ref or checksum."
+description="Register a command Paperclip runs in your workspace for a tool that isn’t listed."
+description="Required for local_path / agent_package sources. Development use only."
+description="Resolve github/url skill and team sources at install time."
+description="Restore the Goals item in the main sidebar while the goals surface is being evaluated."
+description="Retry the preview. You do not need to reload this page."
+description="Reusable bundles of allowed applications, connections, and tools, assignable to agents, projects, routines, or issues."
+description="Review the invite details, then submit the agent information below to start the join request."
+description="Rules are checked top to bottom — the first one that matches decides."
+description="Running services that no longer match the current workspace command config."
+description="Share feedback or report an issue."
+description="Show environment management in company settings and allow project and agent environment assignment controls."
+description="Show task detail controls for browsing and previewing workspace files relative to a task."
+description="Show the Apps navigation and allow access to app connections, gateways, and advanced app tooling."
+description="Small cards for the fast-return invite states that do not render the full split-screen layout."
+description="Stable endpoints for external clients that use the same profiles, rules, and audit trail as agent tool access."
+description="Start with a template or create a rule from scratch."
+description="Summarizer keeps the latest project status, next step, and operator-needed items here."
+description="Summarizer keeps the latest workspace status, next step, and operator-needed items here."
+description="Summarizer tracks workspace activity, live services, and follow-up needs across projects."
+description="The agent is allowed, but the user the run acts for is not. Distinct from a plain agent-lacks-permission failure."
+description="The user this run acts for was removed or deactivated. Steers the agent to mark work blocked."
+description="These are the post-submit states returned from invite acceptance, including optional claim and onboarding metadata."
+description="Update your display name and avatar."
+description="Your account already matched the approved invite, so the board can be opened immediately."
+description="Your account is ready. Review the invite details, then accept it to continue."
+export type PluginActionFn = (params?: Record<string, unknown>) => Promise<unknown>;
+fetchPage: (afterCommentId: string) => Promise<ReadonlyArray<T>>;
+flush: () => Promise<void>;
+flushPendingDraft: () => Record<string, EnvBinding> | null;
+getDocument: (key: string) => Promise<IssueDocument>;
+if (!option || !option.id) return <span>Summarizer (default)</span>;
+if (catalogLoading) return <LoadingState label="Loading tools…" />;
+if (data.profiles.isLoading) return <LoadingState label="Loading profile..." />;
+if (effective.isLoading) return <ToolsLoadingState label="Resolving effective access…" />;
+if (gatewaysQuery.isLoading) return <LoadingState label="Loading gateways..." />;
+if (profileId && profiles.isLoading) return <LoadingState label="Loading draft…" />;
+imageUploadHandler: (file: File) => Promise<string>;
+imageUploadHandler?: (file: File) => Promise<string>;
+label="ACP non-interactive permissions"
+label="ACP server command"
+label="ACP state directory"
+label="ACP warm process idle ms"
+label="API base URL"
+label="API key"
+label="Access"
+label="Active incidents"
+label="Adapter"
+label="Adapters"
+label="Added references"
+label="Agents"
+label="Aging"
+label="All labels"
+label="All skills"
+label="Allow external sources"
+label="Allow local-path sources"
+label="Allow unpinned optional sources"
+label="Approvers"
+label="Apps running"
+label="Assignee"
+label="Attachment size limit"
+label="Auth readiness"
+label="Bootstrap invite"
+label="Bootstrap status"
+label="Brand color"
+label="Budget"
+label="Bypass sandbox"
+label="Collision strategy"
+label="Continue after max-turn stop"
+label="Credits"
+label="Dangerously allow remote HTTP"
+label="Debits"
+label="Decided"
+label="Default environment"
+label="Description"
+label="Dismissed"
+label="Documentation"
+label="Drag left edge to resize visible range"
+label="Drag right edge to resize visible range"
+label="EE fields"
+label="Edit profile"
+label="Enable Chrome"
+label="Enable search"
+label="Environment variables"
+label="Environments"
+label="Errors in the last hour"
+label="Estimated"
+label="Event reconnect ms"
+label="Expected · recorded"
+label="Experimental"
+label="Expired"
+label="Expires"
+label="Extra headers"
+label="Fast mode"
+label="Feedback"
+label="Finance events"
+label="Finance net"
+label="Gateway auth token"
+label="GitHub URL"
+label="Heartbeat on interval"
+label="Heartbeats"
+label="Inference spend"
+label="Issue title variables"
+label="Label"
+label="Labels"
+label="Last restarted"
+label="Last run"
+label="Last used"
+label="Legacy recovery task"
+label="Live · checked out"
+label="Logo"
+label="Members"
+label="Model"
+label="Monitor"
+label="My Skills"
+label="Net"
+label="New company name"
+label="New"
+label="No project"
+label="No workspace"
+label="Old"
+label="Paperclip API URL"
+label="Parent"
+label="Password (alternative auth)"
+label="Paused agents"
+label="Paused projects"
+label="Pending approvals"
+label="Period spend"
+label="Plugins"
+label="Priority"
+label="Profile"
+label="Project"
+label="Projects"
+label="Proposal"
+label="Removed references"
+label="Require board approval for new hires"
+label="Review"
+label="Reviewers"
+label="Routine"
+label="Routines"
+label="Runtime provision command"
+label="Scheduled retry"
+label="Secrets"
+label="Session key strategy"
+label="Skip permissions"
+label="Snoozed"
+label="Status"
+label="Stream run logs"
+label="Strict host key checking"
+label="System alert"
+label="This week"
+label="Tokens"
+label="Triggers"
+label="Typical response time"
+label="Unfiled"
+label="Updated"
+label="View profile"
+label="Wake on demand"
+label="Watchdog"
+label="Writable"
+label="Yes"
+label="case ID"
+label="case key"
+label="routine"
+label={<FieldLabel label="Description" state={fieldState("description")} />}
+label={<FieldLabel label="Env" state={fieldState("env")} />}
+label={<FieldLabel label="Goals" state={fieldState("goals")} />}
+listDocumentRevisions: (key: string) => Promise<DocumentRevision[]>;
+listDocuments: () => Promise<IssueDocument[]>;
+message="Add stages in pipeline settings to enable the board."
+message="Advanced child settings are hidden while Break into smaller pieces is enabled. Configure that workflow in Automation."
+message="Couldn't load the timeline. The aggregation endpoint may be unavailable."
+message="Create a card to keep a living summary of the issues you care about."
+message="No AWS provider vault configured. Add one to import secrets."
+message="No access profiles yet"
+message="No active routines. Use Create routine to define the first recurring workflow."
+message="No agents in the organization. Create agents to build your org chart."
+message="No apps running right now"
+message="No connections yet"
+message="No edits yet"
+message="No export preview is loaded."
+message="No goals yet."
+message="No items to show. Create your first one to get started."
+message="No pipelines yet."
+message="No projects yet."
+message="No rules yet"
+message="No runs match these filters."
+message="No runs yet. Trigger a run from the header or wait for the schedule."
+message="No scheduler heartbeats match the current criteria."
+message="No secrets in this folder yet."
+message="No secrets selected. Go back to pick remote secrets to import."
+message="No secrets visible to this vault."
+message="No secrets yet. Create a shared company secret or one that each user supplies."
+message="No stages configured."
+message="No teams match this filter."
+message="No triggers yet."
+message="No user secret definitions yet. Create one to require each member to supply their own credential."
+message="No user secrets are defined for this company yet. An admin defines which credentials each member supplies."
+message="No variables yet. Add a {{placeholder}} in the title or instructions to create one."
+message="Nothing runs here automatically. Items wait until a person moves them, or you can pick an agent to run this step."
+message="Secrets are available only to step automation. Pick an agent to run this step, then add the secrets it needs."
+message="Select a skill to inspect its files."
+message="The preview request was cancelled. Your export settings are unchanged."
+message="When an agent proposes a secret or an access binding, it shows up here for review."
+onAcceptInteraction?: (interaction: RequestConfirmationInteraction) => Promise<void> | void;
+onAdd: (body: string, reopen?: boolean, reassignment?: CommentReassignment) => Promise<void> | void;
+onAdd: (body: string, reopen?: boolean, reassignment?: CommentReassignment) => Promise<void>;
+onApproveApproval?: (approvalId: string) => Promise<void>;
+onAttachImage: (file: File) => Promise<IssueAttachment | void>;
+onAttachImage?: (file: File) => Promise<IssueAttachment | void>;
+onAttachImage?: (file: File) => Promise<void>;
+onCancel?: (() => Promise<void>) | undefined;
+onCancelInteraction: (interaction: AskUserQuestionsInteraction) => Promise<void>;
+onCancelRun?: () => Promise<void>;
+onCreateFolder: (parentId: string | null, name: string) => Promise<string | null>;
+onCreateSecret: (name: string, value: string) => Promise<CompanySecret>;
+onCreateSecret?: (name: string, value: string) => Promise<CompanySecret>;
+onDeleteComment?: (commentId: string) => Promise<void> | void;
+onDetectModel?: () => Promise<string | null>;
+onDropFile?: (file: File) => Promise<void>;
+onImageUpload: (file: File) => Promise<string>;
+onImageUpload?: (file: File) => Promise<string>;
+onInterruptQueued: (runId: string) => Promise<void>;
+onInterruptQueued?: (runId: string) => Promise<void>;
+onPauseWorkRun?: (runId: string) => Promise<void>;
+onRefreshLatestComments: () => Promise<unknown> | void;
+onRefreshLatestComments?: () => Promise<unknown> | void;
+onRefreshModels?: () => Promise<void>;
+onRejectApproval?: (approvalId: string) => Promise<void>;
+onRejectInteraction: (interaction: ActionableIssueThreadInteraction, reason?: string) => Promise<void>;
+onResumeFromBacklog?: () => Promise<void> | void;
+onSelect: (runId: string) => Promise<void> | void;
+onSend: (options: PaperclipIssueRuntimeSendOptions) => Promise<void>;
+onStartConversation: () => Promise<Issue | null>;
+onStopRun?: (runId: string) => Promise<void>;
+onSubmit: (name: string, value: string) => Promise<void>;
+onUploadImage?: (file: File) => Promise<string>;
+onVote: (vote: FeedbackVoteValue, options?: { allowSharing?: boolean; reason?: string }) => Promise<void>;
+onWorkModeChange?: (mode: IssueWorkMode) => Promise<void> | void;
+onWorkModeChange?: (workMode: IssueWorkMode) => Promise<void> | void;
+placeholder="# Agent instructions"
+placeholder="****************"
+placeholder=".paperclip/worktrees"
+placeholder="/Users/paperclip/workspace"
+placeholder="/absolute/path/to/AGENTS.md"
+placeholder="/absolute/path/to/agent/prompts"
+placeholder="/absolute/path/to/folder"
+placeholder="/absolute/path/to/workspace"
+placeholder="/mnt/e/Projects/my-adapter  or  E:\Projects\my-adapter"
+placeholder="/path/to/acp-state"
+placeholder="/path/to/project"
+placeholder="/path/to/worktree or provider ref"
+placeholder="0 10 * * *"
+placeholder="0.00"
+placeholder="120"
+placeholder="120000"
+placeholder="@paperclipai/plugin-example"
+placeholder="ALIAS"
+placeholder="API_KEY"
+placeholder="Acme Corp"
+placeholder="Acme tools"
+placeholder="Add a comment..."
+placeholder="Add a description"
+placeholder="Add a description..."
+placeholder="Add a note — required to request changes, optional otherwise…"
+placeholder="Add a short note"
+placeholder="Add a short reason for rejecting this suggestion"
+placeholder="Add a tag…"
+placeholder="Add a tool…"
+placeholder="Add description..."
+placeholder="Add instructions..."
+placeholder="Add onboarding context, expected role, or first instructions."
+placeholder="Agent name"
+placeholder="Agent"
+placeholder="Approver"
+placeholder="Ask anything about your company..."
+placeholder="Assignee"
+placeholder="Auto"
+placeholder="Auto-named from the query"
+placeholder="Board"
+placeholder="CTO agents"
+placeholder="Code review"
+placeholder="Cursor on work laptop"
+placeholder="Default model"
+placeholder="Describe what this agent can do..."
+placeholder="Document key"
+placeholder="Dotta's MacBook"
+placeholder="Engineering laptops"
+placeholder="Engineering write tools"
+placeholder="Execution workspace name"
+placeholder="Explain why this item should skip the normal flow."
+placeholder="Explain why this subtree control is being applied..."
+placeholder="External service"
+placeholder="File contents"
+placeholder="Filter agents"
+placeholder="Filter projects"
+placeholder="Find an action…"
+placeholder="Focused smoke"
+placeholder="Folder name"
+placeholder="Gateway shared password"
+placeholder="Give the agent a reason so it can act on this item."
+placeholder="Goal title"
+placeholder="Header"
+placeholder="Hermes API_SERVER_KEY, not PAPERCLIP_API_KEY"
+placeholder="Imported Company"
+placeholder="KEY"
+placeholder="Key name (e.g. production)"
+placeholder="Leave a comment..."
+placeholder="MY_SECRET"
+placeholder="Markdown body"
+placeholder="My app"
+placeholder="Name"
+placeholder="New label"
+placeholder="New queue name…"
+placeholder="OPENAI_API_KEY"
+placeholder="One-line promise for the skill"
+placeholder="OpenClaw gateway token"
+placeholder="Optional company description"
+placeholder="Optional context for reviewers."
+placeholder="Optional decision note…"
+placeholder="Optional initial setup prompt for the first run"
+placeholder="Optional notes (no values)"
+placeholder="Optional title"
+placeholder="Optional"
+placeholder="Optional: tell the agent why, so it doesn't retry the same call."
+placeholder="PAP-946-workspace"
+placeholder="PERSONAL_GH_TOKEN"
+placeholder="Paste path, GitHub URL, or skills.sh command"
+placeholder="Paste replacement value"
+placeholder="Paste text - treated as a new issue description."
+placeholder="Paste the new value"
+placeholder="Paste the secret value"
+placeholder="Paste your new key"
+placeholder="Paste your token or credential"
+placeholder="Personal GitHub token"
+placeholder="Pick agent"
+placeholder="Production local vault"
+placeholder="Project name"
+placeholder="Project"
+placeholder="Reason (optional)…"
+placeholder="Reply"
+placeholder="Reply…"
+placeholder="Responsible"
+placeholder="Review repository changes for correctness, tests, and maintainability."
+placeholder="Reviewer"
+placeholder="Routine title"
+placeholder="Search activity…"
+placeholder="Search agents…"
+placeholder="Search apps…"
+placeholder="Search artifacts..."
+placeholder="Search assignees..."
+placeholder="Search by name or email"
+placeholder="Search by name, ARN, tag"
+placeholder="Search by name, app, or owner"
+placeholder="Search by name, key, ref"
+placeholder="Search cases..."
+placeholder="Search creators..."
+placeholder="Search discovered skills…"
+placeholder="Search files by name or path…"
+placeholder="Search files..."
+placeholder="Search folders"
+placeholder="Search icons..."
+placeholder="Search inbox…"
+placeholder="Search labels..."
+placeholder="Search labels…"
+placeholder="Search models..."
+placeholder="Search pipelines"
+placeholder="Search projects..."
+placeholder="Search responsible..."
+placeholder="Search skills"
+placeholder="Search skills, authors, categories…"
+placeholder="Search tasks, agents, projects..."
+placeholder="Search tasks, comments, documents, artifacts, agents, projects…"
+placeholder="Search tasks..."
+placeholder="Search teams"
+placeholder="Search tools…"
+placeholder="Select agent"
+placeholder="Select an existing secret"
+placeholder="Select secret…"
+placeholder="Select template"
+placeholder="Short instructions for common skill checks"
+placeholder="Skill name"
+placeholder="Stored once, never re-displayed"
+placeholder="Summarizer (default)"
+placeholder="TOOLS.md"
+placeholder="Target date"
+placeholder="Task title"
+placeholder="Tell members how to create their token, required scopes, etc."
+placeholder="Timezone"
+placeholder="Title (e.g. VP of Engineering)"
+placeholder="Type your answer"
+placeholder="What is this profile for?"
+placeholder="What is this secret used for? (no values)"
+placeholder="What is your team trying to achieve?"
+placeholder="What should the agent re-check?"
+placeholder="What should the watchdog watch for and how should it keep work moving?"
+placeholder="What this credential is for"
+placeholder="Who owns this token and why it exists"
+placeholder="Who this endpoint is for and when it should be rotated."
+placeholder="Why are you restoring? Visible in history."
+placeholder="Why is this being rejected?"
+placeholder="Workspace name"
+placeholder="Write a comment…"
+placeholder="Write the item body in Markdown…"
+placeholder="You are agent {{ agent.name }}. Your role is {{ agent.role }}..."
+placeholder="agent-123"
+placeholder="arn:aws:secretsmanager:..."
+placeholder="bash ./scripts/provision-worktree-runtime.sh"
+placeholder="bash ./scripts/provision-worktree.sh"
+placeholder="bash ./scripts/teardown-worktree.sh"
+placeholder="claude-agent-acp"
+placeholder="client-secret"
+placeholder="clientsecret"
+placeholder="code-review"
+placeholder="codespaces"
+placeholder="codex-acp"
+placeholder="dev/github"
+placeholder="e.g. --verbose, --foo=bar"
+placeholder="e.g. Can't produce content fast enough across multiple channels"
+placeholder="e.g. Can't produce content fast enough, no time for social media"
+placeholder="e.g. Everyday work"
+placeholder="e.g. GitHub Triage"
+placeholder="e.g. Manual content creation, spreadsheet tracking, email outreach"
+placeholder="e.g. Non-technical professionals curious about AI tools"
+placeholder="e.g. Production GitHub"
+placeholder="e.g. Publishing daily content across 4 platforms with a team of AI agents"
+placeholder="e.g. Social media scheduling and content repurposing"
+placeholder="e.g. VP of Engineering"
+placeholder="e.g. Verified the live branch carries only the intended follow-up commits; safe to adopt."
+placeholder="e.g. We create educational YouTube content about AI"
+placeholder="e.g. gmail.send_email"
+placeholder="e.g. node, python"
+placeholder="e.g. script.js, --flag"
+placeholder="engineering, review, memory"
+placeholder="frontend"
+placeholder="gemini --acp"
+placeholder="high, medium, low"
+placeholder="http://127.0.0.1:3100"
+placeholder="http://127.0.0.1:8642"
+placeholder="https://..."
+placeholder="https://docs.google.com/spreadsheets/d/..."
+placeholder="https://github.com/org/repo"
+placeholder="https://github.com/owner/repo/tree/main/company"
+placeholder="https://mcp.example.com"
+placeholder="https://mcp.zapier.com/api/v1/connect?token=…"
+placeholder="https://paperclip.example"
+placeholder="key"
+placeholder="latest"
+placeholder="my-paperclip-adapter"
+placeholder="no cap"
+placeholder="npx -y @acme/mcp-tool"
+placeholder="onboarding/happy-path"
+placeholder="operator"
+placeholder="operator.admin"
+placeholder="origin/main"
+placeholder="paperclip"
+placeholder="piece"
+placeholder="pkill -f vite || true"
+placeholder="pnpm install && pnpm dev"
+placeholder="provider reference or ARN"
+placeholder="references/examples"
+placeholder="secret_name"
+placeholder="skill-shortname"
+placeholder="user-secret key"
+placeholder="value"
+placeholder="workspace-123"
+placeholder="ws://127.0.0.1:18789"
+placeholder="{{issue.identifier}}-{{slug}}"
+placeholder="~/.openclaw/workspace/paperclip-claimed-api-key.json"
+placeholder="••••••••••••••••"
+reloadCompanies: () => Promise<void>;
+requestBounds: (key: string, request: PluginModalBoundsRequest) => Promise<void>;
+restoreDocumentRevision?: (key: string, revisionId: string) => Promise<IssueDocument>;
+retryCompanies: () => Promise<void>;
+return <EmptyState icon={ActivityIcon} message="No activity yet." />;
+return <EmptyState icon={AlertCircle} message="User profile not found for this company." />;
+return <EmptyState icon={BookOpenText} message="Select a company to view learnings." />;
+return <EmptyState icon={Boxes} message="Select a catalog skill to inspect." />;
+return <EmptyState icon={Boxes} message="Select a company to manage skills." />;
+return <EmptyState icon={DollarSign} message="Select a company to view costs." />;
+return <EmptyState icon={Download} message="Select a company to import into." />;
+return <EmptyState icon={GitBranch} message="Select a company to view org chart." />;
+return <EmptyState icon={Hexagon} message="No pipeline selected." />;
+return <EmptyState icon={Hexagon} message="Pipeline not found." />;
+return <EmptyState icon={Hexagon} message="Select a company to edit pipeline settings." />;
+return <EmptyState icon={Hexagon} message="Select a company to view projects." />;
+return <EmptyState icon={Hexagon} message="Select a company to view the review queue." />;
+return <EmptyState icon={History} message="Select a company to view activity." />;
+return <EmptyState icon={InboxIcon} message="Select a company to view inbox." />;
+return <EmptyState icon={ListTodo} message="Select a company to view your tasks." />;
+return <EmptyState icon={Network} message="No organizational hierarchy defined." />;
+return <EmptyState icon={Network} message="Select a company to view the org chart." />;
+return <EmptyState icon={Package} message="Select a company to export." />;
+return <EmptyState icon={Package} message="Select a company to view artifacts." />;
+return <EmptyState icon={Repeat} message="Select a company to view routines." />;
+return <EmptyState icon={Target} message="Select a company to view goals." />;
+return <EmptyState icon={UserRound} message="Select a company to view user profiles." />;
+return <PlaceholderPreview label="File" />;
+return <PlaceholderPreview label="Image" />;
+return <StudioMessage message="Loading fork source..." />;
+return <StudioMessage message="Loading skill…" />;
+return <StudioMessage message="Select a company to open Skill Studio." />;
+return <StudioMessage message="Skill not found." />;
+return <nav aria-label="breadcrumb" data-slot="breadcrumb" {...props} />
+return loading ? <PageSkeleton variant="detail" /> : <EmptyState icon={Boxes} message="Skill not found." />;
+revisionsQueryFn?: () => Promise<DocumentRevision[]>;
+schedule: (filters: InvalidateQueryFilters) => Promise<void>;
+setDocumentLock?: (key: string, locked: boolean) => Promise<IssueDocument>;
+snapshot: () => Omit<SelectionDebugState, "reset" | "snapshot">;
+snippet shows <code>Bearer …</code>. You won’t see a token’s full value again after it’s
+subtitle="Agent heartbeats blocked by budget"
+subtitle="Blocked by PAP-001"
+subtitle="Budget override approvals awaiting board action"
+subtitle="Completed 2 days ago"
+subtitle="Debit minus credit for the selected period"
+subtitle="Disabled while the optimistic mutation is pending."
+subtitle="Estimated debits that are not yet invoice-authoritative"
+subtitle="Hover or focus the row to reveal the reserved action slot."
+subtitle="Open soft or hard threshold crossings"
+subtitle="Persistent action with dimmed row content."
+subtitle="Project execution blocked by budget"
+subtitle="Refunds, offsets, and credit returns"
+subtitle="Responsible: Agent Alpha"
+subtitle="Secure MCP sign-in"
+subtitle="The target state is visible immediately while the server confirms."
+the previous hash next to the current one, and renders <code>Approve</code> disabled until the request
+title="1 · Run identity — “on behalf of {user}”"
+title="2 · Denial state — responsible user not authorized"
+title="3 · Denial state — agent lacks permission (unchanged)"
+title="4 · Denial state — responsible user unavailable"
+title="Access profiles"
+title="Active / recent"
+title="Activity"
+title="Add cost tracking dashboard"
+title="Add label"
+title="Advanced Run Policy"
+title="Already a member"
+title="Anchor moved — needs review"
+title="Approval and completion screens"
+title="Apps"
+title="Archive from inbox"
+title="As soon as something changes (debounced)"
+title="Assignee"
+title="Attach file"
+title="Attach files"
+title="Attach image"
+title="Auth page states"
+title="Auto-Restart Dev Server When Idle"
+title="Auto-accept in progress"
+title="Beta skills"
+title="Blocked by parked work — at least one assigned blocker is in backlog and will not wake its assignee."
+title="Bootstrap complete"
+title="Briefs is paused."
+title="Browse gallery"
+title="Build agent heartbeat system"
+title="Built-in Agents"
+title="Built-in agent"
+title="Can make changes"
+title="Cards per column"
+title="Cases"
+title="Catalog changed since this request was signed."
+title="Checking your access"
+title="Choose which inbox columns stay visible"
+title="Choose which task columns stay visible"
+title="Classic Task Interface"
+title="Clear my value"
+title="Click to copy worktree name"
+title="Close"
+title="Columns"
+title="Company invite management"
+title="Conference Room Chat"
+title="Configure an AWS provider vault to enable remote import"
+title="Configure watchdog"
+title="Copy as markdown"
+title="Copy content hash"
+title="Copy link"
+title="Copy message"
+title="Copy notice text"
+title="Copy source path"
+title="Copy task as markdown"
+title="Copy"
+title="Decisions"
+title="Delete attachment"
+title="Delete comment"
+title="Delete environment"
+title="Deploy to production"
+title="Disable the weekly schedule?"
+title="Dismiss — keep this value as plain text"
+title="Distinct from user and agent comments"
+title="Document actions"
+title="Download file"
+title="Download"
+title="Durable comments and feedback"
+title="Effective access — server resolved."
+title="Effective access"
+title="Empty state and disabled composer"
+title="Enable Environments"
+title="Enable External Objects"
+title="Enable Isolated Workspaces"
+title="Enable the weekly schedule?"
+title="Every PATCH says who changed what, and under which authorization"
+title="Every wall names the boundary, who can act, and the sanctioned path"
+title="Experimental File Viewer"
+title="Export preview cancelled"
+title="Export preview failed"
+title="Export preview unavailable"
+title="File not found"
+title="Filter"
+title="Fit to screen"
+title="Flat list"
+title="Fork this skill"
+title="Full agent config"
+title="Goals Sidebar Link"
+title="Group artifacts"
+title="Group"
+title="Helpful"
+title="Image preview unavailable"
+title="Implement authentication flow"
+title="In-context — denial inside a failed run ledger row"
+title="Invalid invite token"
+title="Invite not available"
+title="Invite result surfaces"
+title="Item outputs"
+title="Jobs"
+title="Join Acme Robotics"
+title="Joined resource"
+title="Joining resource"
+title="Keep sidebar expanded"
+title="Label"
+title="Landing state coverage"
+title="Leaving resource"
+title="Left resource"
+title="Live execution thread"
+title="Loading invite"
+title="Loading project workspaces"
+title="Local stdio is local code execution, not a security sandbox."
+title="Managed Environment Only"
+title="Manual only — updates when I press refresh"
+title="More actions"
+title="More task actions"
+title="Named MCP gateways"
+title="Needs work"
+title="Nested view"
+title="Neutral (default)"
+title="New folder inside…"
+title="Next"
+title="No company selected"
+title="No pending proposals"
+title="No previous connection details"
+title="No project workspaces"
+title="No status cards yet"
+title="No workspace available"
+title="Nothing is waiting for your OK right now."
+title="On a schedule, only if something changed"
+title="Open document"
+title="Open file... (g f)"
+title="Open in new tab"
+title="Open raw"
+title="Open the authentication page"
+title="Open the authorization page"
+title="Open watchdog task"
+title="Open work product"
+title="Open"
+title="Paste a config"
+title="Paused"
+title="Pending message bubble"
+title="Preview not supported for this file type"
+title="Previous"
+title="Priority"
+title="Project summary"
+title="Project"
+title="Properties"
+title="Raw Markdown"
+title="Read only"
+title="Read-only"
+title="Recently updated"
+title="Recently visited"
+title="Reconnect to test this app."
+title="Referenced by"
+title="References"
+title="Refresh workspace files"
+title="Reinstall adapter (pull latest from npm)"
+title="Reload adapter (hot-swap)"
+title="Remote workspace preview coming soon"
+title="Remove adapter"
+title="Remove attachment"
+title="Remove document"
+title="Rendered Markdown"
+title="Repeat attempts with this fingerprint reuse this record instead of creating new children"
+title="Request to join Acme Robotics"
+title="Required directories"
+title="Required files"
+title="Reset board density"
+title="Reset zoom"
+title="Restart"
+title="Rotating reasoning text"
+title="Rules"
+title="Run Reflection Coach once?"
+title="Run your own"
+title="Runtime failed closed."
+title="Scan project workspaces for skills"
+title="Server Info Debug View"
+title="Services"
+title="Set up CI/CD pipeline"
+title="Show properties"
+title="Simplified English Interactions"
+title="Smoke Lab"
+title="Sort"
+title="Split-screen invite flows"
+title="Start"
+title="Status Cards"
+title="Status"
+title="Stop"
+title="Summaries"
+title="Summarizer is paused"
+title="Summary could not be loaded"
+title="Summary generation failed"
+title="Summary generation failed."
+title="System notice replacement"
+title="Task Plan Decomposition Panel"
+title="Task Watchdogs"
+title="Test runs"
+title="This task is a generated watchdog task. It verifies whether stopped work in the watched task tree is legitimate."
+title="This task is a productivity review."
+title="This task needs a next step"
+title="This value looks sensitive — store it as a secret"
+title="Three tones, two states"
+title="Today's nested treatment"
+title="Uninstall"
+title="Untracked services"
+title="Updated"
+title="Video preview unavailable"
+title="View policy"
+title="Working / Worked header verb"
+title="Workspace summary"
+title="Write API documentation"
+title="You joined the company"
+title="Zoom in"
+title="Zoom out"
+title="“Fable · for Dotta” on a cross-task agent comment"
+type MatchDisplayMode = (query: string) => Pick<MediaQueryList, "matches">;
+{!rail && project.pauseReason === "budget" ? <BudgetSidebarMarker title="Project paused by budget" /> : null}
+{actionError ? <InlineBanner tone="warning" title="Heads up">{actionError}</InlineBanner> : null}
+{assignee ? <AttributionAvatar label="Assignee" actor={assignee} /> : null}
+{contentType ? <DetailFact label="Content type" value={contentType} mono /> : null}
+{deliveryModeDescription("api")} The agent reads them by alias through <code>GET /agents/me/secrets</code>.
+{dirty && <Badge variant="secondary">Unsaved</Badge>}
+{dirty ? <Badge variant="secondary">Unsaved</Badge> : null}
+{displayingHistoricalRevision ? <Badge variant="outline">Historical revision</Badge> : null}
+{error ? <InlineBanner tone="danger" title="Create failed">{error}</InlineBanner> : null}
+{folderSelection === "all" ? <FolderIconHeader label="All routines" count={sortedRoutines.length} /> : (
+{hideLabel ? null : <span>Under review</span>}
+{httpStatus !== undefined ? <DetailFact label="HTTP status" value={String(httpStatus)} mono /> : null}
+{isGenerating ? <Badge variant="secondary">Generating</Badge> : null}
+{latestDocument && !displayingHistoricalRevision ? <Badge variant="outline">Latest revision</Badge> : null}
+{mcpMethod ? <DetailFact label="MCP method" value={mcpMethod} mono /> : null}
+{originator ? <AttributionAvatar label="Originating" actor={originator} via={originatorVia} /> : null}
+{rawTool ? <DetailFact label="Action name" value={rawTool} mono /> : null}
+{request ? <DetailFact label="Dispatched" value={request.dispatched === true ? "Yes" : "No"} /> : null}
+{requestId ? <DetailFact label="Request ID" value={requestId} mono /> : null}
+{requestMethod && endpoint ? <DetailFact label="HTTP request" value={`${requestMethod} ${endpoint}`} mono /> : null}
+{responseBytes !== undefined ? <DetailFact label="Response size" value={`${responseBytes} bytes`} /> : null}
+{runId ? <DetailFact label="Run ID" value={runId} mono /> : null}
+{transport ? <DetailFact label="Transport" value={transport} mono /> : null}
+{upstreamRequestId ? <DetailFact label="Upstream ID" value={upstreamRequestId} mono /> : null}
+}) => Promise<Company>;
+}) => Promise<IssueDocument>;

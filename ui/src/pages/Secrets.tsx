@@ -73,6 +73,7 @@ import {
   deliveryModeLabel,
 } from "../lib/secret-delivery";
 import { queryKeys } from "../lib/queryKeys";
+import { useTranslation } from "../i18n";
 import { EmptyState } from "../components/EmptyState";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -259,9 +260,9 @@ function isAwsDiscoveryAccessDenied(error: unknown): boolean {
 }
 
 function readableErrorMessage(error: unknown): string {
-  if (error instanceof ApiError) return error.message || `Request failed: ${error.status}`;
+  if (error instanceof ApiError) return error.message || `请求失败：${error.status}`;
   if (error instanceof Error) return error.message;
-  return "Unexpected error";
+  return "发生未知错误";
 }
 
 function providerVaultFormFromConfig(config: CompanySecretProviderConfig): ProviderVaultForm {
@@ -342,16 +343,16 @@ function normalizeUserSecretKeyForPreview(input: string) {
 
 
 function modeLabel(managedMode: SecretManagedMode) {
-  return managedMode === "paperclip_managed" ? "Paperclip-managed" : "Linked external";
+  return managedMode === "paperclip_managed" ? "Paperclip 托管" : "已关联外部密钥";
 }
 
 function modeDescription(managedMode: SecretManagedMode, canWriteExternalValue = false) {
   if (managedMode === "paperclip_managed") {
-    return "Paperclip owns create and rotation writes for this provider secret.";
+    return "Paperclip 负责创建和轮换此提供方密钥。";
   }
   return canWriteExternalValue
-    ? "Paperclip resolves this provider reference and can write new values to it via Update value."
-    : "Paperclip resolves this provider reference but does not rotate the provider value.";
+    ? "Paperclip 会解析此提供方引用，并可通过“更新值”写入新值。"
+    : "Paperclip 会解析此提供方引用，但不会轮换提供方中的值。";
 }
 
 function statusLabel(status: SecretStatus) {
@@ -647,6 +648,7 @@ export function getAwsManagedPathPreview(input: {
 }
 
 export function Secrets() {
+  const { t } = useTranslation();
   const queryClient = useQueryClient();
   const { selectedCompanyId } = useCompany();
   const { setBreadcrumbs } = useBreadcrumbs();
@@ -1102,10 +1104,10 @@ export function Secrets() {
       pushToast({
         title:
           result.kind === "company"
-            ? "Secret created"
+            ? "密钥已创建"
             : result.action === "updated"
-              ? "User-provided secret updated"
-              : "User-provided secret created",
+              ? "用户密钥已更新"
+              : "用户密钥已创建",
         body: result.item.name,
         tone: "success",
       });
@@ -1141,7 +1143,7 @@ export function Secrets() {
 
   const rotateMutation = useMutation({
     mutationFn: () => {
-      if (!selectedSecret) throw new Error("Select a secret first");
+      if (!selectedSecret) throw new Error("请先选择密钥");
       if (selectedSecret.managedMode === "external_reference" && rotateMode === "reference") {
         return secretsApi.rotate(selectedSecret.id, {
           externalRef: rotateExternalRef.trim() || selectedSecret.externalRef || undefined,
@@ -1154,7 +1156,7 @@ export function Secrets() {
       });
     },
     onSuccess: (updated) => {
-      pushToast({ title: "Rotated", body: `${updated.name} → v${updated.latestVersion}`, tone: "success" });
+      pushToast({ title: "密钥已轮换", body: `${updated.name} → v${updated.latestVersion}`, tone: "success" });
       setRotateOpen(false);
       setRotateValue("");
       setRotateExternalRef("");
@@ -1163,7 +1165,7 @@ export function Secrets() {
       invalidateAll([updated.id]);
     },
     onError: (error) => {
-      setRotateError(error instanceof Error ? error.message : "Rotate failed");
+      setRotateError(error instanceof Error ? error.message : "密钥轮换失败");
     },
   });
 
@@ -1181,13 +1183,13 @@ export function Secrets() {
       }
     },
     onSuccess: (updated) => {
-      pushToast({ title: `Secret ${updated.status}`, body: updated.name, tone: "info" });
+      pushToast({ title: `密钥${updated.status === "active" ? "已启用" : updated.status === "disabled" ? "已停用" : updated.status === "archived" ? "已归档" : "已更新"}`, body: updated.name, tone: "info" });
       invalidateAll([updated.id]);
     },
     onError: (error) => {
       pushToast({
-        title: "Status update failed",
-        body: error instanceof Error ? error.message : "Try again",
+        title: "更新状态失败",
+        body: error instanceof Error ? error.message : "请重试",
         tone: "error",
       });
     },
@@ -1197,13 +1199,13 @@ export function Secrets() {
     mutationFn: ({ definition, status }: { definition: UserSecretDefinition; status: SecretStatus }) =>
       secretsApi.updateUserSecretDefinition(selectedCompanyId!, definition.id, { status }),
     onSuccess: (updated) => {
-      pushToast({ title: `User-provided secret ${updated.status}`, body: updated.name, tone: "info" });
+      pushToast({ title: `用户密钥${updated.status === "active" ? "已启用" : updated.status === "disabled" ? "已停用" : updated.status === "archived" ? "已归档" : "已更新"}`, body: updated.name, tone: "info" });
       invalidateAll([updated.id]);
     },
     onError: (error) => {
       pushToast({
-        title: "Status update failed",
-        body: error instanceof Error ? error.message : "Try again",
+        title: "更新状态失败",
+        body: error instanceof Error ? error.message : "请重试",
         tone: "error",
       });
     },
@@ -1212,15 +1214,15 @@ export function Secrets() {
   const deleteMutation = useMutation({
     mutationFn: (id: string) => secretsApi.remove(id),
     onSuccess: (_response, id) => {
-      pushToast({ title: "Secret deleted", tone: "info" });
+      pushToast({ title: "密钥已删除", tone: "info" });
       setDeleteConfirm(null);
       if (selectedSecretId === id) setDetailSelection(null);
       invalidateAll([id]);
     },
     onError: (error) => {
       pushToast({
-        title: "Delete failed",
-        body: error instanceof Error ? error.message : "Try again",
+        title: "删除失败",
+        body: error instanceof Error ? error.message : "请重试",
         tone: "error",
       });
     },
@@ -1230,15 +1232,15 @@ export function Secrets() {
     mutationFn: (definition: UserSecretDefinition) =>
       secretsApi.removeUserSecretDefinition(selectedCompanyId!, definition.id),
     onSuccess: (_response, definition) => {
-      pushToast({ title: "User-provided secret removed", body: definition.name, tone: "info" });
+      pushToast({ title: "用户密钥已移除", body: definition.name, tone: "info" });
       setDefinitionDeleteConfirm(null);
       if (selectedDefinitionId === definition.id) setDetailSelection(null);
       invalidateAll([definition.id]);
     },
     onError: (error) => {
       pushToast({
-        title: "Delete failed",
-        body: error instanceof Error ? error.message : "Try again",
+        title: "删除失败",
+        body: error instanceof Error ? error.message : "请重试",
         tone: "error",
       });
     },
@@ -1261,7 +1263,7 @@ export function Secrets() {
       } as CreateSecretProviderConfigInput);
     },
     onSuccess: (saved) => {
-      pushToast({ title: editingVault ? "Provider vault updated" : "Provider vault created", body: saved.displayName, tone: "success" });
+      pushToast({ title: editingVault ? "提供方密钥库已更新" : "提供方密钥库已创建", body: saved.displayName, tone: "success" });
       setVaultDialogOpen(false);
       setEditingVault(null);
       setVaultForm(emptyProviderVaultForm());
@@ -1294,13 +1296,13 @@ export function Secrets() {
   const disableVaultMutation = useMutation({
     mutationFn: (id: string) => secretsApi.disableProviderConfig(id),
     onSuccess: (updated) => {
-      pushToast({ title: "Provider vault disabled", body: updated.displayName, tone: "info" });
+      pushToast({ title: "提供方密钥库已停用", body: updated.displayName, tone: "info" });
       invalidateAll();
     },
     onError: (error) => {
       pushToast({
-        title: "Disable failed",
-        body: error instanceof Error ? error.message : "Try again",
+        title: "停用失败",
+        body: error instanceof Error ? error.message : "请重试",
         tone: "error",
       });
     },
@@ -1310,8 +1312,8 @@ export function Secrets() {
     mutationFn: (id: string) => secretsApi.removeProviderConfig(id),
     onSuccess: (removed) => {
       pushToast({
-        title: "Provider vault removed",
-        body: `${removed.displayName} was removed from Paperclip only.`,
+        title: "提供方密钥库已移除",
+        body: `${removed.displayName} 仅从 Paperclip 中移除。`,
         tone: "info",
       });
       setRemoveVaultConfirm(null);
@@ -1319,8 +1321,8 @@ export function Secrets() {
     },
     onError: (error) => {
       pushToast({
-        title: "Remove failed",
-        body: error instanceof Error ? error.message : "Try again",
+        title: "移除失败",
+        body: error instanceof Error ? error.message : "请重试",
         tone: "error",
       });
     },
@@ -1329,13 +1331,13 @@ export function Secrets() {
   const defaultVaultMutation = useMutation({
     mutationFn: (id: string) => secretsApi.setDefaultProviderConfig(id),
     onSuccess: (updated) => {
-      pushToast({ title: "Default vault set", body: updated.displayName, tone: "success" });
+      pushToast({ title: "默认密钥库已设置", body: updated.displayName, tone: "success" });
       invalidateAll();
     },
     onError: (error) => {
       pushToast({
-        title: "Default update failed",
-        body: error instanceof Error ? error.message : "Try again",
+        title: "更新默认密钥库失败",
+        body: error instanceof Error ? error.message : "请重试",
         tone: "error",
       });
     },
@@ -1344,13 +1346,13 @@ export function Secrets() {
   const healthVaultMutation = useMutation({
     mutationFn: (id: string) => secretsApi.checkProviderConfigHealth(id),
     onSuccess: (health) => {
-      pushToast({ title: "Health checked", body: health.message, tone: health.status === "error" ? "error" : "info" });
+      pushToast({ title: "健康状态检查完成", body: health.message, tone: health.status === "error" ? "error" : "info" });
       invalidateAll();
     },
     onError: (error) => {
       pushToast({
-        title: "Health check failed",
-        body: error instanceof Error ? error.message : "Try again",
+        title: "健康状态检查失败",
+        body: error instanceof Error ? error.message : "请重试",
         tone: "error",
       });
     },
@@ -1711,7 +1713,7 @@ export function Secrets() {
         )}
       >
         <CornerLeftUp className="h-4 w-4 shrink-0" />
-        <span className="truncate">Up to {parentLabel}</span>
+        <span className="truncate">上级范围：{parentLabel}</span>
       </Link>
     );
   }
@@ -1787,7 +1789,7 @@ export function Secrets() {
 
   if (!selectedCompanyId) {
     return (
-      <div className="p-6 text-sm text-muted-foreground">Select a company to manage secrets.</div>
+      <div className="p-6 text-sm text-muted-foreground">{t("secrets.selectCompany")}</div>
     );
   }
 
@@ -1796,7 +1798,7 @@ export function Secrets() {
     <div className="flex max-w-6xl flex-col gap-4">
       <div className="flex items-center gap-2">
         <KeyRound className="h-5 w-5 text-muted-foreground" />
-        <h1 className="text-lg font-semibold">Secrets</h1>
+        <h1 className="text-lg font-semibold">{t("secrets.title")}</h1>
       </div>
 
       <Tabs
@@ -1806,14 +1808,14 @@ export function Secrets() {
       >
         <PageTabBar
           items={[
-            { value: "secrets", label: "Secrets" },
-            { value: "my-secrets", label: "My secrets" },
-            { value: "vaults", label: "Provider vaults" },
+            { value: "secrets", label: t("secrets.tabSecrets", { defaultValue: "密钥" }) },
+            { value: "my-secrets", label: t("secrets.tabMySecrets", { defaultValue: "我的密钥" }) },
+            { value: "vaults", label: t("secrets.tabVaults", { defaultValue: "提供商密钥库" }) },
             {
               value: "proposals",
               label: (
                 <span className="inline-flex items-center gap-1.5">
-                  Proposals
+                  {t("secrets.tabProposals", { defaultValue: "提案" })}
                   {pendingProposalCount > 0 ? (
                     <Badge
                       variant="outline"
@@ -1958,7 +1960,7 @@ export function Secrets() {
               !(showFolderView && folderPath) ? (
               <EmptyState
                 icon={KeyRound}
-                message="No secrets yet. Create a shared company secret or one that each user supplies."
+                message={t("secrets.noSecrets", { defaultValue: "暂无密钥。请创建公司共享密钥，或创建由每位用户分别提供的密钥。" })}
                 action="New secret"
                 onAction={openCreateSecret}
               />
@@ -1973,7 +1975,7 @@ export function Secrets() {
                   </div>
                 ) : searching ? (
                   <div className="mb-3">
-                    <div className="text-sm font-medium text-foreground">Search results</div>
+                    <div className="text-sm font-medium text-foreground">搜索结果</div>
                     <div className="text-xs text-muted-foreground">
                       {filteredRows.length} {filteredRows.length === 1 ? "match" : "matches"} across all
                       folders{folderPath ? ` · searching everywhere, not just ${folderPath}` : ""}
@@ -1991,14 +1993,14 @@ export function Secrets() {
                   ) : showFolderView && folderPath && activeSecretFilterCount === 0 ? (
                     <EmptyState
                       icon={FolderOpen}
-                      message="No secrets in this folder yet."
+                      message={t("secrets.noFolderSecrets", { defaultValue: "此文件夹中暂无密钥。" })}
                       action="New secret here"
                       onAction={openCreateSecret}
                     />
                   ) : (
                     <EmptyState
                       icon={Search}
-                      message={searching ? "No secrets match your search." : "No secrets match your filters."}
+                      message={searching ? t("secrets.noSearchMatch", { defaultValue: "没有匹配搜索条件的密钥。" }) : t("secrets.noFilterMatch", { defaultValue: "没有匹配筛选条件的密钥。" })}
                     />
                   )
                 ) : (
@@ -2013,11 +2015,11 @@ export function Secrets() {
                     role="row"
                     className="grid grid-cols-(--gtc-54) items-center gap-3 bg-muted/40 px-3 py-2 text-xs uppercase tracking-wide text-muted-foreground"
                   >
-                    <div role="columnheader" className="font-medium">Secret</div>
-                    <div role="columnheader" className="font-medium">Status</div>
-                    <div role="columnheader" className="font-medium">Version / coverage</div>
-                    <div role="columnheader" className="font-medium">Updated</div>
-                    <div role="columnheader" className="sr-only">Actions</div>
+                    <div role="columnheader" className="font-medium">密钥</div>
+                    <div role="columnheader" className="font-medium">状态</div>
+                    <div role="columnheader" className="font-medium">版本 / 覆盖范围</div>
+                    <div role="columnheader" className="font-medium">更新时间</div>
+                    <div role="columnheader" className="sr-only">操作</div>
                   </div>
                   <div role="rowgroup">
                     {showUpRow ? renderUpRow("table") : null}
@@ -2066,7 +2068,7 @@ export function Secrets() {
                                       <UserRound className="h-3 w-3" />
                                     </span>
                                   </TooltipTrigger>
-                                  <TooltipContent>Each user provides and owns their own value</TooltipContent>
+                                  <TooltipContent>每位用户提供并管理自己的值</TooltipContent>
                                 </Tooltip>
                               )}
                             </div>
@@ -2508,7 +2510,7 @@ export function Secrets() {
       >
         <DialogContent className="sm:max-w-lg">
           <DialogHeader>
-            <DialogTitle>Secret references</DialogTitle>
+                  <DialogTitle>密钥引用</DialogTitle>
             <DialogDescription>
               {usageDialogSecret
                 ? `${usageDialogSecret.name} is referenced by ${usageDialogSecret.referenceCount ?? 0} ${
@@ -2563,7 +2565,7 @@ export function Secrets() {
           <div className="space-y-4">
             {!editingDefinition ? (
               <div className="space-y-1.5">
-                <p className="text-xs font-medium text-foreground">Who provides the value?</p>
+                <p className="text-xs font-medium text-foreground">值由谁提供？</p>
                 <Tabs
                   value={secretValueProvider}
                   onValueChange={(value) => {
@@ -2581,8 +2583,8 @@ export function Secrets() {
                   }}
                 >
                   <TabsList className="grid w-full grid-cols-2">
-                    <TabsTrigger value="company">Company</TabsTrigger>
-                    <TabsTrigger value="user">Each user</TabsTrigger>
+                  <TabsTrigger value="company">公司</TabsTrigger>
+                  <TabsTrigger value="user">每位用户</TabsTrigger>
                   </TabsList>
                 </Tabs>
                 <p className="text-(length:--text-micro) text-muted-foreground">
@@ -2594,14 +2596,14 @@ export function Secrets() {
             {secretValueProvider === "company" && !editingDefinition ? (
               <Tabs value={createMode} onValueChange={(value) => setCreateMode(value as CreateMode)}>
                 <TabsList className="grid w-full grid-cols-2">
-                  <TabsTrigger value="managed">Managed value</TabsTrigger>
-                  <TabsTrigger value="external">External reference</TabsTrigger>
+                  <TabsTrigger value="managed">托管值</TabsTrigger>
+                  <TabsTrigger value="external">外部引用</TabsTrigger>
                 </TabsList>
               </Tabs>
             ) : null}
 
             <div>
-              <label className="text-xs font-medium" htmlFor="new-secret-name">Name</label>
+                  <label className="text-xs font-medium" htmlFor="new-secret-name">名称</label>
               {createNamePrefix && !editingDefinition ? (
                 <div className="flex h-9 w-full min-w-0 items-center gap-1.5 rounded-md border border-input bg-transparent px-2 shadow-xs transition-[color,box-shadow] focus-within:border-ring focus-within:ring-ring/50 focus-within:ring-3">
                   <span
@@ -2667,7 +2669,7 @@ export function Secrets() {
 
             {secretValueProvider === "company" && createMode === "managed" ? (
               <div>
-                <label className="text-xs font-medium" htmlFor="new-secret-value">Value</label>
+                  <label className="text-xs font-medium" htmlFor="new-secret-value">值</label>
                 <Textarea
                   id="new-secret-value"
                   value={createForm.value}
@@ -2682,7 +2684,7 @@ export function Secrets() {
             ) : null}
             {secretValueProvider === "company" && createMode === "external" ? (
               <div>
-                <label className="text-xs font-medium" htmlFor="new-secret-ref">External reference</label>
+                  <label className="text-xs font-medium" htmlFor="new-secret-ref">外部引用</label>
                 <Input
                   id="new-secret-ref"
                   value={createForm.externalRef}
@@ -2782,7 +2784,7 @@ export function Secrets() {
               <>
                 <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <div>
-                  <label className="text-xs font-medium" htmlFor="new-secret-provider">Provider</label>
+                  <label className="text-xs font-medium" htmlFor="new-secret-provider">提供方</label>
                   <select
                     id="new-secret-provider"
                     className="h-9 w-full rounded-md border border-border bg-background px-2 text-sm outline-none"
@@ -2831,7 +2833,7 @@ export function Secrets() {
                   ) : null}
                 </div>
                 <div>
-                  <label className="text-xs font-medium" htmlFor="new-secret-vault">Provider vault</label>
+                  <label className="text-xs font-medium" htmlFor="new-secret-vault">提供方密钥库</label>
                   <select
                     id="new-secret-vault"
                     className="h-9 w-full rounded-md border border-border bg-background px-2 text-sm outline-none"
@@ -2840,7 +2842,7 @@ export function Secrets() {
                       setCreateForm((current) => ({ ...current, providerConfigId: event.target.value }))
                     }
                   >
-                    <option value="">Deployment default</option>
+                    <option value="">部署默认值</option>
                     {createProviderConfigs.map((config) => {
                       const blockReason = getProviderConfigBlockReason(config);
                       return (
@@ -2923,7 +2925,7 @@ export function Secrets() {
           <div className="space-y-4">
             <div className="grid gap-3 sm:grid-cols-2">
               <div>
-                <label className="text-xs font-medium" htmlFor="vault-provider">Provider</label>
+                  <label className="text-xs font-medium" htmlFor="vault-provider">提供方</label>
                 <select
                   id="vault-provider"
                   className="h-9 w-full rounded-md border border-border bg-background px-2 text-sm outline-none disabled:opacity-60"
@@ -2944,7 +2946,7 @@ export function Secrets() {
                 </select>
               </div>
               <div>
-                <label className="text-xs font-medium" htmlFor="vault-name">Display name</label>
+                  <label className="text-xs font-medium" htmlFor="vault-name">显示名称</label>
                 <Input
                   id="vault-name"
                   value={vaultForm.displayName}
@@ -2955,7 +2957,7 @@ export function Secrets() {
                 />
               </div>
               <div>
-                <label className="text-xs font-medium" htmlFor="vault-status">Status</label>
+                  <label className="text-xs font-medium" htmlFor="vault-status">状态</label>
                 <select
                   id="vault-status"
                   className="h-9 w-full rounded-md border border-border bg-background px-2 text-sm outline-none"
@@ -2976,8 +2978,8 @@ export function Secrets() {
                   <option value="warning" disabled={vaultForm.provider === "gcp_secret_manager" || vaultForm.provider === "vault"}>
                     Warning
                   </option>
-                  <option value="coming_soon">Coming soon</option>
-                  <option value="disabled">Disabled</option>
+                    <option value="coming_soon">即将推出</option>
+                    <option value="disabled">已停用</option>
                 </select>
               </div>
               <label className="flex items-center gap-2 pt-6 text-sm">
@@ -3060,20 +3062,20 @@ export function Secrets() {
           {selectedSecret && secretSupportsExternalValueWrite(selectedSecret) ? (
             <Tabs value={rotateMode} onValueChange={(value) => setRotateMode(value as RotateMode)}>
               <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="value">Write new value</TabsTrigger>
-                <TabsTrigger value="reference">Change reference</TabsTrigger>
+                  <TabsTrigger value="value">写入新值</TabsTrigger>
+                  <TabsTrigger value="reference">更改引用</TabsTrigger>
               </TabsList>
             </Tabs>
           ) : null}
           <div>
-            <label className="text-xs font-medium" htmlFor="rotate-secret-vault">Provider vault</label>
+                  <label className="text-xs font-medium" htmlFor="rotate-secret-vault">提供方密钥库</label>
             <select
               id="rotate-secret-vault"
               className="h-9 w-full rounded-md border border-border bg-background px-2 text-sm outline-none"
               value={rotateProviderConfigId}
               onChange={(event) => setRotateProviderConfigId(event.target.value)}
             >
-              <option value="">Deployment default</option>
+                    <option value="">部署默认值</option>
               {selectedRotateProviderConfigs.map((config) => {
                 const blockReason = getProviderConfigBlockReason(config);
                 return (
@@ -3095,7 +3097,7 @@ export function Secrets() {
           </div>
           {selectedSecret?.managedMode === "external_reference" && rotateMode === "reference" ? (
             <div>
-              <label className="text-xs font-medium" htmlFor="rotate-ref">External reference</label>
+                  <label className="text-xs font-medium" htmlFor="rotate-ref">外部引用</label>
               <Input
                 id="rotate-ref"
                 value={rotateExternalRef}
@@ -3109,7 +3111,7 @@ export function Secrets() {
             </div>
           ) : (
             <div>
-              <label className="text-xs font-medium" htmlFor="rotate-value">New value</label>
+                  <label className="text-xs font-medium" htmlFor="rotate-value">新值</label>
               <Textarea
                 id="rotate-value"
                 value={rotateValue}
@@ -3155,13 +3157,13 @@ export function Secrets() {
       <Dialog open={Boolean(deleteConfirm)} onOpenChange={(open) => !open && setDeleteConfirm(null)}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle>Delete secret</DialogTitle>
+            <DialogTitle>删除密钥</DialogTitle>
             <DialogDescription>
               Permanently removes <strong>{deleteConfirm?.name}</strong>. Active bindings will fail until you remap them.
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
-            <Button variant="outline" onClick={() => setDeleteConfirm(null)}>Cancel</Button>
+          <Button variant="outline" onClick={() => setDeleteConfirm(null)}>取消</Button>
             <Button
               variant="destructive"
               onClick={() => deleteConfirm && deleteMutation.mutate(deleteConfirm.id)}
@@ -3180,14 +3182,14 @@ export function Secrets() {
       >
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle>Delete user-provided secret</DialogTitle>
+            <DialogTitle>删除用户提供的密钥</DialogTitle>
             <DialogDescription>
               Permanently removes <strong>{definitionDeleteConfirm?.name}</strong> for the whole company.
               Existing member values become unreferenced and active bindings must be remapped.
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
-            <Button variant="outline" onClick={() => setDefinitionDeleteConfirm(null)}>Cancel</Button>
+          <Button variant="outline" onClick={() => setDefinitionDeleteConfirm(null)}>取消</Button>
             <Button
               variant="destructive"
               onClick={() =>
@@ -3215,7 +3217,7 @@ export function Secrets() {
       <Dialog open={Boolean(removeVaultConfirm)} onOpenChange={(open) => !open && setRemoveVaultConfirm(null)}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle>Remove provider vault</DialogTitle>
+            <DialogTitle>移除提供方密钥库</DialogTitle>
             <DialogDescription>
               Removes <strong>{removeVaultConfirm?.displayName}</strong> from Paperclip only.{" "}
               {removeVaultConfirm?.provider === "aws_secrets_manager"
@@ -3225,7 +3227,7 @@ export function Secrets() {
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
-            <Button variant="outline" onClick={() => setRemoveVaultConfirm(null)}>Cancel</Button>
+          <Button variant="outline" onClick={() => setRemoveVaultConfirm(null)}>取消</Button>
             <Button
               variant="destructive"
               onClick={() => removeVaultConfirm && removeVaultMutation.mutate(removeVaultConfirm.id)}
@@ -3243,19 +3245,17 @@ export function Secrets() {
 }
 
 function SecretsHowToUse() {
+  const { t } = useTranslation();
   return (
     <div className="flex items-start gap-2 rounded-md border border-border bg-muted/20 px-3 py-2 text-xs text-muted-foreground">
       <Info className="mt-0.5 h-3.5 w-3.5 shrink-0" />
       <div className="space-y-1">
-        <p className="font-medium text-foreground">Use secrets by binding them to runtime environment variables.</p>
+        <p className="font-medium text-foreground">{t("secrets.howToTitle", { defaultValue: "将密钥绑定到运行时环境变量后使用。" })}</p>
         <p>
-          Create or link a secret here, then open an agent&apos;s Environment variables or a project&apos;s Env field.
-          Add the env key the process expects, for example <code className="font-mono">GH_TOKEN</code>, choose{" "}
-          <span className="font-medium text-foreground">Secret</span>, and select the stored secret version.
+          {t("secrets.howToStepOne", { defaultValue: "在这里创建或关联密钥，然后打开智能体的环境变量或项目的 Env 字段。添加进程需要的环境变量名，例如" })} <code className="font-mono">GH_TOKEN</code>，{t("secrets.howToStepTwo", { defaultValue: "选择“密钥”，再选择已保存的密钥版本。" })}
         </p>
         <p>
-          Paperclip resolves the value server-side when the run starts and injects it as that env var. Project env
-          applies to every task in the project and overrides agent env on matching keys.
+          {t("secrets.howToRuntime", { defaultValue: "Paperclip 会在运行开始时由服务器解析密钥值，并将其注入对应的环境变量。项目环境变量适用于项目中的所有任务，并会覆盖同名的智能体环境变量。" })}
         </p>
       </div>
     </div>
@@ -3301,7 +3301,7 @@ function SecretsFiltersPopover({
           variant="outline"
           size="icon"
           className={cn("relative h-8 w-8 shrink-0", activeFilterCount > 0 && "text-blue-600 dark:text-blue-400")}
-          title={activeFilterCount > 0 ? `Filters: ${activeFilterCount}` : "Filter"}
+          title={activeFilterCount > 0 ? `筛选条件：${activeFilterCount}` : "筛选"}
         >
           <Filter className="h-3.5 w-3.5" />
           {activeFilterCount > 0 ? (
@@ -3317,7 +3317,7 @@ function SecretsFiltersPopover({
       >
         <div className="space-y-3 p-3">
           <div className="flex items-center justify-between">
-            <span className="text-sm font-medium">Filters</span>
+            <span className="text-sm font-medium">筛选条件</span>
             {activeFilterCount > 0 ? (
               <button
                 type="button"
@@ -3325,14 +3325,14 @@ function SecretsFiltersPopover({
                 onClick={resetFilters}
               >
                 <X className="h-3 w-3" />
-                Clear
+                清除
               </button>
             ) : null}
           </div>
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
             <div className="space-y-1">
-              <span className="text-xs text-muted-foreground">Status</span>
+              <span className="text-xs text-muted-foreground">状态</span>
               <div className="space-y-0.5">
                 {statusOptions.map((option) => (
                   <label key={option.value} className="flex cursor-pointer items-center gap-2 rounded-sm px-2 py-1 hover:bg-accent/50">
@@ -3347,12 +3347,12 @@ function SecretsFiltersPopover({
             </div>
 
             <div className="space-y-1">
-              <span className="text-xs text-muted-foreground">Provided by</span>
+              <span className="text-xs text-muted-foreground">提供者</span>
               <div className="space-y-0.5">
                 {[
-                  { value: "all" as const, label: "All sources" },
-                  { value: "company" as const, label: "Company" },
-                  { value: "user" as const, label: "Each user" },
+                  { value: "all" as const, label: "所有来源" },
+                  { value: "company" as const, label: "公司" },
+                  { value: "user" as const, label: "每位用户" },
                 ].map((option) => (
                   <label key={option.value} className="flex cursor-pointer items-center gap-2 rounded-sm px-2 py-1 hover:bg-accent/50">
                     <Checkbox
@@ -3366,14 +3366,14 @@ function SecretsFiltersPopover({
             </div>
 
             <div className="space-y-1">
-              <span className="text-xs text-muted-foreground">Provider</span>
+              <span className="text-xs text-muted-foreground">提供方</span>
               <div className="max-h-48 space-y-0.5 overflow-y-auto pr-1">
                 <label className="flex cursor-pointer items-center gap-2 rounded-sm px-2 py-1 hover:bg-accent/50">
                   <Checkbox
                     checked={providerFilter === "all"}
                     onCheckedChange={() => onProviderChange("all")}
                   />
-                  <span className="text-sm">All providers</span>
+                  <span className="text-sm">所有提供方</span>
                 </label>
                 {providers.map((provider) => (
                   <label key={provider.id} className="flex cursor-pointer items-center gap-2 rounded-sm px-2 py-1 hover:bg-accent/50">
@@ -3429,7 +3429,7 @@ function ProviderVaultInlineWarning({ config }: { config: CompanySecretProviderC
   if (!message) {
     return (
       <p className="mt-1 text-(length:--text-micro) text-muted-foreground">
-        {config.isDefault ? "Default vault" : "Vault"} · {config.status.replace("_", " ")}
+        {config.isDefault ? "默认密钥库" : "密钥库"} · {config.status === "active" ? "已启用" : config.status === "disabled" ? "已停用" : config.status}
       </p>
     );
   }
@@ -3813,9 +3813,9 @@ function AwsProviderVaultDiscoveryPanel({
     <div className="space-y-3 border-t border-border pt-3">
       <div className="flex flex-wrap items-center gap-2">
         <div className="min-w-0 flex-1">
-          <p className="text-sm font-medium">AWS discovery</p>
+          <p className="text-sm font-medium">AWS 发现</p>
           <p className="text-xs text-muted-foreground">
-            Uses the current draft routing fields to inspect AWS Secrets Manager metadata. Values are not read.
+            使用当前草稿中的路由字段检查 AWS Secrets Manager 元数据，不会读取密钥值。
           </p>
         </div>
         <Button
@@ -3831,18 +3831,18 @@ function AwsProviderVaultDiscoveryPanel({
           ) : (
             <Search className="h-3.5 w-3.5 mr-1" />
           )}
-          Find existing AWS values
+          查找现有 AWS 值
         </Button>
       </div>
 
       {!canDiscover ? (
-        <p className="text-xs text-muted-foreground">Enter an AWS region before discovery.</p>
+        <p className="text-xs text-muted-foreground">请先输入 AWS 区域，再开始发现。</p>
       ) : null}
 
       {loading ? (
         <div className="flex items-center gap-2 rounded-md border border-border bg-muted/20 p-3 text-xs text-muted-foreground">
           <Loader2 className="h-3.5 w-3.5 animate-spin" />
-          Searching AWS Secrets Manager metadata
+          正在搜索 AWS Secrets Manager 元数据
         </div>
       ) : null}
 
@@ -3863,7 +3863,7 @@ function AwsProviderVaultDiscoveryPanel({
 
       {preview && preview.candidates.length === 0 && !loading ? (
         <div className="rounded-md border border-dashed border-border bg-muted/20 p-3 text-xs text-muted-foreground">
-          No AWS vault metadata candidates found. Manual entry is still available.
+          未找到 AWS 密钥库元数据候选项，仍可手动输入。
         </div>
       ) : null}
 
@@ -3931,7 +3931,7 @@ function AwsProviderVaultDiscoveryError({
         <div className="min-w-0 flex-1 space-y-2">
           <div>
             <p className="font-medium">
-              {isAccessDenied ? "AWS discovery needs ListSecrets permission" : "AWS discovery failed"}
+              {isAccessDenied ? "AWS 发现需要 ListSecrets 权限" : "AWS 发现失败"}
             </p>
             <p className="mt-1 leading-relaxed text-destructive/85">
               {isAccessDenied
@@ -4051,7 +4051,7 @@ function SecretCreateError({
               </div>
             ) : null}
             <div>
-              <dt className="font-medium">Provider vault</dt>
+              <dt className="font-medium">提供方密钥库</dt>
               <dd className="break-all">{details?.providerConfigId ?? providerConfigId ?? "Deployment default"}</dd>
             </div>
             <div>
@@ -4172,7 +4172,7 @@ function CoverageInline({
   });
   const summary = coverageQuery.data;
   if (coverageQuery.isPending) return <span className="text-muted-foreground">Loading…</span>;
-  if (coverageQuery.isError) return <span className="text-destructive">Coverage unavailable</span>;
+  if (coverageQuery.isError) return <span className="text-destructive">覆盖范围不可用</span>;
   return (
     <span className="inline-flex min-w-0 items-center gap-1 text-muted-foreground">
       <Users className="h-3 w-3" />
@@ -4204,7 +4204,7 @@ function UserSecretDetailsTab({
       <DetailRow label="Description">
         <span>{definition.description ?? <span className="text-muted-foreground">—</span>}</span>
       </DetailRow>
-      <DetailRow label="Provided by">Each user</DetailRow>
+      <DetailRow label="提供者">每位用户</DetailRow>
       <DetailRow label="Key">
         <code>{definition.key}</code>
       </DetailRow>
@@ -4216,7 +4216,7 @@ function UserSecretDetailsTab({
           onClick={onViewCoverage}
         >
           <CoverageInline companyId={companyId} definitionId={definition.id} />
-          <span className="shrink-0 text-muted-foreground">· View in Coverage</span>
+          <span className="shrink-0 text-muted-foreground">· 在覆盖范围中查看</span>
         </button>
       </DetailRow>
       <DetailRow label="Created">{formatRelative(definition.createdAt)}</DetailRow>
@@ -4225,7 +4225,7 @@ function UserSecretDetailsTab({
         {definition.usageGuidance ?? <span className="text-muted-foreground">—</span>}
       </DetailRow>
       <div className="mt-3 rounded-md border border-violet-500/30 bg-violet-500/5 p-2 text-(length:--text-micro) text-violet-800 dark:text-violet-200">
-        No value is stored on this admin row. Each member manages their own value under My secrets.
+        管理员列表不会保存密钥值，每位成员都在“我的密钥”中管理自己的值。
       </div>
     </dl>
   );
@@ -4244,10 +4244,10 @@ function UserSecretCoverageTab({
     staleTime: 30_000,
   });
   if (coverageQuery.isPending) {
-    return <div className="py-6 text-center text-xs text-muted-foreground">Loading…</div>;
+    return <div className="py-6 text-center text-xs text-muted-foreground">加载中……</div>;
   }
   if (coverageQuery.isError) {
-    return <div className="py-6 text-center text-xs text-destructive">Coverage unavailable.</div>;
+    return <div className="py-6 text-center text-xs text-destructive">覆盖范围不可用。</div>;
   }
   const summary: UserSecretCoverageSummary = coverageQuery.data;
   const total = summary.configuredCount + summary.missingCount + summary.inactiveCount;
@@ -4262,23 +4262,23 @@ function UserSecretCoverageTab({
           <div className="text-lg font-semibold text-emerald-700 dark:text-emerald-300">
             {summary.configuredCount}
           </div>
-          <div className="text-muted-foreground">Set</div>
+          <div className="text-muted-foreground">已设置</div>
         </div>
         <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-3">
           <div className="text-lg font-semibold text-amber-700 dark:text-amber-300">
             {summary.missingCount}
           </div>
-          <div className="text-muted-foreground">Missing</div>
+          <div className="text-muted-foreground">缺失</div>
         </div>
         <div className="rounded-md border border-border bg-muted/30 p-3">
           <div className="text-lg font-semibold text-muted-foreground">
             {summary.inactiveCount}
           </div>
-          <div className="text-muted-foreground">Inactive</div>
+          <div className="text-muted-foreground">未启用</div>
         </div>
       </div>
       <p className="text-xs text-muted-foreground">
-        Coverage is counts only across {total} member{total === 1 ? "" : "s"}. Secret values are never shown here.
+        覆盖范围仅统计 {total} 位成员，绝不会在此显示密钥值。
       </p>
     </div>
   );
@@ -4288,13 +4288,13 @@ function UserSecretUsageTab({ definition }: { definition: UserSecretDefinition }
   return (
     <div className="space-y-3 text-xs text-muted-foreground">
       <div className="rounded-md border border-border bg-muted/20 p-3">
-        Bind runtime environment variables to this user-provided secret by choosing{" "}
-        <span className="font-medium text-foreground">User secret</span> and selecting{" "}
+        请选择“用户密钥”并选择{" "}
+        <span className="font-medium text-foreground">用户密钥</span>，将运行时环境变量绑定到此密钥：{" "}
         <code className="font-mono">{definition.key}</code>.
       </div>
       {definition.usageGuidance ? (
         <div>
-          <p className="mb-1 text-(length:--text-micro) uppercase tracking-wide text-muted-foreground">Member guidance</p>
+          <p className="mb-1 text-(length:--text-micro) uppercase tracking-wide text-muted-foreground">成员指引</p>
           <p className="text-foreground">{definition.usageGuidance}</p>
         </div>
       ) : null}
@@ -4622,7 +4622,7 @@ function SecretDetailsTab({
       <DetailRow label="Provided by">Company</DetailRow>
       <DetailRow label="Custody">{modeLabel(secret.managedMode)}</DetailRow>
       <DetailRow label="Provider">{providerLabel(providers, secret.provider)}</DetailRow>
-      <DetailRow label="Provider vault">{providerVaultLabel(providerConfigs, secret.providerConfigId)}</DetailRow>
+      <DetailRow label="提供方密钥库">{providerVaultLabel(providerConfigs, secret.providerConfigId)}</DetailRow>
       <DetailRow label="External ARN">
         {secret.externalRef ? (
           <span className="break-all font-mono">{secret.externalRef}</span>

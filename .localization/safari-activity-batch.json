@@ -1,0 +1,17 @@
+{
+  "ACTIVITY":"动态",
+  "Everything happening in your company, newest first — people, agents, and the system. Each line is one recorded action.":"公司内发生的所有活动，按最新时间排列，包括人员、智能体和系统。每一行代表一项已记录的操作。",
+  "Export CSV":"导出 CSV",
+  "Load more":"加载更多",
+  "Recorded by Paperclip — entries can't be edited. Sensitive values are never stored.":"由 Paperclip 记录，条目不可编辑。敏感值不会被存储。",
+  "CEO environment lease released":"CEO 环境租约已释放",
+  "CEO environment lease acquired":"CEO 环境租约已获取",
+  "environment_lease":"环境租约",
+  "environment.lease_released":"环境.租约已释放",
+  "environment.lease_acquired":"环境.租约已获取",
+  "Resize sidebar":"调整侧栏大小",
+  "Open TokenARK company switcher":"打开 TokenARK 公司切换器",
+  "Collapse 工作":"收起工作",
+  "Collapse 公司":"收起公司",
+  "Collapse Agents":"收起智能体"
+}

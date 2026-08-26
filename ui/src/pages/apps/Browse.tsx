@@ -115,7 +115,7 @@ export function Browse() {
   }, [applicationsQuery.data, connectionsQuery.data]);
 
   if (!selectedCompanyId) {
-    return <div className="p-6 text-sm text-muted-foreground">Select a company to browse apps.</div>;
+    return <div className="p-6 text-sm text-muted-foreground">请选择公司以浏览应用。</div>;
   }
 
   const loading = galleryQuery.isLoading || applicationsQuery.isLoading || connectionsQuery.isLoading;
@@ -136,7 +136,7 @@ export function Browse() {
   return (
     <div className="max-w-5xl space-y-8 pb-12">
       <header>
-        <h1 className="text-2xl font-bold tracking-tight">Browse</h1>
+        <h1 className="text-2xl font-bold tracking-tight">浏览应用</h1>
         <p className="mt-1 text-sm text-muted-foreground">
           Choose an app or connect your own MCP server.
         </p>

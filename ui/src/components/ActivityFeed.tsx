@@ -115,7 +115,7 @@ type GroupMode = "flat" | "by-task";
 const FILTER_OPTIONS: Array<{ value: FilterValue; label: string }> = [
   { value: "all", label: "All" },
   { value: "in-progress", label: "In Progress" },
-  { value: "for-review", label: "In Review" },
+  { value: "for-review", label: "审核中" },
   { value: "completed", label: "Done" },
 ];
 

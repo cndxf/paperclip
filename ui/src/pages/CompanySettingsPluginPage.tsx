@@ -41,7 +41,7 @@ export function CompanySettingsPluginPage() {
   useEffect(() => {
     if (!pageSlot) return;
     setBreadcrumbs([
-      { label: "Settings", href: "/company/settings" },
+      { label: "设置", href: "/company/settings" },
       { label: pageSlot.displayName },
     ]);
   }, [pageSlot, setBreadcrumbs]);
@@ -50,17 +50,17 @@ export function CompanySettingsPluginPage() {
     if (hasInvalidCompanyPrefix) {
       return <NotFoundPage scope="invalid_company_prefix" requestedPrefix={routeCompanyPrefix} />;
     }
-    return <div className="text-sm text-muted-foreground">Select a company to view this page.</div>;
+    return <div className="text-sm text-muted-foreground">请选择公司以查看此页面。</div>;
   }
 
   if (!settingsRoutePath || isLoading) {
-    return <div className="text-sm text-muted-foreground">Loading...</div>;
+    return <div className="text-sm text-muted-foreground">正在加载……</div>;
   }
 
   if (errorMessage) {
     return (
       <div className="rounded-md border border-destructive/30 bg-destructive/5 px-3 py-2 text-sm text-destructive">
-        Plugin extensions unavailable: {errorMessage}
+        插件扩展不可用：{errorMessage}
       </div>
     );
   }
@@ -68,7 +68,7 @@ export function CompanySettingsPluginPage() {
   if (pageSlots.length > 1) {
     return (
       <div className="rounded-md border border-destructive/30 bg-destructive/5 px-3 py-2 text-sm text-destructive">
-        Multiple plugins declare the company settings route <code>{settingsRoutePath}</code>. Disable one plugin or change its route.
+        有多个插件声明了公司设置路由 <code>{settingsRoutePath}</code>。请停用其中一个插件或修改路由。
       </div>
     );
   }

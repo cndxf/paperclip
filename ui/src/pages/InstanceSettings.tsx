@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { queryKeys } from "../lib/queryKeys";
 import { formatDateTime, relativeTime } from "../lib/utils";
+import { useTranslation } from "../i18n";
 
 function asRecord(value: unknown): Record<string, unknown> | null {
   if (typeof value !== "object" || value === null || Array.isArray(value)) return null;
@@ -26,17 +27,18 @@ function buildAgentHref(agent: InstanceSchedulerHeartbeatAgent) {
 }
 
 export function InstanceSettings() {
+  const { t } = useTranslation();
   const { setBreadcrumbs } = useBreadcrumbs();
   const queryClient = useQueryClient();
   const [actionError, setActionError] = useState<string | null>(null);
 
   useEffect(() => {
     setBreadcrumbs([
-      { label: "Settings", href: "/company/settings" },
-      { label: "Instance settings", href: "/company/settings/instance/general" },
-      { label: "Heartbeats" },
+      { label: t("nav.settings", { defaultValue: "设置" }), href: "/company/settings" },
+      { label: t("instanceSettings.title", { defaultValue: "实例设置" }), href: "/company/settings/instance/general" },
+      { label: t("instanceSettings.heartbeats", { defaultValue: "心跳" }) },
     ]);
-  }, [setBreadcrumbs]);
+  }, [setBreadcrumbs, t]);
 
   const heartbeatsQuery = useQuery({
     queryKey: queryKeys.instance.schedulerHeartbeats,
@@ -73,7 +75,7 @@ export function InstanceSettings() {
       ]);
     },
     onError: (error) => {
-      setActionError(error instanceof Error ? error.message : "Failed to update heartbeat.");
+      setActionError(error instanceof Error ? error.message : t("instanceSettings.errors.updateHeartbeat", { defaultValue: "更新心跳失败。" }));
     },
   });
 
@@ -103,11 +105,11 @@ export function InstanceSettings() {
       const failures = results.filter((result): result is PromiseRejectedResult => result.status === "rejected");
       if (failures.length > 0) {
         const firstError = failures[0]?.reason;
-        const detail = firstError instanceof Error ? firstError.message : "Unknown error";
+        const detail = firstError instanceof Error ? firstError.message : t("instanceSettings.errors.unknown", { defaultValue: "未知错误" });
         throw new Error(
           failures.length === 1
-            ? `Failed to disable 1 timer heartbeat: ${detail}`
-            : `Failed to disable ${failures.length} of ${enabled.length} timer heartbeats. First error: ${detail}`,
+            ? t("instanceSettings.errors.disableOne", { defaultValue: "停用 1 个定时心跳失败：{{detail}}", detail })
+            : t("instanceSettings.errors.disableMany", { defaultValue: "停用 {{failures}}/{{enabled}} 个定时心跳失败。首个错误：{{detail}}", failures: failures.length, enabled: enabled.length, detail }),
         );
       }
       return enabled;
@@ -126,7 +128,7 @@ export function InstanceSettings() {
       ]);
     },
     onError: (error) => {
-      setActionError(error instanceof Error ? error.message : "Failed to disable all heartbeats.");
+      setActionError(error instanceof Error ? error.message : t("instanceSettings.errors.disableAll", { defaultValue: "停用全部心跳失败。" }));
     },
   });
 
@@ -150,7 +152,7 @@ export function InstanceSettings() {
   }, [agents]);
 
   if (heartbeatsQuery.isLoading) {
-    return <div className="text-sm text-muted-foreground">Loading scheduler heartbeats...</div>;
+    return <div className="text-sm text-muted-foreground">{t("instanceSettings.loading", { defaultValue: "正在加载计划任务心跳…" })}</div>;
   }
 
   if (heartbeatsQuery.error) {
@@ -168,17 +170,17 @@ export function InstanceSettings() {
       <div className="space-y-2">
         <div className="flex items-center gap-2">
           <Settings className="h-5 w-5 text-muted-foreground" />
-          <h1 className="text-lg font-semibold">Scheduler Heartbeats</h1>
+          <h1 className="text-lg font-semibold">{t("instanceSettings.schedulerHeartbeats", { defaultValue: "计划任务心跳" })}</h1>
         </div>
         <p className="text-sm text-muted-foreground">
-          Agents with a timer heartbeat enabled across all of your companies.
+          {t("instanceSettings.description", { defaultValue: "所有公司中已启用定时心跳的智能体。" })}
         </p>
       </div>
 
       <div className="flex items-center gap-4 text-sm text-muted-foreground">
-        <span><span className="font-semibold text-foreground">{activeCount}</span> active</span>
-        <span><span className="font-semibold text-foreground">{disabledCount}</span> disabled</span>
-        <span><span className="font-semibold text-foreground">{grouped.length}</span> {grouped.length === 1 ? "company" : "companies"}</span>
+        <span><span className="font-semibold text-foreground">{activeCount}</span> {t("common.active", { defaultValue: "启用" })}</span>
+        <span><span className="font-semibold text-foreground">{disabledCount}</span> {t("common.disabled", { defaultValue: "已停用" })}</span>
+        <span><span className="font-semibold text-foreground">{grouped.length}</span> {t(grouped.length === 1 ? "common.company" : "common.companies", { defaultValue: grouped.length === 1 ? "家公司" : "家公司" })}</span>
         {anyEnabled && (
           <Button
             variant="destructive"
@@ -186,14 +188,13 @@ export function InstanceSettings() {
             className="ml-auto h-7 text-xs"
             disabled={disableAllMutation.isPending}
             onClick={() => {
-              const noun = enabledCount === 1 ? "agent" : "agents";
-              if (!window.confirm(`Disable timer heartbeats for all ${enabledCount} enabled ${noun}?`)) {
+              if (!window.confirm(t("instanceSettings.confirmDisableAll", { defaultValue: "确定要停用全部 {{count}} 个已启用的定时心跳吗？", count: enabledCount }))) {
                 return;
               }
               disableAllMutation.mutate(agents);
             }}
           >
-            {disableAllMutation.isPending ? "Disabling..." : "Disable All"}
+            {disableAllMutation.isPending ? t("instanceSettings.disabling", { defaultValue: "正在停用…" }) : t("instanceSettings.disableAll", { defaultValue: "全部停用" })}
           </Button>
         )}
       </div>
@@ -207,7 +208,7 @@ export function InstanceSettings() {
       {agents.length === 0 ? (
         <EmptyState
           icon={Clock3}
-          message="No scheduler heartbeats match the current criteria."
+          message={t("instanceSettings.empty", { defaultValue: "没有符合当前条件的计划任务心跳。" })}
         />
       ) : (
         <div className="space-y-4">
@@ -229,7 +230,7 @@ export function InstanceSettings() {
                           variant={agent.schedulerActive ? "default" : "outline"}
                           className="shrink-0 text-(length:--text-nano) px-1.5 py-0"
                         >
-                          {agent.schedulerActive ? "On" : "Off"}
+                          {agent.schedulerActive ? t("common.on", { defaultValue: "开启" }) : t("common.off", { defaultValue: "关闭" })}
                         </Badge>
                         <Link
                           to={buildAgentHref(agent)}
@@ -249,13 +250,13 @@ export function InstanceSettings() {
                         >
                           {agent.lastHeartbeatAt
                             ? relativeTime(agent.lastHeartbeatAt)
-                            : "never"}
+                            : t("common.never", { defaultValue: "从未运行" })}
                         </span>
                         <span className="ml-auto flex items-center gap-1.5 shrink-0">
                           <Link
                             to={buildAgentHref(agent)}
                             className="text-muted-foreground hover:text-foreground"
-                            title="Full agent config"
+                            title={t("instanceSettings.fullAgentConfig", { defaultValue: "完整智能体配置" })}
                           >
                             <ExternalLink className="h-3.5 w-3.5" />
                           </Link>
@@ -266,7 +267,7 @@ export function InstanceSettings() {
                             disabled={saving}
                             onClick={() => toggleMutation.mutate(agent)}
                           >
-                            {saving ? "..." : agent.heartbeatEnabled ? "Disable Timer Heartbeat" : "Enable Timer Heartbeat"}
+                            {saving ? "…" : agent.heartbeatEnabled ? t("instanceSettings.disableHeartbeat", { defaultValue: "停用定时心跳" }) : t("instanceSettings.enableHeartbeat", { defaultValue: "启用定时心跳" })}
                           </Button>
                         </span>
                       </div>

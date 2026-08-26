@@ -1,0 +1,1773 @@
+ui/src/pages/DashboardLive.tsx:52:        title="Active / recent"
+ui/src/pages/BoardChat.tsx:93:        <span className="typing-dots" aria-label="typing">
+ui/src/pages/BoardChat.tsx:706:                    aria-label="chat history"
+ui/src/pages/BoardChat.tsx:720:                    aria-label="new chat"
+ui/src/pages/BoardChat.tsx:944:              aria-label="Jump to latest messages"
+ui/src/pages/BoardChat.tsx:970:              placeholder="Ask anything about your company..."
+ui/src/pages/BoardChat.tsx:985:          aria-label="Resize board chat and agent feed"
+ui/src/pages/BoardChat.tsx:1010:              aria-label="Open agent feed"
+ui/src/pages/ResponsibleUserDenialUxLab.tsx:126:          title="1 · Run identity — “on behalf of {user}”"
+ui/src/pages/ResponsibleUserDenialUxLab.tsx:127:          description="A run acting for a human now names that user on both the issue run ledger and the run detail header."
+ui/src/pages/ResponsibleUserDenialUxLab.tsx:129:          <BeforeAfter label="Before — run ledger">
+ui/src/pages/ResponsibleUserDenialUxLab.tsx:132:          <BeforeAfter label="After — run ledger">
+ui/src/pages/ResponsibleUserDenialUxLab.tsx:135:          <BeforeAfter label="Before — run detail">
+ui/src/pages/ResponsibleUserDenialUxLab.tsx:138:          <BeforeAfter label="After — run detail">
+ui/src/pages/ResponsibleUserDenialUxLab.tsx:144:          title="2 · Denial state — responsible user not authorized"
+ui/src/pages/ResponsibleUserDenialUxLab.tsx:145:          description="The agent is allowed, but the user the run acts for is not. Distinct from a plain agent-lacks-permission failure."
+ui/src/pages/ResponsibleUserDenialUxLab.tsx:147:          <BeforeAfter label="Before — generic failure text">
+ui/src/pages/ResponsibleUserDenialUxLab.tsx:155:          <BeforeAfter label="After — actionable denial copy">
+ui/src/pages/ResponsibleUserDenialUxLab.tsx:164:          title="3 · Denial state — agent lacks permission (unchanged)"
+ui/src/pages/ResponsibleUserDenialUxLab.tsx:165:          description="A denial that is NOT a responsible-user code keeps the existing generic error copy — no responsible-user notice."
+ui/src/pages/ResponsibleUserDenialUxLab.tsx:167:          <BeforeAfter label="Agent-lacks-permission failure">
+ui/src/pages/ResponsibleUserDenialUxLab.tsx:175:          <BeforeAfter label="No responsible-user notice rendered">
+ui/src/pages/ResponsibleUserDenialUxLab.tsx:183:          title="4 · Denial state — responsible user unavailable"
+ui/src/pages/ResponsibleUserDenialUxLab.tsx:184:          description="The user this run acts for was removed or deactivated. Steers the agent to mark work blocked."
+ui/src/pages/ResponsibleUserDenialUxLab.tsx:186:          <BeforeAfter label="Before — generic failure text">
+ui/src/pages/ResponsibleUserDenialUxLab.tsx:194:          <BeforeAfter label="After — actionable denial copy">
+ui/src/pages/ResponsibleUserDenialUxLab.tsx:203:          title="In-context — denial inside a failed run ledger row"
+ui/src/pages/ResponsibleUserDenialUxLab.tsx:204:          description="How the notice reads within a run row on the issue timeline."
+ui/src/pages/ResponsibleUserDenialUxLab.tsx:206:          <BeforeAfter label="Unauthorized">
+ui/src/pages/ResponsibleUserDenialUxLab.tsx:217:          <BeforeAfter label="Unavailable">
+ui/src/pages/CaseDetail.tsx:129:    <section className="space-y-3" aria-label="Case relationships">
+ui/src/pages/CaseDetail.tsx:205:          aria-label="Change case status"
+ui/src/pages/CaseDetail.tsx:285:          placeholder="Search labels…"
+ui/src/pages/CaseDetail.tsx:312:              aria-label="New label color"
+ui/src/pages/CaseDetail.tsx:351:      <PropertySection title="Case" first>
+ui/src/pages/CaseDetail.tsx:352:        <CasePropertyRow label="Type" mode={mode}>
+ui/src/pages/CaseDetail.tsx:356:          <CasePropertyRow label="Key" mode={mode}>
+ui/src/pages/CaseDetail.tsx:359:              label="case key"
+ui/src/pages/CaseDetail.tsx:365:        <CasePropertyRow label="Labels" wrap mode={mode}>
+ui/src/pages/CaseDetail.tsx:391:        <PropertySection title="Fields">
+ui/src/pages/CaseDetail.tsx:407:      <PropertySection title="Linked tasks">
+ui/src/pages/CaseDetail.tsx:409:          <CasePropertyRow label="Tasks" mode={mode}>
+ui/src/pages/CaseDetail.tsx:413:          <CasePropertyRow label="Tasks" wrap mode={mode}>
+ui/src/pages/CaseDetail.tsx:436:        <PropertySection title="Attachments">
+ui/src/pages/CaseDetail.tsx:437:          <CasePropertyRow label="Files" mode={mode}>
+ui/src/pages/CaseDetail.tsx:632:                <Button variant="ghost" size="icon-xs" aria-label="More case actions" title="More case actions">
+ui/src/pages/MyIssues.tsx:30:    return <EmptyState icon={ListTodo} message="Select a company to view your tasks." />;
+ui/src/pages/MyIssues.tsx:47:        <EmptyState icon={ListTodo} message="No tasks assigned to you." />
+ui/src/pages/secrets/MyUserSecretsTab.tsx:84:            message="No user secrets are defined for this company yet. An admin defines which credentials each member supplies."
+ui/src/pages/secrets/MyUserSecretsTab.tsx:174:            title="Clear my value"
+ui/src/pages/Agents.tsx:406:          <AlertTriangle className="h-3.5 w-3.5 text-amber-500" aria-label="Invalid reporting chain" />
+ui/src/pages/Agents.tsx:675:          <AlertTriangle className="h-3.5 w-3.5 shrink-0 text-amber-500" aria-label="Invalid reporting chain" />
+ui/src/pages/secrets/ProposalsTab.tsx:187:        title="No pending proposals"
+ui/src/pages/secrets/ProposalsTab.tsx:188:        message="When an agent proposes a secret or an access binding, it shows up here for review."
+ui/src/pages/secrets/SetMyUserSecretDialog.tsx:134:                  placeholder="provider reference or ARN"
+ui/src/pages/secrets/SetMyUserSecretDialog.tsx:149:                  placeholder="Paste your token or credential"
+ui/src/pages/Search.tsx:610:            placeholder="Search tasks, comments, documents, artifacts, agents, projects…"
+ui/src/pages/Search.tsx:611:            aria-label="Search query"
+ui/src/pages/Search.tsx:618:              aria-label="Clear search"
+ui/src/pages/PipelineSettings.tsx:1199:        aria-label="Stage sections"
+ui/src/pages/PipelineSettings.tsx:2122:    return <EmptyState icon={Hexagon} message="Select a company to edit pipeline settings." />;
+ui/src/pages/PipelineSettings.tsx:2126:    return <EmptyState icon={Hexagon} message="No pipeline selected." />;
+ui/src/pages/PipelineSettings.tsx:2138:    return <EmptyState icon={Hexagon} message="Pipeline not found." />;
+ui/src/pages/PipelineSettings.tsx:2268:    <FieldRow label="Allowed next steps">
+ui/src/pages/PipelineSettings.tsx:2315:          aria-label="Break into smaller pieces"
+ui/src/pages/PipelineSettings.tsx:2327:          <FieldRow label="Create each piece in">
+ui/src/pages/PipelineSettings.tsx:2331:                  aria-label="Create each piece in"
+ui/src/pages/PipelineSettings.tsx:2360:          <FieldRow label="starting at">
+ui/src/pages/PipelineSettings.tsx:2363:                aria-label="Starting stage for each piece"
+ui/src/pages/PipelineSettings.tsx:2377:          <FieldRow label="Call each piece a">
+ui/src/pages/PipelineSettings.tsx:2380:                aria-label="Call each piece a"
+ui/src/pages/PipelineSettings.tsx:2383:                placeholder="piece"
+ui/src/pages/PipelineSettings.tsx:2391:          <FieldRow label="Carry over">
+ui/src/pages/PipelineSettings.tsx:2488:          <FieldRow label="Then move this case to">
+ui/src/pages/PipelineSettings.tsx:2491:                aria-label="Then move this case to"
+ui/src/pages/PipelineSettings.tsx:2504:          <FieldRow label="Wait">
+ui/src/pages/PipelineSettings.tsx:2524:                aria-label="Move this case when all pieces finish"
+ui/src/pages/PipelineSettings.tsx:2569:              <Button type="button" variant="outline" size="icon" className="h-8 w-8" title="Pipeline actions">
+ui/src/pages/PipelineSettings.tsx:2593:                aria-label="Pipeline name"
+ui/src/pages/PipelineSettings.tsx:2603:                aria-label="Pipeline description"
+ui/src/pages/PipelineSettings.tsx:2607:                placeholder="Add a description"
+ui/src/pages/PipelineSettings.tsx:2628:              message="No stages configured."
+ui/src/pages/PipelineSettings.tsx:2763:                        <FieldRow label="Name">
+ui/src/pages/PipelineSettings.tsx:2766:                        <FieldRow label="Step type">
+ui/src/pages/PipelineSettings.tsx:2773:                                  aria-label="Step type"
+ui/src/pages/PipelineSettings.tsx:2813:                          <FieldRow label="Approver">
+ui/src/pages/PipelineSettings.tsx:2818:                              placeholder="Approver"
+ui/src/pages/PipelineSettings.tsx:2848:                          <FieldRow label="Review outcomes">
+ui/src/pages/PipelineSettings.tsx:2907:                            placeholder="Pick agent"
+ui/src/pages/PipelineSettings.tsx:2943:                            <FieldRow label="Project context">
+ui/src/pages/PipelineSettings.tsx:2949:                                  placeholder="Project"
+ui/src/pages/PipelineSettings.tsx:2983:                                    aria-label="Project workspace"
+ui/src/pages/PipelineSettings.tsx:3009:                              <FieldRow label="Execution workspace">
+ui/src/pages/PipelineSettings.tsx:3012:                                    aria-label="Execution workspace mode"
+ui/src/pages/PipelineSettings.tsx:3025:                                      aria-label="Existing execution workspace"
+ui/src/pages/PipelineSettings.tsx:3062:                          <FieldRow label="Issue title">
+ui/src/pages/PipelineSettings.tsx:3065:                              aria-label="Issue title template"
+ui/src/pages/PipelineSettings.tsx:3075:                            label="Issue title variables"
+ui/src/pages/PipelineSettings.tsx:3117:                          message="Nothing runs here automatically. Items wait until a person moves them, or you can pick an agent to run this step."
+ui/src/pages/PipelineSettings.tsx:3167:                        <FieldRow label="Strict mode">
+ui/src/pages/PipelineSettings.tsx:3171:                                aria-label="Strictly enforce transitions"
+ui/src/pages/PipelineSettings.tsx:3195:                          message="Advanced child settings are hidden while Break into smaller pieces is enabled. Configure that workflow in Automation."
+ui/src/pages/PipelineSettings.tsx:3202:                          <FieldRow label="Block children">
+ui/src/pages/PipelineSettings.tsx:3218:                          <FieldRow label="Advance children">
+ui/src/pages/PipelineSettings.tsx:3234:                                  aria-label="Move to stage when children finish"
+ui/src/pages/PipelineSettings.tsx:3324:                  aria-label="Move existing items to"
+ui/src/pages/PipelineSettings.tsx:3385:                aria-label="Archive confirmation"
+ui/src/pages/IssueChatLongThreadPerf.tsx:126:          <MetricTile label="Fixture rows" value={String(rowTarget)} testId="perf-fixture-row-target" />
+ui/src/pages/IssueChatLongThreadPerf.tsx:127:          <MetricTile label="Markdown rows" value={String(LONG_THREAD_MARKDOWN_COMMENT_COUNT)} testId="perf-fixture-markdown-rows" />
+ui/src/pages/IssueChatLongThreadPerf.tsx:185:              <MetricTile label="Profiler commits" value={String(metrics.commitCount)} testId="perf-commit-count" />
+ui/src/pages/IssueChatLongThreadPerf.tsx:186:              <MetricTile label="Mount duration" value={formatMs(metrics.mountActualDuration)} testId="perf-mount-duration" />
+ui/src/pages/IssueChatLongThreadPerf.tsx:187:              <MetricTile label="Latest duration" value={formatMs(metrics.latestActualDuration)} testId="perf-latest-duration" />
+ui/src/pages/IssueChatLongThreadPerf.tsx:188:              <MetricTile label="Max duration" value={formatMs(metrics.maxActualDuration)} testId="perf-max-duration" />
+ui/src/pages/IssueChatLongThreadPerf.tsx:189:              <MetricTile label="Total duration" value={formatMs(metrics.totalActualDuration)} testId="perf-total-duration" />
+ui/src/pages/IssueChatUxLab.tsx:210:        title="Rotating reasoning text"
+ui/src/pages/IssueChatUxLab.tsx:233:        title="Working / Worked header verb"
+ui/src/pages/IssueChatUxLab.tsx:270:        title="Live execution thread"
+ui/src/pages/IssueChatUxLab.tsx:301:        title="Pending message bubble"
+ui/src/pages/IssueChatUxLab.tsx:322:          title="Durable comments and feedback"
+ui/src/pages/IssueChatUxLab.tsx:346:            title="Empty state and disabled composer"
+ui/src/pages/OrgChart.tsx:433:    return <EmptyState icon={Network} message="Select a company to view the org chart." />;
+ui/src/pages/OrgChart.tsx:441:    return <EmptyState icon={Network} message="No organizational hierarchy defined." />;
+ui/src/pages/OrgChart.tsx:492:            title="Zoom in"
+ui/src/pages/OrgChart.tsx:493:            aria-label="Zoom in"
+ui/src/pages/OrgChart.tsx:508:            title="Zoom out"
+ui/src/pages/OrgChart.tsx:509:            aria-label="Zoom out"
+ui/src/pages/OrgChart.tsx:516:            title="Fit to screen"
+ui/src/pages/OrgChart.tsx:517:            aria-label="Fit chart to screen"
+ui/src/pages/AgentToolsTab.tsx:420:  if (effective.isLoading) return <ToolsLoadingState label="Resolving effective access…" />;
+ui/src/pages/AgentToolsTab.tsx:432:        title="Effective access"
+ui/src/pages/WhatNeedsMe.tsx:635:              label="Snoozed"
+ui/src/pages/WhatNeedsMe.tsx:659:              label="Dismissed"
+ui/src/pages/WhatNeedsMe.tsx:683:              label="Aging"
+ui/src/pages/WhatNeedsMe.tsx:714:          label="Decided"
+ui/src/pages/WhatNeedsMe.tsx:737:          label="Expired"
+ui/src/pages/secrets/UserSecretDefinitionsTab.tsx:183:            message="No user secret definitions yet. Create one to require each member to supply their own credential."
+ui/src/pages/secrets/UserSecretDefinitionsTab.tsx:258:                placeholder="Personal GitHub token"
+ui/src/pages/secrets/UserSecretDefinitionsTab.tsx:270:                placeholder="PERSONAL_GH_TOKEN"
+ui/src/pages/secrets/UserSecretDefinitionsTab.tsx:285:                placeholder="What this credential is for"
+ui/src/pages/secrets/UserSecretDefinitionsTab.tsx:297:                placeholder="Tell members how to create their token, required scopes, etc."
+ui/src/pages/PluginManager.tsx:218:                  placeholder="@paperclipai/plugin-example"
+ui/src/pages/PluginManager.tsx:472:                          title="Uninstall"
+ui/src/pages/PluginSettings.tsx:721:        <FolderStatusMetric label="Configured" value={status?.configured ? "Yes" : "No"} ok={!!status?.configured} />
+ui/src/pages/PluginSettings.tsx:722:        <FolderStatusMetric label="Readable" value={status?.readable ? "Yes" : "No"} ok={!!status?.readable} />
+ui/src/pages/PluginSettings.tsx:724:          label="Writable"
+ui/src/pages/PluginSettings.tsx:752:            placeholder="/absolute/path/to/folder"
+ui/src/pages/PluginSettings.tsx:828:        title="Required directories"
+ui/src/pages/PluginSettings.tsx:835:        title="Required files"
+ui/src/pages/Workspaces.tsx:127:        title="Workspace summary"
+ui/src/pages/Workspaces.tsx:128:        description="Summarizer tracks workspace activity, live services, and follow-up needs across projects."
+ui/src/pages/Timeline.tsx:355:        <EmptyState icon={GanttChartSquare} message="Select a company to view its work timeline." />
+ui/src/pages/Timeline.tsx:410:        aria-label="Timeline start date"
+ui/src/pages/Timeline.tsx:421:        aria-label="Timeline end date"
+ui/src/pages/Timeline.tsx:429:      <div className="ml-auto flex items-center gap-1 pt-3" aria-label="Timeline zoom controls">
+ui/src/pages/Timeline.tsx:435:          aria-label="Zoom out"
+ui/src/pages/Timeline.tsx:436:          title="Zoom out"
+ui/src/pages/Timeline.tsx:445:          aria-label="Zoom in"
+ui/src/pages/Timeline.tsx:446:          title="Zoom in"
+ui/src/pages/Timeline.tsx:455:          aria-label="Reset zoom"
+ui/src/pages/Timeline.tsx:456:          title="Reset zoom"
+ui/src/pages/Timeline.tsx:487:          message="Couldn't load the timeline. The aggregation endpoint may be unavailable."
+ui/src/pages/Timeline.tsx:494:            <EmptyState icon={GanttChartSquare} message="No activity in this window." />
+ui/src/pages/IssueDetail.tsx:647:      <AvatarGroup className="-space-x-1.5" aria-label="Task people" data-testid="issue-attribution-avatar-stack">
+ui/src/pages/IssueDetail.tsx:648:        {assignee ? <AttributionAvatar label="Assignee" actor={assignee} /> : null}
+ui/src/pages/IssueDetail.tsx:649:        {originator ? <AttributionAvatar label="Originating" actor={originator} via={originatorVia} /> : null}
+ui/src/pages/IssueDetail.tsx:894:        aria-label="Back to inbox"
+ui/src/pages/IssueDetail.tsx:906:            aria-label="Archive from inbox"
+ui/src/pages/IssueDetail.tsx:914:            <Button variant="ghost" size="icon-sm" aria-label="More actions">
+ui/src/pages/IssueDetail.tsx:4545:              title="This task is a productivity review."
+ui/src/pages/IssueDetail.tsx:4555:              title="This task is a generated watchdog task. It verifies whether stopped work in the watched task tree is legitimate."
+ui/src/pages/IssueDetail.tsx:4584:              title="Blocked by parked work — at least one assigned blocker is in backlog and will not wake its assignee."
+ui/src/pages/IssueDetail.tsx:4647:                title="Copy task as markdown"
+ui/src/pages/IssueDetail.tsx:4655:                title="Properties"
+ui/src/pages/IssueDetail.tsx:4671:                title="Archive from inbox"
+ui/src/pages/IssueDetail.tsx:4672:                aria-label="Archive from inbox"
+ui/src/pages/IssueDetail.tsx:4682:                title="Open file... (g f)"
+ui/src/pages/IssueDetail.tsx:4683:                aria-label="Open file in this issue"
+ui/src/pages/IssueDetail.tsx:4692:              title="Copy task as markdown"
+ui/src/pages/IssueDetail.tsx:4711:              title="Show properties"
+ui/src/pages/IssueDetail.tsx:4722:                  aria-label="More task actions"
+ui/src/pages/IssueDetail.tsx:4723:                  title="More task actions"
+ui/src/pages/IssueDetail.tsx:4859:            placeholder="Add a description..."
+ui/src/pages/IssueDetail.tsx:5449:                placeholder="Explain why this subtree control is being applied..."
+ui/src/pages/AdapterManager.tsx:83:                ? <span title="Installed from local path"><FolderOpen className="h-4 w-4 text-amber-500" /></span>
+ui/src/pages/AdapterManager.tsx:84:                : <span title="Installed from npm"><Package className="h-4 w-4 text-red-500" /></span>
+ui/src/pages/AdapterManager.tsx:121:              title="Reinstall adapter (pull latest from npm)"
+ui/src/pages/AdapterManager.tsx:133:              title="Reload adapter (hot-swap)"
+ui/src/pages/AdapterManager.tsx:157:              title="Remove adapter"
+ui/src/pages/AdapterManager.tsx:463:                      placeholder="/mnt/e/Projects/my-adapter  or  E:\Projects\my-adapter"
+ui/src/pages/AdapterManager.tsx:480:                      placeholder="my-paperclip-adapter"
+ui/src/pages/AdapterManager.tsx:489:                      placeholder="latest"
+ui/src/pages/Projects.tsx:122:    return <EmptyState icon={Hexagon} message="Select a company to view projects." />;
+ui/src/pages/Projects.tsx:134:            <Button variant="ghost" size="sm" className="w-fit text-xs" title="Sort">
+ui/src/pages/Projects.tsx:182:          message="No projects yet."
+ui/src/pages/CompanyExport.tsx:542:      <EmptyState icon={Package} message="Select a file to preview its contents." />
+ui/src/pages/CompanyExport.tsx:1027:    return <EmptyState icon={Package} message="Select a company to export." />;
+ui/src/pages/CompanyExport.tsx:1038:        title="Export preview cancelled"
+ui/src/pages/CompanyExport.tsx:1039:        message="The preview request was cancelled. Your export settings are unchanged."
+ui/src/pages/CompanyExport.tsx:1051:        title="Export preview failed"
+ui/src/pages/CompanyExport.tsx:1053:        description="Retry the preview. You do not need to reload this page."
+ui/src/pages/CompanyExport.tsx:1065:        title="Export preview unavailable"
+ui/src/pages/CompanyExport.tsx:1066:        message="No export preview is loaded."
+ui/src/pages/CompanyExport.tsx:1153:            <div className="grid grid-cols-2 gap-x-4 gap-y-1.5" role="group" aria-label="What to include">
+ui/src/pages/CompanyExport.tsx:1201:                placeholder="Search files..."
+ui/src/pages/ProjectWorkspaceDetail.tsx:496:              <Field label="Workspace name">
+ui/src/pages/ProjectWorkspaceDetail.tsx:501:                  placeholder="Workspace name"
+ui/src/pages/ProjectWorkspaceDetail.tsx:505:              <Field label="Visibility">
+ui/src/pages/ProjectWorkspaceDetail.tsx:521:              <Field label="Source type" hint={sourceTypeDescription ?? undefined}>
+ui/src/pages/ProjectWorkspaceDetail.tsx:536:                <Field label="Local path">
+ui/src/pages/ProjectWorkspaceDetail.tsx:541:                    placeholder="/absolute/path/to/workspace"
+ui/src/pages/ProjectWorkspaceDetail.tsx:550:                <Field label="Repo URL">
+ui/src/pages/ProjectWorkspaceDetail.tsx:555:                    placeholder="https://github.com/org/repo"
+ui/src/pages/ProjectWorkspaceDetail.tsx:558:                <Field label="Repo ref">
+ui/src/pages/ProjectWorkspaceDetail.tsx:563:                    placeholder="origin/main"
+ui/src/pages/ProjectWorkspaceDetail.tsx:569:                <Field label="Default ref">
+ui/src/pages/ProjectWorkspaceDetail.tsx:574:                    placeholder="origin/main"
+ui/src/pages/ProjectWorkspaceDetail.tsx:577:                <Field label="Shared workspace key">
+ui/src/pages/ProjectWorkspaceDetail.tsx:582:                    placeholder="frontend"
+ui/src/pages/ProjectWorkspaceDetail.tsx:588:                <Field label="Remote provider">
+ui/src/pages/ProjectWorkspaceDetail.tsx:593:                    placeholder="codespaces"
+ui/src/pages/ProjectWorkspaceDetail.tsx:596:                <Field label="Remote workspace ref">
+ui/src/pages/ProjectWorkspaceDetail.tsx:601:                    placeholder="workspace-123"
+ui/src/pages/ProjectWorkspaceDetail.tsx:607:                <Field label="Setup command" hint="Runs when this workspace needs custom bootstrap">
+ui/src/pages/ProjectWorkspaceDetail.tsx:612:                    placeholder="pnpm install && pnpm dev"
+ui/src/pages/ProjectWorkspaceDetail.tsx:615:                <Field label="Cleanup command" hint="Runs before project-level execution workspace teardown">
+ui/src/pages/ProjectWorkspaceDetail.tsx:620:                    placeholder="pkill -f vite || true"
+ui/src/pages/ProjectWorkspaceDetail.tsx:631:                  <Field label="Workspace commands JSON" hint="Execution workspaces inherit this config unless they override it. Legacy `services` arrays still work, but `commands` supports both services and jobs.">
+ui/src/pages/ProjectWorkspaceDetail.tsx:673:            <DetailRow label="Project">
+ui/src/pages/ProjectWorkspaceDetail.tsx:676:            <DetailRow label="Workspace ID">
+ui/src/pages/ProjectWorkspaceDetail.tsx:679:            <DetailRow label="Local path">
+ui/src/pages/ProjectWorkspaceDetail.tsx:682:            <DetailRow label="Repo">
+ui/src/pages/ProjectWorkspaceDetail.tsx:692:            <DetailRow label="Default ref">{workspace.defaultRef ?? "None"}</DetailRow>
+ui/src/pages/ProjectWorkspaceDetail.tsx:693:            <DetailRow label="Updated">{new Date(workspace.updatedAt).toLocaleString()}</DetailRow>
+ui/src/pages/skills/ImportSkillsFromProjectDialog.tsx:526:            aria-label="Close import dialog"
+ui/src/pages/skills/ImportSkillsFromProjectDialog.tsx:669:            placeholder="Filter projects"
+ui/src/pages/skills/ImportSkillsFromProjectDialog.tsx:671:            aria-label="Filter projects"
+ui/src/pages/skills/ImportSkillsFromProjectDialog.tsx:688:          <EmptyState icon={Layers} message="This company has no projects yet." />
+ui/src/pages/skills/ImportSkillsFromProjectDialog.tsx:826:          <div className="mt-3 flex flex-wrap gap-1.5" aria-label="Project workspace">
+ui/src/pages/skills/ImportSkillsFromProjectDialog.tsx:847:          aria-label="Open parent folder"
+ui/src/pages/skills/ImportSkillsFromProjectDialog.tsx:1042:            placeholder="Search discovered skills…"
+ui/src/pages/skills/ImportSkillsFromProjectDialog.tsx:1044:            aria-label="Search discovered skills"
+ui/src/pages/agent-skills/AgentSkillRow.tsx:123:    <Lock className="h-4 w-4 shrink-0 text-muted-foreground/60" aria-label="Read-only" />
+ui/src/pages/TeamCatalog.tsx:753:          <MetricTile label="Agents" value={team.counts.agents} Icon={Users2} />
+ui/src/pages/TeamCatalog.tsx:754:          <MetricTile label="Projects" value={team.counts.projects} Icon={FolderKanban} />
+ui/src/pages/TeamCatalog.tsx:755:          <MetricTile label="Routines" value={team.counts.routines} Icon={Repeat} />
+ui/src/pages/TeamCatalog.tsx:756:          <MetricTile label="Required skills" value={skillCount(team)} Icon={Boxes} />
+ui/src/pages/TeamCatalog.tsx:1433:            <CommandInput placeholder="Search agents…" />
+ui/src/pages/TeamCatalog.tsx:1528:          label="Allow external sources"
+ui/src/pages/TeamCatalog.tsx:1529:          description="Resolve github/url skill and team sources at install time."
+ui/src/pages/TeamCatalog.tsx:1534:          label="Allow unpinned optional sources"
+ui/src/pages/TeamCatalog.tsx:1535:          description="Permit optional sources that are not pinned to a ref or checksum."
+ui/src/pages/TeamCatalog.tsx:1540:          label="Allow local-path sources"
+ui/src/pages/TeamCatalog.tsx:1541:          description="Required for local_path / agent_package sources. Development use only."
+ui/src/pages/TeamCatalog.tsx:1755:          <SummaryCount label="Agents" value={plan.agentPlans.length} />
+ui/src/pages/TeamCatalog.tsx:1756:          <SummaryCount label="Projects" value={plan.projectPlans.length} />
+ui/src/pages/TeamCatalog.tsx:1757:          <SummaryCount label="Starter tasks" value={plan.issuePlans.length} />
+ui/src/pages/TeamCatalog.tsx:1758:          <SummaryCount label="Required skills" value={result.skillPreparations.length} />
+ui/src/pages/TeamCatalog.tsx:2005:          <ResultRow label="Agents imported" count={agentsCreated} />
+ui/src/pages/TeamCatalog.tsx:2006:          <ResultRow label="Projects imported" count={projectsCreated} />
+ui/src/pages/TeamCatalog.tsx:2007:          <ResultRow label="Skills resolved" count={skillsResolved} />
+ui/src/pages/TeamCatalog.tsx:2065:                aria-label="Update available"
+ui/src/pages/TeamCatalog.tsx:2302:        <EmptyState icon={Users2} message="Select a company to browse the team catalog." />
+ui/src/pages/TeamCatalog.tsx:2317:            placeholder="Search teams"
+ui/src/pages/TeamCatalog.tsx:2421:            <EmptyState icon={Users2} message="No team catalog configured." />
+ui/src/pages/TeamCatalog.tsx:2425:              message="No teams match this filter."
+ui/src/pages/Org.tsx:102:    return <EmptyState icon={GitBranch} message="Select a company to view org chart." />;
+ui/src/pages/Org.tsx:116:          message="No agents in the organization. Create agents to build your org chart."
+ui/src/pages/InstanceAccess.tsx:122:              placeholder="Search by name or email"
+ui/src/pages/agent-skills/AgentSkillReleasePicker.tsx:85:        aria-label="Skill release"
+ui/src/pages/InviteUxLab.tsx:215:        <MetaCard label="Company" value="Acme Robotics" />
+ui/src/pages/InviteUxLab.tsx:216:        <MetaCard label="Invited by" value="Board User" />
+ui/src/pages/InviteUxLab.tsx:217:        <MetaCard label="Requested access" value={requestedAccess} />
+ui/src/pages/InviteUxLab.tsx:218:        <MetaCard label="Invite expires" value="Mar 7, 2027" />
+ui/src/pages/InviteUxLab.tsx:756:        title="Landing state coverage"
+ui/src/pages/InviteUxLab.tsx:757:        description="Small cards for the fast-return invite states that do not render the full split-screen layout."
+ui/src/pages/InviteUxLab.tsx:763:            title="Loading invite"
+ui/src/pages/InviteUxLab.tsx:768:            title="Checking your access"
+ui/src/pages/InviteUxLab.tsx:773:            title="Invalid invite token"
+ui/src/pages/InviteUxLab.tsx:779:            title="Invite not available"
+ui/src/pages/InviteUxLab.tsx:785:            title="Bootstrap complete"
+ui/src/pages/InviteUxLab.tsx:791:            title="Auto-accept in progress"
+ui/src/pages/InviteUxLab.tsx:796:            title="Already a member"
+ui/src/pages/InviteUxLab.tsx:801:            title="Invite result surfaces"
+ui/src/pages/InviteUxLab.tsx:810:        title="Split-screen invite flows"
+ui/src/pages/InviteUxLab.tsx:818:                title="Join Acme Robotics"
+ui/src/pages/InviteUxLab.tsx:830:                title="Join Acme Robotics"
+ui/src/pages/InviteUxLab.tsx:850:                title="Join Acme Robotics"
+ui/src/pages/InviteUxLab.tsx:851:                description="Your account is ready. Review the invite details, then accept it to continue."
+ui/src/pages/InviteUxLab.tsx:863:                title="Join Acme Robotics"
+ui/src/pages/InviteUxLab.tsx:864:                description="Review the invite details, then submit the agent information below to start the join request."
+ui/src/pages/InviteUxLab.tsx:874:                title="Join Acme Robotics"
+ui/src/pages/InviteUxLab.tsx:875:                description="Your account is ready. Review the invite details, then accept it to continue."
+ui/src/pages/InviteUxLab.tsx:887:        title="Approval and completion screens"
+ui/src/pages/InviteUxLab.tsx:888:        description="These are the post-submit states returned from invite acceptance, including optional claim and onboarding metadata."
+ui/src/pages/InviteUxLab.tsx:893:            title="Request to join Acme Robotics"
+ui/src/pages/InviteUxLab.tsx:894:            description="Board User must approve your request to join."
+ui/src/pages/InviteUxLab.tsx:899:            title="You joined the company"
+ui/src/pages/InviteUxLab.tsx:900:            description="Your account already matched the approved invite, so the board can be opened immediately."
+ui/src/pages/InviteUxLab.tsx:904:            title="Request to join Acme Robotics"
+ui/src/pages/InviteUxLab.tsx:905:            description="Ask them to visit Settings → Members to approve your request."
+ui/src/pages/InviteUxLab.tsx:912:        title="Auth page states"
+ui/src/pages/InviteUxLab.tsx:924:        title="Company invite management"
+ui/src/pages/secrets/proposal-review.tsx:427:                      placeholder="dev/github"
+ui/src/pages/secrets/proposal-review.tsx:437:                      placeholder="client-secret"
+ui/src/pages/secrets/proposal-review.tsx:459:                    placeholder="Optional"
+ui/src/pages/secrets/proposal-review.tsx:567:            aria-label="Also approve the proposed secret"
+ui/src/pages/secrets/proposal-review.tsx:623:                placeholder="Why is this being rejected?"
+ui/src/pages/DesignGuide.tsx:410:      <Section title="Component Coverage">
+ui/src/pages/DesignGuide.tsx:415:          <SubSection title="UI primitives">
+ui/src/pages/DesignGuide.tsx:428:          <SubSection title="App components">
+ui/src/pages/DesignGuide.tsx:448:      <Section title="Colors">
+ui/src/pages/DesignGuide.tsx:449:        <SubSection title="Core">
+ui/src/pages/DesignGuide.tsx:466:        <SubSection title="Sidebar">
+ui/src/pages/DesignGuide.tsx:473:        <SubSection title="Chart">
+ui/src/pages/DesignGuide.tsx:487:      <Section title="Typography">
+ui/src/pages/DesignGuide.tsx:514:      <Section title="Radius">
+ui/src/pages/DesignGuide.tsx:537:      <Section title="Buttons">
+ui/src/pages/DesignGuide.tsx:538:        <SubSection title="Variants">
+ui/src/pages/DesignGuide.tsx:549:        <SubSection title="Sizes">
+ui/src/pages/DesignGuide.tsx:558:        <SubSection title="Icon buttons">
+ui/src/pages/DesignGuide.tsx:567:        <SubSection title="With icons">
+ui/src/pages/DesignGuide.tsx:576:        <SubSection title="States">
+ui/src/pages/DesignGuide.tsx:587:      <Section title="Badges">
+ui/src/pages/DesignGuide.tsx:588:        <SubSection title="Variants">
+ui/src/pages/DesignGuide.tsx:602:      <Section title="Status System">
+ui/src/pages/DesignGuide.tsx:603:        <SubSection title="StatusBadge (all statuses)">
+ui/src/pages/DesignGuide.tsx:617:        <SubSection title="IssueStatusBadge (brand chip + glyph — PAP-75)">
+ui/src/pages/DesignGuide.tsx:627:        <SubSection title="StatusIcon (interactive)">
+ui/src/pages/DesignGuide.tsx:646:        <SubSection title="PriorityIcon (interactive)">
+ui/src/pages/DesignGuide.tsx:662:        <SubSection title="Agent status dots">
+ui/src/pages/DesignGuide.tsx:675:        <SubSection title="Run invocation badges">
+ui/src/pages/DesignGuide.tsx:690:        <SubSection title="IssueReferencePill">
+ui/src/pages/DesignGuide.tsx:709:      <Section title="Agent Capsule">
+ui/src/pages/DesignGuide.tsx:717:        <SubSection title="States">
+ui/src/pages/DesignGuide.tsx:737:        <SubSection title="Sizes">
+ui/src/pages/DesignGuide.tsx:757:        <SubSection title="Gradients">
+ui/src/pages/DesignGuide.tsx:772:      <Section title="Form Elements">
+ui/src/pages/DesignGuide.tsx:774:          <SubSection title="Input">
+ui/src/pages/DesignGuide.tsx:775:            <Input placeholder="Default input" />
+ui/src/pages/DesignGuide.tsx:776:            <Input placeholder="Disabled input" disabled className="mt-2" />
+ui/src/pages/DesignGuide.tsx:779:          <SubSection title="Textarea">
+ui/src/pages/DesignGuide.tsx:780:            <Textarea placeholder="Write something..." />
+ui/src/pages/DesignGuide.tsx:783:          <SubSection title="Checkbox & Label">
+ui/src/pages/DesignGuide.tsx:800:          <SubSection title="Inline Editor">
+ui/src/pages/DesignGuide.tsx:827:                  placeholder="Add a description..."
+ui/src/pages/DesignGuide.tsx:839:      <Section title="Select">
+ui/src/pages/DesignGuide.tsx:841:          <SubSection title="Default size">
+ui/src/pages/DesignGuide.tsx:844:                <SelectValue placeholder="Select status" />
+ui/src/pages/DesignGuide.tsx:856:          <SubSection title="Small trigger">
+ui/src/pages/DesignGuide.tsx:875:      <Section title="Dropdown Menu">
+ui/src/pages/DesignGuide.tsx:911:      <Section title="Popover">
+ui/src/pages/DesignGuide.tsx:929:      <Section title="Collapsible">
+ui/src/pages/DesignGuide.tsx:939:              <Input id="owner-filter" placeholder="Filter by agent name" />
+ui/src/pages/DesignGuide.tsx:948:      <Section title="Sheet">
+ui/src/pages/DesignGuide.tsx:979:      <Section title="Scroll Area">
+ui/src/pages/DesignGuide.tsx:994:      <Section title="Command (CMDK)">
+ui/src/pages/DesignGuide.tsx:997:            <CommandInput placeholder="Type a command or search..." />
+ui/src/pages/DesignGuide.tsx:1029:      <Section title="Breadcrumb">
+ui/src/pages/DesignGuide.tsx:1050:      <Section title="Cards">
+ui/src/pages/DesignGuide.tsx:1051:        <SubSection title="Standard Card">
+ui/src/pages/DesignGuide.tsx:1067:        <SubSection title="Metric Cards">
+ui/src/pages/DesignGuide.tsx:1069:            <MetricCard icon={Bot} value={12} label="Active Agents" description="+3 this week" />
+ui/src/pages/DesignGuide.tsx:1070:            <MetricCard icon={CircleDot} value={48} label="Open Issues" />
+ui/src/pages/DesignGuide.tsx:1071:            <MetricCard icon={DollarSign} value="$1,234" label="Monthly Cost" description="Under budget" />
+ui/src/pages/DesignGuide.tsx:1072:            <MetricCard icon={Zap} value="99.9%" label="Uptime" />
+ui/src/pages/DesignGuide.tsx:1080:      <Section title="Tabs">
+ui/src/pages/DesignGuide.tsx:1081:        <SubSection title="Default (pill) variant">
+ui/src/pages/DesignGuide.tsx:1104:        <SubSection title="Line variant">
+ui/src/pages/DesignGuide.tsx:1127:      <Section title="Entity Rows">
+ui/src/pages/DesignGuide.tsx:1138:            title="Implement authentication flow"
+ui/src/pages/DesignGuide.tsx:1139:            subtitle="Responsible: Agent Alpha"
+ui/src/pages/DesignGuide.tsx:1151:            title="Set up CI/CD pipeline"
+ui/src/pages/DesignGuide.tsx:1152:            subtitle="Completed 2 days ago"
+ui/src/pages/DesignGuide.tsx:1164:            title="Write API documentation"
+ui/src/pages/DesignGuide.tsx:1176:            title="Deploy to production"
+ui/src/pages/DesignGuide.tsx:1177:            subtitle="Blocked by PAP-001"
+ui/src/pages/DesignGuide.tsx:1182:        <SubSection title="Membership action">
+ui/src/pages/DesignGuide.tsx:1185:              title="Joined resource"
+ui/src/pages/DesignGuide.tsx:1186:              subtitle="Hover or focus the row to reveal the reserved action slot."
+ui/src/pages/DesignGuide.tsx:1198:              title="Left resource"
+ui/src/pages/DesignGuide.tsx:1199:              subtitle="Persistent action with dimmed row content."
+ui/src/pages/DesignGuide.tsx:1211:              title="Leaving resource"
+ui/src/pages/DesignGuide.tsx:1212:              subtitle="Disabled while the optimistic mutation is pending."
+ui/src/pages/DesignGuide.tsx:1226:              title="Joining resource"
+ui/src/pages/DesignGuide.tsx:1227:              subtitle="The target state is visible immediately while the server confirms."
+ui/src/pages/DesignGuide.tsx:1247:      <Section title="Filter Bar">
+ui/src/pages/DesignGuide.tsx:1275:      <Section title="Avatars">
+ui/src/pages/DesignGuide.tsx:1276:        <SubSection title="Sizes">
+ui/src/pages/DesignGuide.tsx:1284:        <SubSection title="Group">
+ui/src/pages/DesignGuide.tsx:1297:      <Section title="Identity">
+ui/src/pages/DesignGuide.tsx:1298:        <SubSection title="Sizes">
+ui/src/pages/DesignGuide.tsx:1306:        <SubSection title="Initials derivation">
+ui/src/pages/DesignGuide.tsx:1314:        <SubSection title="Custom initials">
+ui/src/pages/DesignGuide.tsx:1322:      <Section title="Tooltips">
+ui/src/pages/DesignGuide.tsx:1342:      <Section title="Dialog">
+ui/src/pages/DesignGuide.tsx:1357:                <Input placeholder="Enter a name" className="mt-1.5" />
+ui/src/pages/DesignGuide.tsx:1361:                <Textarea placeholder="Describe..." className="mt-1.5" />
+ui/src/pages/DesignGuide.tsx:1375:      <Section title="Empty State">
+ui/src/pages/DesignGuide.tsx:1379:            message="No items to show. Create your first one to get started."
+ui/src/pages/DesignGuide.tsx:1389:      <Section title="Progress Bars (Budget)">
+ui/src/pages/DesignGuide.tsx:1415:      <Section title="Log Viewer">
+ui/src/pages/DesignGuide.tsx:1437:      <Section title="Property Row Pattern">
+ui/src/pages/DesignGuide.tsx:1467:      <Section title="Navigation Patterns">
+ui/src/pages/DesignGuide.tsx:1468:        <SubSection title="Sidebar nav items">
+ui/src/pages/DesignGuide.tsx:1492:        <SubSection title="View toggle">
+ui/src/pages/DesignGuide.tsx:1509:      <Section title="Grouped List (Issues pattern)">
+ui/src/pages/DesignGuide.tsx:1521:              title="Build agent heartbeat system"
+ui/src/pages/DesignGuide.tsx:1527:              title="Add cost tracking dashboard"
+ui/src/pages/DesignGuide.tsx:1537:      <Section title="Comment Thread Pattern">
+ui/src/pages/DesignGuide.tsx:1557:            <Textarea placeholder="Leave a comment..." rows={3} />
+ui/src/pages/DesignGuide.tsx:1566:      <Section title="Cost Table Pattern">
+ui/src/pages/DesignGuide.tsx:1600:      <Section title="Skeletons">
+ui/src/pages/DesignGuide.tsx:1601:        <SubSection title="Individual">
+ui/src/pages/DesignGuide.tsx:1609:        <SubSection title="Page Skeleton (list)">
+ui/src/pages/DesignGuide.tsx:1615:        <SubSection title="Page Skeleton (detail)">
+ui/src/pages/DesignGuide.tsx:1625:      <Section title="Separator">
+ui/src/pages/DesignGuide.tsx:1642:      <Section title="Team Catalog">
+ui/src/pages/DesignGuide.tsx:1648:        <SubSection title="TeamRow (browse list)">
+ui/src/pages/DesignGuide.tsx:1671:        <SubSection title="TeamCard (onboarding grid)">
+ui/src/pages/DesignGuide.tsx:1680:        <SubSection title="TeamHierarchyPreview">
+ui/src/pages/DesignGuide.tsx:1686:        <SubSection title="RequiredSkillsList">
+ui/src/pages/DesignGuide.tsx:1692:        <SubSection title="EnvInputsList">
+ui/src/pages/DesignGuide.tsx:1698:        <SubSection title="ExternalSourcesList">
+ui/src/pages/DesignGuide.tsx:1704:        <SubSection title="Source policy step (StepSourcePolicy)">
+ui/src/pages/DesignGuide.tsx:1720:        <SubSection title="Skill plan step (StepSkillPlan)">
+ui/src/pages/DesignGuide.tsx:1728:      <Section title="Common Icons (Lucide)">
+ui/src/pages/DesignGuide.tsx:1763:      <Section title="Keyboard Shortcuts">
+ui/src/pages/DesignGuide.tsx:1783:      <Section title="Issue Output Surface">
+ui/src/pages/DesignGuide.tsx:1784:        <SubSection title="Multiple outputs (primary video + 'Also produced')">
+ui/src/pages/DesignGuide.tsx:1787:        <SubSection title="Degraded output (invalid / failed attachment metadata)">
+ui/src/pages/DesignGuide.tsx:1790:        <SubSection title="Empty state">
+ui/src/pages/DesignGuide.tsx:1801:      <Section title="Tools & Access">
+ui/src/pages/DesignGuide.tsx:1802:        <SubSection title="EnforcementBanner — default / denied-detected">
+ui/src/pages/DesignGuide.tsx:1814:        <SubSection title="EnforcementBanner — presentational tones (info / warning / error)">
+ui/src/pages/DesignGuide.tsx:1818:              title="Effective access — server resolved."
+ui/src/pages/DesignGuide.tsx:1823:              title="Local stdio is local code execution, not a security sandbox."
+ui/src/pages/DesignGuide.tsx:1828:              title="Runtime failed closed."
+ui/src/pages/DesignGuide.tsx:1839:        <SubSection title="Action approval card — pending / stale (surfaces 11/12)">
+ui/src/pages/DesignGuide.tsx:1884:        <SubSection title="Action approval card — mobile (390×844, surface 99)">
+ui/src/pages/DesignGuide.tsx:1909:        <SubSection title="BindingsTable (reused in the audit row drilldown)">
+ui/src/pages/DesignGuide.tsx:1924:        <SubSection title="Tool-access status keys (StatusBadge)">
+ui/src/pages/DesignGuide.tsx:1939:        <SubSection title="EmptyState (canonical, with description + action)">
+ui/src/pages/DesignGuide.tsx:1942:            message="No connections yet"
+ui/src/pages/DesignGuide.tsx:1943:            description="Add a connection to an application to configure credentials and discover its tools."
+ui/src/pages/DesignGuide.tsx:1950:      <Section title="Environment Variables Editor">
+ui/src/pages/DesignGuide.tsx:1961:      <Section title="Resizable Panels">
+ui/src/pages/DesignGuide.tsx:1994:      <Section title="Inline Banner">
+ui/src/pages/DesignGuide.tsx:2006:            title="Built-in agent"
+ui/src/pages/DesignGuide.tsx:2013:            title="Briefs is paused."
+ui/src/pages/DesignGuide.tsx:2025:            title="Summary generation failed."
+ui/src/pages/DesignGuide.tsx:2036:      <Section title="Built-in Agent Lifecycle Chips">
+ui/src/pages/agent-skills/AgentSkillsTab.tsx:418:                placeholder="Search skills"
+ui/src/pages/agent-skills/AgentSkillsTab.tsx:420:                aria-label="Search skills"
+ui/src/pages/agent-skills/AgentSkillsTab.tsx:476:          <SkillSection title="Enabled on this agent" count={filteredEnabled.length}>
+ui/src/pages/agent-skills/AgentSkillsTab.tsx:486:          <SkillSection title="Available from the library" count={filteredAvailable.length}>
+ui/src/pages/Secrets.tsx:1733:      <nav aria-label="Breadcrumb" className="min-w-0">
+ui/src/pages/Secrets.tsx:1766:                aria-label="Up one folder"
+ui/src/pages/Secrets.tsx:1842:                placeholder="Search by name, key, ref"
+ui/src/pages/Secrets.tsx:1844:                aria-label="Search secrets"
+ui/src/pages/Secrets.tsx:1860:              aria-label="View mode"
+ui/src/pages/Secrets.tsx:1908:            <div className="flex flex-wrap items-start gap-2" role="group" aria-label="Create folder">
+ui/src/pages/Secrets.tsx:1920:                  placeholder="Folder name"
+ui/src/pages/Secrets.tsx:1921:                  aria-label="Folder name"
+ui/src/pages/Secrets.tsx:1961:                message="No secrets yet. Create a shared company secret or one that each user supplies."
+ui/src/pages/Secrets.tsx:1994:                      message="No secrets in this folder yet."
+ui/src/pages/Secrets.tsx:2008:                  aria-label="Secrets"
+ui/src/pages/Secrets.tsx:2063:                                      aria-label="Each user provides and owns their own value"
+ui/src/pages/Secrets.tsx:2082:                                <UserSecretChip label="Each user" />
+ui/src/pages/Secrets.tsx:2155:                              <UserSecretChip label="Each user" />
+ui/src/pages/Secrets.tsx:2389:                  <UserSecretChip label="Each user" />
+ui/src/pages/Secrets.tsx:2615:                      aria-label="Remove folder prefix"
+ui/src/pages/Secrets.tsx:2637:                    placeholder="clientsecret"
+ui/src/pages/Secrets.tsx:2679:                  placeholder="Stored once, never re-displayed"
+ui/src/pages/Secrets.tsx:2692:                  placeholder="arn:aws:secretsmanager:..."
+ui/src/pages/Secrets.tsx:2717:                    placeholder="Tell members how to create their token, required scopes, etc."
+ui/src/pages/Secrets.tsx:2777:                placeholder="What is this secret used for? (no values)"
+ui/src/pages/Secrets.tsx:2954:                  placeholder="Production local vault"
+ui/src/pages/Secrets.tsx:3119:                placeholder="Paste the new value"
+ui/src/pages/Secrets.tsx:3474:        title="Configure an AWS provider vault to enable remote import"
+ui/src/pages/Secrets.tsx:3763:        <TextField label="AWS region" value={form.region} onChange={(value) => setField("region", value)} placeholder="us-east-1" required />
+ui/src/pages/Secrets.tsx:3764:        <TextField label="Namespace" value={form.namespace} onChange={(value) => setField("namespace", value)} placeholder="production" />
+ui/src/pages/Secrets.tsx:3765:        <TextField label="Secret name prefix" value={form.secretNamePrefix} onChange={(value) => setField("secretNamePrefix", value)} placeholder="paperclip" />
+ui/src/pages/Secrets.tsx:3766:        <TextField label="KMS key id" value={form.kmsKeyId} onChange={(value) => setField("kmsKeyId", value)} placeholder="alias/paperclip-secrets" />
+ui/src/pages/Secrets.tsx:3767:        <TextField label="Owner tag" value={form.ownerTag} onChange={(value) => setField("ownerTag", value)} placeholder="platform" />
+ui/src/pages/Secrets.tsx:3768:        <TextField label="Environment tag" value={form.environmentTag} onChange={(value) => setField("environmentTag", value)} placeholder="prod" />
+ui/src/pages/Secrets.tsx:3776:        <TextField label="Project id" value={form.projectId} onChange={(value) => setField("projectId", value)} placeholder="paperclip-prod" />
+ui/src/pages/Secrets.tsx:3777:        <TextField label="Location" value={form.location} onChange={(value) => setField("location", value)} placeholder="global" />
+ui/src/pages/Secrets.tsx:3778:        <TextField label="Namespace" value={form.namespace} onChange={(value) => setField("namespace", value)} placeholder="production" />
+ui/src/pages/Secrets.tsx:3779:        <TextField label="Secret name prefix" value={form.secretNamePrefix} onChange={(value) => setField("secretNamePrefix", value)} placeholder="paperclip" />
+ui/src/pages/Secrets.tsx:3786:      <TextField label="Address" value={form.address} onChange={(value) => setField("address", value)} placeholder="https://vault.example.com" />
+ui/src/pages/Secrets.tsx:3787:      <TextField label="Namespace" value={form.namespace} onChange={(value) => setField("namespace", value)} placeholder="admin" />
+ui/src/pages/Secrets.tsx:3788:      <TextField label="Mount path" value={form.mountPath} onChange={(value) => setField("mountPath", value)} placeholder="secret" />
+ui/src/pages/Secrets.tsx:3789:      <TextField label="Secret path prefix" value={form.secretPathPrefix} onChange={(value) => setField("secretPathPrefix", value)} placeholder="paperclip/prod" />
+ui/src/pages/Secrets.tsx:4204:      <DetailRow label="Description">
+ui/src/pages/Secrets.tsx:4207:      <DetailRow label="Provided by">Each user</DetailRow>
+ui/src/pages/Secrets.tsx:4208:      <DetailRow label="Key">
+ui/src/pages/Secrets.tsx:4211:      <DetailRow label="Status"><StatusBadge status={definition.status} /></DetailRow>
+ui/src/pages/Secrets.tsx:4212:      <DetailRow label="Coverage">
+ui/src/pages/Secrets.tsx:4222:      <DetailRow label="Created">{formatRelative(definition.createdAt)}</DetailRow>
+ui/src/pages/Secrets.tsx:4223:      <DetailRow label="Updated">{formatRelative(definition.updatedAt)}</DetailRow>
+ui/src/pages/Secrets.tsx:4224:      <DetailRow label="Usage guidance">
+ui/src/pages/Secrets.tsx:4570:                placeholder="MY_SECRET"
+ui/src/pages/Secrets.tsx:4619:      <DetailRow label="Description">
+ui/src/pages/Secrets.tsx:4622:      <DetailRow label="Provided by">Company</DetailRow>
+ui/src/pages/Secrets.tsx:4623:      <DetailRow label="Custody">{modeLabel(secret.managedMode)}</DetailRow>
+ui/src/pages/Secrets.tsx:4624:      <DetailRow label="Provider">{providerLabel(providers, secret.provider)}</DetailRow>
+ui/src/pages/Secrets.tsx:4625:      <DetailRow label="Provider vault">{providerVaultLabel(providerConfigs, secret.providerConfigId)}</DetailRow>
+ui/src/pages/Secrets.tsx:4626:      <DetailRow label="External ARN">
+ui/src/pages/Secrets.tsx:4633:      <DetailRow label="Latest version">v{secret.latestVersion}</DetailRow>
+ui/src/pages/Secrets.tsx:4634:      <DetailRow label="References">
+ui/src/pages/Secrets.tsx:4644:      <DetailRow label="Created">{formatRelative(secret.createdAt)}</DetailRow>
+ui/src/pages/Secrets.tsx:4645:      <DetailRow label="Updated">{formatRelative(secret.updatedAt)}</DetailRow>
+ui/src/pages/Secrets.tsx:4646:      <DetailRow label="Last rotated">{formatRelative(secret.lastRotatedAt)}</DetailRow>
+ui/src/pages/Secrets.tsx:4647:      <DetailRow label="Last resolved">{formatRelative(secret.lastResolvedAt)}</DetailRow>
+ui/src/pages/CompanyImport.tsx:216:      <EmptyState icon={Package} message="Select a file to preview its contents." />
+ui/src/pages/CompanyImport.tsx:1770:    return <EmptyState icon={Download} message="Select a company to import into." />;
+ui/src/pages/CompanyImport.tsx:1850:            label="GitHub URL"
+ui/src/pages/CompanyImport.tsx:1857:              placeholder="https://github.com/owner/repo/tree/main/company"
+ui/src/pages/CompanyImport.tsx:1867:        <Field label="Target" hint="Import into this company or create a new one.">
+ui/src/pages/CompanyImport.tsx:1886:            label="New company name"
+ui/src/pages/CompanyImport.tsx:1897:              placeholder="Imported Company"
+ui/src/pages/CompanyImport.tsx:1903:          label="Collision strategy"
+ui/src/pages/SkillStudio.tsx:331:    return <StudioMessage message="Select a company to open Skill Studio." />;
+ui/src/pages/SkillStudio.tsx:360:    return <StudioMessage message="Loading skill…" />;
+ui/src/pages/SkillStudio.tsx:363:    return <StudioMessage message="Skill not found." />;
+ui/src/pages/SkillStudio.tsx:489:    return <StudioMessage message="Loading fork source..." />;
+ui/src/pages/SkillStudio.tsx:558:              placeholder="Code review"
+ui/src/pages/SkillStudio.tsx:571:              placeholder="code-review"
+ui/src/pages/SkillStudio.tsx:591:            placeholder="Review repository changes for correctness, tests, and maintainability."
+ui/src/pages/SkillStudio.tsx:626:              aria-label="Hex color"
+ui/src/pages/SkillStudio.tsx:639:            placeholder="engineering, review, memory"
+ui/src/pages/SkillStudio.tsx:811:                title="Recently visited"
+ui/src/pages/SkillStudio.tsx:817:              title="Recently updated"
+ui/src/pages/SkillStudio.tsx:1176:            <Button variant="ghost" size="icon-sm" aria-label="Studio menu">
+ui/src/pages/SkillStudio.tsx:1415:        <EmptyState icon={FileCode} message="This skill has no files yet." />
+ui/src/pages/SkillStudio.tsx:1658:            <Button variant="ghost" size="icon-sm" disabled={disabled} onClick={onAddFile} aria-label="Add file">
+ui/src/pages/SkillStudio.tsx:1668:            <Button variant="ghost" size="icon-sm" disabled={disabled} onClick={onAddFolder} aria-label="Add folder">
+ui/src/pages/SkillStudio.tsx:1687:              aria-label="Delete file"
+ui/src/pages/SkillStudio.tsx:1698:            <Button variant="ghost" size="icon-sm" disabled={disabled} onClick={onDeleteFolder} aria-label="Delete folder">
+ui/src/pages/SkillStudio.tsx:1862:            placeholder="references/examples"
+ui/src/pages/SkillStudio.tsx:2034:              <Button variant="ghost" size="icon-sm" onClick={selectAdHocInput} aria-label="New input">
+ui/src/pages/SkillStudio.tsx:2126:              placeholder="Paste text - treated as a new issue description."
+ui/src/pages/SkillStudio.tsx:2127:              aria-label="Skill test input"
+ui/src/pages/SkillStudio.tsx:2248:              placeholder="onboarding/happy-path"
+ui/src/pages/SkillStudio.tsx:2502:      title="Test runs"
+ui/src/pages/SkillStudio.tsx:2571:            <EmptyState icon={FlaskConical} message="No test runs yet. Pick an agent and Run." />
+ui/src/pages/SkillStudio.tsx:2709:                placeholder="Select template"
+ui/src/pages/SkillStudio.tsx:2731:                  aria-label="Create run template"
+ui/src/pages/SkillStudio.tsx:2747:                    aria-label="Edit run template"
+ui/src/pages/SkillStudio.tsx:2764:                    aria-label="Duplicate run template"
+ui/src/pages/SkillStudio.tsx:2783:                    aria-label="Delete run template"
+ui/src/pages/SkillStudio.tsx:2866:              placeholder="Focused smoke"
+ui/src/pages/SkillStudio.tsx:2875:              placeholder="Short instructions for common skill checks"
+ui/src/pages/SkillStudio.tsx:2966:          <CommandInput placeholder="Search agents…" />
+ui/src/pages/SkillStudio.tsx:3092:      <PaneScaffold title="Run" action={<BackButton onBack={onBack} />}>
+ui/src/pages/SkillStudio.tsx:3099:      <PaneScaffold title="Run" action={<BackButton onBack={onBack} />}>
+ui/src/pages/SkillStudio.tsx:3114:    <PaneScaffold title="Run" action={<BackButton onBack={onBack} />}>
+ui/src/pages/SkillStudio.tsx:3130:          <PropRow label="Input" value={detail.inputId ? "saved input" : "ad-hoc paste"} />
+ui/src/pages/SkillStudio.tsx:3131:          <PropRow label="Template" value={detail.templateName ?? "No template"} />
+ui/src/pages/SkillStudio.tsx:3132:          <PropRow label="Skill version" value={`v${detail.skillVersion.revisionNumber}`} />
+ui/src/pages/SkillStudio.tsx:3133:          <PropRow label="Created" value={relativeTime(detail.createdAt)} />
+ui/src/pages/SkillStudio.tsx:3472:            <EmptyState icon={History} message="No versions yet. Save changes to create the first." />
+ui/src/pages/UserProfile.tsx:63:        <Metric value={formatNumber(stats.touchedIssues)} label="Touched" />
+ui/src/pages/UserProfile.tsx:64:        <Metric value={formatNumber(stats.completedIssues)} label="Completed" />
+ui/src/pages/UserProfile.tsx:65:        <Metric value={formatNumber(stats.commentCount)} label="Comments" />
+ui/src/pages/UserProfile.tsx:66:        <Metric value={formatNumber(stats.activityCount)} label="Actions" />
+ui/src/pages/UserProfile.tsx:246:    return <EmptyState icon={UserRound} message="Select a company to view user profiles." />;
+ui/src/pages/UserProfile.tsx:254:    return <EmptyState icon={AlertCircle} message="User profile not found for this company." />;
+ui/src/pages/UserProfile.tsx:286:          <HeroStat label="All-time tokens" value={formatTokens(allTimeTokens)} hint={formatCents(allTime?.costCents ?? 0) + " spent"} />
+ui/src/pages/UserProfile.tsx:287:          <HeroStat label="Completed" value={formatNumber(allTime?.completedIssues ?? 0)} hint={allTime ? `${completionRate(allTime)} rate` : undefined} />
+ui/src/pages/UserProfile.tsx:288:          <HeroStat label="Open assigned" value={formatNumber(allTime?.assignedOpenIssues ?? 0)} hint={`${formatNumber(allTime?.createdIssues ?? 0)} created`} />
+ui/src/pages/UserProfile.tsx:289:          <HeroStat label="7-day actions" value={formatNumber(last7?.activityCount ?? 0)} hint={`${formatNumber(last7?.commentCount ?? 0)} comments`} />
+ui/src/pages/UserProfile.tsx:354:        <UsageList title="Agent attribution" empty="No issue-linked token usage yet." rows={agentUsageRows} />
+ui/src/pages/UserProfile.tsx:355:        <UsageList title="Provider mix" empty="No provider usage attributed yet." rows={providerUsageRows} />
+ui/src/pages/AgentDetail.tsx:1236:            aria-label="Dismiss agent membership notice"
+ui/src/pages/AgentDetail.tsx:1354:          title="Built-in agent"
+ui/src/pages/AgentDetail.tsx:1789:        <ChartCard title="Run Activity" subtitle="Last 14 days">
+ui/src/pages/AgentDetail.tsx:1794:          <ChartCard title="Tasks by Priority" subtitle="Last 14 days">
+ui/src/pages/AgentDetail.tsx:1798:        <ChartCard title="Tasks by Status" subtitle="Last 14 days">
+ui/src/pages/AgentDetail.tsx:1801:        <ChartCard title="Success Rate" subtitle="Last 14 days">
+ui/src/pages/AgentDetail.tsx:2751:                      placeholder="/absolute/path/to/agent/prompts"
+ui/src/pages/AgentDetail.tsx:2848:                placeholder="TOOLS.md"
+ui/src/pages/AgentDetail.tsx:2975:                  title="Copy as markdown"
+ui/src/pages/AgentDetail.tsx:3012:              placeholder="# Agent instructions"
+ui/src/pages/AgentDetail.tsx:3026:              placeholder="File contents"
+ui/src/pages/AgentDetail.tsx:4411:              title="Copy"
+ui/src/pages/AgentDetail.tsx:4439:            placeholder="Key name (e.g. production)"
+ui/src/pages/DecisionQueuePage.tsx:323:              label="Aging"
+ui/src/pages/DecisionQueuePage.tsx:474:              placeholder="Reason (optional)…"
+ui/src/pages/Artifacts.tsx:230:    return <EmptyState icon={Package} message="Select a company to view artifacts." />;
+ui/src/pages/Artifacts.tsx:256:            placeholder="Search artifacts..."
+ui/src/pages/Artifacts.tsx:257:            aria-label="Search artifacts"
+ui/src/pages/Artifacts.tsx:264:              aria-label="Clear artifact search"
+ui/src/pages/Artifacts.tsx:280:                title="Group artifacts"
+ui/src/pages/Artifacts.tsx:305:          <div className="flex flex-wrap items-center gap-1.5" role="tablist" aria-label="Filter artifacts by type">
+ui/src/pages/SystemNoticeUxLab.tsx:195:        title="Three tones, two states"
+ui/src/pages/SystemNoticeUxLab.tsx:227:        title="Distinct from user and agent comments"
+ui/src/pages/SystemNoticeUxLab.tsx:243:            label="System alert"
+ui/src/pages/SystemNoticeUxLab.tsx:291:          title="Today's nested treatment"
+ui/src/pages/SystemNoticeUxLab.tsx:333:          title="System notice replacement"
+ui/src/pages/SystemNoticeUxLab.tsx:334:          description="One container, system-authored label, hidden details. The chat surface keeps user and agent bubbles unchanged."
+ui/src/pages/tools/connection-dialogs.tsx:316:                      <SelectValue placeholder="Select an application" />
+ui/src/pages/tools/connection-dialogs.tsx:334:                    placeholder="e.g. GitHub Triage"
+ui/src/pages/tools/connection-dialogs.tsx:359:                  placeholder="e.g. Production GitHub"
+ui/src/pages/tools/connection-dialogs.tsx:388:                    placeholder="https://mcp.example.com"
+ui/src/pages/tools/connection-dialogs.tsx:397:                      <SelectValue placeholder="Select an approved template" />
+ui/src/pages/tools/connection-dialogs.tsx:448:                            <SelectValue placeholder="Select a vault secret" />
+ui/src/pages/tools/connection-dialogs.tsx:462:                        placeholder="Header"
+ui/src/pages/tools/connection-dialogs.tsx:464:                        aria-label="Header name"
+ui/src/pages/tools/connection-dialogs.tsx:490:                <LoadingState label="Probing connection…" />
+ui/src/pages/apps/AppDetail.tsx:532:                aria-label="App name"
+ui/src/pages/apps/AppDetail.tsx:552:                aria-label="Rename app"
+ui/src/pages/RoutineDetail.tsx:677:    return <EmptyState icon={Repeat} message="Select a company to view routines." />;
+ui/src/pages/RoutineDetail.tsx:815:              placeholder="Routine title"
+ui/src/pages/ProjectDetail.tsx:92:        placeholder="Add a description..."
+ui/src/pages/ProjectDetail.tsx:154:          aria-label="Change project icon and color"
+ui/src/pages/ProjectDetail.tsx:163:          placeholder="Search icons..."
+ui/src/pages/ProjectDetail.tsx:202:              aria-label="Reset to neutral gray"
+ui/src/pages/ProjectDetail.tsx:203:              title="Neutral (default)"
+ui/src/pages/ProjectDetail.tsx:787:            aria-label="Dismiss project membership notice"
+ui/src/pages/ProjectDetail.tsx:843:        title="Project summary"
+ui/src/pages/ProjectDetail.tsx:844:        description="Summarizer keeps the latest project status, next step, and operator-needed items here."
+ui/src/pages/apps/Browse.tsx:151:          placeholder="Search apps…"
+ui/src/pages/apps/Browse.tsx:152:          aria-label="Search apps"
+ui/src/pages/CompanySkills.tsx:1203:              placeholder="Search skills, authors, categories…"
+ui/src/pages/CompanySkills.tsx:1253:            aria-label="Scan project workspaces for skills"
+ui/src/pages/CompanySkills.tsx:1254:            title="Scan project workspaces for skills"
+ui/src/pages/CompanySkills.tsx:1551:            placeholder="Skill name"
+ui/src/pages/CompanySkills.tsx:1561:            placeholder="skill-shortname"
+ui/src/pages/CompanySkills.tsx:1576:            placeholder="One-line promise for the skill"
+ui/src/pages/CompanySkills.tsx:1626:              placeholder="engineering, review, memory"
+ui/src/pages/CompanySkills.tsx:1881:    return <EmptyState icon={Boxes} message="Select a catalog skill to inspect." />;
+ui/src/pages/CompanySkills.tsx:1990:            title="Copy content hash"
+ui/src/pages/CompanySkills.tsx:2771:        placeholder="Add a tag…"
+ui/src/pages/CompanySkills.tsx:2913:    return loading ? <PageSkeleton variant="detail" /> : <EmptyState icon={Boxes} message="Skill not found." />;
+ui/src/pages/CompanySkills.tsx:3323:                title="Fork this skill"
+ui/src/pages/CompanySkills.tsx:3393:                          <Pause className="h-3 w-3 shrink-0 text-amber-500" aria-label="Paused" />
+ui/src/pages/CompanySkills.tsx:3473:                      <Pin className="h-3.5 w-3.5 shrink-0" aria-label="Pinned source revision" />
+ui/src/pages/CompanySkills.tsx:3549:                placeholder="engineering, review, memory"
+ui/src/pages/CompanySkills.tsx:3675:        message="Select a skill to inspect its files."
+ui/src/pages/CompanySkills.tsx:3754:                      title="Copy source path"
+ui/src/pages/CompanySkills.tsx:5019:    return <EmptyState icon={Boxes} message="Select a company to manage skills." />;
+ui/src/pages/CompanySkills.tsx:5193:                placeholder="Paste path, GitHub URL, or skills.sh command"
+ui/src/pages/CompanySkills.tsx:5306:                <EmptyState icon={Boxes} message="Fork source skill not found." />
+ui/src/pages/CompanySkills.tsx:5484:            <EmptyState icon={Boxes} message="Catalog skill not found." />
+ui/src/pages/CompanySkills.tsx:5529:            <EmptyState icon={Boxes} message="Skill not found." />
+ui/src/pages/InstanceExperimentalSettings.tsx:471:        title="Apps"
+ui/src/pages/InstanceExperimentalSettings.tsx:472:        description="Show the Apps navigation and allow access to app connections, gateways, and advanced app tooling."
+ui/src/pages/InstanceExperimentalSettings.tsx:505:              aria-label="Toggle task graph liveness auto-recovery"
+ui/src/pages/InstanceExperimentalSettings.tsx:572:        title="Auto-Restart Dev Server When Idle"
+ui/src/pages/InstanceExperimentalSettings.tsx:583:        title="Beta skills"
+ui/src/pages/InstanceExperimentalSettings.tsx:594:        title="Built-in Agents"
+ui/src/pages/InstanceExperimentalSettings.tsx:605:        title="Cases"
+ui/src/pages/InstanceExperimentalSettings.tsx:617:        title="Classic Task Interface"
+ui/src/pages/InstanceExperimentalSettings.tsx:630:          title="Conference Room Chat"
+ui/src/pages/InstanceExperimentalSettings.tsx:642:        title="Decisions"
+ui/src/pages/InstanceExperimentalSettings.tsx:653:        title="Enable Environments"
+ui/src/pages/InstanceExperimentalSettings.tsx:654:        description="Show environment management in company settings and allow project and agent environment assignment controls."
+ui/src/pages/InstanceExperimentalSettings.tsx:664:        title="Enable External Objects"
+ui/src/pages/InstanceExperimentalSettings.tsx:665:        description="Detect external URLs in issues and show resolved status for pull requests, tickets, and other referenced work objects."
+ui/src/pages/InstanceExperimentalSettings.tsx:675:        title="Enable Isolated Workspaces"
+ui/src/pages/InstanceExperimentalSettings.tsx:686:        title="Experimental File Viewer"
+ui/src/pages/InstanceExperimentalSettings.tsx:687:        description="Show task detail controls for browsing and previewing workspace files relative to a task."
+ui/src/pages/InstanceExperimentalSettings.tsx:697:        title="Goals Sidebar Link"
+ui/src/pages/InstanceExperimentalSettings.tsx:698:        description="Restore the Goals item in the main sidebar while the goals surface is being evaluated."
+ui/src/pages/InstanceExperimentalSettings.tsx:708:        title="Managed Environment Only"
+ui/src/pages/InstanceExperimentalSettings.tsx:709:        description="Hide the local environment and run all agents in the platform-managed environment."
+ui/src/pages/InstanceExperimentalSettings.tsx:740:                aria-label="Toggle worktree run execution setting"
+ui/src/pages/InstanceExperimentalSettings.tsx:776:        title="Server Info Debug View"
+ui/src/pages/InstanceExperimentalSettings.tsx:787:        title="Simplified English Interactions"
+ui/src/pages/InstanceExperimentalSettings.tsx:800:        title="Smoke Lab"
+ui/src/pages/InstanceExperimentalSettings.tsx:811:        title="Status Cards"
+ui/src/pages/InstanceExperimentalSettings.tsx:812:        description="Enable the experimental shared status-card board and its gated API. Existing card data is kept when this is disabled."
+ui/src/pages/InstanceExperimentalSettings.tsx:829:        title="Summaries"
+ui/src/pages/InstanceExperimentalSettings.tsx:847:        title="Task Plan Decomposition Panel"
+ui/src/pages/InstanceExperimentalSettings.tsx:858:        title="Task Watchdogs"
+ui/src/pages/secrets/ImportFromVaultDialog.tsx:669:            aria-label="Close import dialog"
+ui/src/pages/secrets/ImportFromVaultDialog.tsx:887:          message="No AWS provider vault configured. Add one to import secrets."
+ui/src/pages/secrets/ImportFromVaultDialog.tsx:910:            <SelectTrigger size="sm" className="text-xs" aria-label="Select AWS vault">
+ui/src/pages/secrets/ImportFromVaultDialog.tsx:911:              <SelectValue placeholder="Select an AWS vault" />
+ui/src/pages/secrets/ImportFromVaultDialog.tsx:949:            placeholder="Search by name, ARN, tag"
+ui/src/pages/secrets/ImportFromVaultDialog.tsx:951:            aria-label="Search remote secrets"
+ui/src/pages/secrets/ImportFromVaultDialog.tsx:964:          aria-label="Refresh remote secrets"
+ui/src/pages/secrets/ImportFromVaultDialog.tsx:1185:      message="No secrets visible to this vault."
+ui/src/pages/secrets/ImportFromVaultDialog.tsx:1204:          message="No secrets selected. Go back to pick remote secrets to import."
+ui/src/pages/secrets/ImportFromVaultDialog.tsx:1366:          <ResultGroup label="Created" rows={grouped.created} draftLookup={draftLookup} />
+ui/src/pages/secrets/ImportFromVaultDialog.tsx:1369:          <ResultGroup label="Skipped" rows={grouped.skipped} draftLookup={draftLookup} />
+ui/src/pages/secrets/ImportFromVaultDialog.tsx:1372:          <ResultGroup label="Failed" rows={grouped.failed} draftLookup={draftLookup} />
+ui/src/pages/tools/profiles/ProfilesIndex.tsx:122:      title="Access profiles"
+ui/src/pages/tools/profiles/ProfilesIndex.tsx:123:      description="Decide which tools your agents can use. Build a profile once, then assign it to the agents that need it."
+ui/src/pages/tools/profiles/ProfilesIndex.tsx:159:        <LoadingState label="Loading profiles…" />
+ui/src/pages/tools/profiles/ProfilesIndex.tsx:344:          aria-label="Profile actions"
+ui/src/components/SummarySlotCard.tsx:338:          title="Summarizer is paused"
+ui/src/components/SummarySlotCard.tsx:355:        <InlineBanner tone="warning" title="Summary request failed">
+ui/src/components/SummarySlotCard.tsx:363:          title="Summary could not be loaded"
+ui/src/components/SummarySlotCard.tsx:377:          title="Summary generation failed"
+ui/src/components/SummarySlotCard.tsx:476:                  aria-label="Select summary revision"
+ui/src/pages/CompanyEnvironments.tsx:763:          aria-label="Custom image browser terminal"
+ui/src/pages/CompanyEnvironments.tsx:1965:                aria-label="Default environment"
+ui/src/pages/CompanyEnvironments.tsx:1993:            <Link to={`${ENVIRONMENTS_PATH}/new`} aria-label="Add environment" title="Add environment">
+ui/src/pages/CompanyEnvironments.tsx:2141:              label="Environment variables"
+ui/src/pages/CompanyEnvironments.tsx:2199:                  title="Delete environment"
+ui/src/pages/CompanyEnvironments.tsx:2218:              <Field label="Name" hint="Operator-facing name for this execution target.">
+ui/src/pages/CompanyEnvironments.tsx:2226:              <Field label="Description" hint="Optional note about what this machine is for.">
+ui/src/pages/CompanyEnvironments.tsx:2234:              <Field label="Driver" hint="Sandbox stores plugin-backed provider config on the shared environment seam. SSH stores a remote machine target.">
+ui/src/pages/CompanyEnvironments.tsx:2270:                  <Field label="Host" hint="DNS name or IP address for the remote machine.">
+ui/src/pages/CompanyEnvironments.tsx:2278:                  <Field label="Port" hint="Defaults to 22.">
+ui/src/pages/CompanyEnvironments.tsx:2288:                  <Field label="Username" hint="SSH username.">
+ui/src/pages/CompanyEnvironments.tsx:2296:                  <Field label="Remote workspace path" hint="Absolute path that Paperclip will verify during SSH connection tests.">
+ui/src/pages/CompanyEnvironments.tsx:2300:                      placeholder="/Users/paperclip/workspace"
+ui/src/pages/CompanyEnvironments.tsx:2306:                  <Field label="Private key" hint="Optional PEM private key. Leave blank to rely on the server's SSH agent or default keychain.">
+ui/src/pages/CompanyEnvironments.tsx:2331:                  <Field label="Known hosts" hint="Optional known_hosts block used when strict host key checking is enabled.">
+ui/src/pages/CompanyEnvironments.tsx:2340:                      label="Strict host key checking"
+ui/src/pages/CompanyEnvironments.tsx:2352:                  <Field label="Provider" hint="Installed run-capable sandbox provider plugins appear here.">
+ui/src/pages/CompanyEnvironments.tsx:2397:                    label="Stream run logs"
+ui/src/pages/CompanyEnvironments.tsx:2429:                label="Environment variables"
+ui/src/pages/CompanyEnvironments.tsx:2558:                          aria-label="Reassign agents to environment"
+ui/src/pages/apps/gateways/ConnectClientDialog.tsx:81:          <nav className="flex gap-1 overflow-x-auto sm:flex-col" aria-label="Clients">
+ui/src/pages/TaskChatLab.tsx:179:        <nav className="w-56 shrink-0 overflow-y-auto border-r border-border p-2" aria-label="States">
+ui/src/pages/TaskChatLab.tsx:237:                aria-label="Streaming speed"
+ui/src/pages/TaskChatLab.tsx:244:              <div className="flex items-center gap-0.5 rounded border border-border p-0.5" role="group" aria-label="Agent bubble treatment">
+ui/src/pages/CrossIssueCollaborationUxLab.tsx:140:          title="“Fable · for Dotta” on a cross-task agent comment"
+ui/src/pages/CrossIssueCollaborationUxLab.tsx:143:          <Frame label="Assignee's own comment — no chip">
+ui/src/pages/CrossIssueCollaborationUxLab.tsx:149:          <Frame label="Cross-task comment — chipped">
+ui/src/pages/CrossIssueCollaborationUxLab.tsx:156:          <Frame label="Responsible user not in the loaded directory">
+ui/src/pages/CrossIssueCollaborationUxLab.tsx:163:          <Frame label="Long user name truncates in the chip">
+ui/src/pages/CrossIssueCollaborationUxLab.tsx:174:          title="Every PATCH says who changed what, and under which authorization"
+ui/src/pages/CrossIssueCollaborationUxLab.tsx:177:          <Frame label="Cross-task agent edit">
+ui/src/pages/CrossIssueCollaborationUxLab.tsx:196:          <Frame label="Board (human) edit — audited the same way">
+ui/src/pages/CrossIssueCollaborationUxLab.tsx:218:          <Frame label="Reassignment, blockers, and work mode in one write">
+ui/src/pages/CrossIssueCollaborationUxLab.tsx:241:          <Frame label="Older activity row — no receipt, renders unchanged">
+ui/src/pages/CrossIssueCollaborationUxLab.tsx:248:          title="Every wall names the boundary, who can act, and the sanctioned path"
+ui/src/pages/CrossIssueCollaborationUxLab.tsx:252:          <Frame label="Before — what the incident actually saw">
+ui/src/pages/apps/gateways/AppsSubNav.tsx:19:    <nav className="flex items-center gap-6 border-b border-border text-sm" aria-label="Apps sections">
+ui/src/pages/StatusCards/CreateStatusCardDialog.tsx:84:        {error ? <InlineBanner tone="danger" title="Create failed">{error}</InlineBanner> : null}
+ui/src/pages/ApprovalDetail.tsx:353:          placeholder="Add a comment..."
+ui/src/pages/NewAgent.tsx:267:            placeholder="Agent name"
+ui/src/pages/NewAgent.tsx:278:            placeholder="Title (e.g. VP of Engineering)"
+ui/src/pages/ExecutionWorkspaceDetail.tsx:1240:                  <Field label="Workspace name">
+ui/src/pages/ExecutionWorkspaceDetail.tsx:1244:                      placeholder="Execution workspace name"
+ui/src/pages/ExecutionWorkspaceDetail.tsx:1254:                    <Field label="Branch name" hint="Useful for isolated worktrees">
+ui/src/pages/ExecutionWorkspaceDetail.tsx:1259:                        placeholder="PAP-946-workspace"
+ui/src/pages/ExecutionWorkspaceDetail.tsx:1263:                    <Field label="Base ref">
+ui/src/pages/ExecutionWorkspaceDetail.tsx:1268:                        placeholder="origin/main"
+ui/src/pages/ExecutionWorkspaceDetail.tsx:1273:                  <Field label="Repo URL">
+ui/src/pages/ExecutionWorkspaceDetail.tsx:1277:                      placeholder="https://github.com/org/repo"
+ui/src/pages/ExecutionWorkspaceDetail.tsx:1286:                  <Field label="Working directory">
+ui/src/pages/ExecutionWorkspaceDetail.tsx:1291:                      placeholder="/absolute/path/to/workspace"
+ui/src/pages/ExecutionWorkspaceDetail.tsx:1295:                  <Field label="Provider path / ref">
+ui/src/pages/ExecutionWorkspaceDetail.tsx:1300:                      placeholder="/path/to/worktree or provider ref"
+ui/src/pages/ExecutionWorkspaceDetail.tsx:1309:                  <Field label="Provision command" hint="Runs when Paperclip prepares this execution workspace">
+ui/src/pages/ExecutionWorkspaceDetail.tsx:1314:                      placeholder="bash ./scripts/provision-worktree.sh"
+ui/src/pages/ExecutionWorkspaceDetail.tsx:1319:                    label="Runtime provision command"
+ui/src/pages/ExecutionWorkspaceDetail.tsx:1326:                      placeholder="bash ./scripts/provision-worktree-runtime.sh"
+ui/src/pages/ExecutionWorkspaceDetail.tsx:1330:                  <Field label="Teardown command" hint="Runs when the execution workspace is archived or cleaned up">
+ui/src/pages/ExecutionWorkspaceDetail.tsx:1335:                      placeholder="bash ./scripts/teardown-worktree.sh"
+ui/src/pages/ExecutionWorkspaceDetail.tsx:1339:                  <Field label="Cleanup command" hint="Workspace-specific cleanup before teardown">
+ui/src/pages/ExecutionWorkspaceDetail.tsx:1344:                      placeholder="pkill -f vite || true"
+ui/src/pages/ExecutionWorkspaceDetail.tsx:1391:                      <Field label="Workspace commands JSON" hint="Legacy `services` arrays still work, but `commands` supports both services and jobs.">
+ui/src/pages/ExecutionWorkspaceDetail.tsx:1504:              <DetailRow label="Project">
+ui/src/pages/ExecutionWorkspaceDetail.tsx:1507:              <DetailRow label="Project workspace">
+ui/src/pages/ExecutionWorkspaceDetail.tsx:1516:              <DetailRow label="Source task">
+ui/src/pages/ExecutionWorkspaceDetail.tsx:1527:              <DetailRow label="Derived from">
+ui/src/pages/ExecutionWorkspaceDetail.tsx:1538:              <DetailRow label="Runtime provisioning">
+ui/src/pages/ExecutionWorkspaceDetail.tsx:1544:              <DetailRow label="Workspace ID">
+ui/src/pages/ExecutionWorkspaceDetail.tsx:1556:              <DetailRow label="Working dir">
+ui/src/pages/ExecutionWorkspaceDetail.tsx:1559:              <DetailRow label="Provider ref">
+ui/src/pages/ExecutionWorkspaceDetail.tsx:1562:              <DetailRow label="Repo URL">
+ui/src/pages/ExecutionWorkspaceDetail.tsx:1579:              <DetailRow label="Base ref">
+ui/src/pages/ExecutionWorkspaceDetail.tsx:1582:              <DetailRow label="Branch">
+ui/src/pages/ExecutionWorkspaceDetail.tsx:1585:              <DetailRow label="Opened">{formatDateTime(workspace.openedAt)}</DetailRow>
+ui/src/pages/ExecutionWorkspaceDetail.tsx:1586:              <DetailRow label="Last used">{formatDateTime(workspace.lastUsedAt)}</DetailRow>
+ui/src/pages/ExecutionWorkspaceDetail.tsx:1587:              <DetailRow label="Cleanup">
+ui/src/pages/ExecutionWorkspaceDetail.tsx:1643:              title="Workspace summary"
+ui/src/pages/ExecutionWorkspaceDetail.tsx:1644:              description="Summarizer keeps the latest workspace status, next step, and operator-needed items here."
+ui/src/pages/tools/profiles/ProfileDetail.tsx:161:  if (data.profiles.isLoading) return <LoadingState label="Loading profile..." />;
+ui/src/pages/tools/profiles/ProfileDetail.tsx:166:        <ToolsPageHeader title="Profile not found" description="This access profile may have been deleted." />
+ui/src/pages/tools/profiles/ProfileDetail.tsx:383:          <LoadingState label="Loading new tools..." />
+ui/src/pages/Pipelines.tsx:669:            placeholder="Search pipelines"
+ui/src/pages/Pipelines.tsx:685:              title="Nested view"
+ui/src/pages/Pipelines.tsx:698:              title="Flat list"
+ui/src/pages/Pipelines.tsx:706:              <Button variant="outline" size="icon" className="h-8 w-8 shrink-0" title="Sort">
+ui/src/pages/Pipelines.tsx:735:        <EmptyState icon={Hexagon} message="No pipelines match your search." />
+ui/src/pages/Pipelines.tsx:974:          message="No pipelines yet."
+ui/src/pages/Pipelines.tsx:1718:          message="Add stages in pipeline settings to enable the board."
+ui/src/pages/Pipelines.tsx:1754:            <SelectTrigger className="h-9 w-(--sz-148px)" aria-label="Group by" title="Group by">
+ui/src/pages/Pipelines.tsx:1770:            <Link to={`/pipelines/${pipelineId}/settings`} aria-label="Pipeline settings" title="Pipeline settings">
+ui/src/pages/Pipelines.tsx:1869:                placeholder="Explain why this item should skip the normal flow."
+ui/src/pages/Pipelines.tsx:2840:                <Button variant="outline" size="icon" aria-label="Item actions">
+ui/src/pages/Pipelines.tsx:2929:                  <SelectValue placeholder="Choose a stage" />
+ui/src/pages/Pipelines.tsx:3000:                        <SelectValue placeholder="Choose a step" />
+ui/src/pages/Pipelines.tsx:3053:                    <RetryMetric label="children" value={retryPlan.data.effectCounts.directChildren} />
+ui/src/pages/Pipelines.tsx:3054:                    <RetryMetric label="descendants" value={retryPlan.data.effectCounts.descendants} />
+ui/src/pages/Pipelines.tsx:3055:                    <RetryMetric label="linked tasks" value={retryPlan.data.effectCounts.linkedAutomationIssues} />
+ui/src/pages/Pipelines.tsx:3056:                    <RetryMetric label="active work" value={retryPlan.data.effectCounts.activeDescendants} tone={retryPlan.data.effectCounts.activeDescendants > 0 ? "warning" : "default"} />
+ui/src/pages/Pipelines.tsx:3218:        <section aria-label="Waiting child items" className="mb-5 border-y border-border px-4 py-4">
+ui/src/pages/Pipelines.tsx:3283:          <DetailSection title="Conversation">
+ui/src/pages/Pipelines.tsx:3351:          <DetailSection title="Linked work">
+ui/src/pages/Pipelines.tsx:3386:          <DetailSection title="Details">
+ui/src/pages/Pipelines.tsx:3401:          <DetailSection title="Activity">
+ui/src/pages/Pipelines.tsx:3932:        title="Open document"
+ui/src/pages/Pipelines.tsx:3960:        title="Open work product"
+ui/src/pages/Pipelines.tsx:4013:          title="Open"
+ui/src/pages/Pipelines.tsx:4021:          title="Download"
+ui/src/pages/Pipelines.tsx:4075:      title="Item outputs"
+ui/src/pages/Pipelines.tsx:4339:          <Button variant="outline" size="icon" onClick={onRemove} aria-label="Remove item">
+ui/src/pages/Pipelines.tsx:4392:            <SelectValue placeholder="Choose..." />
+ui/src/pages/Pipelines.tsx:5049:    return <EmptyState icon={Hexagon} message="Select a company to view the review queue." />;
+ui/src/pages/Pipelines.tsx:5082:        <EmptyState icon={Check} message="Nothing needs you right now." />
+ui/src/pages/Pipelines.tsx:5173:    return <EmptyState icon={BookOpenText} message="Select a company to view learnings." />;
+ui/src/pages/Pipelines.tsx:5210:        <EmptyState icon={BookOpenText} message="No learnings yet." />
+ui/src/pages/ProfileSettings.tsx:247:              placeholder="Board"
+ui/src/pages/Inbox.tsx:335:                aria-label="Mark as read"
+ui/src/pages/Inbox.tsx:401:              aria-label="Dismiss"
+ui/src/pages/Inbox.tsx:425:            aria-label="Dismiss"
+ui/src/pages/Inbox.tsx:484:                aria-label="Mark as read"
+ui/src/pages/Inbox.tsx:617:                aria-label="Mark as read"
+ui/src/pages/Inbox.tsx:2213:    return <EmptyState icon={InboxIcon} message="Select a company to view inbox." />;
+ui/src/pages/Inbox.tsx:2271:            placeholder="Search inbox…"
+ui/src/pages/Inbox.tsx:2319:              placeholder="Search inbox…"
+ui/src/pages/Inbox.tsx:2367:                    title="Group"
+ui/src/pages/Inbox.tsx:2396:                title="Choose which inbox columns stay visible"
+ui/src/pages/Inbox.tsx:2406:                    title="Sort"
+ui/src/pages/Inbox.tsx:2465:                    title="Group"
+ui/src/pages/Inbox.tsx:2500:                title="Choose which inbox columns stay visible"
+ui/src/pages/Inbox.tsx:2553:              <SelectValue placeholder="Category" />
+ui/src/pages/Inbox.tsx:2571:                <SelectValue placeholder="Approval status" />
+ui/src/pages/Inbox.tsx:3121:                    aria-label="Dismiss"
+ui/src/pages/Inbox.tsx:3144:                    aria-label="Dismiss"
+ui/src/components/AgentConfigForm.tsx:1363:            <Field label="Name" hint={help.name}>
+ui/src/components/AgentConfigForm.tsx:1369:                placeholder="Agent name"
+ui/src/components/AgentConfigForm.tsx:1372:            <Field label="Title" hint={help.title}>
+ui/src/components/AgentConfigForm.tsx:1378:                placeholder="e.g. VP of Engineering"
+ui/src/components/AgentConfigForm.tsx:1381:            <Field label="Reports to" hint={help.reportsTo}>
+ui/src/components/AgentConfigForm.tsx:1390:            <Field label="Capabilities" hint={help.capabilities}>
+ui/src/components/AgentConfigForm.tsx:1394:                placeholder="Describe what this agent can do..."
+ui/src/components/AgentConfigForm.tsx:1407:                <Field label="Prompt Template" hint={help.promptTemplate}>
+ui/src/components/AgentConfigForm.tsx:1415:                    placeholder="You are agent {{ agent.name }}. Your role is {{ agent.role }}..."
+ui/src/components/AgentConfigForm.tsx:1445:              label="Default environment"
+ui/src/components/AgentConfigForm.tsx:1469:            <Field label="Environment override">
+ui/src/components/AgentConfigForm.tsx:1518:            <Field label="Adapter type" hint={help.adapterType}>
+ui/src/components/AgentConfigForm.tsx:1604:            <Field label="Working directory (deprecated)" hint={help.cwd}>
+ui/src/components/AgentConfigForm.tsx:1620:                  placeholder="/path/to/project"
+ui/src/components/AgentConfigForm.tsx:1642:              <Field label="Command" hint={help.localCommand}>
+ui/src/components/AgentConfigForm.tsx:1764:                  <Field label="Bootstrap prompt (legacy)" hint={help.bootstrapPrompt}>
+ui/src/components/AgentConfigForm.tsx:1774:                      placeholder="Optional initial setup prompt for the first run"
+ui/src/components/AgentConfigForm.tsx:1793:              <Field label="Extra args (comma-separated)" hint={help.extraArgs}>
+ui/src/components/AgentConfigForm.tsx:1806:                  placeholder="e.g. --verbose, --foo=bar"
+ui/src/components/AgentConfigForm.tsx:1810:              <Field label="Environment variables" hint={help.envVars}>
+ui/src/components/AgentConfigForm.tsx:1835:                  <Field label="Timeout (sec)" hint={help.timeoutSec}>
+ui/src/components/AgentConfigForm.tsx:1847:                  <Field label="Interrupt grace period (sec)" hint={help.graceSec}>
+ui/src/components/AgentConfigForm.tsx:1874:              label="Heartbeat on interval"
+ui/src/components/AgentConfigForm.tsx:1896:                label="Heartbeat on interval"
+ui/src/components/AgentConfigForm.tsx:1909:              title="Advanced Run Policy"
+ui/src/components/AgentConfigForm.tsx:1916:                label="Wake on demand"
+ui/src/components/AgentConfigForm.tsx:1925:              <Field label="Cooldown (sec)" hint={help.cooldownSec}>
+ui/src/components/AgentConfigForm.tsx:1937:              <Field label="Max concurrent runs" hint={help.maxConcurrentRuns}>
+ui/src/components/AgentConfigForm.tsx:1951:                  label="Continue after max-turn stop"
+ui/src/components/AgentConfigForm.tsx:1958:                    <Field label="Continuation attempts" hint={help.maxTurnContinuationMaxAttempts}>
+ui/src/components/AgentConfigForm.tsx:1969:                    <Field label="Continuation delay (sec)" hint={help.maxTurnContinuationDelaySec}>
+ui/src/components/AgentConfigForm.tsx:2237:            <AdapterLoginCopyButton value={prompt.code} label="Copy code" />
+ui/src/components/AgentConfigForm.tsx:2247:              <AdapterLoginCopyButton value={prompt.url} label="Copy URL" />
+ui/src/components/AgentConfigForm.tsx:2253:                aria-label="Open the authentication page"
+ui/src/components/AgentConfigForm.tsx:2254:                title="Open the authentication page"
+ui/src/components/AgentConfigForm.tsx:2731:                <AdapterLoginCopyButton value={authorizationUrl} label="Copy URL" />
+ui/src/components/AgentConfigForm.tsx:2737:                  aria-label="Open the authorization page"
+ui/src/components/AgentConfigForm.tsx:2738:                  title="Open the authorization page"
+ui/src/components/AgentConfigForm.tsx:2753:                  aria-label="Browser code"
+ui/src/components/AgentConfigForm.tsx:3033:    <Field label="Model" hint={help.model}>
+ui/src/components/AgentConfigForm.tsx:3325:    <Field label="Thinking effort" hint={help.thinkingEffort}>
+ui/src/pages/StatusCards/SummarizerAgentSelect.tsx:61:      placeholder="Summarizer (default)"
+ui/src/pages/InstanceGeneralSettings.tsx:146:              label="Auth readiness"
+ui/src/pages/InstanceGeneralSettings.tsx:150:              label="Bootstrap status"
+ui/src/pages/InstanceGeneralSettings.tsx:154:              label="Bootstrap invite"
+ui/src/pages/InstanceGeneralSettings.tsx:177:            aria-label="Toggle username log censoring"
+ui/src/pages/InstanceGeneralSettings.tsx:197:            aria-label="Toggle keyboard shortcuts"
+ui/src/pages/CompanyAccess.tsx:467:                      <optgroup label="Humans">
+ui/src/pages/CompanyAccess.tsx:476:                      <optgroup label="Agents">
+ui/src/pages/Cases.tsx:223:          aria-label="Change case status"
+ui/src/pages/Cases.tsx:291:              label="case ID"
+ui/src/pages/Cases.tsx:303:              label="case key"
+ui/src/pages/Cases.tsx:442:              label="case ID"
+ui/src/pages/Cases.tsx:451:              label="case key"
+ui/src/pages/Cases.tsx:640:    <CaseToolbarButton icon={Columns3} title="Columns" active={!sameStringSet([...visibleColumns], DEFAULT_CASE_COLUMNS)}>
+ui/src/pages/Cases.tsx:685:    <CaseToolbarButton icon={ArrowUpDown} title="Sort" active={sortField !== "updated" || sortDir !== "desc"}>
+ui/src/pages/Cases.tsx:1212:                placeholder="Search cases..."
+ui/src/pages/Cases.tsx:1214:                aria-label="Search cases"
+ui/src/pages/Cases.tsx:1239:              <CaseToolbarButton icon={Filter} title="Filters" active={hasActiveFilters}>
+ui/src/pages/Cases.tsx:1242:                    <FilterField label="Type">
+ui/src/pages/Cases.tsx:1256:                    <FilterField label="Status">
+ui/src/pages/Cases.tsx:1268:                    <FilterField label="Project">
+ui/src/pages/Cases.tsx:1271:                          label="No project"
+ui/src/pages/Cases.tsx:1285:                    <FilterField label="Label">
+ui/src/pages/Cases.tsx:1288:                          label="All labels"
+ui/src/pages/Cases.tsx:1317:              <CaseToolbarButton icon={Layers} title="Group" active={viewState.groupBy !== "type"}>
+ui/src/pages/Cases.tsx:1346:            <EmptyState icon={SearchX} message="No cases match these filters." action="Clear filters" onAction={clearFilters} />
+ui/src/pages/tools/profiles/WizardToolsStep.tsx:77:  if (catalogLoading) return <LoadingState label="Loading tools…" />;
+ui/src/pages/tools/profiles/WizardToolsStep.tsx:106:            placeholder="Search tools…"
+ui/src/pages/tools/profiles/WizardToolsStep.tsx:371:                  aria-label="Remove rule"
+ui/src/components/NewAgentDialog.tsx:349:                  placeholder="Add onboarding context, expected role, or first instructions."
+ui/src/pages/Costs.tsx:121:          label="Debits"
+ui/src/pages/Costs.tsx:127:          label="Credits"
+ui/src/pages/Costs.tsx:129:          subtitle="Refunds, offsets, and credit returns"
+ui/src/pages/Costs.tsx:133:          label="Net"
+ui/src/pages/Costs.tsx:135:          subtitle="Debit minus credit for the selected period"
+ui/src/pages/Costs.tsx:139:          label="Estimated"
+ui/src/pages/Costs.tsx:141:          subtitle="Estimated debits that are not yet invoice-authoritative"
+ui/src/pages/Costs.tsx:532:    return <EmptyState icon={DollarSign} message="Select a company to view costs." />;
+ui/src/pages/Costs.tsx:585:              label="Inference spend"
+ui/src/pages/Costs.tsx:591:              label="Budget"
+ui/src/pages/Costs.tsx:607:              label="Finance net"
+ui/src/pages/Costs.tsx:613:              label="Finance events"
+ui/src/pages/Costs.tsx:851:                    label="Active incidents"
+ui/src/pages/Costs.tsx:853:                    subtitle="Open soft or hard threshold crossings"
+ui/src/pages/Costs.tsx:857:                    label="Pending approvals"
+ui/src/pages/Costs.tsx:859:                    subtitle="Budget override approvals awaiting board action"
+ui/src/pages/Costs.tsx:863:                    label="Paused agents"
+ui/src/pages/Costs.tsx:865:                    subtitle="Agent heartbeats blocked by budget"
+ui/src/pages/Costs.tsx:869:                    label="Paused projects"
+ui/src/pages/Costs.tsx:871:                    subtitle="Project execution blocked by budget"
+ui/src/pages/audit/AuditFeed.tsx:480:          <TabsList aria-label="Activity scope">
+ui/src/pages/audit/AuditFeed.tsx:492:                <SelectValue placeholder="Agent" />
+ui/src/pages/audit/AuditFeed.tsx:507:              <SelectValue placeholder="Responsible user" />
+ui/src/pages/audit/AuditFeed.tsx:520:              <SelectValue placeholder="Action" />
+ui/src/pages/audit/AuditFeed.tsx:532:              <SelectValue placeholder="Entity" />
+ui/src/pages/audit/AuditFeed.tsx:544:            aria-label="From date"
+ui/src/pages/audit/AuditFeed.tsx:552:            aria-label="To date"
+ui/src/pages/CompanySettings.tsx:210:          <Field label="Company name" hint="The display name for your company.">
+ui/src/pages/CompanySettings.tsx:219:            label="Description"
+ui/src/pages/CompanySettings.tsx:226:              placeholder="Optional company description"
+ui/src/pages/CompanySettings.tsx:250:                label="Logo"
+ui/src/pages/CompanySettings.tsx:291:                label="Brand color"
+ui/src/pages/CompanySettings.tsx:311:                    placeholder="Auto"
+ui/src/pages/CompanySettings.tsx:327:                label="Attachment size limit"
+ui/src/pages/CompanySettings.tsx:385:            label="Require board approval for new hires"
+ui/src/pages/StatusCards/StatusCardSettingsForm.tsx:126:            title="Manual only — updates when I press refresh"
+ui/src/pages/StatusCards/StatusCardSettingsForm.tsx:136:            title="On a schedule, only if something changed"
+ui/src/pages/StatusCards/StatusCardSettingsForm.tsx:145:                <SelectTrigger size="sm" className="w-28" aria-label="Check interval">
+ui/src/pages/StatusCards/StatusCardSettingsForm.tsx:160:            title="As soon as something changes (debounced)"
+ui/src/pages/StatusCards/StatusCardSettingsForm.tsx:169:                <SelectTrigger size="sm" className="w-24" aria-label="Debounce">
+ui/src/pages/StatusCards/StatusCardSettingsForm.tsx:188:                aria-label="Max updates per hour"
+ui/src/pages/StatusCards/StatusCardSettingsForm.tsx:228:                <Checkbox checked={Boolean(activeHours)} onCheckedChange={(checked) => setActiveHoursEnabled(Boolean(checked))} className="mt-0.5" aria-label="Limit to active hours" />
+ui/src/pages/StatusCards/StatusCardSettingsForm.tsx:238:                    aria-label="Active hours start"
+ui/src/pages/StatusCards/StatusCardSettingsForm.tsx:246:                    aria-label="Active hours end"
+ui/src/pages/StatusCards/StatusCardSettingsForm.tsx:252:                    placeholder="Timezone"
+ui/src/pages/StatusCards/StatusCardSettingsForm.tsx:253:                    aria-label="Active hours timezone"
+ui/src/pages/StatusCards/StatusCardSettingsForm.tsx:269:                  placeholder="no cap"
+ui/src/pages/StatusCards/StatusCardSettingsForm.tsx:270:                  aria-label="Daily token cap"
+ui/src/pages/apps/gateways/NewGatewayDialog.tsx:107:              placeholder="CTO agents"
+ui/src/pages/apps/gateways/NewGatewayDialog.tsx:140:              placeholder="Who this endpoint is for and when it should be rotated."
+ui/src/pages/CompanyInvites.tsx:272:                aria-label="Latest invite URL"
+ui/src/pages/apps/app-detail/AdvancedPanel.tsx:203:              placeholder="****************"
+ui/src/pages/apps/app-detail/AdvancedPanel.tsx:224:          placeholder="Paste your new key"
+ui/src/pages/audit/CompanyActivity.tsx:45:    return <EmptyState icon={History} message="Select a company to view activity." />;
+ui/src/pages/tools/profiles/ProfileWizard.tsx:226:  if (profileId && profiles.isLoading) return <LoadingState label="Loading draft…" />;
+ui/src/pages/tools/profiles/ProfileWizard.tsx:513:            placeholder="e.g. Everyday work"
+ui/src/pages/tools/profiles/ProfileWizard.tsx:522:            placeholder="What is this profile for?"
+ui/src/pages/tools/profiles/ProfileWizard.tsx:654:              label="Projects"
+ui/src/pages/tools/profiles/ProfileWizard.tsx:660:              label="Routines"
+ui/src/pages/apps/gateways/panels/TokensPanel.tsx:172:              <Input value={name} onChange={(e) => setName(e.target.value)} placeholder="cto-cursor" required autoFocus />
+ui/src/pages/apps/gateways/panels/TokensPanel.tsx:179:                placeholder="Cursor on work laptop"
+ui/src/pages/apps/gateways/panels/TokensPanel.tsx:186:              <Input value={ownerNote} onChange={(e) => setOwnerNote(e.target.value)} placeholder="Dotta’s MacBook" />
+ui/src/pages/apps/gateways/panels/TokensPanel.tsx:213:            <Button variant="ghost" size="sm" onClick={() => setCreated(null)} aria-label="Dismiss new token">
+ui/src/pages/apps/gateways/panels/TokensPanel.tsx:313:                    <TokenField label="Owner" value={token.clientLabel || token.ownerNote || "—"} />
+ui/src/pages/apps/gateways/panels/TokensPanel.tsx:314:                    <TokenField label="Created" value={<RelativeTime value={token.createdAt} />} />
+ui/src/pages/apps/gateways/panels/TokensPanel.tsx:316:                      label="Last used"
+ui/src/pages/apps/gateways/panels/TokensPanel.tsx:320:                      label="Expires"
+ui/src/pages/apps/gateways/panels/TokensPanel.tsx:365:              aria-label="Type the token name to confirm"
+ui/src/pages/apps/AppNotConnected.tsx:192:            title="Nothing is waiting for your OK right now."
+ui/src/pages/apps/AppNotConnected.tsx:202:          title="Reconnect to test this app."
+ui/src/pages/apps/AppNotConnected.tsx:434:          title="No previous connection details"
+ui/src/pages/apps/gateways/panels/GatewayAdvancedPanel.tsx:80:          <Row label="Transport" value="streamable_http" />
+ui/src/pages/apps/gateways/panels/GatewayAdvancedPanel.tsx:81:          <Row label="Authentication" value="bearer" />
+ui/src/pages/apps/gateways/panels/GatewayAdvancedPanel.tsx:82:          <Row label="Protocol version" value="2025-03-26" />
+ui/src/pages/apps/gateways/panels/GatewayAdvancedPanel.tsx:83:          <Row label="Public ID" value={gateway.gatewayPublicId} mono />
+ui/src/pages/apps/gateways/panels/GatewayAdvancedPanel.tsx:121:              aria-label="Type the gateway name to confirm archive"
+ui/src/pages/apps/gateways/GatewayDetail.tsx:186:      <nav className="flex items-center gap-6 overflow-x-auto border-b border-border text-sm" aria-label="Gateway tabs">
+ui/src/pages/apps/gateways/GatewaysList.tsx:163:                placeholder="Search by name, app, or owner"
+ui/src/pages/apps/gateways/GatewaysList.tsx:165:                aria-label="Search gateways"
+ui/src/pages/apps/gateways/GatewaysList.tsx:277:                        <MobileField label="Scope" value={scope} />
+ui/src/pages/apps/gateways/GatewaysList.tsx:278:                        <MobileField label="Apps" value={appsLabel} />
+ui/src/pages/apps/gateways/GatewaysList.tsx:280:                          label="Tokens"
+ui/src/pages/apps/gateways/GatewaysList.tsx:284:                          label="Last used"
+ui/src/pages/StatusCards/StatusCardTile.tsx:120:              <Button variant="ghost" size="icon" className="-mr-1 -mt-1 h-7 w-7 text-muted-foreground" aria-label="Card actions">
+ui/src/pages/StatusCards/StatusCardTile.tsx:295:            aria-label="Refresh card"
+ui/src/pages/apps/app-detail/PermissionsPanel.tsx:220:            <InstalledBadge label="Installed on all agents" />
+ui/src/pages/apps/app-detail/PermissionsPanel.tsx:267:            aria-label="Install on all agents"
+ui/src/pages/apps/app-detail/PermissionsPanel.tsx:370:        title="Read only"
+ui/src/pages/apps/app-detail/PermissionsPanel.tsx:380:        title="Can make changes"
+ui/src/pages/apps/gateways/panels/OverviewPanel.tsx:69:            <ToggleSwitch checked={on} disabled={toggleDisabled} onCheckedChange={onToggle} aria-label="Toggle gateway" />
+ui/src/pages/apps/gateways/panels/OverviewPanel.tsx:73:        <StatCard label="Apps">
+ui/src/pages/apps/gateways/panels/OverviewPanel.tsx:77:        <StatCard label="Tokens">
+ui/src/pages/apps/gateways/panels/OverviewPanel.tsx:80:        <StatCard label="Health">
+ui/src/pages/apps/app-detail/TestPanel.tsx:254:              aria-label="Find an action"
+ui/src/pages/apps/app-detail/TestPanel.tsx:255:              placeholder="Find an action…"
+ui/src/pages/apps/app-detail/TestPanel.tsx:416:          aria-label="Choose which agent to test as"
+ui/src/pages/apps/app-detail/TestPanel.tsx:427:              aria-label="Search agents"
+ui/src/pages/apps/app-detail/TestPanel.tsx:428:              placeholder="Search agents…"
+ui/src/components/DecisionQueueRail.tsx:43:    <nav className="flex flex-wrap items-center gap-1.5" aria-label="Decision queues" data-decision-queue-rail>
+ui/src/components/DecisionQueueRail.tsx:44:      <Chip href={decisionsHref(null)} active={activeQueueKey == null} label="All" />
+ui/src/components/DecisionQueueRail.tsx:87:        <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-primary" aria-label="Recent activity" />
+ui/src/components/PageTabBar.tsx:26:        aria-label="Page section"
+ui/src/pages/tools/GatewaysTab.tsx:255:  if (gatewaysQuery.isLoading) return <LoadingState label="Loading gateways..." />;
+ui/src/pages/tools/GatewaysTab.tsx:266:          title="Named MCP gateways"
+ui/src/pages/tools/GatewaysTab.tsx:267:          description="Stable endpoints for external clients that use the same profiles, rules, and audit trail as agent tool access."
+ui/src/pages/tools/GatewaysTab.tsx:292:                placeholder="Engineering laptops"
+ui/src/pages/tools/GatewaysTab.tsx:322:              placeholder="Who this endpoint is for and when it should be rotated."
+ui/src/pages/tools/GatewaysTab.tsx:418:                          placeholder="Dotta's MacBook"
+ui/src/pages/tools/GatewaysTab.tsx:433:                          placeholder="Cursor on work laptop"
+ui/src/pages/tools/GatewaysTab.tsx:450:                          placeholder="Who owns this token and why it exists"
+ui/src/pages/apps/app-detail/SetupPanel.tsx:169:          placeholder="https://docs.google.com/spreadsheets/d/..."
+ui/src/components/FrontmatterPanel.tsx:520:              placeholder="Add a tool…"
+ui/src/components/FrontmatterPanel.tsx:603:            placeholder="key"
+ui/src/components/FrontmatterPanel.tsx:611:            placeholder="value"
+ui/src/components/FrontmatterPanel.tsx:689:          aria-label="Add tool"
+ui/src/components/FrontmatterPanel.tsx:725:        aria-label="Frontmatter YAML"
+ui/src/components/CommandPalette.tsx:225:        placeholder="Search tasks, agents, projects..."
+ui/src/pages/StatusCards/StatusCardDetailDrawer.tsx:259:              <InlineBanner tone="warning" title="Heads up">{actionError}</InlineBanner>
+ui/src/pages/StatusCards/StatusCardDetailDrawer.tsx:263:              <InlineBanner tone="info" title="Working on it">{actionNote}</InlineBanner>
+ui/src/pages/StatusCards/StatusCardDetailDrawer.tsx:279:                      <SelectTrigger size="sm" className="w-auto gap-1.5" aria-label="Select summary revision">
+ui/src/pages/StatusCards/StatusCardDetailDrawer.tsx:429:                <InlineBanner tone="danger" title="Could not load matched issues">
+ui/src/pages/StatusCards/StatusCardDetailDrawer.tsx:446:                  placeholder="Auto-named from the query"
+ui/src/pages/StatusCards/StatusCardDetailDrawer.tsx:448:                  aria-label="Card name"
+ui/src/pages/StatusCards/StatusCardDetailDrawer.tsx:459:                  aria-label="What this card watches & reports"
+ui/src/components/DocumentAnnotationLayer.tsx:561:                aria-label="Open annotation thread"
+ui/src/components/DocumentAnnotationLayer.tsx:603:                title="Anchor moved — needs review"
+ui/src/components/DocumentAnnotationLayer.tsx:613:              aria-label="Selection actions"
+ui/src/components/artifacts/ArtifactCard.tsx:38:    return <PlaceholderPreview label="Image" />;
+ui/src/components/artifacts/ArtifactCard.tsx:161:      return <PlaceholderPreview label="File" />;
+ui/src/components/artifacts/ArtifactCard.tsx:215:              <SecondaryAction href={artifact.openPath} title="Open file in new tab">
+ui/src/components/artifacts/ArtifactCard.tsx:220:              <SecondaryAction href={artifact.downloadPath} download title="Download file">
+ui/src/components/DocumentAnnotationPopover.tsx:104:            placeholder="Write a comment…"
+ui/src/pages/tools/PasteConfigTab.tsx:322:                  placeholder="Paste replacement value"
+ui/src/pages/tools/PasteConfigTab.tsx:388:        title="Read-only"
+ui/src/pages/tools/PasteConfigTab.tsx:396:        title="Can make changes"
+ui/src/pages/apps/AppsConnect.tsx:797:        subtitle="Secure MCP sign-in"
+ui/src/pages/apps/AppsConnect.tsx:879:          placeholder="https://mcp.zapier.com/api/v1/connect?token=…"
+ui/src/pages/apps/AppsConnect.tsx:973:          placeholder="Search apps…"
+ui/src/pages/apps/AppsConnect.tsx:1106:            title="Run your own"
+ui/src/pages/apps/AppsConnect.tsx:1107:            description="Register a command Paperclip runs in your workspace for a tool that isn’t listed."
+ui/src/pages/apps/AppsConnect.tsx:1112:            title="Paste a config"
+ui/src/pages/apps/AppsConnect.tsx:1113:            description="Already have a setup snippet from a README? Paste it and we’ll connect it."
+ui/src/pages/apps/AppsConnect.tsx:1210:            placeholder="My app"
+ui/src/pages/apps/AppsConnect.tsx:1227:              label="Yes"
+ui/src/pages/apps/AppsConnect.tsx:1248:                placeholder="••••••••••••••••"
+ui/src/pages/apps/AppsConnect.tsx:1323:        placeholder="My app"
+ui/src/pages/apps/AppsConnect.tsx:1422:              placeholder="https://docs.google.com/spreadsheets/d/..."
+ui/src/pages/apps/AppsConnect.tsx:1475:                placeholder="••••••••••••••••"
+ui/src/pages/apps/AppsConnect.tsx:1624:        title="Read only"
+ui/src/pages/apps/AppsConnect.tsx:1635:        title="Can make changes"
+ui/src/components/SidebarShell.tsx:221:            aria-label="Resize sidebar"
+ui/src/components/SidebarStarredProjects.tsx:107:    <div className="flex flex-col gap-0.5" aria-label="Starred projects">
+ui/src/components/SidebarStarredProjects.tsx:134:              <BudgetSidebarMarker title="Project paused by budget" />
+ui/src/components/CommentThread.tsx:272:      aria-label="Copy comment as markdown"
+ui/src/components/CommentThread.tsx:1019:            placeholder="Leave a comment..."
+ui/src/components/CommentThread.tsx:1040:                  title="Attach image"
+ui/src/components/CommentThread.tsx:1050:                placeholder="Responsible"
+ui/src/components/DocumentAnnotationPanel.tsx:191:          aria-label="Close annotation panel"
+ui/src/components/DocumentAnnotationPanel.tsx:281:            placeholder="Write a comment…"
+ui/src/components/DocumentAnnotationPanel.tsx:385:              placeholder="Reply…"
+ui/src/components/DocumentAnnotationPanel.tsx:423:                    title="More actions"
+ui/src/components/DocumentAnnotationPanel.tsx:424:                    aria-label="More thread actions"
+ui/src/components/AgentSecretAccessEditor.tsx:359:                        placeholder="ALIAS"
+ui/src/components/AgentSecretAccessEditor.tsx:360:                        aria-label="Access alias"
+ui/src/components/AgentSecretAccessEditor.tsx:453:                        aria-label="Version"
+ui/src/components/AgentSecretAccessEditor.tsx:473:                      aria-label="Remove API access"
+ui/src/components/ScheduleEditor.tsx:250:        <SelectTrigger className="w-full" aria-label="Schedule frequency">
+ui/src/components/ScheduleEditor.tsx:251:          <SelectValue placeholder="Choose frequency..." />
+ui/src/components/ScheduleEditor.tsx:279:            placeholder="0 10 * * *"
+ui/src/components/ScheduleEditor.tsx:280:            aria-label="Cron expression"
+ui/src/components/DecisionTriageStrip.tsx:167:        <div className="flex flex-wrap items-center gap-1" role="group" aria-label="When to decide">
+ui/src/components/DecisionTriageStrip.tsx:365:              placeholder="New queue name…"
+ui/src/pages/tools/RunYourOwnTab.tsx:108:            placeholder="Acme tools"
+ui/src/pages/tools/RunYourOwnTab.tsx:120:            placeholder="npx -y @acme/mcp-tool"
+ui/src/pages/tools/RunYourOwnTab.tsx:147:                        placeholder="API_KEY"
+ui/src/pages/tools/RunYourOwnTab.tsx:155:                        aria-label="Remove key"
+ui/src/components/AgentProperties.tsx:44:        <PropertyRow label="Status">
+ui/src/components/AgentProperties.tsx:48:          <PropertyRow label="Error reason">
+ui/src/components/AgentProperties.tsx:54:        <PropertyRow label="Role">
+ui/src/components/AgentProperties.tsx:58:          <PropertyRow label="Title">
+ui/src/components/AgentProperties.tsx:62:        <PropertyRow label="Adapter">
+ui/src/components/AgentProperties.tsx:71:          <PropertyRow label="Session">
+ui/src/components/AgentProperties.tsx:91:          <PropertyRow label="Last Heartbeat">
+ui/src/components/AgentProperties.tsx:96:          <PropertyRow label="Reports To">
+ui/src/components/AgentProperties.tsx:106:        <PropertyRow label="Created">
+ui/src/components/RoutineRunVariablesDialog.tsx:361:                placeholder="Agent"
+ui/src/components/RoutineRunVariablesDialog.tsx:403:                placeholder="Project"
+ui/src/components/RoutineRunVariablesDialog.tsx:495:                    <SelectValue placeholder="Choose a value" />
+ui/src/pages/StatusCards/index.tsx:138:      {actionError ? <InlineBanner tone="warning" title="Heads up">{actionError}</InlineBanner> : null}
+ui/src/pages/StatusCards/index.tsx:145:        <InlineBanner tone="danger" title="Could not load status cards">
+ui/src/pages/StatusCards/index.tsx:151:          title="No status cards yet"
+ui/src/pages/StatusCards/index.tsx:152:          message="Create a card to keep a living summary of the issues you care about."
+ui/src/components/AgentMultiSelect.tsx:77:            placeholder="Filter agents"
+ui/src/components/AgentMultiSelect.tsx:227:            placeholder="Filter agents"
+ui/src/adapters/runtime-json-fields.tsx:77:    <Field label="Runtime services JSON" hint={help.runtimeServicesJson}>
+ui/src/adapters/runtime-json-fields.tsx:109:    <Field label="Payload template JSON" hint={help.payloadTemplateJson}>
+ui/src/components/IssuePlanDecompositionsSection.tsx:104:                    title="Repeat attempts with this fingerprint reuse this record instead of creating new children"
+ui/src/components/AttentionQueueRow.tsx:310:                  aria-label="Row actions"
+ui/src/components/AttentionQueueRow.tsx:537:    <div className="flex w-full flex-wrap items-center gap-2 @xl:w-auto @xl:justify-end @xl:gap-1" aria-label="Decision actions">
+ui/src/components/AttentionQueueRow.tsx:859:        placeholder="Optional decision note…"
+ui/src/components/NewGoalDialog.tsx:157:            placeholder="Goal title"
+ui/src/components/NewGoalDialog.tsx:176:            placeholder="Add description..."
+ui/src/components/PropertiesPanel.tsx:333:            aria-label="Resize panel"
+ui/src/adapters/grok-local/config-fields.tsx:25:      <Field label="Agent instructions file" hint={instructionsFileHint}>
+ui/src/adapters/grok-local/config-fields.tsx:44:            placeholder="/absolute/path/to/AGENTS.md"
+ui/src/components/task-chat/TaskChatComposer.tsx:485:              title="Attach file"
+ui/src/components/task-chat/TaskChatComposer.tsx:486:              aria-label="Attach file"
+ui/src/components/task-chat/TaskChatComposer.tsx:541:            placeholder="Assignee"
+ui/src/components/task-chat/TaskChatComposer.tsx:575:          aria-label="Send"
+ui/src/pages/tools/ProfilesTab.tsx:411:              <SelectValue placeholder="Select an application" />
+ui/src/pages/tools/ProfilesTab.tsx:428:              <SelectValue placeholder="Select a connection" />
+ui/src/pages/tools/ProfilesTab.tsx:449:          <Input id="tool-name" value={toolName} onChange={(event) => setToolName(event.target.value)} placeholder="e.g. send_email or slack.list_*" />
+ui/src/pages/tools/ProfilesTab.tsx:489:            <SelectValue placeholder="Select an agent" />
+ui/src/pages/tools/ProfilesTab.tsx:505:        <LoadingState label="Checking access..." />
+ui/src/pages/tools/ProfilesTab.tsx:922:        title="Access profiles"
+ui/src/pages/tools/ProfilesTab.tsx:923:        description="Reusable bundles of allowed applications, connections, and tools, assignable to agents, projects, routines, or issues."
+ui/src/pages/tools/ProfilesTab.tsx:937:          message="No access profiles yet"
+ui/src/pages/tools/ProfilesTab.tsx:938:          description="Create a profile to group tool selectors, then bind it to the company or a specific agent."
+ui/src/pages/tools/ProfilesTab.tsx:1038:                  placeholder="Engineering write tools"
+ui/src/pages/tools/ProfilesTab.tsx:1052:                placeholder="Optional context for reviewers."
+ui/src/pages/tools/ProfilesTab.tsx:1185:                  <SelectTrigger><SelectValue placeholder="Select an agent" /></SelectTrigger>
+ui/src/pages/tools/ProfilesTab.tsx:1196:                  <SelectTrigger><SelectValue placeholder="Select a project" /></SelectTrigger>
+ui/src/pages/tools/ProfilesTab.tsx:1207:                  <SelectTrigger><SelectValue placeholder="Select a routine" /></SelectTrigger>
+ui/src/components/ImageGalleryModal.tsx:107:                title="Download"
+ui/src/components/ImageGalleryModal.tsx:117:                title="Close"
+ui/src/components/ImageGalleryModal.tsx:133:                  title="Previous"
+ui/src/components/ImageGalleryModal.tsx:168:                  title="Next"
+ui/src/adapters/opencode-local/config-fields.tsx:27:        <Field label="Agent instructions file" hint={instructionsFileHint}>
+ui/src/adapters/opencode-local/config-fields.tsx:46:              placeholder="/absolute/path/to/AGENTS.md"
+ui/src/adapters/opencode-local/config-fields.tsx:53:        label="Skip permissions"
+ui/src/adapters/gemini-local/config-fields.tsx:31:      <Field label="Execution engine" hint="Auto uses ACP when prerequisites pass and falls back to Gemini CLI with diagnostics.">
+ui/src/adapters/gemini-local/config-fields.tsx:50:            label="ACP server command"
+ui/src/adapters/gemini-local/config-fields.tsx:66:              placeholder="gemini --acp"
+ui/src/adapters/gemini-local/config-fields.tsx:69:          <Field label="ACP session mode" hint="Persistent keeps ACP session state between runs. One-shot starts fresh each run.">
+ui/src/adapters/gemini-local/config-fields.tsx:89:            label="ACP non-interactive permissions"
+ui/src/adapters/gemini-local/config-fields.tsx:111:            label="ACP state directory"
+ui/src/adapters/gemini-local/config-fields.tsx:128:                placeholder="/path/to/acp-state"
+ui/src/adapters/gemini-local/config-fields.tsx:134:            label="ACP warm process idle ms"
+ui/src/adapters/gemini-local/config-fields.tsx:160:        <Field label="Agent instructions file" hint={instructionsFileHint}>
+ui/src/adapters/gemini-local/config-fields.tsx:179:              placeholder="/absolute/path/to/AGENTS.md"
+ui/src/pages/tools/AuditTab.tsx:247:                {rawTool ? <DetailFact label="Action name" value={rawTool} mono /> : null}
+ui/src/pages/tools/AuditTab.tsx:248:                <DetailFact label="Reason code" value={reasonCode} mono />
+ui/src/pages/tools/AuditTab.tsx:249:                <DetailFact label="Actor type" value={event.actorType ?? "—"} />
+ui/src/pages/tools/AuditTab.tsx:250:                {runId ? <DetailFact label="Run ID" value={runId} mono /> : null}
+ui/src/pages/tools/AuditTab.tsx:251:                {transport ? <DetailFact label="Transport" value={transport} mono /> : null}
+ui/src/pages/tools/AuditTab.tsx:252:                {requestMethod && endpoint ? <DetailFact label="HTTP request" value={`${requestMethod} ${endpoint}`} mono /> : null}
+ui/src/pages/tools/AuditTab.tsx:253:                {mcpMethod ? <DetailFact label="MCP method" value={mcpMethod} mono /> : null}
+ui/src/pages/tools/AuditTab.tsx:254:                {requestId ? <DetailFact label="Request ID" value={requestId} mono /> : null}
+ui/src/pages/tools/AuditTab.tsx:255:                {request ? <DetailFact label="Dispatched" value={request.dispatched === true ? "Yes" : "No"} /> : null}
+ui/src/pages/tools/AuditTab.tsx:256:                {httpStatus !== undefined ? <DetailFact label="HTTP status" value={String(httpStatus)} mono /> : null}
+ui/src/pages/tools/AuditTab.tsx:257:                {contentType ? <DetailFact label="Content type" value={contentType} mono /> : null}
+ui/src/pages/tools/AuditTab.tsx:258:                {responseBytes !== undefined ? <DetailFact label="Response size" value={`${responseBytes} bytes`} /> : null}
+ui/src/pages/tools/AuditTab.tsx:259:                {upstreamRequestId ? <DetailFact label="Upstream ID" value={upstreamRequestId} mono /> : null}
+ui/src/pages/tools/AuditTab.tsx:262:                    <DetailFact label="Delivered MCP servers" value="0" mono />
+ui/src/pages/tools/AuditTab.tsx:367:        title="Activity"
+ui/src/pages/tools/AuditTab.tsx:374:            <SelectValue placeholder="App" />
+ui/src/pages/tools/AuditTab.tsx:387:            <SelectValue placeholder="Agent" />
+ui/src/pages/tools/AuditTab.tsx:423:          placeholder="Search activity…"
+ui/src/components/RoutineHistoryTab.tsx:244:              message="No edits yet"
+ui/src/components/RoutineHistoryTab.tsx:756:            placeholder="Why are you restoring? Visible in history."
+ui/src/components/RoutineHistoryTab.tsx:828:            label="Old"
+ui/src/components/RoutineHistoryTab.tsx:835:            label="New"
+ui/src/components/IssueBlockedNotice.tsx:307:              aria-label="Blocker chain progress"
+ui/src/components/IssueDocumentsSection.tsx:930:            placeholder="Document key"
+ui/src/components/IssueDocumentsSection.tsx:941:              placeholder="Optional title"
+ui/src/components/IssueDocumentsSection.tsx:949:            placeholder="Markdown body"
+ui/src/components/IssueDocumentsSection.tsx:1078:                      <span title="Locked document" aria-label="Locked document" className="inline-flex h-6 w-6 items-center justify-center text-amber-700 dark:text-amber-300">
+ui/src/components/IssueDocumentsSection.tsx:1104:                          title="Document actions"
+ui/src/components/IssueDocumentsSection.tsx:1268:                      placeholder="Optional title"
+ui/src/components/IssueDocumentsSection.tsx:1291:                          placeholder="Markdown body"
+ui/src/components/BreadcrumbBar.tsx:79:      aria-label="Open sidebar"
+ui/src/components/task-chat/TweakPanel.tsx:143:          <button type="button" title="Reset all" onClick={resetAll} className="rounded p-0.5 hover:bg-accent">
+ui/src/adapters/hermes-gateway/config-fields.tsx:144:        label="API base URL"
+ui/src/adapters/hermes-gateway/config-fields.tsx:152:          placeholder="http://127.0.0.1:8642"
+ui/src/adapters/hermes-gateway/config-fields.tsx:157:        label="API key"
+ui/src/adapters/hermes-gateway/config-fields.tsx:160:        placeholder="Hermes API_SERVER_KEY, not PAPERCLIP_API_KEY"
+ui/src/adapters/hermes-gateway/config-fields.tsx:165:        label="Paperclip API URL"
+ui/src/adapters/hermes-gateway/config-fields.tsx:173:          placeholder="http://127.0.0.1:3100"
+ui/src/adapters/hermes-gateway/config-fields.tsx:178:        label="Session key strategy"
+ui/src/adapters/hermes-gateway/config-fields.tsx:193:      <Field label="Timeout seconds">
+ui/src/adapters/hermes-gateway/config-fields.tsx:203:        label="Event reconnect ms"
+ui/src/adapters/hermes-gateway/config-fields.tsx:215:        label="Dangerously allow remote HTTP"
+ui/src/adapters/hermes-gateway/config-fields.tsx:222:        label="Extra headers"
+ui/src/adapters/hermes-gateway/config-fields.tsx:242:      <Field label="Instructions" hint="Optional stable Hermes instructions sent separately from the wake input.">
+ui/src/components/BillerSpendCard.tsx:83:            label="Period spend"
+ui/src/adapters/process/config-fields.tsx:37:      <Field label="Command" hint={help.command}>
+ui/src/adapters/process/config-fields.tsx:51:          placeholder="e.g. node, python"
+ui/src/adapters/process/config-fields.tsx:54:      <Field label="Args (comma-separated)" hint={help.args}>
+ui/src/adapters/process/config-fields.tsx:72:          placeholder="e.g. script.js, --flag"
+ui/src/components/SidebarAgents.tsx:184:              <AlertTriangle className="h-3.5 w-3.5 shrink-0 text-amber-500" aria-label="Invalid reporting chain" />
+ui/src/components/SidebarAgents.tsx:191:        agent.pauseReason === "budget" ? <BudgetSidebarMarker title="Agent paused by budget" /> : undefined
+ui/src/components/SidebarAgents.tsx:634:      label="Agents"
+ui/src/components/MobileBottomNav.tsx:67:      aria-label="Mobile navigation"
+ui/src/pages/tools/RuntimeTab.tsx:349:        <ToolsPageHeader title="Health" description="How your apps are doing right now." />
+ui/src/pages/tools/RuntimeTab.tsx:356:          label="Apps running"
+ui/src/pages/tools/RuntimeTab.tsx:367:          label="Typical response time"
+ui/src/pages/tools/RuntimeTab.tsx:379:          label="Errors in the last hour"
+ui/src/pages/tools/RuntimeTab.tsx:418:                  <Disclosure open={detailsOpen} label="Technical details" />
+ui/src/pages/tools/RuntimeTab.tsx:423:                  <Fact label="Alert" value={<span className="font-mono">{alert.name}</span>} />
+ui/src/pages/tools/RuntimeTab.tsx:424:                  <Fact label="Severity" value={alert.severity} />
+ui/src/pages/tools/RuntimeTab.tsx:425:                  <Fact label="Threshold" value={alert.threshold} />
+ui/src/pages/tools/RuntimeTab.tsx:426:                  <Fact label="Observed" value={alert.observed} />
+ui/src/pages/tools/RuntimeTab.tsx:427:                  <Fact label="First responder" value={alert.firstResponderAction} />
+ui/src/pages/tools/RuntimeTab.tsx:428:                  <Fact label="Runbook" value={<span className="font-mono">{alert.runbookSection || health.data?.runbookPath}</span>} />
+ui/src/pages/tools/RuntimeTab.tsx:440:          message="No apps running right now"
+ui/src/pages/tools/RuntimeTab.tsx:571:              <Fact label="Slot key" value={<span className="font-mono text-xs">{slot.slotKey ?? slot.commandTemplateKey ?? slot.id}</span>} />
+ui/src/pages/tools/RuntimeTab.tsx:572:              <Fact label="How it runs" value={howItRuns(slot)} />
+ui/src/pages/tools/RuntimeTab.tsx:573:              <Fact label="Process ID" value={slot.processId ?? "—"} />
+ui/src/pages/tools/RuntimeTab.tsx:574:              <Fact label="Scope" value={scopeLabel(slot.ownerScopeType)} />
+ui/src/pages/tools/RuntimeTab.tsx:575:              <Fact label="Trust tier" value={trustTierLabel(slot)} />
+ui/src/pages/tools/RuntimeTab.tsx:576:              <Fact label="Started" value={<RelativeTime value={slot.lastStartedAt ?? slot.startedAt} />} />
+ui/src/components/ProjectProperties.tsx:552:        <PropertyRow label={<FieldLabel label="Name" state={fieldState("name")} />}>
+ui/src/components/ProjectProperties.tsx:559:              placeholder="Project name"
+ui/src/components/ProjectProperties.tsx:566:          label={<FieldLabel label="Description" state={fieldState("description")} />}
+ui/src/components/ProjectProperties.tsx:577:              placeholder="Add a description..."
+ui/src/components/ProjectProperties.tsx:586:        <PropertyRow label={<FieldLabel label="Status" state={fieldState("status")} />}>
+ui/src/components/ProjectProperties.tsx:597:          <PropertyRow label="Lead">
+ui/src/components/ProjectProperties.tsx:602:          label={<FieldLabel label="Goals" state={fieldState("goals")} />}
+ui/src/components/ProjectProperties.tsx:664:          label={<FieldLabel label="Env" state={fieldState("env")} />}
+ui/src/components/ProjectProperties.tsx:684:        <PropertyRow label={<FieldLabel label="Created" state="idle" />}>
+ui/src/components/ProjectProperties.tsx:687:        <PropertyRow label={<FieldLabel label="Updated" state="idle" />}>
+ui/src/components/ProjectProperties.tsx:691:          <PropertyRow label={<FieldLabel label="Target Date" state="idle" />}>
+ui/src/components/ProjectProperties.tsx:708:                  aria-label="Codebase help"
+ui/src/components/ProjectProperties.tsx:757:                      aria-label="Clear repo"
+ui/src/components/ProjectProperties.tsx:811:                      aria-label="Clear local folder"
+ui/src/components/ProjectProperties.tsx:891:                  placeholder="/absolute/path/to/workspace"
+ui/src/components/ProjectProperties.tsx:926:                placeholder="https://github.com/org/repo"
+ui/src/components/ProjectProperties.tsx:979:                      aria-label="Execution workspaces help"
+ui/src/components/ProjectProperties.tsx:1053:                          aria-label="Shared workspace concurrency"
+ui/src/components/ProjectProperties.tsx:1149:                            placeholder="origin/main"
+ui/src/components/ProjectProperties.tsx:1173:                            placeholder="{{issue.identifier}}-{{slug}}"
+ui/src/components/ProjectProperties.tsx:1197:                            placeholder=".paperclip/worktrees"
+ui/src/components/ProjectProperties.tsx:1221:                            placeholder="bash ./scripts/provision-worktree.sh"
+ui/src/components/ProjectProperties.tsx:1245:                            placeholder="bash ./scripts/provision-worktree-runtime.sh"
+ui/src/components/ProjectProperties.tsx:1272:                            placeholder="bash ./scripts/teardown-worktree.sh"
+ui/src/adapters/kimi-local/config-fields.tsx:25:      <Field label="Agent instructions file" hint={instructionsFileHint}>
+ui/src/adapters/kimi-local/config-fields.tsx:44:            placeholder="/absolute/path/to/AGENTS.md"
+ui/src/components/task-chat/TaskChatBubbleActions.tsx:43:        title="Copy message"
+ui/src/components/task-chat/TaskChatBubbleActions.tsx:44:        aria-label="Copy message"
+ui/src/pages/GoalDetail.tsx:42:      title="Show properties"
+ui/src/pages/GoalDetail.tsx:170:          placeholder="Add a description..."
+ui/src/adapters/pi-local/config-fields.tsx:24:    <Field label="Agent instructions file" hint={instructionsFileHint}>
+ui/src/adapters/pi-local/config-fields.tsx:43:          placeholder="/absolute/path/to/AGENTS.md"
+ui/src/components/CompanySettingsSidebar.tsx:99:          <SidebarNavItem to="/company/settings" label="General" icon={SlidersHorizontal} end />
+ui/src/components/CompanySettingsSidebar.tsx:103:              label="Profile"
+ui/src/components/CompanySettingsSidebar.tsx:110:            label="Members"
+ui/src/components/CompanySettingsSidebar.tsx:126:          <SidebarNavItem to="/company/settings/invites" label="Invites" icon={MailPlus} end />
+ui/src/components/CompanySettingsSidebar.tsx:127:          <SidebarNavItem to="/company/settings/secrets" label="Secrets" icon={KeyRound} end />
+ui/src/components/CompanySettingsSidebar.tsx:131:              label="Environments"
+ui/src/components/CompanySettingsSidebar.tsx:139:              label="Access"
+ui/src/components/CompanySettingsSidebar.tsx:147:              label="Heartbeats"
+ui/src/components/CompanySettingsSidebar.tsx:152:          <SidebarNavItem to="/company/export" label="Export" icon={Download} />
+ui/src/components/CompanySettingsSidebar.tsx:153:          <SidebarNavItem to="/company/import" label="Import" icon={Upload} end />
+ui/src/components/CompanySettingsSidebar.tsx:157:              label="Experimental"
+ui/src/components/CompanySettingsSidebar.tsx:164:              label="Plugins"
+ui/src/components/CompanySettingsSidebar.tsx:192:              label="Adapters"
+ui/src/components/RoutineSubSidebar.tsx:112:      aria-label="Routine sections"
+ui/src/components/RoutineSubSidebar.tsx:155:                    aria-label="Unsaved changes"
+ui/src/components/RoutineSubSidebar.tsx:188:        <SelectTrigger className="h-11 w-full" aria-label="Routine section">
+ui/src/components/SourceResolvedFoldCallout.tsx:63:      aria-label="Source-resolved watchdog fold"
+ui/src/components/SourceResolvedFoldCallout.tsx:110:        <MetaRow label="Source task">
+ui/src/components/SourceResolvedFoldCallout.tsx:123:        <MetaRow label="Same-run evidence">
+ui/src/components/SourceResolvedFoldCallout.tsx:139:        <MetaRow label="Silence age before fold">
+ui/src/components/SourceResolvedFoldCallout.tsx:151:        <MetaRow label="Process cleanup">
+ui/src/components/SourceResolvedFoldCallout.tsx:163:          <MetaRow label="Evaluation task">
+ui/src/components/ui/breadcrumb.tsx:8:  return <nav aria-label="breadcrumb" data-slot="breadcrumb" {...props} />
+ui/src/pages/tools/SmokeLabTab.tsx:56:  if (status === "pass") return <Check className="mx-auto h-4 w-4 text-emerald-600 dark:text-emerald-400" aria-label="pass" />;
+ui/src/pages/tools/SmokeLabTab.tsx:57:  if (status === "fail") return <X className="mx-auto h-4 w-4 text-destructive" aria-label="fail" />;
+ui/src/pages/tools/SmokeLabTab.tsx:58:  if (status === "skipped") return <Minus className="mx-auto h-4 w-4 text-amber-500" aria-label="skipped" />;
+ui/src/pages/tools/SmokeLabTab.tsx:59:  return <span className="mx-auto block h-1.5 w-1.5 rounded-full bg-muted-foreground/30" aria-label="not run" />;
+ui/src/pages/Routines.tsx:799:    return <EmptyState icon={Repeat} message="Select a company to view routines." />;
+ui/src/pages/Routines.tsx:841:                  <Button variant="ghost" size="sm" className="text-xs" title="Sort">
+ui/src/pages/Routines.tsx:882:                  <Button variant="ghost" size="sm" className="text-xs" title="Group">
+ui/src/pages/Routines.tsx:987:                placeholder="Routine title"
+ui/src/pages/Routines.tsx:1026:                    placeholder="Responsible"
+ui/src/pages/Routines.tsx:1072:                    placeholder="Project"
+ui/src/pages/Routines.tsx:1137:                placeholder="Add instructions..."
+ui/src/pages/Routines.tsx:1255:              {folderSelection === "all" ? <FolderIconHeader label="All routines" count={sortedRoutines.length} /> : (
+ui/src/pages/Routines.tsx:1288:                message="No active routines. Use Create routine to define the first recurring workflow."
+ui/src/components/NewProjectDialog.tsx:252:            placeholder="Project name"
+ui/src/components/NewProjectDialog.tsx:271:            placeholder="Add description..."
+ui/src/components/NewProjectDialog.tsx:300:              placeholder="https://github.com/org/repo"
+ui/src/components/NewProjectDialog.tsx:322:                placeholder="/absolute/path/to/workspace"
+ui/src/components/NewProjectDialog.tsx:423:              placeholder="Target date"
+ui/src/adapters/cursor/config-fields.tsx:24:    <Field label="Agent instructions file" hint={instructionsFileHint}>
+ui/src/adapters/cursor/config-fields.tsx:43:          placeholder="/absolute/path/to/AGENTS.md"
+ui/src/components/BudgetPolicyCard.tsx:145:          placeholder="0.00"
+ui/src/pages/InstanceSettings.tsx:210:          message="No scheduler heartbeats match the current criteria."
+ui/src/pages/InstanceSettings.tsx:258:                            title="Full agent config"
+ui/src/components/WorkspaceFileBrowser.tsx:144:    <nav aria-label="Current folder" className="min-w-0 overflow-hidden text-(length:--text-micro) text-muted-foreground">
+ui/src/components/WorkspaceFileBrowser.tsx:456:    <div role="tree" id={listboxId} aria-label="Workspace files" className="space-y-0.5 py-1">
+ui/src/components/WorkspaceFileBrowser.tsx:990:        title="No company selected"
+ui/src/components/WorkspaceFileBrowser.tsx:998:        title="Loading project workspaces"
+ui/src/components/WorkspaceFileBrowser.tsx:1006:        title="No project workspaces"
+ui/src/components/WorkspaceFileBrowser.tsx:1103:            placeholder="Search files by name or path…"
+ui/src/components/WorkspaceFileBrowser.tsx:1104:            aria-label="Search workspace files"
+ui/src/components/WorkspaceFileBrowser.tsx:1121:          aria-label="Refresh workspace files"
+ui/src/components/WorkspaceFileBrowser.tsx:1122:          title="Refresh workspace files"
+ui/src/pages/Goals.tsx:30:    return <EmptyState icon={Target} message="Select a company to view goals." />;
+ui/src/pages/Goals.tsx:44:          message="No goals yet."
+ui/src/components/StalledReviewActions.tsx:107:        placeholder="Add a note — required to request changes, optional otherwise…"
+ui/src/components/CaseChildrenTree.tsx:47:                label="case ID"
+ui/src/pages/tools/PoliciesTab.tsx:453:                  <SelectValue placeholder="Select an agent" />
+ui/src/pages/tools/PoliciesTab.tsx:470:                placeholder="e.g. gmail.send_email"
+ui/src/pages/tools/PoliciesTab.tsx:600:              <SelectTrigger><SelectValue placeholder="Choose agent" /></SelectTrigger>
+ui/src/pages/tools/PoliciesTab.tsx:609:              <SelectTrigger><SelectValue placeholder="Choose project" /></SelectTrigger>
+ui/src/pages/tools/PoliciesTab.tsx:640:              <SelectTrigger><SelectValue placeholder="Choose app" /></SelectTrigger>
+ui/src/pages/tools/PoliciesTab.tsx:649:              <SelectTrigger><SelectValue placeholder="Choose capability" /></SelectTrigger>
+ui/src/pages/tools/PoliciesTab.tsx:985:        title="Rules"
+ui/src/pages/tools/PoliciesTab.tsx:986:        description="Rules are checked top to bottom — the first one that matches decides."
+ui/src/pages/tools/PoliciesTab.tsx:1010:              message="No rules yet"
+ui/src/pages/tools/PoliciesTab.tsx:1011:              description="Start with a template or create a rule from scratch."
+ui/src/pages/tools/PoliciesTab.tsx:1074:                              <Button size="icon" variant="ghost" aria-label="Rule actions">
+ui/src/components/PipelineItemBodyDocument.tsx:297:            placeholder="Write the item body in Markdown…"
+ui/src/components/PipelineItemBodyDocument.tsx:359:      <EmptyState icon={FileText} message="No body yet. Capture the item's details here." action="Add the item body" onAction={beginEdit} />
+ui/src/components/PipelineItemBodyDocument.tsx:409:      aria-label="Item body"
+ui/src/components/ChatComposer.tsx:345:              aria-label="Attach files"
+ui/src/components/ChatComposer.tsx:346:              title="Attach files"
+ui/src/components/BuiltInBundlePanel.tsx:320:    <section className={cn("space-y-2", className)} aria-label="Bundle status">
+ui/src/components/BuiltInBundlePanel.tsx:326:          label="Adapter"
+ui/src/components/BuiltInBundlePanel.tsx:356:          label="Routine"
+ui/src/components/BuiltInBundlePanel.tsx:379:                    title="Run Reflection Coach once?"
+ui/src/components/BuiltInBundlePanel.tsx:390:                      title="Disable the weekly schedule?"
+ui/src/components/BuiltInBundlePanel.tsx:400:                      title="Enable the weekly schedule?"
+ui/src/components/BuiltInBundlePanel.tsx:411:                    label="routine"
+ui/src/components/BuiltInBundlePanel.tsx:422:            label="Proposal"
+ui/src/adapters/openclaw-gateway/config-fields.tsx:145:      <Field label="Gateway URL" hint={help.webhookUrl}>
+ui/src/adapters/openclaw-gateway/config-fields.tsx:159:          placeholder="ws://127.0.0.1:18789"
+ui/src/adapters/openclaw-gateway/config-fields.tsx:173:        label="Gateway auth token"
+ui/src/adapters/openclaw-gateway/config-fields.tsx:184:        placeholder="OpenClaw gateway token"
+ui/src/adapters/openclaw-gateway/config-fields.tsx:187:      <Field label="Agent ID">
+ui/src/adapters/openclaw-gateway/config-fields.tsx:201:          placeholder="agent-123"
+ui/src/adapters/openclaw-gateway/config-fields.tsx:205:      <Field label="Session strategy">
+ui/src/adapters/openclaw-gateway/config-fields.tsx:226:        <Field label="Session key">
+ui/src/adapters/openclaw-gateway/config-fields.tsx:240:            placeholder="paperclip"
+ui/src/adapters/openclaw-gateway/config-fields.tsx:246:        label="Password (alternative auth)"
+ui/src/adapters/openclaw-gateway/config-fields.tsx:257:        placeholder="Gateway shared password"
+ui/src/adapters/openclaw-gateway/config-fields.tsx:260:      <Field label="Role">
+ui/src/adapters/openclaw-gateway/config-fields.tsx:274:          placeholder="operator"
+ui/src/adapters/openclaw-gateway/config-fields.tsx:278:      <Field label="Scopes (comma-separated)">
+ui/src/adapters/openclaw-gateway/config-fields.tsx:298:          placeholder="operator.admin"
+ui/src/adapters/openclaw-gateway/config-fields.tsx:310:      <Field label="Paperclip API URL override">
+ui/src/adapters/openclaw-gateway/config-fields.tsx:324:          placeholder="https://paperclip.example"
+ui/src/adapters/openclaw-gateway/config-fields.tsx:328:      <Field label="Timeout (seconds)">
+ui/src/adapters/openclaw-gateway/config-fields.tsx:346:          placeholder="120"
+ui/src/adapters/openclaw-gateway/config-fields.tsx:350:      <Field label="Headers JSON">
+ui/src/adapters/openclaw-gateway/config-fields.tsx:376:        <Field label="Claimed API key path">
+ui/src/adapters/openclaw-gateway/config-fields.tsx:382:            placeholder="~/.openclaw/workspace/paperclip-claimed-api-key.json"
+ui/src/adapters/openclaw-gateway/config-fields.tsx:387:      <Field label="Wait timeout (ms)">
+ui/src/adapters/openclaw-gateway/config-fields.tsx:407:          placeholder="120000"
+ui/src/adapters/openclaw-gateway/config-fields.tsx:411:      <Field label="Disable device auth">
+ui/src/adapters/openclaw-gateway/config-fields.tsx:430:      <Field label="Auto-pair on first connect">
+ui/src/adapters/openclaw-gateway/config-fields.tsx:449:      <Field label="Device auth">
+ui/src/adapters/claude-local/config-fields.tsx:33:        <Field label="Agent instructions file" hint={instructionsFileHint}>
+ui/src/adapters/claude-local/config-fields.tsx:52:              placeholder="/absolute/path/to/AGENTS.md"
+ui/src/adapters/claude-local/config-fields.tsx:89:      <Field label="Execution engine" hint="Auto uses ACP when prerequisites pass and falls back to Claude CLI with diagnostics.">
+ui/src/adapters/claude-local/config-fields.tsx:108:            label="ACP server command"
+ui/src/adapters/claude-local/config-fields.tsx:124:              placeholder="claude-agent-acp"
+ui/src/adapters/claude-local/config-fields.tsx:127:          <Field label="ACP session mode" hint="Persistent keeps ACP session state between runs. One-shot starts fresh each run.">
+ui/src/adapters/claude-local/config-fields.tsx:147:            label="ACP non-interactive permissions"
+ui/src/adapters/claude-local/config-fields.tsx:169:            label="ACP state directory"
+ui/src/adapters/claude-local/config-fields.tsx:186:                placeholder="/path/to/acp-state"
+ui/src/adapters/claude-local/config-fields.tsx:192:            label="ACP warm process idle ms"
+ui/src/adapters/claude-local/config-fields.tsx:218:        label="Enable Chrome"
+ui/src/adapters/claude-local/config-fields.tsx:232:        label="Skip permissions"
+ui/src/adapters/claude-local/config-fields.tsx:249:      <Field label="Max turns per run" hint={help.maxTurnsPerRun}>
+ui/src/components/GoalProperties.tsx:99:        <PropertyRow label="Status">
+ui/src/components/GoalProperties.tsx:113:        <PropertyRow label="Level">
+ui/src/components/GoalProperties.tsx:127:        <PropertyRow label="Owner">
+ui/src/components/GoalProperties.tsx:141:          <PropertyRow label="Parent Goal">
+ui/src/components/GoalProperties.tsx:155:        <PropertyRow label="Created">
+ui/src/components/GoalProperties.tsx:158:        <PropertyRow label="Updated">
+ui/src/components/KanbanBoard.tsx:337:              title="This task needs a next step"
+ui/src/components/KanbanBoard.tsx:338:              aria-label="Needs next step"
+ui/src/components/StandaloneBrowserControls.tsx:91:      <ControlButton label="Refresh" onClick={refresh}>
+ui/src/components/StandaloneBrowserControls.tsx:94:      <ControlButton label="Share" onClick={share}>
+ui/src/components/StandaloneBrowserControls.tsx:97:      <ControlButton label="Open in Browser" onClick={openInBrowser}>
+ui/src/adapters/http/config-fields.tsx:20:    <Field label="Webhook URL" hint={help.webhookUrl}>
+ui/src/adapters/http/config-fields.tsx:34:        placeholder="https://..."
+ui/src/components/ApprovalPayload.tsx:91:      <PayloadField label="Role" value={payload.role} />
+ui/src/components/ApprovalPayload.tsx:92:      <PayloadField label="Title" value={payload.title} />
+ui/src/components/ApprovalPayload.tsx:93:      <PayloadField label="Icon" value={payload.icon} />
+ui/src/components/ApprovalPayload.tsx:117:      <PayloadField label="Title" value={payload.title} />
+ui/src/components/ApprovalPayload.tsx:137:      <PayloadField label="Scope" value={payload.scopeName ?? payload.scopeType} />
+ui/src/components/ApprovalPayload.tsx:138:      <PayloadField label="Window" value={payload.windowKind} />
+ui/src/components/ApprovalPayload.tsx:139:      <PayloadField label="Metric" value={payload.metric} />
+ui/src/adapters/codex-local/config-fields.tsx:58:      <Field label="Execution engine" hint="Auto uses ACP when prerequisites pass and falls back to Codex CLI with diagnostics.">
+ui/src/adapters/codex-local/config-fields.tsx:77:            label="ACP server command"
+ui/src/adapters/codex-local/config-fields.tsx:93:              placeholder="codex-acp"
+ui/src/adapters/codex-local/config-fields.tsx:96:          <Field label="ACP session mode" hint="Persistent keeps ACP session state between runs. One-shot starts fresh each run.">
+ui/src/adapters/codex-local/config-fields.tsx:116:            label="ACP non-interactive permissions"
+ui/src/adapters/codex-local/config-fields.tsx:138:            label="ACP state directory"
+ui/src/adapters/codex-local/config-fields.tsx:155:                placeholder="/path/to/acp-state"
+ui/src/adapters/codex-local/config-fields.tsx:161:            label="ACP warm process idle ms"
+ui/src/adapters/codex-local/config-fields.tsx:187:        <Field label="Agent instructions file" hint={instructionsFileHint}>
+ui/src/adapters/codex-local/config-fields.tsx:206:              placeholder="/absolute/path/to/AGENTS.md"
+ui/src/adapters/codex-local/config-fields.tsx:213:        label="Bypass sandbox"
+ui/src/adapters/codex-local/config-fields.tsx:231:        label="Enable search"
+ui/src/adapters/codex-local/config-fields.tsx:245:        label="Fast mode"
+ui/src/components/search/SearchFilterBar.tsx:166:        label="Status"
+ui/src/components/search/SearchFilterBar.tsx:175:        label="Assignee"
+ui/src/components/search/SearchFilterBar.tsx:184:        label="Project"
+ui/src/components/search/SearchFilterBar.tsx:193:        label="Label"
+ui/src/components/search/SearchFilterBar.tsx:204:        label="Priority"
+ui/src/components/search/SearchFilterBar.tsx:213:        label="Updated"
+ui/src/components/IssueThreadInteractionCard.tsx:617:              <TaskField label="Responsible" value={assigneeLabel} />
+ui/src/components/IssueThreadInteractionCard.tsx:620:              <TaskField label="Billing" value={node.task.billingCode} />
+ui/src/components/IssueThreadInteractionCard.tsx:623:              <TaskField label="Project" value={node.task.projectId} tone="subtle" />
+ui/src/components/IssueThreadInteractionCard.tsx:626:              <TaskField key={label} label="Label" value={label} tone="subtle" />
+ui/src/components/IssueThreadInteractionCard.tsx:795:          <TaskField label="Default parent" value={interaction.payload.defaultParentId} tone="subtle" />
+ui/src/components/IssueThreadInteractionCard.tsx:900:                placeholder="Add a short reason for rejecting this suggestion"
+ui/src/components/IssueThreadInteractionCard.tsx:1215:                            placeholder="Type your answer"
+ui/src/components/IssueThreadInteractionCard.tsx:1256:                        placeholder="Type your answer"
+ui/src/components/IssueThreadInteractionCard.tsx:1367:                      <TaskField key={label} label="Answer" value={label} />
+ui/src/components/IssueThreadInteractionCard.tsx:1954:                  placeholder="Optional: tell the agent why, so it doesn't retry the same call."
+ui/src/components/IssueThreadInteractionCard.tsx:2734:              <TaskField key={`${label}-${index}`} label="Selected" value={label} />
+ui/src/components/IssueThreadInteractionCard.tsx:2997:          aria-label="Selectable options"
+ui/src/components/IssueThreadInteractionCard.tsx:3123:      aria-label="Choose a verdict"
+ui/src/components/IssueThreadInteractionCard.tsx:3337:      <ul className="space-y-2" aria-label="Items to review">
+ui/src/components/IssueThreadInteractionCard.tsx:3412:                    placeholder="Give the agent a reason so it can act on this item."
+ui/src/components/ConfigureBuiltInAgentModal.tsx:165:          <Field label="Adapter type">
+ui/src/components/ConfigureBuiltInAgentModal.tsx:204:          <Field label="Monthly budget (optional)" hint="Leave blank for no cap.">
+ui/src/components/AgentActionButtons.tsx:116:      aria-label="Clear error and return agent to idle"
+ui/src/components/IssueReferenceActivitySummary.tsx:61:        label="Added references"
+ui/src/components/IssueReferenceActivitySummary.tsx:66:        label="Removed references"
+ui/src/components/WorktreeBanner.tsx:38:          title="Click to copy worktree name"
+ui/src/components/task-chat/TaskMessageScroller.tsx:154:          aria-label="Scroll to latest"
+ui/src/components/skill-studio/ForkSkillDialog.tsx:217:                  aria-label="Switch these agents to the copy"
+ui/src/components/DecisionsToolbar.tsx:71:            title="Filter"
+ui/src/components/DecisionsToolbar.tsx:72:            aria-label="Filter"
+ui/src/components/DecisionsToolbar.tsx:89:            title="Group"
+ui/src/components/DecisionsToolbar.tsx:90:            aria-label="Group"
+ui/src/components/DecisionsToolbar.tsx:122:            title="Sort"
+ui/src/components/DecisionsToolbar.tsx:123:            aria-label="Sort"
+ui/src/components/DecisionsToolbar.tsx:183:        <FilterSection title="Type">
+ui/src/components/DecisionsToolbar.tsx:196:        <FilterSection title="Severity">
+ui/src/components/DecisionsToolbar.tsx:209:        <FilterSection title="Project">
+ui/src/components/DecisionsToolbar.tsx:220:              label="No project"
+ui/src/components/DecisionsToolbar.tsx:229:        <FilterSection title="Workspace">
+ui/src/components/DecisionsToolbar.tsx:240:              label="No workspace"
+ui/src/components/search/SearchFilterSheet.tsx:153:            title="Status"
+ui/src/components/search/SearchFilterSheet.tsx:161:            title="Priority"
+ui/src/components/search/SearchFilterSheet.tsx:168:            title="Assignee"
+ui/src/components/search/SearchFilterSheet.tsx:174:            title="Project"
+ui/src/components/search/SearchFilterSheet.tsx:180:            title="Label"
+ui/src/components/search/SearchFilterSheet.tsx:186:            title="Updated"
+ui/src/components/SourceResolvedFoldBadge.tsx:25:      aria-label="Source-resolved watchdog fold"
+ui/src/components/Sidebar.tsx:149:                  aria-label="Keep sidebar expanded"
+ui/src/components/Sidebar.tsx:150:                  title="Keep sidebar expanded"
+ui/src/components/MarkdownBody.tsx:634:          aria-label="Copy code"
+ui/src/components/MarkdownBody.tsx:787:      <div className="paperclip-markdown-table-scroll" role="region" aria-label="Scrollable table" tabIndex={0}>
+ui/src/components/WorkspaceServiceControlBar.tsx:184:          title="Open in new tab"
+ui/src/components/WorkspaceServiceControlBar.tsx:187:            <a href={entry.url ?? undefined} target="_blank" rel="noreferrer" aria-label="Open in new tab">
+ui/src/components/WorkspaceServiceControlBar.tsx:217:        aria-label="Start"
+ui/src/components/WorkspaceServiceControlBar.tsx:218:        title="Start"
+ui/src/components/WorkspaceServiceControlBar.tsx:234:          aria-label="Start"
+ui/src/components/WorkspaceServiceControlBar.tsx:235:          title="Start"
+ui/src/components/WorkspaceServiceControlBar.tsx:244:          aria-label="Restart"
+ui/src/components/WorkspaceServiceControlBar.tsx:245:          title="Restart"
+ui/src/components/WorkspaceServiceControlBar.tsx:261:        aria-label="Stop"
+ui/src/components/WorkspaceServiceControlBar.tsx:262:        title="Stop"
+ui/src/components/WorkspaceServiceControlBar.tsx:272:        aria-label="Restart"
+ui/src/components/WorkspaceServiceControlBar.tsx:273:        title="Restart"
+ui/src/components/FileViewerSheet.tsx:227:        <span className="h-3 w-28 rounded bg-muted animate-pulse" aria-label="Loading file details" />
+ui/src/components/FileViewerSheet.tsx:278:          title="Image preview unavailable"
+ui/src/components/FileViewerSheet.tsx:301:          title="Video preview unavailable"
+ui/src/components/FileViewerSheet.tsx:323:        title="Preview not supported for this file type"
+ui/src/components/FileViewerSheet.tsx:385:          aria-label="Markdown preview mode"
+ui/src/components/FileViewerSheet.tsx:392:            aria-label="Show rendered Markdown"
+ui/src/components/FileViewerSheet.tsx:393:            title="Rendered Markdown"
+ui/src/components/FileViewerSheet.tsx:407:            aria-label="Show raw Markdown"
+ui/src/components/FileViewerSheet.tsx:408:            title="Raw Markdown"
+ui/src/components/FileViewerSheet.tsx:764:                  aria-label="Back to files"
+ui/src/components/FileViewerSheet.tsx:781:                      aria-label="Download file"
+ui/src/components/FileViewerSheet.tsx:782:                      title="Download file"
+ui/src/components/FileViewerSheet.tsx:833:                aria-label="Close file viewer"
+ui/src/components/FileViewerSheet.tsx:834:                title="Close"
+ui/src/components/FileViewerSheet.tsx:874:                aria-label="Resize file tree"
+ui/src/components/FileViewerSheet.tsx:959:          title="File not found"
+ui/src/components/FileViewerSheet.tsx:980:          title="No workspace available"
+ui/src/components/FileViewerSheet.tsx:1007:        title="Remote workspace preview coming soon"
+ui/src/components/OutputFeedbackButtons.tsx:148:            placeholder="Add a short note"
+ui/src/components/IssueRunLedger.tsx:546:    <section className="space-y-3" aria-label="Task run ledger">
+ui/src/components/search/SearchSortMenu.tsx:25:        <Button variant="ghost" size="sm" className="h-8 gap-1 text-xs font-normal" aria-label="Sort results">
+ui/src/components/task-chat/TaskChatDescriptionBubble.tsx:77:          placeholder="Add a description..."
+ui/src/components/task-chat/TaskChatDescriptionBubble.tsx:167:          aria-label="Edit description"
+ui/src/components/JsonSchemaForm.tsx:528:          <SelectValue placeholder="Select an option" />
+ui/src/components/JsonSchemaForm.tsx:713:          placeholder="Select an existing secret"
+ui/src/components/NewIssueDialog.tsx:389:      placeholder="Task title"
+ui/src/components/NewIssueDialog.tsx:457:      placeholder="Add description..."
+ui/src/components/NewIssueDialog.tsx:1526:                placeholder="Assignee"
+ui/src/components/NewIssueDialog.tsx:1573:                        <ShieldAlert className="ml-auto h-3.5 w-3.5 shrink-0 text-amber-600 dark:text-amber-300" aria-label="Low-trust review agent" />
+ui/src/components/NewIssueDialog.tsx:1585:                placeholder="Project"
+ui/src/components/NewIssueDialog.tsx:1698:                placeholder="Reviewer"
+ui/src/components/NewIssueDialog.tsx:1743:                placeholder="Approver"
+ui/src/components/NewIssueDialog.tsx:1789:                      title="Configure watchdog"
+ui/src/components/NewIssueDialog.tsx:1810:                        placeholder="Select agent"
+ui/src/components/NewIssueDialog.tsx:1843:                        placeholder="What should the watchdog watch for and how should it keep work moving?"
+ui/src/components/NewIssueDialog.tsx:1951:                    aria-label="Model lane"
+ui/src/components/NewIssueDialog.tsx:1996:                      placeholder="Default model"
+ui/src/components/NewIssueDialog.tsx:2089:                          title="Remove document"
+ui/src/components/NewIssueDialog.tsx:2120:                          title="Remove attachment"
+ui/src/components/IssueAttachmentsSection.tsx:65:          title="Browse gallery"
+ui/src/components/IssueAttachmentsSection.tsx:72:      <Button asChild variant="ghost" size="icon-sm" title="Open in new tab">
+ui/src/components/IssueAttachmentsSection.tsx:77:      <Button asChild variant="ghost" size="icon-sm" title="Download">
+ui/src/components/IssueAttachmentsSection.tsx:86:          title="Delete attachment"
+ui/src/components/IssueAttachmentsSection.tsx:333:                  title="Delete attachment"
+ui/src/components/IssueRelatedWorkPanel.tsx:194:        title="References"
+ui/src/components/IssueRelatedWorkPanel.tsx:195:        description="Other tasks this task currently points at in its title, description, comments, or documents."
+ui/src/components/IssueRelatedWorkPanel.tsx:208:        title="Referenced by"
+ui/src/components/IssueRelatedWorkPanel.tsx:209:        description="Other tasks that currently point at this task."
+ui/src/components/timeline/WorkTimelineChart.tsx:957:          label="Drag left edge to resize visible range"
+ui/src/components/timeline/WorkTimelineChart.tsx:966:          label="Drag right edge to resize visible range"
+ui/src/components/issue-properties/IssuePropertiesArtifactsTab.tsx:297:          title="Open raw"
+ui/src/components/issue-properties/IssuePropertiesArtifactsTab.tsx:305:          title="Download"
+ui/src/components/ProviderQuotaCard.tsx:165:              label="Period spend"
+ui/src/components/ProviderQuotaCard.tsx:172:              label="This week"
+ui/src/components/IssueColumns.tsx:91:          title="Columns"
+ui/src/components/DecisionCard.tsx:530:                      aria-label="Type the issue identifier to confirm"
+ui/src/components/task-chat/TaskChatBlockerLinks.tsx:176:      aria-label="Task blockers"
+ui/src/components/task-chat/TaskChatBlockerLinks.tsx:181:      <BlockerRow label="Blocked by" blocker={directBlocker} />
+ui/src/components/task-chat/TaskChatBlockerLinks.tsx:183:        <BlockerRow label="Ultimately blocked by" blocker={ultimateBlocker} />
+ui/src/components/task-chat/TaskChatBlockerLinks.tsx:198:      aria-label="Tasks waiting on live work"
+ui/src/components/SecretBindingPicker.tsx:224:            aria-label="Version"
+ui/src/components/SecretBindingPicker.tsx:246:          aria-label="Create secret"
+ui/src/components/SecretBindingPicker.tsx:297:                placeholder="OPENAI_API_KEY"
+ui/src/components/SecretBindingPicker.tsx:308:                placeholder="Paste the secret value"
+ui/src/components/SecretBindingPicker.tsx:321:                placeholder="Optional notes (no values)"
+ui/src/components/AgentIconPicker.tsx:49:          placeholder="Search icons..."
+ui/src/components/SidebarProjects.tsx:150:      {!rail && project.pauseReason === "budget" ? <BudgetSidebarMarker title="Project paused by budget" /> : null}
+ui/src/components/SidebarProjects.tsx:412:      label="Projects"
+ui/src/components/folders/SkillFolderTree.tsx:252:        aria-label="Skill folders"
+ui/src/components/folders/SkillFolderTree.tsx:259:        <Button variant="ghost" size="icon-sm" title="New folder" onClick={() => onCreateFolder(null)}>
+ui/src/components/folders/SkillFolderTree.tsx:274:            label="All skills"
+ui/src/components/folders/SkillFolderTree.tsx:305:              label="My Skills"
+ui/src/components/folders/SkillFolderTree.tsx:314:          <RailHeading label="Company" onCreate={() => onCreateFolder(null)} />
+ui/src/components/folders/SkillFolderTree.tsx:366:              label="Projects"
+ui/src/components/folders/SkillFolderTree.tsx:404:            label="Unfiled"
+ui/src/components/folders/SkillFolderTree.tsx:449:        aria-label="Resize skill folders"
+ui/src/components/folders/SkillFolderTree.tsx:715:    <nav aria-label="Folder path" className="flex flex-wrap items-center gap-1 text-sm">
+ui/src/components/folders/SkillFolderTree.tsx:913:              title="New folder inside…"
+ui/src/components/folders/SkillFolderTree.tsx:953:            placeholder="Search folders"
+ui/src/components/folders/SkillFolderTree.tsx:1050:        placeholder="Folder name"
+ui/src/components/IssuesList.tsx:633:            aria-label="Sub-tasks completion progress"
+ui/src/components/IssuesList.tsx:1689:          <div className="flex items-center border border-border rounded-md overflow-hidden mr-1" role="group" aria-label="View mode">
+ui/src/components/IssuesList.tsx:1755:                    title="Cards per column"
+ui/src/components/IssuesList.tsx:1793:                title="Reset board density"
+ui/src/components/IssuesList.tsx:1805:            title="Choose which task columns stay visible"
+ui/src/components/IssuesList.tsx:1829:                <Button variant="outline" size="icon" className="h-8 w-8 shrink-0" title="Sort">
+ui/src/components/IssuesList.tsx:1876:                <Button variant="outline" size="icon" className="h-8 w-8 shrink-0" title="Group">
+ui/src/components/IssuesList.tsx:2128:                                  aria-label="Paused"
+ui/src/components/IssuesList.tsx:2129:                                  title="Paused"
+ui/src/components/IssuesList.tsx:2143:                                aria-label="Needs next step"
+ui/src/components/IssuesList.tsx:2144:                                title="This task needs a next step"
+ui/src/components/IssuesList.tsx:2258:                                      placeholder="Search responsible..."
+ui/src/components/AppsSidebar.tsx:73:          <SidebarNavItem to="/apps" label="Browse" icon={Store} end />
+ui/src/components/AppsSidebar.tsx:76:            label="Review"
+ui/src/components/AppsSidebar.tsx:90:          <SidebarNavItem to="/apps/connections" label="Connections" icon={AppWindow} end />
+ui/src/components/OnboardingWizard.tsx:1683:                      placeholder="e.g. We create educational YouTube content about AI"
+ui/src/components/OnboardingWizard.tsx:1692:                      placeholder="e.g. Manual content creation, spreadsheet tracking, email outreach"
+ui/src/components/OnboardingWizard.tsx:1701:                      placeholder="e.g. Can't produce content fast enough, no time for social media"
+ui/src/components/OnboardingWizard.tsx:1710:                      placeholder="e.g. Social media scheduling and content repurposing"
+ui/src/components/OnboardingWizard.tsx:1779:                      placeholder="Acme Corp"
+ui/src/components/OnboardingWizard.tsx:1871:                          placeholder="What is your team trying to achieve?"
+ui/src/components/OnboardingWizard.tsx:1906:                          placeholder="e.g. We create educational YouTube content about AI"
+ui/src/components/OnboardingWizard.tsx:1918:                          placeholder="e.g. Non-technical professionals curious about AI tools"
+ui/src/components/OnboardingWizard.tsx:1929:                          placeholder="e.g. Can't produce content fast enough across multiple channels"
+ui/src/components/OnboardingWizard.tsx:1940:                          placeholder="e.g. Publishing daily content across 4 platforms with a team of AI agents"
+ui/src/components/OnboardingWizard.tsx:2013:                        <SelectValue placeholder="Select a role…" />
+ui/src/components/OnboardingWizard.tsx:2030:                      placeholder="Name"
+ui/src/components/OnboardingWizard.tsx:2183:                              placeholder="Search models..."
+ui/src/components/IssueFiltersPopover.tsx:274:                      placeholder="Search creators..."
+ui/src/components/InboxAgentPolicyControl.tsx:125:    <section className="space-y-4" aria-label="Let agents tidy my inbox">
+ui/src/components/ActivityFeed.tsx:638:                aria-label="group by task"
+ui/src/components/ActivityFeed.tsx:659:                    aria-label="filter by"
+ui/src/components/folders/FolderControls.tsx:228:        <Button variant="ghost" size="icon-sm" title="New folder" onClick={onCreate}>
+ui/src/components/folders/FolderControls.tsx:397:      <Button size="icon-sm" variant="ghost" aria-label="Dismiss folder suggestion" onClick={dismiss}>
+ui/src/components/folders/FolderControls.tsx:480:            label="Unfiled"
+ui/src/components/folders/FolderControls.tsx:580:            placeholder="Search folders"
+ui/src/components/issue-output/OutputRow.tsx:44:          <Button asChild variant="ghost" size="icon-sm" title="Open in new tab">
+ui/src/components/issue-output/OutputRow.tsx:49:          <Button asChild variant="ghost" size="icon-sm" title="Download">
+ui/src/components/BudgetIncidentCard.tsx:87:              placeholder="0.00"
+ui/src/components/SidebarAccountMenu.tsx:165:            aria-label="Open account menu"
+ui/src/components/SidebarAccountMenu.tsx:235:                label="View profile"
+ui/src/components/SidebarAccountMenu.tsx:236:                description="Open your activity, task, and usage ledger."
+ui/src/components/SidebarAccountMenu.tsx:242:                label="Edit profile"
+ui/src/components/SidebarAccountMenu.tsx:243:                description="Update your display name and avatar."
+ui/src/components/SidebarAccountMenu.tsx:249:                label="Documentation"
+ui/src/components/SidebarAccountMenu.tsx:250:                description="Open Paperclip docs in a new tab."
+ui/src/components/SidebarAccountMenu.tsx:257:                label="Feedback"
+ui/src/components/SidebarAccountMenu.tsx:258:                description="Share feedback or report an issue."
+ui/src/components/RoutineVariablesEditor.tsx:199:                        placeholder="high, medium, low"
+ui/src/components/RoutineVariablesEditor.tsx:212:                          <SelectValue placeholder="No default" />
+ui/src/components/RoutineVariablesEditor.tsx:284:          aria-label="Show variable help"
+ui/src/components/AgentBubbleActionRow.tsx:57:      title="Copy message"
+ui/src/components/AgentBubbleActionRow.tsx:58:      aria-label="Copy message"
+ui/src/components/AgentBubbleActionRow.tsx:144:            title="More actions"
+ui/src/components/AgentBubbleActionRow.tsx:145:            aria-label="More actions"
+ui/src/components/AgentBubbleActionRow.tsx:261:        title="Helpful"
+ui/src/components/AgentBubbleActionRow.tsx:262:        aria-label="Helpful"
+ui/src/components/AgentBubbleActionRow.tsx:278:            title="Needs work"
+ui/src/components/AgentBubbleActionRow.tsx:279:            aria-label="Needs work"
+ui/src/components/AgentBubbleActionRow.tsx:290:            placeholder="Add a short note"
+ui/src/components/SidebarServerInfo.tsx:131:        label="Last restarted"
+ui/src/components/SidebarServerInfo.tsx:135:      <ServerInfoRow icon={GitCommit} label="Running commit" value={commit} />
+ui/src/components/SidebarServerInfo.tsx:136:      <ServerInfoRow icon={FileDiff} label="Checkout state" value={localChanges} />
+ui/src/components/routine-sections/operate-sections.tsx:91:          message="No runs yet. Trigger a run from the header or wait for the schedule."
+ui/src/components/routine-sections/operate-sections.tsx:101:                <SelectTrigger size="sm" className="h-8 w-auto gap-1.5 text-xs" aria-label="Filter by source">
+ui/src/components/routine-sections/operate-sections.tsx:115:                <SelectTrigger size="sm" className="h-8 w-auto gap-1.5 text-xs" aria-label="Filter by status">
+ui/src/components/routine-sections/operate-sections.tsx:129:                <SelectTrigger size="sm" className="h-8 w-auto gap-1.5 text-xs" aria-label="Filter by date">
+ui/src/components/routine-sections/operate-sections.tsx:148:              message="No runs match these filters."
+ui/src/components/routine-sections/operate-sections.tsx:226:    return <EmptyState icon={ActivityIcon} message="No activity yet." />;
+ui/src/components/DocumentDiffModal.tsx:110:                  <SelectValue placeholder="Select revision" />
+ui/src/components/DocumentDiffModal.tsx:128:                  <SelectValue placeholder="Select revision" />
+ui/src/components/CaseFieldsPanel.tsx:188:      <Check className="h-4 w-4 text-green-600 dark:text-green-400" aria-label="true" />
+ui/src/components/IssueSiblingNavigation.tsx:19:      aria-label="Sub-task navigation"
+ui/src/components/issue-output/IssueOutputSection.tsx:123:    <section className="space-y-3" aria-label="Task outputs">
+ui/src/components/WorkspaceRuntimeControls.tsx:587:        title="Services"
+ui/src/components/WorkspaceRuntimeControls.tsx:588:        description="Long-running commands that Paperclip can supervise for this workspace."
+ui/src/components/WorkspaceRuntimeControls.tsx:599:        title="Jobs"
+ui/src/components/WorkspaceRuntimeControls.tsx:600:        description="One-shot commands that run now and exit when they finish."
+ui/src/components/WorkspaceRuntimeControls.tsx:611:          title="Untracked services"
+ui/src/components/WorkspaceRuntimeControls.tsx:612:          description="Running services that no longer match the current workspace command config."
+ui/src/components/CaseRevisionRail.tsx:94:                  <SelectValue placeholder="Select revision" />
+ui/src/components/CaseRevisionRail.tsx:109:                  <SelectValue placeholder="Select revision" />
+ui/src/components/issue-properties/IssueProperties.tsx:683:        <div className="flex w-full overflow-hidden rounded-md border border-border" role="radiogroup" aria-label="Model lane">
+ui/src/components/issue-properties/IssueProperties.tsx:723:              placeholder="Default model"
+ui/src/components/issue-properties/IssueProperties.tsx:1012:          placeholder="Select agent"
+ui/src/components/issue-properties/IssueProperties.tsx:1045:          placeholder="What should the watchdog watch for and how should it keep work moving?"
+ui/src/components/issue-properties/IssueProperties.tsx:1390:          placeholder="What should the agent re-check?"
+ui/src/components/issue-properties/IssueProperties.tsx:1399:          placeholder="External service"
+ui/src/components/issue-properties/IssueProperties.tsx:1467:      aria-label="Add label"
+ui/src/components/issue-properties/IssueProperties.tsx:1468:      title="Add label"
+ui/src/components/issue-properties/IssueProperties.tsx:1479:        placeholder="Search labels..."
+ui/src/components/issue-properties/IssueProperties.tsx:1518:            placeholder="New label"
+ui/src/components/issue-properties/IssueProperties.tsx:1669:        placeholder="Search assignees..."
+ui/src/components/issue-properties/IssueProperties.tsx:1819:        placeholder="Search projects..."
+ui/src/components/issue-properties/IssueProperties.tsx:1961:        placeholder="Search tasks..."
+ui/src/components/issue-properties/IssueProperties.tsx:2037:        placeholder="Search tasks..."
+ui/src/components/issue-properties/IssueProperties.tsx:2041:        aria-label="Search tasks to add as blockers"
+ui/src/components/issue-properties/IssueProperties.tsx:2098:      <PropertySection title="Triage" first>
+ui/src/components/issue-properties/IssueProperties.tsx:2099:        <PropertyRow label="Status">
+ui/src/components/issue-properties/IssueProperties.tsx:2111:          <PropertyRow label="Priority">
+ui/src/components/issue-properties/IssueProperties.tsx:2122:          label="Labels"
+ui/src/components/issue-properties/IssueProperties.tsx:2135:          label="Assignee"
+ui/src/components/issue-properties/IssueProperties.tsx:2156:            label="Model"
+ui/src/components/issue-properties/IssueProperties.tsx:2169:          label="Project"
+ui/src/components/issue-properties/IssueProperties.tsx:2189:      <PropertySection title="Relationships">
+ui/src/components/issue-properties/IssueProperties.tsx:2192:          label="Parent"
+ui/src/components/issue-properties/IssueProperties.tsx:2208:            <PropertyRow label="Blocked by" wrap>
+ui/src/components/issue-properties/IssueProperties.tsx:2231:          <PropertyRow label="Blocked by" wrap>
+ui/src/components/issue-properties/IssueProperties.tsx:2262:        <PropertyRow label="Blocking" wrap>
+ui/src/components/issue-properties/IssueProperties.tsx:2283:          <PropertyRow label="Sub-tasks" wrap>
+ui/src/components/issue-properties/IssueProperties.tsx:2310:          <PropertyRow label="Related tasks" wrap>
+ui/src/components/issue-properties/IssueProperties.tsx:2332:      <PropertySection title="Execution">
+ui/src/components/issue-properties/IssueProperties.tsx:2335:          <PropertyRow label="Approvals">
+ui/src/components/issue-properties/IssueProperties.tsx:2345:          label="Reviewers"
+ui/src/components/issue-properties/IssueProperties.tsx:2364:          label="Approvers"
+ui/src/components/issue-properties/IssueProperties.tsx:2382:          <PropertyRow label="Execution">
+ui/src/components/issue-properties/IssueProperties.tsx:2390:            label="Scheduled retry"
+ui/src/components/issue-properties/IssueProperties.tsx:2404:          label="Monitor"
+ui/src/components/issue-properties/IssueProperties.tsx:2417:            label="Watchdog"
+ui/src/components/issue-properties/IssueProperties.tsx:2428:                  title="Open watchdog task"
+ui/src/components/issue-properties/IssueProperties.tsx:2429:                  aria-label="Open watchdog task"
+ui/src/components/issue-properties/IssueProperties.tsx:2443:        <PropertySection title="Workspace">
+ui/src/components/issue-properties/IssueProperties.tsx:2445:            <PropertyRow label="Workspace">
+ui/src/components/issue-properties/IssueProperties.tsx:2457:            <PropertyRow label="Service">
+ui/src/components/issue-properties/IssueProperties.tsx:2478:            <PropertyRow label="Branch">
+ui/src/components/issue-properties/IssueProperties.tsx:2486:            <PropertyRow label="Folder">
+ui/src/components/issue-properties/IssueProperties.tsx:2496:      <PropertySection title="About">
+ui/src/components/issue-properties/IssueProperties.tsx:2498:          <PropertyRow label="Originating">
+ui/src/components/issue-properties/IssueProperties.tsx:2527:          <PropertyRow label="Started">
+ui/src/components/issue-properties/IssueProperties.tsx:2532:          <PropertyRow label="Completed">
+ui/src/components/issue-properties/IssueProperties.tsx:2536:        <PropertyRow label="Created">
+ui/src/components/issue-properties/IssueProperties.tsx:2539:        <PropertyRow label="Updated">
+ui/src/components/issue-properties/IssueProperties.tsx:2547:              <PropertyRow label="Archived">
+ui/src/components/issue-properties/IssueProperties.tsx:2589:          <PropertyRow label="Depth">
+ui/src/components/routine-sections/editable-sections.tsx:162:            placeholder="Responsible"
+ui/src/components/routine-sections/editable-sections.tsx:209:            placeholder="Project"
+ui/src/components/routine-sections/editable-sections.tsx:282:              placeholder="Add instructions..."
+ui/src/components/routine-sections/editable-sections.tsx:298:            placeholder="Add instructions..."
+ui/src/components/routine-sections/editable-sections.tsx:326:          label="Triggers"
+ui/src/components/routine-sections/editable-sections.tsx:334:          label="Secrets"
+ui/src/components/routine-sections/editable-sections.tsx:342:          label="Last run"
+ui/src/components/routine-sections/editable-sections.tsx:565:          message="No triggers yet."
+ui/src/components/routine-sections/editable-sections.tsx:615:          message="No variables yet. Add a {{placeholder}} in the title or instructions to create one."
+ui/src/components/ToastViewport.tsx:83:          aria-label="Dismiss notification"
+ui/src/components/actions/ActionCard.tsx:136:      <span className="text-muted-foreground line-through decoration-amber-500" title="Previous catalog hash">
+ui/src/components/actions/ActionCard.tsx:139:      <span className="text-amber-600 dark:text-amber-400" title="Current catalog hash">
+ui/src/components/actions/ActionCard.tsx:259:            title="Catalog changed since this request was signed."
+ui/src/components/Layout.tsx:602:            aria-label="Close sidebar"
+ui/src/components/IssueRecoveryActionCard.tsx:472:          label="Expected · recorded"
+ui/src/components/IssueRecoveryActionCard.tsx:477:          label="Live · checked out"
+ui/src/components/IssueRecoveryActionCard.tsx:599:            placeholder="e.g. Verified the live branch carries only the intended follow-up commits; safe to adopt."
+ui/src/components/IssueRecoveryActionCard.tsx:1148:            <MetadataRow label="Task owner">
+ui/src/components/IssueRecoveryActionCard.tsx:1161:            <MetadataRow label="Recovery owner">
+ui/src/components/IssueRecoveryActionCard.tsx:1185:            <MetadataRow label="Retry progress">
+ui/src/components/IssueRecoveryActionCard.tsx:1230:              <MetadataRow label="Owner retries">
+ui/src/components/IssueRecoveryActionCard.tsx:1239:        <MetadataRow label="Owner">
+ui/src/components/IssueRecoveryActionCard.tsx:1264:        <MetadataRow label="Source run">
+ui/src/components/IssueRecoveryActionCard.tsx:1268:          <MetadataRow label="Corrective run">
+ui/src/components/IssueRecoveryActionCard.tsx:1272:        <MetadataRow label="Evidence">
+ui/src/components/IssueRecoveryActionCard.tsx:1285:        <MetadataRow label="Next action">
+ui/src/components/IssueRecoveryActionCard.tsx:1288:        <MetadataRow label="Follow-up">
+ui/src/components/IssueRecoveryActionCard.tsx:1304:          <MetadataRow label="Resolution">
+ui/src/components/IssueRecoveryActionCard.tsx:1324:                  aria-label="Resolve recovery"
+ui/src/components/TrustPresetSection.tsx:109:        <Field label="Trust preset" hint="Choose how broadly this agent can read and act on Paperclip work objects.">
+ui/src/components/TrustPresetSection.tsx:152:                    <Field label="Boundary type">
+ui/src/components/TrustPresetSection.tsx:224:                title="View policy"
+ui/src/components/TrustPresetSection.tsx:229:                  <PolicyRow label="Preset" value="Low-trust review v1" />
+ui/src/components/TrustPresetSection.tsx:230:                  <PolicyRow label="Raw output" value="Quarantined from higher-trust agents" />
+ui/src/components/TrustPresetSection.tsx:231:                  <PolicyRow label="Projects" value={formatCount(boundary?.projectIds, "project", "projects")} />
+ui/src/components/TrustPresetSection.tsx:232:                  <PolicyRow label="Root issue" value={boundary?.rootIssueId ? boundary.rootIssueId.slice(0, 8) : "-"} />
+ui/src/components/TrustPresetSection.tsx:233:                  <PolicyRow label="Explicit issues" value={formatCount(boundary?.issueIds, "issue", "issues")} />
+ui/src/components/TrustPresetSection.tsx:234:                  <PolicyRow label="Allowed agents" value={formatCount(boundary?.allowedAgentIds, "agent", "agents")} />
+ui/src/components/TrustPresetSection.tsx:235:                  <PolicyRow label="Allowed tools" value={boundary?.allowedToolClasses?.join(" · ") || "-"} />
+ui/src/components/TrustPresetSection.tsx:236:                  <PolicyRow label="Allowed secrets" value={formatCount(boundary?.allowedSecretBindingIds, "binding", "bindings")} />
+ui/src/components/TrustPresetSection.tsx:237:                  <PolicyRow label="Promotion target" value={boundary?.outputPromotionTarget?.issueId?.slice(0, 8) ?? "-"} />
+ui/src/components/TrustPresetSection.tsx:239:                    label="EE fields"
+ui/src/components/IssueRow.tsx:93:      aria-label="Archive"
+ui/src/components/IssueRow.tsx:156:      aria-label="Mark as read"
+ui/src/components/IssueRow.tsx:177:      aria-label="Productivity review open"
+ui/src/components/IssueRow.tsx:198:      title="Blocked by parked work — at least one assigned blocker is in backlog and will not wake its assignee."
+ui/src/components/environment-variables-editor/CreateSecretPopover.tsx:92:          placeholder="secret_name"
+ui/src/components/environment-variables-editor/CreateSecretPopover.tsx:93:          aria-label="Secret name"
+ui/src/components/environment-variables-editor/CreateSecretPopover.tsx:117:            aria-label="Secret value"
+ui/src/components/CaseIdentifierKey.tsx:85:        label="case ID"
+ui/src/components/CaseIdentifierKey.tsx:93:          label="case key"
+ui/src/components/StageSecretsPanel.tsx:55:        message="Secrets are available only to step automation. Pick an agent to run this step, then add the secrets it needs."
+ui/src/components/environment-variables-editor/SecretPicker.tsx:256:      placeholder="Select secret…"
+ui/src/components/issue-properties/external-object-rows.tsx:178:      <PropertyRow label="External objects">
+ui/src/components/issue-properties/external-object-rows.tsx:200:      <PropertyRow label="External objects">
+ui/src/components/issue-properties/external-object-rows.tsx:229:        <PropertyRow label="References">
+ui/src/components/ScrollToBottom.tsx:80:      aria-label="Scroll to bottom"
+ui/src/components/environment-variables-editor/Row.tsx:217:          placeholder="KEY"
+ui/src/components/environment-variables-editor/Row.tsx:221:          aria-label="Variable name"
+ui/src/components/environment-variables-editor/Row.tsx:265:                        aria-label="Value source"
+ui/src/components/environment-variables-editor/Row.tsx:304:                    placeholder="value"
+ui/src/components/environment-variables-editor/Row.tsx:309:                    aria-label="Variable value"
+ui/src/components/environment-variables-editor/Row.tsx:325:                        title="This value looks sensitive — store it as a secret"
+ui/src/components/environment-variables-editor/Row.tsx:334:                        aria-label="Dismiss sensitive-value suggestion"
+ui/src/components/environment-variables-editor/Row.tsx:335:                        title="Dismiss — keep this value as plain text"
+ui/src/components/environment-variables-editor/Row.tsx:370:                          aria-label="Version"
+ui/src/components/environment-variables-editor/Row.tsx:381:                      <PopoverContent align="end" className="w-44 p-1" role="radiogroup" aria-label="Secret version">
+ui/src/components/environment-variables-editor/Row.tsx:425:                      aria-label="User secret"
+ui/src/components/environment-variables-editor/Row.tsx:452:                      placeholder="user-secret key"
+ui/src/components/environment-variables-editor/Row.tsx:456:                      aria-label="User secret key"
+ui/src/components/environment-variables-editor/Row.tsx:461:                    aria-label="Requirement"
+ui/src/components/environment-variables-editor/Row.tsx:570:                aria-label="More actions"
+ui/src/components/interrupt-handoff/InterruptHandoffViews.tsx:221:        aria-label="Dismiss suggestion"
+ui/src/components/IssueChatThread.tsx:1294:        title="Copy"
+ui/src/components/IssueChatThread.tsx:1295:        aria-label="Copy"
+ui/src/components/IssueChatThread.tsx:1675:              title="Copy message"
+ui/src/components/IssueChatThread.tsx:1676:              aria-label="Copy message"
+ui/src/components/IssueChatThread.tsx:1701:              title="Delete comment"
+ui/src/components/IssueChatThread.tsx:1702:              aria-label="Delete comment"
+ui/src/components/IssueChatThread.tsx:1867:        title="Copy message"
+ui/src/components/IssueChatThread.tsx:1868:        aria-label="Copy message"
+ui/src/components/IssueChatThread.tsx:1911:            title="More actions"
+ui/src/components/IssueChatThread.tsx:1912:            aria-label="More actions"
+ui/src/components/IssueChatThread.tsx:2215:        title="Helpful"
+ui/src/components/IssueChatThread.tsx:2216:        aria-label="Helpful"
+ui/src/components/IssueChatThread.tsx:2232:            title="Needs work"
+ui/src/components/IssueChatThread.tsx:2233:            aria-label="Needs work"
+ui/src/components/IssueChatThread.tsx:2244:            placeholder="Add a short note"
+ui/src/components/IssueChatThread.tsx:2909:              title="Copy link"
+ui/src/components/IssueChatThread.tsx:2910:              aria-label="Copy link to system notice"
+ui/src/components/IssueChatThread.tsx:2919:            title="Copy notice text"
+ui/src/components/IssueChatThread.tsx:2920:            aria-label="Copy system notice"
+ui/src/components/IssueChatThread.tsx:4165:        placeholder="Reply"
+ui/src/components/IssueChatThread.tsx:4257:                title="Attach file"
+ui/src/components/IssueChatThread.tsx:4330:            placeholder="Responsible"
+ui/src/components/IssueChatThread.tsx:5202:                      label="Legacy recovery task"

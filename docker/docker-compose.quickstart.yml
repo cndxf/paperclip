@@ -12,7 +12,7 @@ services:
       context: ..
       dockerfile: Dockerfile
     ports:
-      - "${PAPERCLIP_PORT:-3100}:3100"
+      - "127.0.0.1:${PAPERCLIP_PORT:-3100}:3100"
     environment:
       HOST: "0.0.0.0"
       PAPERCLIP_HOME: "/paperclip"

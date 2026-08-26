@@ -2,9 +2,12 @@ import type { Resource } from "i18next";
 
 import { assertValidLocaleMessages } from "./locale-validation";
 
-export const DEFAULT_LOCALE = "en" as const;
+export const DEFAULT_LOCALE = "zh-CN" as const;
 
-const localeModules = import.meta.glob("./locales/*.json", {
+// Only ship the two active UI languages. The remaining JSON files stay in the
+// repository as translation templates and can be enabled later by changing
+// this glob when a language is ready.
+const localeModules = import.meta.glob("./locales/{en,zh-CN}.json", {
   eager: true,
   import: "default",
 }) as Record<string, unknown>;

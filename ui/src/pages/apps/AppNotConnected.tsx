@@ -29,8 +29,10 @@ import { connectionAddress, connectionTransportLabel, DangerZone } from "./AppDe
 import { ActivityPanel } from "./app-detail/ActivityPanel";
 import { ReviewPanel } from "./app-detail/ReviewPanel";
 import { appApplicationTabHref, appTabHref, appTabLabel, isAppTabKey, type AppTabKey } from "./app-tabs";
+import { useTranslation } from "../../i18n";
 
 export function AppNotConnected() {
+  const { t } = useTranslation();
   const { applicationId = "", tab } = useParams<{ applicationId: string; tab?: string }>();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
@@ -107,23 +109,23 @@ export function AppNotConnected() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: queryKeys.tools.applications(selectedCompanyId ?? "__none__") });
       pushToast({
-        title: "App removed",
-        body: `${appName} no longer shows in your apps. You can connect it again any time.`,
+        title: t("apps.removed"),
+        body: t("apps.removedBody", { name: appName }),
         tone: "success",
       });
       navigate("/apps/connections");
     },
     onError: (error) => {
       pushToast({
-        title: "Couldn’t remove the app",
-        body: error instanceof Error ? error.message : "Please try again.",
+        title: t("apps.removeFailed"),
+        body: error instanceof Error ? error.message : t("apps.tryAgain"),
         tone: "error",
       });
     },
   });
 
   if (!selectedCompanyId) {
-    return <div className="p-6 text-sm text-muted-foreground">Select a company to manage apps.</div>;
+    return <div className="p-6 text-sm text-muted-foreground">{t("apps.selectCompany")}</div>;
   }
   if (!applicationId || !activeTab) {
     return <Navigate to={applicationId ? appApplicationTabHref(applicationId, "setup") : "/apps/connections"} replace />;
@@ -139,8 +141,8 @@ export function AppNotConnected() {
   if (!application) {
     return (
       <div className="max-w-3xl space-y-3 p-6 text-sm text-muted-foreground">
-        <p>This app doesn’t exist anymore.</p>
-        <Button variant="outline" size="sm" onClick={() => navigate("/apps/connections")}>Back to apps</Button>
+        <p>{t("apps.notFound")}</p>
+        <Button variant="outline" size="sm" onClick={() => navigate("/apps/connections")}>{t("apps.back")}</Button>
       </div>
     );
   }

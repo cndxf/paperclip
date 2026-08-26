@@ -94,7 +94,7 @@ function InstalledAppsSection({
     <section className="rounded-lg border border-border bg-card">
       <div className="flex flex-wrap items-start justify-between gap-3 border-b border-border px-3 py-2.5">
         <div>
-          <h3 className="text-sm font-semibold text-foreground">Installed apps</h3>
+          <h3 className="text-sm font-semibold text-foreground">已安装应用</h3>
           <p className="mt-0.5 text-xs text-muted-foreground">
             Installed apps load tools into {agentName}'s context on every run. Permitted-only apps do not add context cost.
           </p>
@@ -132,7 +132,7 @@ function InstalledAppsSection({
                       <span className="flex flex-wrap items-center gap-2">
                         <span className="truncate text-sm font-medium text-foreground">{connection.name}</span>
                         <InstallBadge installed={checked} installedForAll={installedForAll} permitted={permitted} />
-                        {rowPending ? <span className="text-xs text-muted-foreground">Saving...</span> : null}
+                        {rowPending ? <span className="text-xs text-muted-foreground">保存中……</span> : null}
                       </span>
                       <span className="mt-0.5 block text-xs text-muted-foreground">
                         {installedForAll
@@ -202,10 +202,10 @@ function InstallSaveStatusChip({
   unsaved: boolean;
   error: boolean;
 }) {
-  if (pending) return <span className="text-xs text-muted-foreground">Saving...</span>;
-  if (error) return <span className="text-xs text-destructive">Could not save</span>;
-  if (unsaved) return <span className="text-xs text-muted-foreground">Unsaved changes</span>;
-  return <span className="text-xs text-muted-foreground">Saved</span>;
+  if (pending) return <span className="text-xs text-muted-foreground">保存中……</span>;
+  if (error) return <span className="text-xs text-destructive">无法保存</span>;
+  if (unsaved) return <span className="text-xs text-muted-foreground">有未保存的更改</span>;
+  return <span className="text-xs text-muted-foreground">已保存</span>;
 }
 
 const POLICY_EFFECT_LABEL: Record<string, string> = {
@@ -462,7 +462,7 @@ export function AgentToolsTab({ agent, companyId }: { agent: AgentDetailRecord; 
         <div className="lg:col-span-2">
           <div className="rounded-lg border border-border">
             <div className="flex items-center justify-between gap-2 border-b border-border px-3 py-2.5">
-              <h3 className="text-sm font-semibold text-foreground">Allowed tools</h3>
+              <h3 className="text-sm font-semibold text-foreground">允许使用的工具</h3>
               <span className="text-xs text-muted-foreground tabular-nums">
                 {allowedTools.length} {allowedTools.length === 1 ? "tool" : "tools"}
               </span>
@@ -475,10 +475,10 @@ export function AgentToolsTab({ agent, companyId }: { agent: AgentDetailRecord; 
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-border text-left text-xs text-muted-foreground">
-                    <th className="px-3 py-2 font-medium">Tool</th>
-                    <th className="px-3 py-2 font-medium">Capability</th>
-                    <th className="px-3 py-2 font-medium">Risk</th>
-                    <th className="px-3 py-2 font-medium">Source</th>
+                    <th className="px-3 py-2 font-medium">工具</th>
+                    <th className="px-3 py-2 font-medium">能力</th>
+                    <th className="px-3 py-2 font-medium">风险</th>
+                    <th className="px-3 py-2 font-medium">来源</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-border">

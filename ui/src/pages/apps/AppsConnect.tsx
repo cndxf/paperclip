@@ -13,6 +13,7 @@ import {
   TerminalSquare,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { useTranslation } from "../../i18n";
 import type {
   Agent,
   AppDefinition,
@@ -133,6 +134,7 @@ function reusableOAuthConnection(
 }
 
 export function AppsConnect() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const routeParams = useParams<{ appKey?: string }>();
   const { selectedCompany, selectedCompanyId } = useCompany();
@@ -443,7 +445,7 @@ export function AppsConnect() {
   });
 
   if (!selectedCompanyId) {
-    return <div className="p-6 text-sm text-muted-foreground">Select a company to connect apps.</div>;
+    return <div className="p-6 text-sm text-muted-foreground">{t("apps.connectSelectCompany")}</div>;
   }
 
   if (directOAuthEntry && step === "key") {
@@ -794,7 +796,7 @@ export function OAuthConnectStateScreen({
   return (
     <div className="max-w-5xl">
       <StepHeader
-        subtitle="Secure MCP sign-in"
+        subtitle={t("apps.secureSignIn")}
         step="key"
         activeIndex={0}
         labels={["Connect", "Review actions", "Choose access", "Install tools"]}
@@ -820,13 +822,13 @@ export function OAuthConnectStateScreen({
 
         <div className="mt-6 flex items-center gap-2">
           {phase === "error" ? (
-            <Button type="button" onClick={onRetry}>Try again</Button>
+          <Button type="button" onClick={onRetry}>{t("apps.tryAgain")}</Button>
           ) : (
             <Button type="button" disabled>
               {phase === "redirecting" ? `Opening ${entry.name}…` : "Preparing…"}
             </Button>
           )}
-          <Button type="button" variant="ghost" onClick={onCancel}>Back to apps</Button>
+          <Button type="button" variant="ghost" onClick={onCancel}>{t("apps.back")}</Button>
         </div>
         <p className="mt-5 flex items-center gap-1.5 text-xs text-muted-foreground">
           <Lock className="h-3.5 w-3.5" />
@@ -861,7 +863,7 @@ function ZapierConnectStep({
           <Link2 className="h-5 w-5 text-muted-foreground" />
         </span>
         <div className="min-w-0">
-          <h2 className="text-xl font-bold tracking-tight">Connect Zapier</h2>
+          <h2 className="text-xl font-bold tracking-tight">{t("apps.connectZapier")}</h2>
           <p className="mt-1 text-sm text-muted-foreground">
             Paste the complete MCP URL Zapier gives you, including its token.
           </p>
@@ -869,7 +871,7 @@ function ZapierConnectStep({
       </div>
 
       <div className="mt-8">
-        <label className="text-sm font-medium text-foreground">Zapier MCP URL</label>
+        <label className="text-sm font-medium text-foreground">{t("apps.zapierUrl")}</label>
         <Input
           value={link}
           onChange={(event) => onLinkChange(event.target.value)}
@@ -884,7 +886,7 @@ function ZapierConnectStep({
           The token is part of the URL. Paperclip stores it securely and checks the connection before enabling actions.
         </p>
         {link.trim() && !isZapierLink && (
-          <p className="mt-2 text-xs text-destructive">Paste a valid Zapier URL to continue.</p>
+          <p className="mt-2 text-xs text-destructive">{t("apps.validZapierUrl")}</p>
         )}
       </div>
 
@@ -1002,9 +1004,9 @@ function GalleryStep({
               <div className="mt-1 line-clamp-2 text-xs text-muted-foreground">{copy.tagline}</div>
               <div className="mt-3 text-xs font-semibold text-foreground">
                 {unavailable ? (
-                  <span className="text-muted-foreground">Not available on this instance - ask your admin.</span>
+                  <span className="text-muted-foreground">{t("apps.notAvailableAskAdmin")}</span>
                 ) : oauthBlocked ? (
-                  <span className="text-muted-foreground">Sign-in coming soon</span>
+                  <span className="text-muted-foreground">{t("apps.signInSoon")}</span>
                 ) : (
                   <span>Connect →</span>
                 )}
@@ -1096,20 +1098,20 @@ function GalleryStep({
       </div>
 
       <div className="border-t border-border pt-5">
-        <div className="text-sm font-semibold text-foreground">More ways to connect</div>
+        <div className="text-sm font-semibold text-foreground">{t("apps.moreWays")}</div>
         <p className="mt-1 text-xs text-muted-foreground">
           For tools that aren’t in the gallery. You’ll need details from the tool’s docs.
         </p>
         <div className="mt-3 flex flex-col gap-2">
           <ConnectMethodRow
             icon={TerminalSquare}
-            title="Run your own"
+            title={t("apps.runYourOwn")}
             description="Register a command Paperclip runs in your workspace for a tool that isn’t listed."
             onClick={onRunYourOwn}
           />
           <ConnectMethodRow
             icon={ClipboardPaste}
-            title="Paste a config"
+            title={t("apps.pasteConfig")}
             description="Already have a setup snippet from a README? Paste it and we’ll connect it."
             onClick={onPasteConfig}
           />
@@ -1196,14 +1198,14 @@ function LinkConnectStep({
           <Link2 className="h-5 w-5 text-muted-foreground" />
         </span>
         <div className="min-w-0">
-          <h2 className="text-xl font-bold tracking-tight">Connect with a link</h2>
+          <h2 className="text-xl font-bold tracking-tight">{t("apps.connectWithLink")}</h2>
           <p className="mt-1 truncate text-sm text-muted-foreground">{link}</p>
         </div>
       </div>
 
       <div className="mt-8 space-y-6">
         <div>
-          <label className="text-sm font-medium text-foreground">Name</label>
+          <label className="text-sm font-medium text-foreground">{t("apps.name")}</label>
           <Input
             value={name}
             onChange={(e) => onNameChange(e.target.value)}
@@ -1216,7 +1218,7 @@ function LinkConnectStep({
         </div>
 
         <div>
-          <label className="text-sm font-medium text-foreground">Does it need a key?</label>
+          <label className="text-sm font-medium text-foreground">{t("apps.needsKey")}</label>
           <div className="mt-2 inline-flex rounded-lg border border-border bg-muted/50 p-1">
             <SegmentedOption
               label="No"
@@ -1239,7 +1241,7 @@ function LinkConnectStep({
         {needsKey && (
           <div className="space-y-4">
             <div>
-              <label className="text-sm font-medium text-foreground">App key</label>
+              <label className="text-sm font-medium text-foreground">{t("apps.appKey")}</label>
               <Input
                 type="password"
                 autoComplete="off"
@@ -1253,7 +1255,7 @@ function LinkConnectStep({
             <div className="flex items-start gap-3 rounded-lg bg-muted/50 p-4">
               <Lock className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" />
               <div>
-                <div className="text-sm font-medium text-foreground">Your key is stored securely.</div>
+                <div className="text-sm font-medium text-foreground">{t("apps.keyStored")}</div>
                 <div className="text-xs text-muted-foreground">
                   You can replace it anytime from this app’s page.
                 </div>
@@ -1376,7 +1378,7 @@ function KeyStep({
         <div className="flex items-center gap-3">
           <AppLogo name={entry.name} logoUrl={entry.branding.logoUrl} size={48} />
           <div>
-            <h2 className="text-lg font-bold tracking-tight sm:text-xl">Connect Google Sheets</h2>
+            <h2 className="text-lg font-bold tracking-tight sm:text-xl">{t("apps.connectSheets")}</h2>
             <p className="text-sm text-muted-foreground">{copy.short}</p>
           </div>
         </div>
@@ -1386,7 +1388,7 @@ function KeyStep({
 
           {robotEmail ? (
             <div>
-              <label className="text-sm font-medium text-foreground">Share each sheet with this email</label>
+              <label className="text-sm font-medium text-foreground">{t("apps.shareSheetEmail")}</label>
               <div className="mt-2 flex min-w-0 flex-col gap-2 sm:flex-row">
                 <div
                   title={robotEmail}
@@ -1415,7 +1417,7 @@ function KeyStep({
           )}
 
           <div>
-            <label className="text-sm font-medium text-foreground">Paste links to the sheets you shared</label>
+            <label className="text-sm font-medium text-foreground">{t("apps.pasteSheetLinks")}</label>
             <Textarea
               value={googleSheetsLinks}
               onChange={(e) => onGoogleSheetsLinksChange(e.target.value)}
@@ -1493,7 +1495,7 @@ function KeyStep({
         <div className="flex items-start gap-3 rounded-lg bg-muted/50 p-4">
           <Lock className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" />
           <div>
-            <div className="text-sm font-medium text-foreground">Your key is stored securely.</div>
+            <div className="text-sm font-medium text-foreground">{t("apps.keyStored")}</div>
             <div className="text-xs text-muted-foreground">
               You can replace it anytime from this app’s page.
             </div>
@@ -1621,7 +1623,7 @@ function ActionsStep({
       </div>
 
       <ActionGroup
-        title="Read only"
+        title={t("apps.readOnly")}
         hint="these can look but not change anything"
         actions={readOnly}
         enabled={enabled}
@@ -1632,7 +1634,7 @@ function ActionsStep({
       />
 
       <ActionGroup
-        title="Can make changes"
+        title={t("apps.canChange")}
         hint="these change something in another app"
         actions={canMakeChanges}
         enabled={enabled}
@@ -1690,7 +1692,7 @@ function WhoStep({
     <div className="mx-auto max-w-xl">
       <div className="rounded-2xl border border-border bg-card p-8">
         <h2 className="text-xl font-bold tracking-tight">Who can use {appName}?</h2>
-        <p className="mt-1 text-sm text-muted-foreground">You can change this later from the app’s page.</p>
+        <p className="mt-1 text-sm text-muted-foreground">{t("apps.changeLater")}</p>
 
         <div className="mt-6 space-y-3">
           <button
@@ -1704,7 +1706,7 @@ function WhoStep({
             <Radio selected={access === "all"} />
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-bold text-foreground">All agents</span>
+                <span className="font-bold text-foreground">{t("apps.allAgents")}</span>
                 <span className="rounded-full bg-foreground px-2 py-0.5 text-(length:--text-nano) font-bold text-background">
                   Recommended
                 </span>
@@ -1725,7 +1727,7 @@ function WhoStep({
           >
             <Radio selected={access === "specific"} />
             <div className="flex-1">
-              <span className="font-semibold text-foreground">Only specific agents</span>
+              <span className="font-semibold text-foreground">{t("apps.specificAgentsOnly")}</span>
               <p className="mt-1 text-xs text-muted-foreground">Tick the agents who can use {appName}.</p>
             </div>
           </button>
@@ -1823,7 +1825,7 @@ export function InstallStep({
           >
             <Radio selected={installMode === "none"} />
             <div>
-              <span className="font-semibold text-foreground">Not yet</span>
+                <span className="font-semibold text-foreground">{t("apps.notYet")}</span>
               <p className="mt-1 text-xs text-muted-foreground">
                 Keep {appName} permitted only. You can install it later from the app or agent page.
               </p>
@@ -1840,7 +1842,7 @@ export function InstallStep({
           >
             <Radio selected={installMode === "specific"} />
             <div className="flex-1">
-              <span className="font-semibold text-foreground">Specific agents</span>
+                <span className="font-semibold text-foreground">{t("apps.specificAgents")}</span>
               <p className="mt-1 text-xs text-muted-foreground">Tick the agents that should load {appName} every run.</p>
             </div>
           </button>
@@ -1867,7 +1869,7 @@ export function InstallStep({
           >
             <Radio selected={installMode === "all"} />
             <div>
-              <span className="font-semibold text-foreground">All agents</span>
+                <span className="font-semibold text-foreground">{t("apps.allAgents")}</span>
               <p className="mt-1 text-xs text-muted-foreground">{INSTALL_ALL_WARNING}</p>
             </div>
           </button>

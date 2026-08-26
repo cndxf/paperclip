@@ -20,6 +20,7 @@ import {
   type GovernanceSelectValue,
 } from "../components/InteractionGovernancePanel";
 import { CompanyPatternIcon } from "../components/CompanyPatternIcon";
+import { useTranslation } from "../i18n";
 import {
   Field,
   ToggleField,
@@ -31,6 +32,7 @@ const DEFAULT_COMPANY_ATTACHMENT_MAX_MIB = DEFAULT_COMPANY_ATTACHMENT_MAX_BYTES 
 const MAX_COMPANY_ATTACHMENT_MAX_MIB = MAX_COMPANY_ATTACHMENT_MAX_BYTES / BYTES_PER_MIB;
 
 export function CompanySettings() {
+  const { t } = useTranslation();
   const {
     companies,
     selectedCompany,
@@ -198,16 +200,16 @@ export function CompanySettings() {
     <div className="max-w-6xl space-y-8">
       <div className="flex items-center gap-2">
         <SlidersHorizontal className="h-5 w-5 text-muted-foreground" />
-        <h1 className="text-lg font-semibold">General</h1>
+        <h1 className="text-lg font-semibold">{t("companySettings.general")}</h1>
       </div>
 
       {/* General */}
       <div className="max-w-2xl space-y-4">
         <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-          General
+          {t("companySettings.generalSection", { defaultValue: "常规" })}
         </div>
         <div className="space-y-3">
-          <Field label="Company name" hint="The display name for your company.">
+          <Field label={t("companySettings.companyName", { defaultValue: "公司名称" })} hint={t("companySettings.companyNameHint", { defaultValue: "公司对外显示的名称。" })}>
             <input
               className="w-full rounded-md border border-border bg-transparent px-2.5 py-1.5 text-sm outline-none"
               type="text"
@@ -216,14 +218,14 @@ export function CompanySettings() {
             />
           </Field>
           <Field
-            label="Description"
-            hint="Optional description shown in the company profile."
+            label={t("companySettings.description", { defaultValue: "描述" })}
+            hint={t("companySettings.descriptionHint", { defaultValue: "公司资料中显示的简介（可选）。" })}
           >
             <input
               className="w-full rounded-md border border-border bg-transparent px-2.5 py-1.5 text-sm outline-none"
               type="text"
               value={description}
-              placeholder="Optional company description"
+              placeholder={t("companySettings.descriptionPlaceholder")}
               onChange={(e) => setDescription(e.target.value)}
             />
           </Field>
@@ -233,7 +235,7 @@ export function CompanySettings() {
       {/* Appearance */}
       <div className="max-w-2xl space-y-4">
         <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-          Appearance
+          {t("companySettings.appearance", { defaultValue: "外观" })}
         </div>
         <div className="space-y-3">
           <div className="flex items-start gap-4">
@@ -247,8 +249,8 @@ export function CompanySettings() {
             </div>
             <div className="flex-1 space-y-3">
               <Field
-                label="Logo"
-                hint="Upload a PNG, JPEG, WEBP, GIF, or SVG logo image."
+                label={t("companySettings.logo", { defaultValue: "标志" })}
+                hint={t("companySettings.logoHint", { defaultValue: "上传 PNG、JPEG、WEBP、GIF 或 SVG 标志图片。" })}
               >
                 <div className="space-y-2">
                   <input
@@ -265,7 +267,7 @@ export function CompanySettings() {
                         onClick={handleClearLogo}
                         disabled={clearLogoMutation.isPending}
                       >
-                        {clearLogoMutation.isPending ? "Removing..." : "Remove logo"}
+                        {clearLogoMutation.isPending ? t("companySettings.removingLogo", { defaultValue: "正在移除…" }) : t("companySettings.removeLogo", { defaultValue: "移除标志" })}
                       </Button>
                     </div>
                   )}
@@ -283,13 +285,13 @@ export function CompanySettings() {
                     </span>
                   )}
                   {logoUploadMutation.isPending && (
-                    <span className="text-xs text-muted-foreground">Uploading logo...</span>
+                    <span className="text-xs text-muted-foreground">{t("companySettings.uploadingLogo")}</span>
                   )}
                 </div>
               </Field>
               <Field
-                label="Brand color"
-                hint="Sets the hue for the company icon. Leave empty for auto-generated color."
+                label={t("companySettings.brandColor", { defaultValue: "品牌颜色" })}
+                hint={t("companySettings.brandColorHint", { defaultValue: "设置公司图标颜色。留空则自动生成。" })}
               >
                 <div className="flex items-center gap-2">
                   {/* token-extraction: allowlisted — <input type="color"> value must be a real hex string, not a var() reference. */}
@@ -308,7 +310,7 @@ export function CompanySettings() {
                         setBrandColor(v);
                       }
                     }}
-                    placeholder="Auto"
+                    placeholder={t("common.auto", { defaultValue: "自动" })}
                     className="w-28 rounded-md border border-border bg-transparent px-2.5 py-1.5 text-sm font-mono outline-none"
                   />
                   {brandColor && (
@@ -318,13 +320,13 @@ export function CompanySettings() {
                       onClick={() => setBrandColor("")}
                       className="text-xs text-muted-foreground"
                     >
-                      Clear
+                      {t("common.clear", { defaultValue: "清除" })}
                     </Button>
                   )}
                 </div>
               </Field>
               <Field
-                label="Attachment size limit"
+                label={t("companySettings.attachmentLimit", { defaultValue: "附件大小限制" })}
                 hint={`Accepted range: 1-${MAX_COMPANY_ATTACHMENT_MAX_MIB} MiB.`}
               >
                 <div className="flex flex-col gap-1.5">
@@ -342,7 +344,7 @@ export function CompanySettings() {
                   </div>
                   {!attachmentMaxValid && (
                     <span className="text-xs text-destructive">
-                      Enter a whole number from 1 to {MAX_COMPANY_ATTACHMENT_MAX_MIB}.
+                      {t("companySettings.attachmentInvalid", { defaultValue: "请输入 1 到 {{max}} 之间的整数。", max: MAX_COMPANY_ATTACHMENT_MAX_MIB })}
                     </span>
                   )}
                 </div>
@@ -360,16 +362,16 @@ export function CompanySettings() {
             onClick={handleSaveGeneral}
             disabled={generalMutation.isPending || !companyName.trim() || !attachmentMaxValid}
           >
-            {generalMutation.isPending ? "Saving..." : "Save changes"}
+            {generalMutation.isPending ? t("common.saving", { defaultValue: "正在保存…" }) : t("common.saveChanges", { defaultValue: "保存更改" })}
           </Button>
           {generalMutation.isSuccess && (
-            <span className="text-xs text-muted-foreground">Saved</span>
+            <span className="text-xs text-muted-foreground">{t("companySettings.saved")}</span>
           )}
           {generalMutation.isError && (
             <span className="text-xs text-destructive">
               {generalMutation.error instanceof Error
                   ? generalMutation.error.message
-                  : "Failed to save"}
+                  : t("common.saveFailed", { defaultValue: "保存失败" })}
             </span>
           )}
         </div>
@@ -378,12 +380,12 @@ export function CompanySettings() {
       {/* Hiring */}
       <div className="max-w-2xl space-y-4" data-testid="company-settings-team-section">
         <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-          Hiring
+          {t("companySettings.hiring", { defaultValue: "招聘" })}
         </div>
         <div>
           <ToggleField
-            label="Require board approval for new hires"
-            hint="New agent hires stay pending until approved by board."
+            label={t("companySettings.requireApproval", { defaultValue: "新建智能体需要管理员审批" })}
+            hint={t("companySettings.requireApprovalHint", { defaultValue: "新建智能体在管理员批准前保持待处理状态。" })}
             checked={!!selectedCompany.requireBoardApprovalForNewAgents}
             onChange={(v) => settingsMutation.mutate(v)}
             toggleTestId="company-settings-team-approval-toggle"
@@ -400,7 +402,7 @@ export function CompanySettings() {
           governanceMutation.isError
             ? governanceMutation.error instanceof Error
               ? governanceMutation.error.message
-              : "Failed to save interaction governance"
+              : t("companySettings.governanceSaveFailed", { defaultValue: "保存交互治理设置失败" })
             : null
         }
       />
@@ -410,12 +412,11 @@ export function CompanySettings() {
       {/* Danger Zone */}
       <div className="space-y-4">
         <div className="text-xs font-medium text-destructive uppercase tracking-wide">
-          Danger Zone
+          {t("companySettings.dangerZone", { defaultValue: "危险区域" })}
         </div>
         <div className="space-y-3 bg-destructive/5 px-4 py-4">
           <p className="text-sm text-muted-foreground">
-            Archive this company to hide it from the sidebar. This persists in
-            the database.
+            {t("companySettings.archiveHint", { defaultValue: "归档此公司后，它会从侧边栏隐藏。此操作会保存到数据库。" })}
           </p>
           <div className="flex items-center gap-2">
             <Button

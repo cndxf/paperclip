@@ -11,6 +11,7 @@ import { Link } from "@/lib/router";
 import { queryKeys } from "@/lib/queryKeys";
 import { copyTextToClipboard } from "@/lib/clipboard";
 import { Badge } from "@/components/ui/badge";
+import { useTranslation } from "@/i18n";
 
 const inviteRoleOptions = [
   {
@@ -47,6 +48,7 @@ function isInviteHistoryRow(value: unknown): value is Awaited<ReturnType<typeof 
 }
 
 export function CompanyInvites() {
+  const { t } = useTranslation();
   const { selectedCompany, selectedCompanyId } = useCompany();
   const { setBreadcrumbs } = useBreadcrumbs();
   const { pushToast } = useToast();
@@ -182,23 +184,23 @@ export function CompanyInvites() {
       <div className="space-y-3">
         <div className="flex items-center gap-2">
           <MailPlus className="h-5 w-5 text-muted-foreground" />
-          <h1 className="text-lg font-semibold">Company Invites</h1>
+          <h1 className="text-lg font-semibold">{t("invites.title", { defaultValue: "公司邀请" })}</h1>
         </div>
         <p className="max-w-3xl text-sm text-muted-foreground">
-          Invite people to request access to this company. New invite links are copied to your clipboard when they are generated.
+          {t("invites.description", { defaultValue: "邀请他人申请加入此公司。生成新的邀请链接后，链接会自动复制到剪贴板。" })}
         </p>
       </div>
 
       <section className="space-y-4 rounded-xl border border-border p-5">
         <div className="space-y-1">
-          <h2 className="text-sm font-semibold">Invite a person</h2>
+          <h2 className="text-sm font-semibold">{t("invites.invitePerson", { defaultValue: "邀请人员" })}</h2>
           <p className="text-sm text-muted-foreground">
-            Generate a human invite link and choose the default access it should request.
+            {t("invites.invitePersonDescription", { defaultValue: "生成供人员使用的邀请链接，并选择对方申请的默认访问权限。" })}
           </p>
         </div>
 
         <fieldset className="space-y-3">
-          <legend className="text-sm font-medium">Choose a role</legend>
+          <legend className="text-sm font-medium">{t("invites.chooseRole", { defaultValue: "选择角色" })}</legend>
           <div className="rounded-xl border border-border">
             {inviteRoleOptions.map((option, index) => {
               const checked = humanRole === option.value;
@@ -217,15 +219,15 @@ export function CompanyInvites() {
                   />
                   <span className="min-w-0 space-y-1">
                     <span className="flex flex-wrap items-center gap-2">
-                      <span className="text-sm font-medium">{option.label}</span>
+                      <span className="text-sm font-medium">{t(`invites.roles.${option.value}.label`, { defaultValue: option.label })}</span>
                       {option.value === "operator" ? (
                         <Badge variant="outline" className="border-border text-muted-foreground">
-                          Default
+                          {t("common.default", { defaultValue: "默认" })}
                         </Badge>
                       ) : null}
                     </span>
-                    <span className="block max-w-2xl text-sm text-muted-foreground">{option.description}</span>
-                    <span className="block text-sm text-foreground">{option.gets}</span>
+                    <span className="block max-w-2xl text-sm text-muted-foreground">{t(`invites.roles.${option.value}.description`, { defaultValue: option.description })}</span>
+                    <span className="block text-sm text-foreground">{t(`invites.roles.${option.value}.gets`, { defaultValue: option.gets })}</span>
                   </span>
                 </label>
               );
@@ -234,14 +236,14 @@ export function CompanyInvites() {
         </fieldset>
 
         <div className="rounded-lg border border-border px-4 py-3 text-sm text-muted-foreground">
-          Each invite link is single-use. Human invitees get the selected role immediately after sign-in; agent invites still create a join request for approval.
+          {t("invites.singleUse", { defaultValue: "每个邀请链接只能使用一次。人员登录后会立即获得所选角色；智能体邀请仍需创建加入申请并等待审批。" })}
         </div>
 
         <div className="flex flex-wrap items-center gap-3">
           <Button onClick={() => createInviteMutation.mutate()} disabled={createInviteMutation.isPending}>
-            {createInviteMutation.isPending ? "Creating…" : "Create invite"}
+            {createInviteMutation.isPending ? t("common.creating", { defaultValue: "创建中…" }) : t("invites.create", { defaultValue: "创建邀请" })}
           </Button>
-          <span className="text-sm text-muted-foreground">Invite history below keeps the audit trail.</span>
+          <span className="text-sm text-muted-foreground">{t("invites.auditTrail", { defaultValue: "下方的邀请记录会保留审计轨迹。" })}</span>
         </div>
 
         {latestInviteUrl ? (
@@ -299,19 +301,19 @@ export function CompanyInvites() {
       <section className="rounded-xl border border-border">
         <div className="flex flex-wrap items-center justify-between gap-4 px-5 py-4">
           <div className="space-y-1">
-            <h2 className="text-sm font-semibold">Invite history</h2>
+            <h2 className="text-sm font-semibold">{t("invites.history", { defaultValue: "邀请记录" })}</h2>
             <p className="text-sm text-muted-foreground">
-              Review invite status, audience, inviter, and any linked join request.
+              {t("invites.historyHint", { defaultValue: "查看邀请状态、适用对象、邀请人以及关联的加入申请。" })}
             </p>
           </div>
           <Link to="/inbox/requests" className="text-sm underline underline-offset-4">
-            Open join request queue
+            {t("invites.openRequests", { defaultValue: "打开加入申请队列" })}
           </Link>
         </div>
 
         {inviteHistory.length === 0 ? (
           <div className="border-t border-border px-5 py-8 text-sm text-muted-foreground">
-            No invites have been created for this company yet.
+            {t("invites.noHistory", { defaultValue: "该公司还没有创建邀请。" })}
           </div>
         ) : (
           <div className="border-t border-border">
@@ -319,12 +321,12 @@ export function CompanyInvites() {
               <table className="min-w-full text-left text-sm">
                 <thead>
                   <tr className="border-b border-border">
-                    <th className="px-5 py-3 font-medium text-muted-foreground">State</th>
-                    <th className="px-5 py-3 font-medium text-muted-foreground">For</th>
-                    <th className="px-5 py-3 font-medium text-muted-foreground">Invited by</th>
-                    <th className="px-5 py-3 font-medium text-muted-foreground">Created</th>
-                    <th className="px-5 py-3 font-medium text-muted-foreground">Join request</th>
-                    <th className="px-5 py-3 text-right font-medium text-muted-foreground">Action</th>
+                    <th className="px-5 py-3 font-medium text-muted-foreground">{t("invites.state", { defaultValue: "状态" })}</th>
+                    <th className="px-5 py-3 font-medium text-muted-foreground">{t("invites.for", { defaultValue: "适用对象" })}</th>
+                    <th className="px-5 py-3 font-medium text-muted-foreground">{t("invites.invitedBy", { defaultValue: "邀请人" })}</th>
+                    <th className="px-5 py-3 font-medium text-muted-foreground">{t("invites.created", { defaultValue: "创建时间" })}</th>
+                    <th className="px-5 py-3 font-medium text-muted-foreground">{t("invites.joinRequest", { defaultValue: "加入申请" })}</th>
+                    <th className="px-5 py-3 text-right font-medium text-muted-foreground">{t("invites.action", { defaultValue: "操作" })}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -337,7 +339,7 @@ export function CompanyInvites() {
                       </td>
                       <td className="px-5 py-3 align-top">{formatInviteAudience(invite)}</td>
                       <td className="px-5 py-3 align-top">
-                        <div>{invite.invitedByUser?.name || invite.invitedByUser?.email || "Unknown inviter"}</div>
+                        <div>{invite.invitedByUser?.name || invite.invitedByUser?.email || t("invites.unknownInviter", { defaultValue: "未知邀请人" })}</div>
                         {invite.invitedByUser?.email && invite.invitedByUser.name ? (
                           <div className="text-xs text-muted-foreground">{invite.invitedByUser.email}</div>
                         ) : null}
@@ -348,7 +350,7 @@ export function CompanyInvites() {
                       <td className="px-5 py-3 align-top">
                         {invite.relatedJoinRequestId ? (
                           <Link to="/inbox/requests" className="underline underline-offset-4">
-                            Review request
+                            {t("invites.reviewRequest", { defaultValue: "查看申请" })}
                           </Link>
                         ) : (
                           <span className="text-muted-foreground">—</span>
@@ -362,10 +364,10 @@ export function CompanyInvites() {
                             onClick={() => revokeMutation.mutate(invite.id)}
                             disabled={revokeMutation.isPending}
                           >
-                            Revoke
+                            {t("invites.revoke", { defaultValue: "撤销" })}
                           </Button>
                         ) : (
-                          <span className="text-xs text-muted-foreground">Inactive</span>
+                          <span className="text-xs text-muted-foreground">{t("invites.inactive", { defaultValue: "已停用" })}</span>
                         )}
                       </td>
                     </tr>

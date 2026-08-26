@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState, type ChangeEvent } from "react";
+import { useTranslation } from "../i18n";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import type {
   CompanyPortabilityCollisionStrategy,
@@ -842,6 +843,7 @@ async function watchImportJob(
 // ── Main page ─────────────────────────────────────────────────────────
 
 export function CompanyImport() {
+  const { t } = useTranslation();
   const {
     selectedCompanyId,
     selectedCompany,
@@ -1623,10 +1625,9 @@ export function CompanyImport() {
     return (
       <div className="max-w-6xl space-y-4 px-5 py-5">
         <div>
-          <h2 className="text-base font-semibold">Import completed</h2>
+          <h2 className="text-base font-semibold">{t("companyImport.completed", { defaultValue: "导入已完成" })}</h2>
           <p className="text-xs text-muted-foreground mt-1">
-            The import finished and your company is ready. Its detailed summary is no
-            longer available, but the company has been added — open it to view it.
+            {t("companyImport.completedSummary", { defaultValue: "导入已完成，公司已准备就绪。详细摘要已不可用，但公司已经添加，请打开查看。" })}
           </p>
         </div>
       </div>
@@ -1643,19 +1644,16 @@ export function CompanyImport() {
     return (
       <div className="max-w-6xl space-y-4 px-5 py-5">
         <div>
-          <h2 className="text-base font-semibold">Import complete</h2>
+          <h2 className="text-base font-semibold">{t("companyImport.complete", { defaultValue: "导入完成" })}</h2>
           <p className="text-xs text-muted-foreground mt-1">
-            {result.company.name}: {result.agents.length} agent{result.agents.length === 1 ? "" : "s"},{" "}
-            {skillResults.length} skill{skillResults.length === 1 ? "" : "s"},{" "}
-            {result.projects.length} project{result.projects.length === 1 ? "" : "s"}, and{" "}
-            {result.routines.length} routine{result.routines.length === 1 ? "" : "s"} processed.
+            {t("companyImport.processedSummary", { defaultValue: "{{company}}：{{agents}} 个智能体、{{skills}} 个技能、{{projects}} 个项目和 {{routines}} 个自动任务已处理。", company: result.company.name, agents: result.agents.length, skills: skillResults.length, projects: result.projects.length, routines: result.routines.length })}
           </p>
         </div>
 
         {skillResults.length > 0 && (
           <div className="rounded-md border border-border">
             <div className="border-b border-border px-4 py-2.5">
-              <h3 className="text-sm font-medium">Skill import results</h3>
+              <h3 className="text-sm font-medium">{t("companyImport.skillResults", { defaultValue: "技能导入结果" })}</h3>
             </div>
             <div className="divide-y divide-border">
               {skillResults.map((skill) => (
@@ -1663,7 +1661,7 @@ export function CompanyImport() {
                   <span className="min-w-0 flex-1 truncate">{skill.originalSlug}</span>
                   <span className="shrink-0 text-xs text-muted-foreground">{skill.action}</span>
                   {skill.slug !== skill.originalSlug && (
-                    <span className="shrink-0 text-xs text-muted-foreground">as {skill.slug}</span>
+                    <span className="shrink-0 text-xs text-muted-foreground">{t("companyImport.asName", { defaultValue: "重命名为 {{name}}", name: skill.slug })}</span>
                   )}
                 </div>
               ))}
@@ -1682,8 +1680,8 @@ export function CompanyImport() {
         {activationItems.length > 0 && (
           <div className="rounded-md border border-border">
             <div className="flex items-center gap-2 border-b border-border px-4 py-2.5">
-              <h3 className="text-sm font-medium">Activate imported agents and routines</h3>
-              <span className="text-xs text-muted-foreground">imported paused</span>
+              <h3 className="text-sm font-medium">{t("companyImport.activateItems", { defaultValue: "启用导入的智能体和自动任务" })}</h3>
+              <span className="text-xs text-muted-foreground">{t("companyImport.importedPaused", { defaultValue: "导入时已暂停" })}</span>
             </div>
             <div className="divide-y divide-border">
               {activationItems.map((item) => {
@@ -1704,15 +1702,15 @@ export function CompanyImport() {
                         ? "text-blue-500 border-blue-500/30"
                         : "text-purple-500 border-purple-500/30",
                     )}>
-                      {item.kind}
+                      {item.kind === "agent" ? t("companyImport.agent", { defaultValue: "智能体" }) : t("companyImport.routine", { defaultValue: "自动任务" })}
                     </Badge>
                     <span className="min-w-0 flex-1 truncate">{item.name}</span>
                     {isActivated ? (
-                      <span className="shrink-0 text-xs text-emerald-500">activated</span>
+                      <span className="shrink-0 text-xs text-emerald-500">{t("companyImport.activated", { defaultValue: "已启用" })}</span>
                     ) : failure ? (
-                      <span className="shrink-0 text-xs text-destructive">failed: {failure}</span>
+                      <span className="shrink-0 text-xs text-destructive">{t("companyImport.failed", { defaultValue: "失败：{{error}}", error: failure })}</span>
                     ) : (
-                      <span className="shrink-0 text-xs text-muted-foreground">paused</span>
+                      <span className="shrink-0 text-xs text-muted-foreground">{t("companyImport.paused", { defaultValue: "已暂停" })}</span>
                     )}
                   </label>
                 );
@@ -1724,7 +1722,7 @@ export function CompanyImport() {
                 onClick={() => void handleActivateSelected()}
                 disabled={isActivating || pendingCount === 0}
               >
-                {isActivating ? "Activating..." : `Activate selected (${pendingCount})`}
+                {isActivating ? t("companyImport.activating", { defaultValue: "正在启用…" }) : t("companyImport.activateSelected", { defaultValue: "启用选中项（{{count}}）", count: pendingCount })}
               </Button>
             </div>
           </div>
@@ -1737,7 +1735,7 @@ export function CompanyImport() {
             variant="outline"
             onClick={() => window.location.assign(dashboardPath)}
           >
-            Go to dashboard
+            {t("companyImport.goDashboard", { defaultValue: "前往总览" })}
           </Button>
         </div>
       </div>
@@ -1751,15 +1749,15 @@ export function CompanyImport() {
     return (
       <div className="max-w-6xl space-y-4 px-5 py-5">
         <div>
-          <h2 className="text-base font-semibold">Resume watching import</h2>
+          <h2 className="text-base font-semibold">{t("companyImport.resume", { defaultValue: "继续查看导入进度" })}</h2>
           <p className="text-xs text-muted-foreground mt-1">
-            An import you started earlier is still running on the server.
+            {t("companyImport.resumeSummary", { defaultValue: "你之前开始的导入仍在服务器上运行。" })}
           </p>
         </div>
         <div className="flex items-start gap-2 rounded-md border border-border bg-muted/30 px-3 py-2.5">
           <Loader2 className="mt-0.5 h-3.5 w-3.5 shrink-0 animate-spin text-muted-foreground" />
           <p className="text-xs text-muted-foreground">
-            Import running on the server — safe to keep waiting; reconnecting won&apos;t lose it.
+            {t("companyImport.running", { defaultValue: "导入正在服务器上运行，可以继续等待；重新连接不会丢失进度。" })}
           </p>
         </div>
       </div>
@@ -1767,7 +1765,7 @@ export function CompanyImport() {
   }
 
   if (!selectedCompanyId) {
-    return <EmptyState icon={Download} message="Select a company to import into." />;
+    return <EmptyState icon={Download} message={t("companyImport.selectCompany", { defaultValue: "请选择要导入的公司。" })} />;
   }
 
   return (
@@ -1775,17 +1773,17 @@ export function CompanyImport() {
       {/* Source form section */}
       <div className="border-b border-border px-5 py-5 space-y-4">
         <div>
-          <h2 className="text-base font-semibold">Import source</h2>
+          <h2 className="text-base font-semibold">{t("companyImport.source", { defaultValue: "导入来源" })}</h2>
           <p className="text-xs text-muted-foreground mt-1">
-            Choose a GitHub repo or upload a local Paperclip zip package.
+            {t("companyImport.sourceHint", { defaultValue: "选择 GitHub 仓库，或上传本地 Paperclip ZIP 包。" })}
           </p>
         </div>
 
         <div className="grid gap-2 md:grid-cols-2">
           {(
             [
-              { key: "github", icon: Github, label: "GitHub repo" },
-              { key: "local", icon: Upload, label: "Local zip" },
+              { key: "github", icon: Github, label: t("companyImport.githubRepo", { defaultValue: "GitHub 仓库" }) },
+              { key: "local", icon: Upload, label: t("companyImport.localZip", { defaultValue: "本地 ZIP" }) },
             ] as const
           ).map(({ key, icon: Icon, label }) => (
             <button
@@ -1828,7 +1826,7 @@ export function CompanyImport() {
                 onClick={() => packageInputRef.current?.click()}
                 disabled={importMutation.isPending}
               >
-                Choose zip
+                {t("companyImport.chooseZip", { defaultValue: "选择 ZIP 文件" })}
               </Button>
               {localPackage && (
                 <span className="text-xs text-muted-foreground">
@@ -1847,8 +1845,8 @@ export function CompanyImport() {
           </div>
         ) : (
           <Field
-            label="GitHub URL"
-            hint="Repo tree path or blob URL to COMPANY.md (e.g. github.com/owner/repo/tree/main/company)."
+            label={t("companyImport.githubUrl", { defaultValue: "GitHub 地址" })}
+            hint={t("companyImport.githubUrlHint", { defaultValue: "指向 COMPANY.md 的仓库目录或文件地址。" })}
           >
             <input
               className="w-full rounded-md border border-border bg-transparent px-2.5 py-1.5 text-sm outline-none"
@@ -1864,7 +1862,7 @@ export function CompanyImport() {
           </Field>
         )}
 
-        <Field label="Target" hint="Import into this company or create a new one.">
+        <Field label={t("companyImport.target", { defaultValue: "导入目标" })} hint={t("companyImport.targetHint", { defaultValue: "导入到当前公司，或创建一个新公司。" })}>
           <select
             className="w-full rounded-md border border-border bg-transparent px-2.5 py-1.5 text-sm outline-none"
             value={targetMode}
@@ -1874,7 +1872,7 @@ export function CompanyImport() {
               resetImportFlowState();
             }}
           >
-            <option value="new">Create new company</option>
+            <option value="new">{t("companyImport.createCompany", { defaultValue: "创建新公司" })}</option>
             <option value="existing">
               Existing company: {selectedCompany?.name}
             </option>
@@ -1883,8 +1881,8 @@ export function CompanyImport() {
 
         {targetMode === "new" && (
           <Field
-            label="New company name"
-            hint="Optional override. Leave blank to use the package name."
+            label={t("companyImport.newCompanyName", { defaultValue: "新公司名称" })}
+            hint={t("companyImport.newCompanyHint", { defaultValue: "可选覆盖名称。留空则使用包名称。" })}
           >
             <input
               className="w-full rounded-md border border-border bg-transparent px-2.5 py-1.5 text-sm outline-none"
@@ -1900,8 +1898,8 @@ export function CompanyImport() {
         )}
 
         <Field
-          label="Collision strategy"
-          hint="Board imports can rename, skip, or replace matching company content."
+          label={t("companyImport.collisionStrategy", { defaultValue: "冲突处理策略" })}
+          hint={t("companyImport.collisionHint", { defaultValue: "导入时可重命名、跳过或替换匹配的公司内容。" })}
         >
           <select
             className="w-full rounded-md border border-border bg-transparent px-2.5 py-1.5 text-sm outline-none"
@@ -1912,9 +1910,9 @@ export function CompanyImport() {
               resetImportFlowState();
             }}
           >
-            <option value="rename">Rename on conflict</option>
-            <option value="skip">Skip on conflict</option>
-            <option value="replace">Replace existing</option>
+            <option value="rename">{t("companyImport.renameConflict", { defaultValue: "冲突时重命名" })}</option>
+            <option value="skip">{t("companyImport.skipConflict", { defaultValue: "冲突时跳过" })}</option>
+            <option value="replace">{t("companyImport.replaceExisting", { defaultValue: "替换现有内容" })}</option>
           </select>
         </Field>
 
@@ -1927,7 +1925,7 @@ export function CompanyImport() {
               previewMutation.isPending || importMutation.isPending || !hasSource
             }
           >
-            {previewMutation.isPending ? "Previewing..." : "Preview import"}
+            {previewMutation.isPending ? t("companyImport.previewing", { defaultValue: "正在预览…" }) : t("companyImport.preview", { defaultValue: "预览导入" })}
           </Button>
           {!hasSource && !previewMutation.isPending && (
             <span className="text-xs text-muted-foreground">

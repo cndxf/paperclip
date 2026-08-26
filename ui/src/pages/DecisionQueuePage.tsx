@@ -205,14 +205,14 @@ export function DecisionQueuePage() {
     onSuccess: () => queryClient.invalidateQueries({ queryKey: queryKeys.decisionQueues.list(selectedCompanyId!) }),
     onError: (err) =>
       pushToast({
-        title: "Could not update seeding",
-        body: err instanceof Error ? err.message : "Please try again.",
+        title: "无法更新规则",
+        body: err instanceof Error ? err.message : "请重试。",
         tone: "error",
       }),
   });
 
   if (!selectedCompanyId) {
-    return <p className="text-sm text-muted-foreground">Select a company first.</p>;
+    return <p className="text-sm text-muted-foreground">请先选择公司。</p>;
   }
   if (isLoading) {
     return <PageSkeleton variant="approvals" />;
@@ -264,17 +264,17 @@ export function DecisionQueuePage() {
 
       {isEmpty ? (
         <div className="rounded-xl border border-dashed border-border py-14 text-center">
-          <p className="text-sm font-medium text-foreground">This queue is empty.</p>
+          <p className="text-sm font-medium text-foreground">此队列为空。</p>
           <p className="mt-1 text-xs text-muted-foreground">
-            Decisions land here when they match the queue's rules or an agent adds them.
+            符合队列规则或由智能体添加的决策会显示在这里。
           </p>
         </div>
       ) : (
         <div className="space-y-4">
           {visibleCount === 0 ? (
             <div className="rounded-xl border border-dashed border-border py-10 text-center">
-              <p className="text-sm font-medium text-foreground">No decisions match your filters.</p>
-              <p className="mt-1 text-xs text-muted-foreground">Adjust or clear the filters to see the rest.</p>
+              <p className="text-sm font-medium text-foreground">没有符合筛选条件的决策。</p>
+              <p className="mt-1 text-xs text-muted-foreground">调整或清除筛选条件即可查看其他内容。</p>
             </div>
           ) : (
             groups.map((group) => {
@@ -445,13 +445,13 @@ function QueueItemRow({
     onSuccess: () => {
       setOpen(false);
       setReason("");
-      pushToast({ title: "Removed from queue", body: item.subject.title ?? undefined, tone: "info" });
+      pushToast({ title: "已从队列移除", body: item.subject.title ?? undefined, tone: "info" });
       onExcluded();
     },
     onError: (err) =>
       pushToast({
-        title: "Could not exclude",
-        body: err instanceof Error ? err.message : "Please try again.",
+        title: "无法排除",
+        body: err instanceof Error ? err.message : "请重试。",
         tone: "error",
       }),
   });

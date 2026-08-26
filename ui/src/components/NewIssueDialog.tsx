@@ -288,7 +288,7 @@ function buildStatusOptions(): ReadonlyArray<{ value: string; label: string; col
       description: "Executable - assignee will be woken",
     },
     { value: "in_progress", label: "In Progress", color: palette.in_progress ?? issueStatusTextDefault },
-    { value: "in_review", label: "In Review", color: palette.in_review ?? issueStatusTextDefault },
+    { value: "in_review", label: "审核中", color: palette.in_review ?? issueStatusTextDefault },
     { value: "done", label: "Done", color: palette.done ?? issueStatusTextDefault },
   ];
 }
