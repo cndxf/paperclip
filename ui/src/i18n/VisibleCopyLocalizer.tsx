@@ -585,9 +585,6 @@ function translateDynamic(value: string) {
 
 function translateText(value: string) {
   const normalized = normalize(value);
-  const exact = visibleCopy[normalized as keyof typeof visibleCopy] ?? translateDynamic(normalized);
-  if (exact) return exact;
-
   // 完整句子优先于词语替换，防止部分替换后留下中英混排或重复表达。
   const wholeSentence: Array<[RegExp, string]> = [
     [/^company-visible collaboration\. This is the default for normal work\.?$/i, "公司范围内协作，这是日常工作的默认设置。"],
@@ -597,8 +594,19 @@ function translateText(value: string) {
     [/^This account is signed in, but it does not have an enabled company membership or instance-admin access on this Paperclip instance\.?$/i, "此账户已登录，但在此 Paperclip 实例中没有启用的公司成员资格或实例管理员权限。"],
     [/^Choose a (?:export )?package above to enable the preview\.?$/i, "请先选择上方的导出包以启用预览。"],
     [/^Tasks and routine history is opt-in because it can be large\.?$/i, "任务和自动任务历史记录默认不导出，因为数据量可能很大。"],
+    [/^拓肯方舟 export$/i, "拓肯方舟导出"],
+    [/^正在导出 (\d+) of (\d+) files \(~([^)]*)\)$/i, "正在导出 $1 / $2 个文件（约 $3）"],
+    [/^启用(.+?) automatically for (.+?) agents\.?$/i, "自动为 $2 智能体启用$1。"],
+    [/^已保存 适配器配置 affects the next 运行\. 启用 runs keep the config they started with, and 配置变更 may start a new 的适配器会话\.?$/i, "已保存。适配器配置会影响下一次运行；已启用的运行会继续使用启动时的配置，配置变更可能会开启新的适配器会话。"],
+    [/^发送 modelProfile: "cheap" ·使用智能体配置的低成本配置$/i, "使用低成本模型配置发送；具体模型由智能体设置决定。"],
+    [/^Soft alert at 80%$/i, "达到 80% 时提醒"], [/^No cap 已配置$/i, "未设置预算上限"], [/^Monthly UTC 预算$/i, "每月 UTC 预算"],
+    [/^Configuration未完成(?:\s+·\s+.+)?$/i, "配置未完成"], [/^t is not defined$/i, "变量 t 未定义"],
+    [/^No approver(?:\s+我\s+.+)?$/i, "无审批人"], [/^搜索approvers…?$/i, "搜索审批人……"],
   ];
   for (const [pattern, replacement] of wholeSentence) if (pattern.test(normalized)) return replacement;
+
+  const exact = visibleCopy[normalized as keyof typeof visibleCopy] ?? translateDynamic(normalized);
+  if (exact) return exact;
 
   let translated = value;
   const phraseReplacements: Array<[string, string]> = [
@@ -1182,6 +1190,36 @@ function translateText(value: string) {
     [/^已捆绑$/i, "已安装"],
     [/^configuration incomplete: no Codex credentials available for managed home "(.+?)"\. Sign in to Codex on the host with a ChatGPT 订阅, or bind a per-智能体 OPENAI_API_KEY 密钥 for this 智能体\.?$/i, "配置不完整：托管目录“$1”中没有可用的 Codex 凭据。请在主机上使用 ChatGPT 订阅登录 Codex，或为此智能体绑定专属的 OPENAI_API_KEY 密钥。"],
     [/^configuration incomplete: no Codex credentials available for managed home "(.+?)"\. Sign in to Codex on the host with a ChatGPT subscription, or bind a per-agent OPENAI_API_KEY secret for this agent\.?$/i, "配置不完整：托管目录“$1”中没有可用的 Codex 凭据。请在主机上使用 ChatGPT 订阅登录 Codex，或为此智能体绑定专属的 OPENAI_API_KEY 密钥。"],
+    [/^configuration incomplete:[\s\S]*$/i, "配置不完整：此智能体缺少 Codex 凭据。请在主机上登录 Codex，或为此智能体绑定 OPENAI_API_KEY 密钥。"],
+    [/^Configuration incomplete$/i, "配置不完整"],
+    [/^Automatic recovery blocked$/i, "自动恢复已阻塞"],
+    [/^Workspace validation failed$/i, "工作区校验失败"],
+    [/^Review recovery stalled$/i, "评审恢复已停滞"],
+    [/^拓肯方舟 export$/i, "拓肯方舟导出"],
+    [/^正在导出 (\d+) of (\d+) files \(~([^)]*)\)$/i, "正在导出 $1 / $2 个文件（约 $3）"],
+    [/^选择 {{name}}$/i, "选择技能"],
+    [/^启用(.+?) automatically for (.+?) agents\.?$/i, "自动为 $2 智能体启用$1。"],
+    [/^Choose how broadly this 智能体 can read and act on Paperclip work objects\.?$/i, "选择此智能体读取和操作 Paperclip 工作对象的权限范围。"],
+    [/^安装 EE 权限扩展后，还可以继续配置高级权限。$/i, "安装企业版权限扩展后，可继续配置更细致的高级权限。"],
+    [/^已保存 适配器配置 affects the next 运行\. 启用 runs keep the config they started with, and 配置变更 may start a new 的适配器会话\.?$/i, "已保存。适配器配置会影响下一次运行；已启用的运行会继续使用启动时的配置，配置变更可能会开启新的适配器会话。"],
+    [/^(.+?) issue read marked (.+?) · Paperclip onboarding(?:\s+(.+))?$/i, "$1 已将 $2 · Paperclip 入门引导标记为已读$3"],
+    [/^(.+?) issue read marked (.+)$/i, "$1 已将 $2 标记为已读"],
+    [/^(.+?) changed status to blocked on (.+)$/i, "$1 将 $2 的状态改为已阻塞"],
+    [/^agentDetail\.recentTasks$/i, "最近任务"], [/^agentDetail\.noActiveApiKeys$/i, "暂无有效的 API 密钥"], [/^agentDetail\.API 调用KeyDescription$/i, "用于调用智能体 API 的密钥。"], [/^agentDetail\.keyNamePlaceholder$/i, "输入密钥名称"],
+    [/^创建智能体ApiKey$/i, "创建智能体 API 密钥"], [/^agentDetail\.API$/i, "API"],
+    [/^agentDetail\.recentTasks$/i, "最近任务"], [/^No cap 已配置$/i, "未设置预算上限"], [/^Monthly UTC 预算$/i, "每月 UTC 预算"], [/^Soft alert at 80%$/i, "达到 80% 时提醒"],
+    [/^暂停 work\.{2,3}$/i, "暂停工作"], [/^开放(.+?):\s*(.+)$/i, "打开$1：$2"], [/^已阻塞 chain stalled$/i, "已阻塞，处理链已停滞"],
+    [/^选择 company$/i, "选择公司"], [/^打开公司切换器$/i, "打开公司切换器"],
+    [/^启动 date$/i, "开始日期"], [/^Due date$/i, "截止日期"], [/^No approver(?:\s+我\s+.+)?$/i, "无审批人"], [/^搜索approvers…?$/i, "搜索审批人……"],
+    [/^Last已更新$/i, "最近更新"], [/^Recovery needed$/i, "需要恢复处理"], [/^stopped (\d+)m$/i, "已停止 $1 分钟"],
+    [/^已阻塞 chain sta(?:lled|rted)$/i, "已阻塞，处理链已停滞"],
+    [/^Sends modelProfile:\s*"cheap"\s*·\s*使用智能体配置的低成本配置$/i, "使用低成本模型配置发送；具体模型由智能体设置决定。"],
+    [/^模型车道 Primary Cheap 自定义 仅为此任务覆盖模型和思考强度。$/i, "模型配置：标准、低成本或自定义。仅对当前任务覆盖模型和思考强度。"],
+    [/^Interact with the Paperclip control plane API for task coordination and governance\. Use when checking assignments, updating issue status, posting comments, delegating work, managing routines, or calling Paperclip API endpoints\.?$/i, "通过 Paperclip 控制台 API 协调任务并进行治理。适用于检查分配、更新任务状态、发布评论、委派工作、管理自动任务或调用 Paperclip API 接口。"],
+    [/^Interact with the Paperclip control plane API[\s\S]*$/i, "通过 Paperclip 控制台 API 协调任务并进行治理。适用于检查分配、更新任务状态、发布评论、委派工作、管理自动任务或调用 Paperclip API 接口。"],
+    [/^创建new agents in Paperclip with governance-aware hiring\. Use when you need to inspect adapter configuration options, compare existing 智能体 configs, draft a new 智能体 prompt\/config, and submit a hire request\.?$/i, "在 Paperclip 中按治理流程创建智能体。适用于查看适配器配置选项、比较现有智能体配置、拟定新的智能体提示词或配置，并提交招聘申请。"],
+    [/^创建new agents in Paperclip with governance-aware hiring\.[\s\S]*$/i, "在 Paperclip 中按治理流程创建智能体。适用于查看适配器配置、比较现有智能体设置、拟定提示词或配置，并提交招聘申请。"],
+    [/^Primary$/i, "标准"], [/^Cheap$/i, "低成本"], [/^自定义$/i, "自定义"], [/^仅为此任务覆盖模型和思考强度。$/i, "仅对当前任务覆盖模型和思考强度。"],
   );
   for (const [pattern, replacement] of broadCopy) translated = translated.replace(pattern, replacement);
   // Plugin catalog entries are server-provided descriptions, so translate

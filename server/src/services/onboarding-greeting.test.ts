@@ -10,19 +10,19 @@ describe("buildOnboardingGreeting", () => {
     });
 
     expect(greeting).toContain(
-      "Welcome! I'm Nova, your first agent teammate on Paperclip.",
+      "您好！我是 Nova，您在 Paperclip 中的首位智能体伙伴。",
     );
-    expect(greeting).toContain("Here's what I understand you're aiming for:");
+    expect(greeting).toContain("我目前理解您的目标是：");
     expect(greeting).toContain("> Launch a marketplace for local makers.");
-    expect(greeting).toContain("propose a team of agents");
-    expect(greeting).toContain("few focused questions");
+    expect(greeting).toContain("提议一组智能体协助执行");
+    expect(greeting).toContain("几个重点问题");
   });
 
   it("falls back to a generic teammate intro when no agent name is set", () => {
     const greeting = buildOnboardingGreeting({ agentName: null, goals: null });
 
     expect(greeting).toContain(
-      "Welcome! I'm your first agent teammate on Paperclip.",
+      "您好！我是您在 Paperclip 中的首位智能体伙伴。",
     );
   });
 
@@ -37,7 +37,7 @@ describe("buildOnboardingGreeting", () => {
   it("omits the reflect-back block when no goals are provided", () => {
     const greeting = buildOnboardingGreeting({ agentName: "Nova", goals: null });
 
-    expect(greeting).not.toContain("aiming for");
-    expect(greeting).toContain("propose a team of agents");
+    expect(greeting).not.toContain("您的目标是");
+    expect(greeting).toContain("提议一组智能体协助执行");
   });
 });

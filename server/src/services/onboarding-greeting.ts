@@ -17,22 +17,22 @@ export function buildOnboardingGreeting(input: {
   // it, so the first message reads as coming from *their* first teammate rather
   // than a generic agent. Fall back to the generic phrasing otherwise.
   const identity = agentName
-    ? `Welcome! I'm ${agentName}, your first agent teammate on Paperclip.`
-    : "Welcome! I'm your first agent teammate on Paperclip.";
+    ? `您好！我是 ${agentName}，您在 Paperclip 中的首位智能体伙伴。`
+    : "您好！我是您在 Paperclip 中的首位智能体伙伴。";
 
   const lines: string[] = [];
   lines.push(identity);
 
   if (goals) {
     lines.push("");
-    lines.push("Here's what I understand you're aiming for:");
+    lines.push("我目前理解您的目标是：");
     lines.push("");
     lines.push(`> ${goals}`);
   }
 
   lines.push("");
   lines.push(
-    "I want to gather more context so I can come up with a plan and propose a team of agents to help execute it. I'm putting together a few focused questions so we can settle on a concrete goal to tackle first. Please give me one moment...",
+    "我想先收集更多背景信息，以便制定计划，并提议一组智能体协助执行。我会先整理几个重点问题，帮助我们确定要优先处理的具体目标。请稍等片刻……",
   );
 
   return lines.join("\n");
