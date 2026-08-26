@@ -610,6 +610,17 @@ function translateText(value: string) {
 
   let translated = value;
   const phraseReplacements: Array<[string, string]> = [
+    ["agentDetail.retry", "重试"],
+    ["agentDetail.noPersistedTranscript", "没有已保存的转录记录"],
+    ["agentDetail.failureDetails", "失败详情"],
+    ["agentDetail.events", "事件"],
+    ["agentDetail.duration", "持续时间"],
+    ["agentDetail.onBehalfOf", "代表"],
+    ["agentDetail.adapterResultJson", "适配器结果 JSON"],
+    ["Nice", "友好视图"],
+    ["Raw", "原始数据"],
+    ["idle", "空闲"],
+    ["[system]", "[系统]"],
     ["RECOVERY ACTION", "恢复操作"],
     ["FAILURE CODE", "失败代码"],
     ["FAILURE SUMMARY", "失败摘要"],
