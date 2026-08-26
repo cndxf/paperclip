@@ -610,6 +610,16 @@ function translateText(value: string) {
 
   let translated = value;
   const phraseReplacements: Array<[string, string]> = [
+    ["Configuration未完成", "配置未完成"],
+    ["Welcome! I'm", "您好！我是"],
+    ["your first agent teammate on Paperclip", "您在 Paperclip 中的首位智能体伙伴"],
+    ["I want to gather more context so I can come up with a plan and propose a team of agents to help execute it.", "我想先收集更多背景信息，以便制定计划，并提议一组智能体协助执行。"],
+    ["I'm putting together a few focused questions so we can settle on a concrete goal to tackle first. Please give me one moment...", "我会先整理几个重点问题，帮助我们确定要优先处理的具体目标。请稍等片刻……"],
+    ["Paperclip stopped before dispatching the adapter because", "Paperclip 在启动适配器前已停止，因为"],
+    ["required secret/env bindings are missing.", "缺少必填的密钥或环境变量绑定。"],
+    ["Moving it to", "已将其移至"],
+    ["so an operator can bind the missing", "，操作员需要先绑定缺少的"],
+    ["before resuming.", "，然后才能恢复运行。"],
     ["Search company memory", "搜索公司记忆"],
     ["type to search company memory", "输入内容以搜索公司记忆"],
     ["Identifier lookup:", "标识符查询："],
